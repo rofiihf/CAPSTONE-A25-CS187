@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Buddy AI</title>
+
+  <link rel="stylesheet" href="styles/style.css">
+  
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  />
+
+</head>
+<body>
+
+  <main>
+    <div class="chatbot-container">
+      <div class="header-container">
+        <header class="page-header">
+          <h1 class="brand-name">Dico</h1>
+        </header>
+      </div>
+      <hr>
+
+
+      <!-- List Chat Message Bot dan User -->
+      <div class="chat-message"></div>
+
+      <div class="input-text-container">
+        <div class="form-control">
+          <form class="input-chat-form">
+            <div class="prompt-textarea">
+              <textarea name="user-chat" id="user-chat" class="textarea-user__chat-form" required placeholder="Tanyakan Apa Saja"></textarea>
+            </div>
+            <div class="button-submit">
+              <button class="submit-button__chat-form"><i class="fa-solid fa-arrow-up"></i></button>
+            </div>
+          </form>
+          
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="/src/scripts/components/message.js"></script>
+</body>
+</html>
