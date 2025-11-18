@@ -1,4 +1,3 @@
-
 export function generateBubbleChat ({
   id,
   sender,
