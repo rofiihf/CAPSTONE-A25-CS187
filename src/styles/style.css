@@ -86,6 +86,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-top: 0px;
   margin-bottom: 0;
   margin-left: 12px;
 }
@@ -115,7 +116,7 @@ body {
   margin-top: 8px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 }
 
 .course-card {
@@ -168,6 +169,22 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  scrollbar-width: thin;                     /* Firefox */
+  scrollbar-color: #9ca3af #f3f4f6;         /* thumb | track */
+}
+
+.chat-message::-webkit-scrollbar {
+  width: 8px;                               /* Chrome/Edge */
+}
+
+.chat-message::-webkit-scrollbar-track {
+  background: #f3f4f6;                      /* track light */
+}
+
+.chat-message::-webkit-scrollbar-thumb {
+  background-color: #9ca3af;                /* thumb abu */
+  border-radius: 999px;
+  border: 2px solid #f3f4f6;                /* ada gap putih */
 }
 
 /* Bubble dasar */
@@ -328,7 +345,9 @@ textarea:focus {
 
 /* Header & brand */
 .chatbot-container.dark-theme .page-header {
-  background-color: #020617;
+  background-color: #1f2937;
+  border-bottom: none;
+  box-shadow: none;
 }
 
 .chatbot-container.dark-theme .brand-name {
@@ -336,15 +355,32 @@ textarea:focus {
 }
 
 .chatbot-container.dark-theme .theme-toggle {
-  background-color: #111827;
-  color: #f9fafb;
+  background-color: transparent;
+  color: #e5e7eb;
+}
+
+.chatbot-container.dark-theme .theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 /* Area chat */
 .chatbot-container.dark-theme .chat-message {
   background-color: #020617;
+  border-top: none;
+  scrollbar-color: #4b5563 #020617;
 }
 
+.chatbot-container.dark-theme .chat-message::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+.chatbot-container.dark-theme .chat-message::-webkit-scrollbar-thumb {
+  background-color: #4b5563;
+  border-radius: 999px;
+  border: 2px solid #020617;
+}
+
+/* Bubble */
 .chatbot-container.dark-theme .message {
   background-color: #111827;
   color: #e5e7eb;
@@ -352,7 +388,7 @@ textarea:focus {
 }
 
 .chatbot-container.dark-theme .message.user {
-  background-color: #1f2937;
+  background-color: #2563eb;  /* accent user */
   color: #f9fafb;
 }
 
@@ -363,31 +399,65 @@ textarea:focus {
 
 /* Quick actions */
 .chatbot-container.dark-theme .quick-actions__button {
-  background-color: #111827;
+  background-color: #0f3179;
   color: #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 .chatbot-container.dark-theme .quick-actions__button:hover {
   background-color: #1f2937;
 }
 
-/* Input area */
-.chatbot-container.dark-theme .input-text-container {
+/* Kartu rekomendasi */
+.chatbot-container.dark-theme .message.message--with-card {
   background-color: #020617;
-  box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.8);
 }
 
-.chatbot-container.dark-theme textarea {
-  background-color: #020617;
+.chatbot-container.dark-theme .course-card {
+  background-color: #184ab8;
+  border: 1px solid #020617;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.chatbot-container.dark-theme .course-card__title {
   color: #e5e7eb;
 }
 
-.chatbot-container.dark-theme textarea::placeholder {
+.chatbot-container.dark-theme .course-card__meta {
   color: #9ca3af;
 }
 
-.chatbot-container.dark-theme .submit-button__chat-form {
+.chatbot-container.dark-theme .course-card__badge {
+  background-color: #1d4ed8;
+  color: #e5e7eb;
+}
+
+.chatbot-container.dark-theme .course-card__path {
+  color: #9ca3af;
+}
+
+.chatbot-container.dark-theme .course-card__desc {
+  color: #d1d5db;
+}
+
+/* Input area */
+.chatbot-container.dark-theme .input-text-container {
   background-color: #020617;
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.chatbot-container.dark-theme textarea {
+  background-color: #1f2937;
+  color: #e5e7eb;
+  box-shadow: none;
+}
+
+.chatbot-container.dark-theme textarea::placeholder {
+  color: #6d6d6d;
+}
+
+.chatbot-container.dark-theme .submit-button__chat-form {
+  background-color: #111827;
   color: #e5e7eb;
 }
 
@@ -396,6 +466,7 @@ textarea:focus {
   background-color: #e5e7eb;
 }
 
+/* Clear chat button */
 .chatbot-container.dark-theme .clear-chat {
   background-color: #111827;
   color: #e5e7eb;
@@ -405,6 +476,40 @@ textarea:focus {
   background-color: #1f2937;
 }
 
+
+.chatbot-container.dark-theme .message.message--with-card {
+  background-color: #111827;   /* panel luar, sangat gelap */
+}
+
+/* Dark theme: card di dalamnya */
+.chatbot-container.dark-theme .course-card {
+  background-color: #0f1944;   /* sedikit lebih terang dari bg luar */
+  border: 1px solid #020617;
+  border-radius: 12px;
+  padding: 8px 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.chatbot-container.dark-theme .course-card__title {
+  color: #e5e7eb;
+}
+
+.chatbot-container.dark-theme .course-card__meta {
+  color: #9ca3af;
+}
+
+.chatbot-container.dark-theme .course-card__badge {
+  background-color: #1d4ed8;
+  color: #e5e7eb;
+}
+
+.chatbot-container.dark-theme .course-card__path {
+  color: #9ca3af;
+}
+
+.chatbot-container.dark-theme .course-card__desc {
+  color: #d1d5db;
+}
 
 /* ===== RESPONSIVE ===== */
 
