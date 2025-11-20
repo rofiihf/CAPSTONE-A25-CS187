@@ -11,11 +11,13 @@ export default class MessageView {
   #chatContainer = null;
   #typingElement = null;
   #quickActionsElement = null;
+  #clearChatButton = null;
 
   constructor() {
     this.#chatContainer = document.querySelector(".chat-message");
     this.#form = document.querySelector(".input-chat-form");
     this.#input = document.querySelector("#user-chat");
+    this.#clearChatButton = document.querySelector(".clear-chat");
   }
 
   initialize() {
@@ -130,5 +132,13 @@ export default class MessageView {
         this.#form.requestSubmit();
       }
     });
+
+    // tombol Clear Chat di header
+    if (this.#clearChatButton) {
+      this.#clearChatButton.addEventListener("click", () => {
+        this.#presenter.handleClearChat();
+      });
+    }
   }
 }
+

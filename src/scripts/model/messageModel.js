@@ -3,7 +3,14 @@
 import { dummyData } from "../data/dummy.js";
 
 export default class MessageModel {
-  #messages = dummyData;
+  #messages;
+  #initialMessages;
+
+  constructor() {
+    // simpan salinan awal pesan bot
+    this.#initialMessages = dummyData.map((message) => ({ ...message }));
+    this.#messages = this.#initialMessages.map((message) => ({ ...message }));
+  }
 
   getAllMessages() {
     return this.#messages;
@@ -19,5 +26,10 @@ export default class MessageModel {
 
     this.#messages.push(newMessage);
     return newMessage;
+  }
+
+  resetMessages() {
+    // kembalikan hanya ke pesan awal
+    this.#messages = this.#initialMessages.map((message) => ({ ...message }));
   }
 }

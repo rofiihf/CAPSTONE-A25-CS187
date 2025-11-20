@@ -17,6 +17,27 @@ export default class MessagePresenter {
     this.#model = model;
   }
 
+  // ====== CLEAR CHAT ======
+  handleClearChat() {
+    // reset mode & langkah percakapan
+    this.#mode = "idle";
+    this.#step = 0;
+    this.#onboardingProfile = { focus: "", level: "" };
+    this.#progressState = { lastClass: "", selfScore: "" };
+
+    // reset data pesan di model ke pesan awal
+    if (typeof this.#model.resetMessages === "function") {
+      this.#model.resetMessages();
+    }
+
+    // reset input form
+    this.#view.resetInput();
+    this.#view.setInputDisabled(false);
+
+    // render ulang pesan awal + quick action
+    this.renderInitialMessages();
+  }
+
   renderInitialMessages() {
     try {
       const data = this.#model.getAllMessages();
