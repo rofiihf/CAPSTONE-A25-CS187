@@ -9,6 +9,7 @@ export default class MessageView {
   #form = null;
   #input = null;
   #chatContainer = null;
+  #typingElement = null;
 
   constructor() {
     this.#chatContainer = document.querySelector(".chat-message");
@@ -34,6 +35,35 @@ export default class MessageView {
     const bubble = generateBubbleChat(message);
     this.#chatContainer.appendChild(bubble);
     this.#chatContainer.scrollTop = this.#chatContainer.scrollHeight;
+  }
+
+  // ===== Typing indicator untuk bot =====
+  showTypingIndicator() {
+    if (this.#typingElement) return; // kalau sudah ada, jangan buat lagi
+
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("message", "bot", "typing");
+
+    const indicator = document.createElement("div");
+    indicator.classList.add("typing-indicator");
+
+    for (let i = 0; i < 3; i += 1) {
+      const dot = document.createElement("span");
+      dot.classList.add("typing-indicator__dot");
+      indicator.appendChild(dot);
+    }
+
+    wrapper.appendChild(indicator);
+    this.#chatContainer.appendChild(wrapper);
+    this.#chatContainer.scrollTop = this.#chatContainer.scrollHeight;
+
+    this.#typingElement = wrapper;
+  }
+
+  hideTypingIndicator() {
+    if (!this.#typingElement) return;
+    this.#typingElement.remove();
+    this.#typingElement = null;
   }
 
   setInputDisabled(state) {

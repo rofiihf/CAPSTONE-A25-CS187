@@ -35,6 +35,8 @@ export default class MessagePresenter {
 
       this.#view.resetInput();
 
+      this.#view.showTypingIndicator();
+
       await this.#simulateBotReply();
 
     } catch (error) {
@@ -43,16 +45,17 @@ export default class MessagePresenter {
   }
 
   async #simulateBotReply() {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         const botResponse = "Halo, chatbot ini masih dalam perkembangan.";
         const botMessage = this.#model.addMessage(botResponse, "bot");
 
+        this.#view.hideTypingIndicator();
         this.#view.renderMessage(botMessage);
         this.#view.setInputDisabled(false);
 
         resolve();
-      }, 1000);
+      }, 1500);
     });
   }
 }
