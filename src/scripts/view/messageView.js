@@ -10,6 +10,7 @@ export default class MessageView {
   #input = null;
   #chatContainer = null;
   #typingElement = null;
+  #quickActionsElement = null;
 
   constructor() {
     this.#chatContainer = document.querySelector(".chat-message");
@@ -29,6 +30,8 @@ export default class MessageView {
 
   clearChat() {
     this.#chatContainer.innerHTML = "";
+    this.#typingElement = null;
+    this.#quickActionsElement = null;
   }
 
   renderMessage(message) {
@@ -36,6 +39,43 @@ export default class MessageView {
     this.#chatContainer.appendChild(bubble);
     this.#chatContainer.scrollTop = this.#chatContainer.scrollHeight;
   }
+
+  renderQuickActions(actions) {
+    // hapus dulu kalau sudah ada
+    if (this.#quickActionsElement) {
+      this.#quickActionsElement.remove();
+      this.#quickActionsElement = null;
+    }
+
+    const container = document.createElement('div');
+    container.classList.add('quick-actions');
+
+    actions.forEach((action) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.classList.add('quick-actions__button');
+      button.textContent = action.label;
+      button.dataset.action = action.key;
+
+      button.addEventListener('click', () => {
+        // lempar ke presenter
+        this.#presenter.handleQuickAction(action.key);
+      });
+
+      container.appendChild(button);
+    });
+
+    this.#chatContainer.appendChild(container);
+    this.#chatContainer.scrollTop = this.#chatContainer.scrollHeight;
+    this.#quickActionsElement = container;
+  }
+
+  clearQuickActions() {
+    if (!this.#quickActionsElement) return;
+    this.#quickActionsElement.remove();
+    this.#quickActionsElement = null;
+  }
+
 
   // ===== Typing indicator untuk bot =====
   showTypingIndicator() {
