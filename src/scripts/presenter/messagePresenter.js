@@ -1,4 +1,5 @@
 // src/scripts/presenter/messagePresenter.js
+import { courses } from "../data/courses.js";
 
 export default class MessagePresenter {
   #view;
@@ -135,15 +136,15 @@ export default class MessagePresenter {
   }
 
   // helper untuk balasan dengan efek "ngetik"
-  async #replyWithTyping(text) {
+  async #replyWithTyping(text, extraOptions = {}) {
     return new Promise((resolve) => {
       setTimeout(() => {
         this.#view.hideTypingIndicator();
-        const msg = this.#model.addMessage(text, "bot");
+        const msg = this.#model.addMessage(text, "bot", extraOptions);
         this.#view.renderMessage(msg);
         this.#view.setInputDisabled(false);
         resolve();
-      }, 800); // delay boleh kamu ganti (ms)
+      }, 800);
     });
   }
 
@@ -219,6 +220,89 @@ export default class MessagePresenter {
     }
   }
 
+  #getCourseRecommendations(focusText) {
+    const raw = focusText.toLowerCase().trim();
+
+    let targetPath = null;
+
+    if (
+      raw.includes("front-end") ||
+      raw.includes("frontend") ||
+      raw.includes("front end") ||
+      raw.includes("front end web") ||
+      raw.includes("web front end") ||
+      raw.includes("front") ||            
+      raw.includes("web") ||              
+      raw.includes("fe")                  
+    ) {
+      targetPath = "Front-End Web";
+    }
+
+    // ===== ANDROID =====
+    else if (
+      raw.includes("android") ||
+      raw.includes("android dev") ||
+      raw.includes("mobile") ||
+      raw.includes("mobile dev")
+    ) {
+      targetPath = "Android";
+    }
+
+    // ===== MACHINE LEARNING =====
+    else if (
+      raw.includes("machine learning") ||
+      raw.includes("ml ") ||
+      raw.startsWith("ml") ||
+      raw.includes(" data ") ||
+      raw.includes("data science") ||
+      raw.includes("ai")
+    ) {
+      targetPath = "Machine Learning";
+    }
+
+    // ===== BACK-END =====
+    else if (
+      raw.includes("back-end") ||
+      raw.includes("backend") ||
+      raw.includes("back end") ||
+      raw.includes("server") ||
+      raw.includes("api")
+    ) {
+      targetPath = "Back-End";
+    }
+
+    // ===== fallback ke profil onboarding kalau ada =====
+    if (!targetPath && this.#onboardingProfile.focus) {
+      const onboardLower = this.#onboardingProfile.focus.toLowerCase();
+      if (
+        onboardLower.includes("front") ||
+        onboardLower.includes("web")
+      ) {
+        targetPath = "Front-End Web";
+      } else if (onboardLower.includes("android")) {
+        targetPath = "Android";
+      } else if (
+        onboardLower.includes("machine") ||
+        onboardLower.includes("ml")
+      ) {
+        targetPath = "Machine Learning";
+      } else if (onboardLower.includes("back")) {
+        targetPath = "Back-End";
+      }
+    }
+
+    let filtered = courses;
+    if (targetPath) {
+      filtered = courses.filter((course) => course.path === targetPath);
+    }
+
+    if (!filtered.length) {
+      filtered = courses;
+    }
+
+    return filtered.slice(0, 3);
+  }
+
   // ================== MODE RECOMMENDATION ==================
 
   async #askRecommendationQuestion() {
@@ -229,11 +313,17 @@ export default class MessagePresenter {
 
   async #handleRecommendationAnswer(text) {
     const focus = text.trim();
+    const recommended = this.#getCourseRecommendations(focus);
+
     this.#mode = "idle";
     this.#step = 0;
 
     await this.#replyWithTyping(
-      `Untuk fokus di ${focus}, kamu bisa mulai dari kelas dasar dulu, lalu lanjut ke kelas menengah. Versi berikutnya nanti bisa kuhubungkan dengan roadmap pribadimu, tapi untuk sekarang kamu bisa lanjut tanya apa pun atau pilih mode lain di tombol bawah.`
+      `Berikut beberapa rekomendasi kelas Dicoding yang cocok untuk fokus ${focus}:`,
+      {
+        type: "course-recommendation",
+        courses: recommended,
+      },
     );
 
     this.#showMainQuickActions();

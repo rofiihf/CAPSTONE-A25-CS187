@@ -16,12 +16,13 @@ export default class MessageModel {
     return this.#messages;
   }
 
-  addMessage(text, sender) {
+  addMessage(text, sender, extraOptions = {}) {
     const newMessage = {
       id: `chat-ai-${Date.now()}`,
       sender,
       text,
       timestamp: new Date().toISOString(),
+      ...extraOptions, // <-- type, courses, dll
     };
 
     this.#messages.push(newMessage);

@@ -105,6 +105,60 @@ body {
   background-color: #d4dde8;
 }
 
+/* ===== Kartu rekomendasi kelas ===== */
+
+.message.message--with-card {
+  max-width: 80%;
+}
+
+.course-card-list {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.course-card {
+  background-color: #f7f9fc;
+  border-radius: 12px;
+  padding: 8px 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.course-card__title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+  color: #1f2933;
+}
+
+.course-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  font-size: 0.75rem;
+  margin-bottom: 4px;
+}
+
+.course-card__badge {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background-color: #2D3E50;
+  color: #ffffff;
+  font-size: 0.7rem;
+}
+
+.course-card__path {
+  color: #4b5563;
+}
+
+.course-card__desc {
+  font-size: 0.8rem;
+  color: #374151;
+}
+
+
 /* ===== CHAT AREA ===== */
 
 .chat-message {
