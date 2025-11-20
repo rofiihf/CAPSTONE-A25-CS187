@@ -237,16 +237,50 @@ textarea:focus {
 
 /* ===== SOFT DARK THEME ===== */
 
-.chatbot-container.dark-theme .message.bot {
-  background-color: #ffffff;
-  color: #020617;
+/* ===== SOFT DARK THEME ===== */
+
+/* Container utama */
+.chatbot-container.dark-theme {
+  background-color: #020617; /* hampir hitam tapi masih nyaman */
+  color: #e5e7eb;
 }
 
-.chatbot-container.dark-theme .message.user {
+/* Header & brand */
+.chatbot-container.dark-theme .page-header {
+  background-color: #020617;
+}
+
+.chatbot-container.dark-theme .brand-name {
+  color: #e5e7eb;
+}
+
+.chatbot-container.dark-theme .theme-toggle {
   background-color: #111827;
   color: #f9fafb;
 }
 
+/* Area chat */
+.chatbot-container.dark-theme .chat-message {
+  background-color: #020617;
+}
+
+.chatbot-container.dark-theme .message {
+  background-color: #111827;
+  color: #e5e7eb;
+  box-shadow: none;
+}
+
+.chatbot-container.dark-theme .message.user {
+  background-color: #1f2937;
+  color: #f9fafb;
+}
+
+.chatbot-container.dark-theme .message.bot {
+  background-color: #111827;
+  color: #e5e7eb;
+}
+
+/* Quick actions */
 .chatbot-container.dark-theme .quick-actions__button {
   background-color: #111827;
   color: #e5e7eb;
@@ -256,13 +290,14 @@ textarea:focus {
   background-color: #1f2937;
 }
 
+/* Input area */
 .chatbot-container.dark-theme .input-text-container {
-  background-color: #111827;
-  box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.4);
+  background-color: #020617;
+  box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.8);
 }
 
 .chatbot-container.dark-theme textarea {
-  background-color: #111827;
+  background-color: #020617;
   color: #e5e7eb;
 }
 
@@ -275,13 +310,11 @@ textarea:focus {
   color: #e5e7eb;
 }
 
+/* Typing indicator */
 .chatbot-container.dark-theme .typing-indicator__dot {
   background-color: #e5e7eb;
 }
 
-.chatbot-container.dark-theme .theme-toggle {
-  color: #e5e7eb;
-}
 
 /* ===== RESPONSIVE ===== */
 

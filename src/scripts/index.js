@@ -10,30 +10,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggleButton = document.querySelector('.theme-toggle');
   const THEME_KEY = 'dico-theme';
 
-  function applyTheme(theme) {
-    const isDark = theme === 'dark';
+  function updateThemeIcon(isDark) {
+    if (!themeToggleButton) return;
 
+    // Cek: pakai Font Awesome (<i>) atau teks/emoji biasa
+    const iconEl = themeToggleButton.querySelector('i');
+
+    if (iconEl) {
+      // Versi Font Awesome
+      iconEl.classList.remove('fa-moon', 'fa-sun');
+      iconEl.classList.add(isDark ? 'fa-sun' : 'fa-moon');
+    } else {
+      // Versi teks / emoji biasa
+      themeToggleButton.textContent = isDark ? '☀️' : '🌙';
+    }
+  }
+
+  function applyTheme(theme) {
     if (!container) return;
 
-    if (isDark) {
-      container.classList.add('dark-theme');
-    } else {
-      container.classList.remove('dark-theme');
-    }
+    const isDark = theme === 'dark';
 
+    // Tambah/hapus class dark-theme di container utama
+    container.classList.toggle('dark-theme', isDark);
+
+    // Update tampilan ikon tombol
     updateThemeIcon(isDark);
   }
 
-  function updateThemeIcon(isDark) {
-    if (!themeToggleButton) return;
-    const icon = themeToggleButton.querySelector('i');
-    if (!icon) return;
-
-    icon.classList.remove('fa-moon', 'fa-sun');
-    icon.classList.add(isDark ? 'fa-sun' : 'fa-moon');
-  }
-
-  // Initial theme
+  // Tema awal (ambil dari localStorage kalau ada)
   const savedTheme = localStorage.getItem(THEME_KEY);
   if (savedTheme === 'dark' || savedTheme === 'light') {
     applyTheme(savedTheme);
@@ -41,11 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTheme('light');
   }
 
-  // Toggle theme on click
-  if (themeToggleButton) {
+  // Toggle tema saat tombol diklik
+  if (themeToggleButton && container) {
     themeToggleButton.addEventListener('click', () => {
       const isDarkNow = !container.classList.contains('dark-theme');
       const nextTheme = isDarkNow ? 'dark' : 'light';
+
       applyTheme(nextTheme);
       localStorage.setItem(THEME_KEY, nextTheme);
     });
