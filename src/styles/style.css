@@ -46,6 +46,7 @@ body {
   padding: 20px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 /* Bubble dasar */
@@ -53,26 +54,37 @@ body {
   display: inline-block;
   max-width: 70%;
   padding: 10px 15px;
-  margin-bottom: 20px; /* jarak antar pesan default */
+  margin-bottom: 10px; /* jarak antar pesan default */
   border-radius: 16px;
   font-size: 1rem;
   line-height: 1.425rem;
   word-wrap: break-word;
+  word-break: break-word;
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.10);
+}
+
+.message p {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 /* Bot bubble */
 .message.bot {
   align-self: flex-start;
   border-top-left-radius: 4px;
+  margin-left: 12px;  
+  margin-right: auto;
 }
 
 /* User bubble */
 .message.user {
   background-color: #2D3E50;
   align-self: flex-end;
+  margin-left: auto; 
+  margin-right: 12px;  /* jarak dari kanan */
   border-top-right-radius: 4px;
   color: white;
 }
@@ -82,14 +94,7 @@ body {
   margin-bottom: 10px;  /* sedikit jarak biar ga nempel total */
 }
 
-/*  */
 
-
-.chat-message {
-  flex: 1;
-}
-
-/*  */
 
 .user-text-container {
   background-color: rgb(24, 24, 24);
@@ -164,4 +169,147 @@ textarea:focus {
 
 .submit-button__chat-form:hover {
   background-color: rgb(247, 247, 247);
+}
+
+@media (max-width: 1024px) {
+  body {
+    margin: 0;
+  }
+
+  .chatbot-wrapper {
+    padding: 0;
+  }
+
+  .chatbot-container {
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .page-header {
+    padding: 12px 18px;
+  }
+
+  .page-header h1 {
+    font-size: 1rem;
+  }
+
+  .chat-message {
+    padding: 12px 10px;
+  }
+
+  .message {
+    max-width: 75%;
+    font-size: 0.95rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    margin-bottom: 10px;
+  }
+
+  .message.bot {
+    align-self: flex-start;
+    margin-left: 12px;   
+    margin-right: auto;
+  }
+
+  .message.user {
+    align-self: flex-end;
+    margin-right: 12px;  /* jarak dari kanan */
+    margin-left: auto;
+  }
+
+  .form-control {
+    padding: 10px 14px 16px;
+  }
+
+  .prompt-textarea,
+  textarea {
+    font-size: 0.95rem;
+    padding-top: 0.7rem;
+    padding-left: 0.7rem;
+  }
+
+  .submit-button__chat-form {
+    padding: 8px 14px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    margin: 0;
+  }
+
+  .chatbot-wrapper {
+    padding: 0;
+  }
+
+  .chatbot-container {
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .page-header {
+    padding: 10px 14px;
+  }
+
+  .page-header h1 {
+    font-size: 0.95rem;
+  }
+
+  .chat-message {
+    padding: 10px 8px;
+  }
+
+  .message {
+    max-width: 80%;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .message.bot {
+    align-self: flex-start;
+    margin-left: 12px;   /* jarak dari kiri */
+    margin-right: auto;
+  }
+
+  .message.user {
+    align-self: flex-end;
+    margin-right: 12px;  /* jarak dari kanan */
+    margin-left: auto;
+  }
+
+  .form-control {
+    padding: 8px 10px 14px;
+  }
+
+  .input-chat-form {
+    gap: 6px;
+  }
+
+  .prompt-textarea,
+  textarea {
+    font-size: 0.9rem;
+    padding-top: 0.6rem;
+    padding-left: 0.6rem;
+    min-height: 42px;
+  }
+
+  textarea::placeholder {
+    font-size: 0.9rem;
+  }
+
+  .submit-button__chat-form {
+    padding: 8px 12px;
+    font-size: 0.95rem;
+  }
 }
