@@ -1,7 +1,7 @@
 // src/scripts/view/messageView.js
 
 import MessagePresenter from "../presenter/messagePresenter.js";
-import { generateBubbleChat } from "../components/bubbleChat.js";
+import { generateBubbleChat } from "../components/generateBubbleChat.js";
 import MessageModel from "../model/messageModel.js";
 
 export default class MessageView {

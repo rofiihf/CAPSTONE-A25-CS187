@@ -8,7 +8,7 @@ const ASSETS_TO_CACHE = [
   './scripts/view/messageView.js',
   './scripts/presenter/messagePresenter.js',
   './scripts/model/messageModel.js',
-  './scripts/components/bubbleChat.js',
+  './scripts/components/generateBubbleChat.js',
   './scripts/data/dummy.js',
 ];
 

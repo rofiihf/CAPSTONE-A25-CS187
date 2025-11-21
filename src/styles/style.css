@@ -4,29 +4,117 @@
   box-sizing: border-box;
 }
 
+/* ===== CSS VARIABLES (LIGHT THEME DEFAULT) ===== */
+:root {
+  /* Background Colors */
+  --bg-body: #1f1f27;
+  --bg-container: #f7f7f7;
+  --bg-header: #2d3e50;
+  --bg-chat-area: #f7f7f7;
+  --bg-input-area: #fcfcfc;
+  --bg-bubble-bot: #ffffff;
+  --bg-bubble-user: #2d3e50;
+  --bg-button: #ffffff;
+  --bg-button-hover: #f7f7f7;
+  --bg-textarea: #ffffff;
+  --bg-quick-action: #e5e9f0;
+  --bg-quick-action-hover: #d4dde8;
+  --bg-course-card: #f7f9fc;
+  
+  /* Text Colors */
+  --text-primary: #000000;
+  --text-secondary: #4b5563;
+  --text-light: #bbbbbb;
+  --text-white: #ffffff;
+  --text-brand: #bbbbbb;
+  --text-bubble-user: #ffffff;
+  --text-course-title: #1f2933;
+  --text-course-desc: #374151;
+  
+  /* UI Element Colors */
+  --border-color: transparent;
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+  --shadow-input-top: 0px -1px 4px 1px rgba(0, 0, 0, 0.075);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06);
+  
+  /* Scrollbar */
+  --scrollbar-track: #f3f4f6;
+  --scrollbar-thumb: #9ca3af;
+  
+  /* Typing Indicator */
+  --typing-dot: #b0b0b0;
+  
+  /* Badge */
+  --badge-bg: #2d3e50;
+  --badge-text: #ffffff;
+}
+
+/* ===== DARK THEME VARIABLES ===== */
+.chatbot-container.dark-theme {
+  /* Background Colors */
+  --bg-container: #1a1a1a;
+  --bg-header: #252525;
+  --bg-chat-area: #161616;
+  --bg-input-area: #272727;
+  --bg-bubble-bot: #272727;
+  --bg-bubble-user: #203e61;
+  --bg-button: #464646;
+  --bg-button-hover: #555555;
+  --bg-textarea: #464646;
+  --bg-quick-action: #656566;
+  --bg-quick-action-hover: #202630;
+  --bg-course-card: #0f1944;
+  
+  /* Text Colors */
+  --text-primary: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --text-light: #e5e7eb;
+  --text-white: #f9fafb;
+  --text-brand: #e5e7eb;
+  --text-bubble-user: #f9fafb;
+  --text-course-title: #e5e7eb;
+  --text-course-desc: #d1d5db;
+  
+  /* UI Element Colors */
+  --border-color: #020617;
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.6);
+  --shadow-medium: none;
+  --shadow-input-top: 0 -1px 4px rgba(0, 0, 0, 0.8);
+  --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.7);
+  
+  /* Scrollbar */
+  --scrollbar-track: #020617;
+  --scrollbar-thumb: #4b5563;
+  
+  /* Typing Indicator */
+  --typing-dot: #e5e7eb;
+  
+  /* Badge */
+  --badge-bg: #1d4ed8;
+  --badge-text: #e5e7eb;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: rgb(11, 11, 41);
+  background-color: var(--bg-body);
 }
 
 /* ===== LAYOUT DASAR ===== */
 
 .chatbot-container {
-  background-color: rgb(247, 247, 247);
+  background-color: var(--bg-container);
   height: 100vh;
-
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-
   margin: 0 auto;
   max-width: 1200px;
 }
 
 .page-header {
-  background-color: #2d3e50;
+  background-color: var(--bg-header);
   padding: 20px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -35,7 +123,7 @@ body {
 .page-header h1 {
   font-size: 1.3rem;
   font-weight: lighter;
-  color: rgb(187, 187, 187);
+  color: var(--text-brand);
   padding-inline-start: 5px;
   cursor: pointer;
 }
@@ -52,25 +140,23 @@ body {
   border-radius: 999px;
   font-size: 0.85rem;
   cursor: pointer;
-  background-color: #e5e9f0;
-  color: #2d3e50;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  background-color: var(--bg-quick-action);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-light);
 }
 
 .clear-chat:hover {
-  background-color: #d4dde8;
+  background-color: var(--bg-quick-action-hover);
 }
-
 
 /* Tombol toggle tema */
 .theme-toggle {
   border: none;
   background-color: transparent;
-  color: rgb(187, 187, 187);
+  color: var(--text-light);
   padding: 8px;
   border-radius: 999px;
   cursor: pointer;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -97,19 +183,20 @@ body {
   border-radius: 999px;
   font-size: 0.85rem;
   cursor: pointer;
-  background-color: #e5e9f0;
-  color: #2d3e50;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  background-color: var(--bg-quick-action);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-light);
 }
 
 .quick-actions__button:hover {
-  background-color: #d4dde8;
+  background-color: var(--bg-quick-action-hover);
 }
 
 /* ===== Kartu rekomendasi kelas ===== */
 
 .message.message--with-card {
   max-width: 80%;
+  background-color: var(--bg-bubble-bot);
 }
 
 .course-card-list {
@@ -120,17 +207,18 @@ body {
 }
 
 .course-card {
-  background-color: #f7f9fc;
+  background-color: var(--bg-course-card);
   border-radius: 12px;
   padding: 8px 10px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-color);
 }
 
 .course-card__title {
   font-size: 0.9rem;
   font-weight: 600;
   margin-bottom: 2px;
-  color: #1f2933;
+  color: var(--text-course-title);
 }
 
 .course-card__meta {
@@ -140,25 +228,25 @@ body {
   align-items: center;
   font-size: 0.75rem;
   margin-bottom: 4px;
+  color: var(--text-secondary);
 }
 
 .course-card__badge {
   padding: 2px 8px;
   border-radius: 999px;
-  background-color: #2D3E50;
-  color: #ffffff;
+  background-color: var(--badge-bg);
+  color: var(--badge-text);
   font-size: 0.7rem;
 }
 
 .course-card__path {
-  color: #4b5563;
+  color: var(--text-secondary);
 }
 
 .course-card__desc {
   font-size: 0.8rem;
-  color: #374151;
+  color: var(--text-course-desc);
 }
-
 
 /* ===== CHAT AREA ===== */
 
@@ -169,22 +257,23 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  scrollbar-width: thin;                     /* Firefox */
-  scrollbar-color: #9ca3af #f3f4f6;         /* thumb | track */
+  background-color: var(--bg-chat-area);
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
 .chat-message::-webkit-scrollbar {
-  width: 8px;                               /* Chrome/Edge */
+  width: 8px;
 }
 
 .chat-message::-webkit-scrollbar-track {
-  background: #f3f4f6;                      /* track light */
+  background: var(--scrollbar-track);
 }
 
 .chat-message::-webkit-scrollbar-thumb {
-  background-color: #9ca3af;                /* thumb abu */
+  background-color: var(--scrollbar-thumb);
   border-radius: 999px;
-  border: 2px solid #f3f4f6;                /* ada gap putih */
+  border: 2px solid var(--scrollbar-track);
 }
 
 /* Bubble dasar */
@@ -196,9 +285,9 @@ body {
   border-radius: 16px;
   font-size: 1rem;
   line-height: 1.425rem;
-  background-color: #ffffff;
-  color: #000000;
-  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-bubble-bot);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-medium);
   word-wrap: break-word;
   word-break: break-word;
 }
@@ -217,25 +306,24 @@ body {
 
 /* User bubble */
 .message.user {
-  background-color: #2d3e50;
+  background-color: var(--bg-bubble-user);
   align-self: flex-end;
   margin-left: auto;
   margin-right: 12px;
   border-top-right-radius: 4px;
-  color: #ffffff;
+  color: var(--text-bubble-user);
 }
 
 /* ===== INPUT AREA ===== */
 
 .input-text-container {
-  box-shadow: 0px -1px 4px 1px rgba(0, 0, 0, 0.075);
-  background-color: #fcfcfc;
+  box-shadow: var(--shadow-input-top);
+  background-color: var(--bg-input-area);
 }
 
 .form-control {
   padding-block: 20px;
   padding-inline: 20px;
-
   display: flex;
   align-items: center;
   gap: 10px;
@@ -252,25 +340,26 @@ body {
 
 .prompt-textarea {
   flex: 1;
-  width: 100%;
+  display: flex;
 }
-
 
 textarea {
   font-family: Arial, Helvetica, sans-serif;
-  width: 100%;
+  flex: 1;
+
   border: none;
   border-radius: 30px;
   padding-top: 1rem;
   padding-left: 1rem;
   resize: none;
-  color: #000000;
-  background-color: #ffffff;
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+  color: var(--text-primary);
+  background-color: var(--bg-textarea);
+  box-shadow: var(--shadow-medium);
 }
 
 textarea::placeholder {
   font-size: 1rem;
+  color: var(--text-secondary);
 }
 
 textarea:focus {
@@ -281,15 +370,15 @@ textarea:focus {
   padding: 15px 20px;
   border: none;
   border-radius: 50px;
-  background-color: #ffffff;
+  background-color: var(--bg-button);
   font-size: 1.35rem;
-  color: #2d3e50;
+  color: var(--text-primary);
   cursor: pointer;
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-medium);
 }
 
 .submit-button__chat-form:hover {
-  background-color: rgb(247, 247, 247);
+  background-color: var(--bg-button-hover);
 }
 
 /* ===== TYPING INDICATOR ===== */
@@ -308,7 +397,7 @@ textarea:focus {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: #b0b0b0;
+  background-color: var(--typing-dot);
   animation: typing-bounce 1s infinite ease-in-out;
 }
 
@@ -321,194 +410,14 @@ textarea:focus {
 }
 
 @keyframes typing-bounce {
-
-  0%,
-  80%,
-  100% {
+  0%, 80%, 100% {
     transform: translateY(0);
     opacity: 0.4;
   }
-
   40% {
     transform: translateY(-3px);
     opacity: 1;
   }
-}
-
-/* ===== SOFT DARK THEME ===== */
-
-/* Container utama */
-.chatbot-container.dark-theme {
-  background-color: #020617;
-  color: #e5e7eb;
-}
-
-/* Header & brand */
-.chatbot-container.dark-theme .page-header {
-  background-color: #1f2937;
-  border-bottom: none;
-  box-shadow: none;
-}
-
-.chatbot-container.dark-theme .brand-name {
-  color: #e5e7eb;
-}
-
-.chatbot-container.dark-theme .theme-toggle {
-  background-color: transparent;
-  color: #e5e7eb;
-}
-
-.chatbot-container.dark-theme .theme-toggle:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-}
-
-/* Area chat */
-.chatbot-container.dark-theme .chat-message {
-  background-color: #020617;
-  border-top: none;
-  scrollbar-color: #4b5563 #020617;
-}
-
-.chatbot-container.dark-theme .chat-message::-webkit-scrollbar-track {
-  background: #020617;
-}
-
-.chatbot-container.dark-theme .chat-message::-webkit-scrollbar-thumb {
-  background-color: #4b5563;
-  border-radius: 999px;
-  border: 2px solid #020617;
-}
-
-/* Bubble */
-.chatbot-container.dark-theme .message {
-  background-color: #111827;
-  color: #e5e7eb;
-  box-shadow: none;
-}
-
-.chatbot-container.dark-theme .message.user {
-  background-color: #2563eb;  /* accent user */
-  color: #f9fafb;
-}
-
-.chatbot-container.dark-theme .message.bot {
-  background-color: #111827;
-  color: #e5e7eb;
-}
-
-/* Quick actions */
-.chatbot-container.dark-theme .quick-actions__button {
-  background-color: #0f3179;
-  color: #e5e7eb;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-}
-
-.chatbot-container.dark-theme .quick-actions__button:hover {
-  background-color: #1f2937;
-}
-
-/* Kartu rekomendasi */
-.chatbot-container.dark-theme .message.message--with-card {
-  background-color: #020617;
-}
-
-.chatbot-container.dark-theme .course-card {
-  background-color: #184ab8;
-  border: 1px solid #020617;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
-}
-
-.chatbot-container.dark-theme .course-card__title {
-  color: #e5e7eb;
-}
-
-.chatbot-container.dark-theme .course-card__meta {
-  color: #9ca3af;
-}
-
-.chatbot-container.dark-theme .course-card__badge {
-  background-color: #1d4ed8;
-  color: #e5e7eb;
-}
-
-.chatbot-container.dark-theme .course-card__path {
-  color: #9ca3af;
-}
-
-.chatbot-container.dark-theme .course-card__desc {
-  color: #d1d5db;
-}
-
-/* Input area */
-.chatbot-container.dark-theme .input-text-container {
-  background-color: #020617;
-  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.8);
-}
-
-.chatbot-container.dark-theme textarea {
-  background-color: #1f2937;
-  color: #e5e7eb;
-  box-shadow: none;
-}
-
-.chatbot-container.dark-theme textarea::placeholder {
-  color: #6d6d6d;
-}
-
-.chatbot-container.dark-theme .submit-button__chat-form {
-  background-color: #111827;
-  color: #e5e7eb;
-}
-
-/* Typing indicator */
-.chatbot-container.dark-theme .typing-indicator__dot {
-  background-color: #e5e7eb;
-}
-
-/* Clear chat button */
-.chatbot-container.dark-theme .clear-chat {
-  background-color: #111827;
-  color: #e5e7eb;
-}
-
-.chatbot-container.dark-theme .clear-chat:hover {
-  background-color: #1f2937;
-}
-
-
-.chatbot-container.dark-theme .message.message--with-card {
-  background-color: #111827;   /* panel luar, sangat gelap */
-}
-
-/* Dark theme: card di dalamnya */
-.chatbot-container.dark-theme .course-card {
-  background-color: #0f1944;   /* sedikit lebih terang dari bg luar */
-  border: 1px solid #020617;
-  border-radius: 12px;
-  padding: 8px 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
-}
-
-.chatbot-container.dark-theme .course-card__title {
-  color: #e5e7eb;
-}
-
-.chatbot-container.dark-theme .course-card__meta {
-  color: #9ca3af;
-}
-
-.chatbot-container.dark-theme .course-card__badge {
-  background-color: #1d4ed8;
-  color: #e5e7eb;
-}
-
-.chatbot-container.dark-theme .course-card__path {
-  color: #9ca3af;
-}
-
-.chatbot-container.dark-theme .course-card__desc {
-  color: #d1d5db;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -561,8 +470,7 @@ textarea:focus {
 
   textarea {
     font-size: 0.9rem;
-    padding-top: 0.6rem;
-    padding-left: 0.6rem;
+    padding: 0.6rem;
     min-height: 42px;
   }
 
