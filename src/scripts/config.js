@@ -1,0 +1,1 @@
+export const BOT_API = "http://localhost:3000"

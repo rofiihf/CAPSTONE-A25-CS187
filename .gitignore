@@ -1,1 +1,4 @@
-backend/
+node_modules
+.env
+.gitignore
+backend/baca.txt

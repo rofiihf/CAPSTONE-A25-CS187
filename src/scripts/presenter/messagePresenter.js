@@ -1,5 +1,9 @@
 // src/scripts/presenter/messagePresenter.js
+
+import { getCourses } from "../data/api.js";
 import { courses } from "../data/courses.js";
+import { COURSE_LEVEL_ORDER } from "../utils/mapping.js";
+import { keywords } from "../utils/path-keyword.js";
 
 export default class MessagePresenter {
   #view;
@@ -16,6 +20,26 @@ export default class MessagePresenter {
   constructor({ view, model }) {
     this.#view = view;
     this.#model = model;
+  }
+  
+  async getData() {
+    return await getCourses();
+  }
+  
+  detectPathsFromUser(raw) {
+    const matchedPaths = [];
+    const pathKeywords = keywords;
+    
+    for (const [pathName, keywords] of Object.entries(pathKeywords)) {
+      for (const kw of keywords) {
+        if (raw.includes(kw)) {
+          matchedPaths.push(pathName);
+          break;
+        }
+      }
+    }
+  
+    return matchedPaths;
   }
 
   // ====== CLEAR CHAT ======
@@ -220,56 +244,17 @@ export default class MessagePresenter {
     }
   }
 
-  #getCourseRecommendations(focusText) {
+  async #getCourseRecommendations(focusText) {
     const raw = focusText.toLowerCase().trim();
 
-    let targetPath = null;
-
-    if (
-      raw.includes("front-end") ||
-      raw.includes("frontend") ||
-      raw.includes("front end") ||
-      raw.includes("front end web") ||
-      raw.includes("web front end") ||
-      raw.includes("front") ||            
-      raw.includes("web") ||              
-      raw.includes("fe")                  
-    ) {
-      targetPath = "Front-End Web";
+    const searchPath = this.detectPathsFromUser(raw);
+    if (searchPath.length === 0) {
+      return null;
     }
 
-    // ===== ANDROID =====
-    else if (
-      raw.includes("android") ||
-      raw.includes("android dev") ||
-      raw.includes("mobile") ||
-      raw.includes("mobile dev")
-    ) {
-      targetPath = "Android";
-    }
+    let targetPath = searchPath[0];
+    console.log(searchPath);
 
-    // ===== MACHINE LEARNING =====
-    else if (
-      raw.includes("machine learning") ||
-      raw.includes("ml ") ||
-      raw.startsWith("ml") ||
-      raw.includes(" data ") ||
-      raw.includes("data science") ||
-      raw.includes("ai")
-    ) {
-      targetPath = "Machine Learning";
-    }
-
-    // ===== BACK-END =====
-    else if (
-      raw.includes("back-end") ||
-      raw.includes("backend") ||
-      raw.includes("back end") ||
-      raw.includes("server") ||
-      raw.includes("api")
-    ) {
-      targetPath = "Back-End";
-    }
 
     // ===== fallback ke profil onboarding kalau ada =====
     if (!targetPath && this.#onboardingProfile.focus) {
@@ -278,7 +263,7 @@ export default class MessagePresenter {
         onboardLower.includes("front") ||
         onboardLower.includes("web")
       ) {
-        targetPath = "Front-End Web";
+        targetPath = "Front-End Web Developer";
       } else if (onboardLower.includes("android")) {
         targetPath = "Android";
       } else if (
@@ -290,17 +275,37 @@ export default class MessagePresenter {
         targetPath = "Back-End";
       }
     }
+    const data = await this.getData();
 
-    let filtered = courses;
-    if (targetPath) {
-      filtered = courses.filter((course) => course.path === targetPath);
+    if (!data || !data.learning_paths) {
+      console.error("DATA TIDAK VALID:", data);
+      return [];
     }
-
-    if (!filtered.length) {
-      filtered = courses;
+    
+    
+    const learning_paths = data.learning_paths;
+    console.log("LEARNING PATHS =", learning_paths);
+    // --- Cari learning path berdasarkan nama ---
+    let selected_courses = learning_paths.find(
+      lp => lp.name.toLowerCase() === (targetPath || "").toLowerCase()
+    );
+    console.log(selected_courses);
+    // fallback
+    if (!selected_courses) {
+      return null;
     }
+    // console.log(sorted_courses);
+    const sorted_courses = selected_courses
+      .courses.sort((a, b) =>
+      COURSE_LEVEL_ORDER[a.level] - COURSE_LEVEL_ORDER[b.level]
+    ).slice(0, 3);
+    return sorted_courses;
 
-    return filtered.slice(0, 3);
+    // --- HARUS return array courses ---
+    // return selected_crs.courses.map(c => ({
+    //   ...c,
+    //   path: selected_crs.name,  // supaya bubbleCourseRecommendation punya path
+    // })).slice(0, 3);
   }
 
   // ================== MODE RECOMMENDATION ==================
@@ -313,29 +318,40 @@ export default class MessagePresenter {
 
   async #handleRecommendationAnswer(text) {
     const focus = text.trim();
-    const recommended = this.#getCourseRecommendations(focus);
+    const recommended = await this.#getCourseRecommendations(focus);
 
     this.#mode = "idle";
     this.#step = 0;
 
-    await this.#replyWithTyping(
-      `Berikut beberapa rekomendasi kelas Dicoding yang cocok untuk fokus ${focus}:`,
-      {
-        type: "course-recommendation",
-        courses: recommended,
-      },
-    );
+    if(!recommended) {
+      await this.#replyWithTyping(
+        `Maaf, learning path ${focus} tidak tersedia.`
+      );
+      return;
+    }
 
+    await this.#replyWithTyping(
+        `Berikut beberapa rekomendasi kelas Dicoding yang cocok untuk fokus ${focus}:`,
+        {
+          type: "course-recommendation",
+          courses: recommended,
+        },
+      );
+    
     this.#showMainQuickActions();
   }
 
   // ================== DEFAULT REPLY ==================
 
-  async #handleDefaultReply() {
-    await this.#replyWithTyping(
-      "Terima kasih sudah bertanya. Saat ini Dico masih dalam tahap pengembangan, jadi aku baru bisa menjawab hal-hal dasar dan mencatat profil belajarmu. Kamu bisa klik salah satu tombol di bawah untuk mulai onboarding, cek progress, atau minta rekomendasi kelas."
-    );
+  async #handleDefaultReply(text) {
+    const botBubble = await this.#model.processBotMessage(text);
+
+    this.#view.hideTypingIndicator();
+    this.#view.renderMessage(botBubble);
+
+    this.#view.setInputDisabled();
 
     this.#showMainQuickActions();
   }
+
 }
