@@ -25,10 +25,21 @@ export default class AuthService {
   }
 
   async logout() {
-    return fetch(`${this.URL}/logout`, {
+    const fetchResponse = await fetch(`${this.URL}/logout`, {
       method: "POST",
       credentials: "include",
-    }).then (r => r.json());
+    });
+
+    const data = await fetchResponse.json().catch(() => ({}));
+
+    if (fetchResponse.ok) {
+      this.authModel.setUser(null);
+    }
+
+    return {
+      ok: fetchResponse.ok,
+      data,
+    };
   }
 
   async me() {

@@ -20,6 +20,8 @@
   --bg-quick-action: #e5e9f0;
   --bg-quick-action-hover: #d4dde8;
   --bg-course-card: #f7f9fc;
+  --bg-logout: #ef4444;
+  --bg-logout-hover: #dc2626;
   
   /* Text Colors */
   --text-primary: #000000;
@@ -30,6 +32,8 @@
   --text-bubble-user: #ffffff;
   --text-course-title: #1f2933;
   --text-course-desc: #374151;
+  --text-logout: #ffffff;
+
   
   /* UI Element Colors */
   --border-color: transparent;
@@ -65,6 +69,8 @@
   --bg-quick-action: #656566;
   --bg-quick-action-hover: #202630;
   --bg-course-card: #0f1944;
+  --bg-logout: #ef4444;
+  --bg-logout-hover: #dc2626;
   
   /* Text Colors */
   --text-primary: #e5e7eb;
@@ -75,6 +81,8 @@
   --text-bubble-user: #f9fafb;
   --text-course-title: #e5e7eb;
   --text-course-desc: #d1d5db;
+  --text-logout: #ffffff;
+
   
   /* UI Element Colors */
   --border-color: #020617;
@@ -147,6 +155,21 @@ body {
 
 .clear-chat:hover {
   background-color: var(--bg-quick-action-hover);
+}
+
+.logout-btn {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  background-color: var(--bg-logout);
+  color: var(--text-logout);
+  box-shadow: var(--shadow-light);
+}
+
+.logout-btn:hover {
+  background-color: var(--bg-logout-hover);
 }
 
 /* Tombol toggle tema */

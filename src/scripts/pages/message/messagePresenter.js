@@ -7,6 +7,9 @@ import { keywords } from "../../utils/path-keyword.js";
 export default class MessagePresenter {
   #view;
   #model;
+  #authModel;
+  #authService;
+
 
   // mode percakapan: 'idle' | 'onboarding' | 'progress' | 'recommendation'
   #mode = 'idle';
@@ -16,8 +19,10 @@ export default class MessagePresenter {
   #onboardingProfile = { focus: '', level: '' };
   #progressState = { lastClass: '', selfScore: '' };
 
-  constructor({ model }) {
+  constructor({ model, authModel = null, authService = null } = {}) {
     this.#model = model;
+    this.#authModel = authModel;
+    this.#authService = authService;
   }
 
   setView(view) {
@@ -355,6 +360,24 @@ export default class MessagePresenter {
     this.#view.setInputDisabled();
 
     this.#showMainQuickActions();
+  }
+  // ====== LOGOUT ======
+  async handleLogout() {
+    try {
+      if (this.#authService) {
+        const res = await this.#authService.logout();
+        if (!res?.ok) {
+          console.warn("Logout response not ok", res);
+        }
+      }
+    } catch (error) {
+      console.error("Logout error:", error);
+    } finally {
+      if (this.#authModel && typeof this.#authModel.setUser === "function") {
+        this.#authModel.setUser(null);
+      }
+      window.location.hash = "/login";
+    }
   }
 
 }

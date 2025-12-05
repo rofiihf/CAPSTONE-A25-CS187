@@ -12,6 +12,10 @@ export default class MessageView {
   #typingElement;
   #quickActionsElement;
   #clearChatButton;
+  #logoutButton;
+  #themeToggleButton;
+  #container;
+
   
   constructor(arg) {
     console.log("🔥 MessageView constructor arg =", arg);
@@ -28,6 +32,7 @@ export default class MessageView {
             <h1 class="brand-name">Dico</h1>
             <div class="header-actions">
               <button type="button" class="clear-chat">Clear chat</button>
+              <button type="button" class="logout-btn">Logout</button>
               <button class="theme-toggle" aria-label="Toggle dark mode">
                 <span class="theme-icon">🌓</span>
               </button>
@@ -56,6 +61,9 @@ export default class MessageView {
     this.#form = root.querySelector(".input-chat-form");
     this.#input = root.querySelector("#user-chat");
     this.#clearChatButton = root.querySelector(".clear-chat");
+    this.#logoutButton = root.querySelector(".logout-btn");
+    this.#themeToggleButton = root.querySelector(".theme-toggle");
+    this.#container = root.querySelector(".chatbot-container");
 
     this.#bindEvents();
 
@@ -168,6 +176,22 @@ export default class MessageView {
     if (this.#clearChatButton) {
       this.#clearChatButton.addEventListener("click", () => {
         this.#presenter.handleClearChat();
+      });
+    }
+    // tombol Logout di header
+    if (this.#logoutButton) {
+      this.#logoutButton.addEventListener("click", () => {
+        this.#presenter.handleLogout();
+      });
+    }
+    // tombol toggle theme
+    if (this.#themeToggleButton && this.#container) {
+      this.#themeToggleButton.addEventListener("click", () => {
+        this.#container.classList.toggle("dark-theme");
+
+        // opsional: simpan preferensi
+        const isDark = this.#container.classList.contains("dark-theme");
+        localStorage.setItem("dico_theme", isDark ? "dark" : "light");
       });
     }
   }

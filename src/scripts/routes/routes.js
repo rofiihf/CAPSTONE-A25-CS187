@@ -49,7 +49,7 @@ export async function router() {
   // ========================
   if (pageType === "chat") {
     const model = new MessageModel();
-    const presenter = new MessagePresenter({ model });
+    const presenter = new MessagePresenter({ model, authModel, authService });
     const view = new MessageView({ presenter });
 
     presenter.setView(view);
