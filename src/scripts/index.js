@@ -1,9 +1,11 @@
 // import './components/message.js';
-import MessageView from './view/messageView.js';
+import MessageView from './pages/message/messageView.js';
+import { initApp } from "./app.js";
 
 document.addEventListener('DOMContentLoaded', () => {
-  const view = new MessageView();
-  view.initialize();
+  // const presenter = new MessagePresenter
+  // const view = new MessageView();
+  // view.initialize();
 
   // === THEME TOGGLE (Light / Dark) ===
   const container = document.querySelector('.chatbot-container');
@@ -56,6 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem(THEME_KEY, nextTheme);
     });
   }
+  
+  initApp();
+  
 });
 
 // Service worker

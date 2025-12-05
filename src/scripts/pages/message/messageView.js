@@ -1,32 +1,64 @@
 // src/scripts/view/messageView.js
 
-import MessagePresenter from "../presenter/messagePresenter.js";
-import { generateBubbleChat } from "../components/generateBubbleChat.js";
-import MessageModel from "../model/messageModel.js";
+import MessagePresenter from "./messagePresenter.js";
+import { generateBubbleChat } from "../../components/generateBubbleChat.js";
+import MessageModel from "./messageModel.js";
 
 export default class MessageView {
-  #presenter = null;
-  #form = null;
-  #input = null;
-  #chatContainer = null;
-  #typingElement = null;
-  #quickActionsElement = null;
-  #clearChatButton = null;
-
-  constructor() {
-    this.#chatContainer = document.querySelector(".chat-message");
-    this.#form = document.querySelector(".input-chat-form");
-    this.#input = document.querySelector("#user-chat");
-    this.#clearChatButton = document.querySelector(".clear-chat");
+  #presenter;
+  #form;
+  #input;
+  #chatContainer;
+  #typingElement;
+  #quickActionsElement;
+  #clearChatButton;
+  
+  constructor(arg) {
+    console.log("🔥 MessageView constructor arg =", arg);
+    const { presenter } = arg;
+    this.#presenter = presenter;
   }
+  render() {
+    const root = document.querySelector("#app");
 
-  initialize() {
-    this.#presenter = new MessagePresenter({
-      view: this,
-      model: new MessageModel(),
-    });
+    root.innerHTML = `
+      <div class="chatbot-container">
+        <div class="header-container">
+          <header class="page-header">
+            <h1 class="brand-name">Dico</h1>
+            <div class="header-actions">
+              <button type="button" class="clear-chat">Clear chat</button>
+              <button class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌓</span>
+              </button>
+          </header>
+        </div>
+
+
+        <!-- List Chat Message Bot dan User -->
+        <div class="chat-message"></div>
+
+        <div class="input-text-container">
+          <div class="form-control">
+            <form class="input-chat-form">
+              <div class="prompt-textarea">
+                <textarea name="user-chat" id="user-chat" class="textarea-user__chat-form" required
+                  placeholder="Tanyakan Apa Saja"></textarea>
+              </div>
+              <div class="button-submit">
+                <button class="submit-button__chat-form"><i class="fa-solid fa-arrow-up"></i></button>
+              </div>
+            </form>
+        </div>
+      </div>
+    `
+    this.#chatContainer = root.querySelector(".chat-message");
+    this.#form = root.querySelector(".input-chat-form");
+    this.#input = root.querySelector("#user-chat");
+    this.#clearChatButton = root.querySelector(".clear-chat");
 
     this.#bindEvents();
+
     this.#presenter.renderInitialMessages();
   }
 
@@ -43,7 +75,6 @@ export default class MessageView {
   }
 
   renderQuickActions(actions) {
-    // hapus dulu kalau sudah ada
     if (this.#quickActionsElement) {
       this.#quickActionsElement.remove();
       this.#quickActionsElement = null;

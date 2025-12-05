@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>\
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">  
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="login-container">
+    <div class="login-form-container">
+      <div class="login-title">
+        <h1>Masuk</h1>
+      </div>
+
+      <div class="form-control">
+        <!-- <label for="email-input" class="login-form-email">Email</label> -->
+        <input type="email" aria-label="Email" name="email" id="email-input" placeholder="Email">
+      </div>
+
+      <div class="form-control">
+        <!-- <label for="password-input" class="login-form-password">Password</label> -->
+        <input type="password" aria-label="Password" name="password" id="password-input" placeholder="Password">
+        <img src="public/images/icons/eye-close.png" alt="hide password" id="eyeicon">
+      </div>
+
+      <div class="submit-button-container">
+        <button class="submit-login-button">Masuk</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let eyeiconButton = document.querySelector('#eyeicon');
+    let password = document.querySelector('#password-input');
+    
+    eyeiconButton.addEventListener('click', () => {
+      if(password.type == "password") {
+        password.type = "text";
+        eyeiconButton.src = "public/images/icons/eye-open.png";
+      } else {
+        password.type = "password";
+        eyeiconButton.src = "public/images/icons/eye-close.png"; 
+      }
+    
+    }) 
+  </script>
+
+</body>
+</html>

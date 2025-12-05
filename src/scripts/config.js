@@ -1,1 +1,1 @@
-export const BOT_API = "http://localhost:3000"
+export const BOT_API = "https://localhost:8000"

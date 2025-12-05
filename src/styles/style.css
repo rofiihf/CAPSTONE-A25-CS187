@@ -96,7 +96,7 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Quicksand, sans-serif;
   background-color: var(--bg-body);
 }
 
@@ -313,6 +313,114 @@ body {
   border-top-right-radius: 4px;
   color: var(--text-bubble-user);
 }
+
+/* LOGIN INPUT */
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #FFFFFF;
+  padding: 20px;
+}
+
+.login-form-container {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.login-title {
+  text-align: left;
+  margin-block-end: 32px;
+}
+
+.login-title h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Form Control khusus login - BERBEDA dari chat */
+.login-form-container .form-control {
+  padding: 0;
+  margin-bottom: 20px;
+  display: block;
+  position: relative;
+  overflow: visible;
+}
+
+.login-form-container .form-control img {
+  position: absolute; 
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%); 
+  width: 24px;
+  cursor: pointer;
+}
+
+.login-form-email,
+.login-form-password {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.submit-login-button {
+  width: 100%;
+  padding-block: 0.8rem;
+  font-size: 1rem;
+  font-family: Quicksand, sans-serif;
+  font-weight: bold;
+  border: none;
+  border-radius: 1px;
+  background-color: var(--bg-header);
+  color: white;
+}
+
+.submit-login-button:hover {
+  cursor: pointer;
+  background-color: var(--bg-body);
+}
+
+
+#email-input,
+#password-input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 1px solid rgb(211, 211, 211);
+  border-radius: 2px;
+  background-color: var(--bg-textarea);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-light);
+}
+
+#email-input:focus,
+#password-input:focus {
+  outline: none;
+  border-color: #667eea;
+  background-color: var(--bg-button);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+#email-input::placeholder,
+#password-input::placeholder {
+  color: rgb(145, 145, 145);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+
 
 /* ===== INPUT AREA ===== */
 

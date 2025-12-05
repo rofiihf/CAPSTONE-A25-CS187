@@ -6,49 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Learning Buddy AI</title>
 
-  <link rel="stylesheet" href="styles/style.css?v=90">
+  <link rel="stylesheet" href="styles/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
-
-  <main>
-    <div class="chatbot-container">
-      <div class="header-container">
-        <header class="page-header">
-          <h1 class="brand-name">Dico</h1>
-          <div class="header-actions">
-            <button type="button" class="clear-chat">Clear chat</button>
-            <button class="theme-toggle" aria-label="Toggle dark mode">
-              <span class="theme-icon">🌓</span>
-            </button>
-        </header>
-      </div>
-
-
-      <!-- List Chat Message Bot dan User -->
-      <div class="chat-message"></div>
-
-      <div class="input-text-container">
-        <div class="form-control">
-          <form class="input-chat-form">
-            <div class="prompt-textarea">
-              <textarea name="user-chat" id="user-chat" class="textarea-user__chat-form" required
-                placeholder="Tanyakan Apa Saja"></textarea>
-            </div>
-            <div class="button-submit">
-              <button class="submit-button__chat-form"><i class="fa-solid fa-arrow-up"></i></button>
-            </div>
-          </form>
-
-        </div>
-
-      </div>
-    </div>
-  </main>
-
+  <div id="app"></div>
   <script type="module" src="/src/scripts/index.js"></script>
 </body>
 

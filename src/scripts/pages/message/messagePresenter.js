@@ -1,9 +1,8 @@
 // src/scripts/presenter/messagePresenter.js
 
-import { getCourses } from "../data/api.js";
-import { courses } from "../data/courses.js";
-import { COURSE_LEVEL_ORDER } from "../utils/mapping.js";
-import { keywords } from "../utils/path-keyword.js";
+import { getCourses } from "../../data/api.js";
+import { COURSE_LEVEL_ORDER } from "../../utils/mapping.js";
+import { keywords } from "../../utils/path-keyword.js";
 
 export default class MessagePresenter {
   #view;
@@ -17,9 +16,12 @@ export default class MessagePresenter {
   #onboardingProfile = { focus: '', level: '' };
   #progressState = { lastClass: '', selfScore: '' };
 
-  constructor({ view, model }) {
-    this.#view = view;
+  constructor({ model }) {
     this.#model = model;
+  }
+
+  setView(view) {
+    this.#view = view;
   }
   
   async getData() {
@@ -60,14 +62,15 @@ export default class MessagePresenter {
     this.#view.setInputDisabled(false);
 
     // render ulang pesan awal + quick action
+    
     this.renderInitialMessages();
   }
-
+  
   renderInitialMessages() {
     try {
       const data = this.#model.getAllMessages();
       this.#view.clearChat();
-
+      
       data.forEach((message) => {
         this.#view.renderMessage(message);
       });

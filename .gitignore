@@ -1,4 +1,4 @@
 node_modules
 .env
-.gitignore
 backend/baca.txt
+backend_ml

@@ -1,7 +1,7 @@
 // src/scripts/model/messageModel.js
 
-import { dummyData } from "../data/dummy.js";
-import { sendMessage, getCourses } from "../data/api.js";
+import { dummyData } from "../../data/dummy.js";
+import { sendMessage, getCourses } from "../../data/api.js";
 
 export default class MessageModel {
   #messages;
@@ -16,7 +16,7 @@ export default class MessageModel {
     if (userMessage) {
       const defaultChatBot = "Terima kasih sudah bertanya. Saat ini Dico masih dalam tahap pengembangan, jadi aku baru bisa menjawab hal-hal dasar dan mencatat profil belajarmu. Kamu bisa klik salah satu tombol di bawah untuk mulai onboarding, cek progress, atau minta rekomendasi kelas."
       const fetchResponse = await sendMessage(defaultChatBot);
-      const botReplyText = fetchResponse.reply || "Error: tidak ada balasan bot.";
+      const botReplyText = fetchResponse.response || "Error: tidak ada balasan bot.";
       const botBubble = this.addMessage(botReplyText, "bot");
       return botBubble;
     } else {
