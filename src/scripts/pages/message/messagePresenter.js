@@ -1,6 +1,6 @@
 // src/scripts/presenter/messagePresenter.js
 
-import { sendMessage } from "../../data/api";
+import { sendMessage } from "../../data/api.js";
 
 export default class MessagePresenter {
   #view;

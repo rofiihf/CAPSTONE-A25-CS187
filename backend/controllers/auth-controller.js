@@ -1,6 +1,6 @@
-import express from "express";
-import bcrypt from "bcrypt";
-import { findUserByEmail, findUserById } from "../utils/read-users.js";
+const express = require("express");
+const bcrypt = require("bcrypt");
+const { findUserByEmail, findUserById } = require("../utils/read-users.js");
 
 const router = express.Router();
 
@@ -59,4 +59,4 @@ router.get("/me", (req, res) => {
   return res.json({ user: safe });
 });
 
-export default router;
+module.exports = router;

@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
-const authRoutes = require("./controllers/auth-controller.js").default;
+const authRoutes = require("./controllers/auth-controller.js");
 const { handleChat } = require("./controllers/chat-controller.js")
 
 const app = express();
@@ -72,7 +72,7 @@ app.use((err, req, res, next) => {
 // =========================
 //       START SERVER
 // =========================
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 app.listen(port, () =>
   console.log(`🚀 Server running on port ${port}`)
 );

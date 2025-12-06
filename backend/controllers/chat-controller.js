@@ -7,17 +7,28 @@ async function handleChat(req, res) {
 
     if (!userId) {
       return res.status(401).json({
-        error: "Please login first."
+        ok: false,
+        reply: "Anda belum login",
       })
     }
     
     const { message } = req.body;
 
     if(!message || !message.trim()) {
-      return res.status(400).json({ error: "Message cannot be empty" });
+      return res.status(400).json({ 
+        ok: false,
+        reply: "Pesan tidak boleh kosong",
+      });
     }
     
     const BOT_URL = process.env.BOT_API_URL;
+    
+    if (!BOT_URL) {
+      return res.status(400).json({
+        ok: false,
+        reply: "Model tidak dapat dijangkau."
+      })
+    }
 
     const fetchBotResponse = await fetch(BOT_URL, {
       method: "POST",
@@ -32,7 +43,8 @@ async function handleChat(req, res) {
       const text = await fetchBotResponse.text();
 
       return res.status(502).json({
-        error: "ML backend error",
+        ok: false,
+        reply: "ML backend error",
         detail: text
       });
     }
@@ -41,11 +53,19 @@ async function handleChat(req, res) {
 
     return res.json({
       ok: true,
-      ...data
-    })
+      reply: data.response || "Bot tidak menanggapi.",
+      intent: data.intent || null,
+      sources: data.sources || [],
+      meta: data.meta || null, 
+    });
+
   } catch (error) {
     console.error("Chat Handler Error: ", error);
-    return res.status(500).json({ error: "Internal server error" });
+    console.log(error);
+    return res.status(500).json({ 
+      ok: false,
+      reply: "Terjadi kesalahan pada server",
+    });
   }
 }
 
