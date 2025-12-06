@@ -13,10 +13,10 @@ export default class LoginPresenter {
     eye.addEventListener("click", () => {
       if (password.type === "password") {
         password.type = "text";
-        eye.src = "public/images/icons/eye-open.png";
+        eye.src = "images/icons/eye-open.png";
       } else {
         password.type = "password";
-        eye.src = "public/images/icons/eye-close.png";
+        eye.src = "images/icons/eye-close.png";
       }
     });
 

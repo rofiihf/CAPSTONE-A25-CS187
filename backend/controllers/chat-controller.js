@@ -3,6 +3,7 @@ const fetch = require("node-fetch");
 // Fungsi Handle Bot Chat (KALO UDAH ADA LLM)
 async function handleChat(req, res) {
   try {
+    console.log("BODY:", req.body);
     const userId = req.session.userId;
 
     if (!userId) {

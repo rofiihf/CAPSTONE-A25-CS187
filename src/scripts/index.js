@@ -1,6 +1,7 @@
 // import './components/message.js';
 import MessageView from './pages/message/messageView.js';
 import { initApp } from "./app.js";
+import "../styles/style.css";
 
 document.addEventListener('DOMContentLoaded', () => {
   // const presenter = new MessagePresenter
