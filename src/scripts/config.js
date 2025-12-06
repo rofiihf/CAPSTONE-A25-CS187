@@ -1,1 +1,1 @@
-export const BOT_API = "https://localhost:8000"
+export const BACKEND_URL = "http://localhost:5000"
