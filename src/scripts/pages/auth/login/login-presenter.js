@@ -8,9 +8,9 @@ export default class LoginPresenter {
   init() {
     const eye = document.querySelector("#eyeicon");
     const password = document.querySelector("#password-input");
-    const loginBtn = document.querySelector("#login-btn");
+    const form = document.querySelector("#login-form");
 
-    eye.addEventListener("click", () => {
+    eye.onclick = () => {
       if (password.type === "password") {
         password.type = "text";
         eye.src = "images/icons/eye-open.png";
@@ -18,9 +18,13 @@ export default class LoginPresenter {
         password.type = "password";
         eye.src = "images/icons/eye-close.png";
       }
-    });
+    };
 
-    loginBtn.addEventListener("click", () => this.onLogin());
+    // -------- FIX INTI ----------
+    form.onsubmit = (event) => {
+      event.preventDefault();
+      this.onLogin();
+    };
   }
 
   async onLogin() {

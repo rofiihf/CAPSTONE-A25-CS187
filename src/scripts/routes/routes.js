@@ -1,5 +1,4 @@
 import LoginPage from "../pages/auth/login/login-view.js";
-
 import MessageView from "../pages/message/messageView.js";
 import MessagePresenter from "../pages/message/messagePresenter.js";
 import MessageModel from "../pages/message/messageModel.js";
@@ -15,28 +14,39 @@ const routes = {
   "/chat": "chat",
 };
 
+let lastHash = null;
+
 export async function router() {
   const root = document.querySelector("#app");
   const hash = window.location.hash.slice(1) || "/login";
 
-  const isLoggedIn = await authModel.checkSession(authService);
+  // Prevent duplicate routing
+  if (hash === lastHash) return;
+  lastHash = hash;
 
-  // Redirect login rules
+  let isLoggedIn = false;
+
+  // Only check session if not on login page
+  if (hash !== "/login") {
+    isLoggedIn = await authModel.checkSession(authService);
+  }
+
+  // Redirect rules
   if (!isLoggedIn && hash !== "/login") {
+    lastHash = "/login"; // avoid re-trigger
     window.location.hash = "/login";
     return;
   }
 
   if (isLoggedIn && hash === "/login") {
+    lastHash = "/chat";
     window.location.hash = "/chat";
     return;
   }
 
   const pageType = routes[hash] || "login";
 
-  // ========================
-  // PAGE: LOGIN
-  // ========================
+  // LOGIN PAGE
   if (pageType === "login") {
     const loginPage = new LoginPage({ authModel, authService });
     root.innerHTML = loginPage.render();
@@ -44,18 +54,15 @@ export async function router() {
     return;
   }
 
-  // ========================
-  // PAGE: CHAT (MVP)
-  // ========================
+  // CHAT PAGE
   if (pageType === "chat") {
     const model = new MessageModel();
     const presenter = new MessagePresenter({ model, authModel, authService });
     const view = new MessageView({ presenter });
 
     presenter.setView(view);
-
-    view.render();               // draw UI
-    presenter.renderInitialMessages(); // load chat history
+    view.render();
+    presenter.renderInitialMessages();
     return;
   }
 }

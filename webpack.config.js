@@ -35,7 +35,6 @@ module.exports = {
     hot: true,
     open: true,
 
-    // 🔥 BAGIAN TERPENTING: PROXY
     proxy: [
       {
         context: ["/api", "/chat"],

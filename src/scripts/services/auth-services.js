@@ -1,7 +1,7 @@
 export default class AuthService {
   constructor(authModel) {
     this.authModel = authModel;
-    this.URL = "http://localhost:5000/api/auth";
+    this.URL = "/api/auth";
   }
 
   async login(email, password) {

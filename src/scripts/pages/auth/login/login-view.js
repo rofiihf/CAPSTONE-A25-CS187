@@ -14,7 +14,7 @@ export default class LoginPage {
   render() {
     return `
       <div class="login-container">
-        <div class="login-form-container">
+        <form id="login-form" class="login-form-container">
           <div class="login-title">
             <h1>Masuk</h1>
           </div>
@@ -33,7 +33,7 @@ export default class LoginPage {
           <div class="submit-button-container">
             <button class="submit-login-button" id="login-btn">Masuk</button>
           </div>
-        </div>
+        </form>
       </div>
     `
   }

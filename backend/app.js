@@ -39,7 +39,7 @@ app.use(session({
   cookie: {
     httpOnly: true,     // tidak bisa diakses JS → aman
     secure: false,      // true jika HTTPS
-    sameSite: "none",
+    sameSite: "lax",
     maxAge: 1000 * 60 * 60 * 24 // 24 jam
   }
 }));

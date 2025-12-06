@@ -1,13 +1,13 @@
 
-import { BACKEND_URL } from "../config.js";
+// import { BACKEND_URL } from "../config.js";
 
-const ENDPOINTS = {
-  SEND_MESSAGE: `${BACKEND_URL}/chat`,
-}
+// const ENDPOINTS = {
+//   SEND_MESSAGE: `/chat`,
+// }
 
 export async function sendMessage(message) {
   try {
-    const fetchResponse = await fetch(ENDPOINTS.SEND_MESSAGE, {
+    const fetchResponse = await fetch("/chat", {
       method: "POST",
       credentials: "include",
       headers: {
