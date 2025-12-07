@@ -196,13 +196,13 @@ body {
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 0px;
-  margin-bottom: 0;
+  margin-bottom: 8px;
   margin-left: 12px;
 }
 
 .quick-actions__button {
   border: none;
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 999px;
   font-size: 0.85rem;
   cursor: pointer;
@@ -318,6 +318,139 @@ body {
 .message p {
   overflow-wrap: break-word;
 }
+
+/* Bubble roadmap */
+.roadmap-bubble {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+  margin-bottom: 16px;
+}
+
+.roadmap-bubble .bot-text {
+  margin-bottom: 8px;
+}
+
+.roadmap-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.roadmap-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.roadmap-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background-color: #f4f4f5;
+  margin-bottom: 6px;
+}
+
+.roadmap-skill-name {
+  font-size: 0.9rem;
+}
+
+.roadmap-skill-level {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background-color: #e5e7eb;
+}
+
+/* Warna level skill */
+.roadmap-skill-level.level-beginner {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.roadmap-skill-level.level-intermediate {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.roadmap-skill-level.level-advanced {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+/* Bubble progress */
+.progress-bubble {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+  margin-bottom: 16px;
+}
+
+.progress-bubble .bot-text {
+  margin-bottom: 8px;
+}
+
+.progress-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.progress-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.progress-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background-color: #f4f4f5;
+  margin-bottom: 6px;
+}
+
+.progress-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.progress-skill-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.progress-change {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+/* badge */
+.progress-badge {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.progress-up {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.progress-down {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.progress-neutral {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
 
 /* Bot bubble */
 .message.bot {

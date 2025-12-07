@@ -96,11 +96,11 @@ export default class MessageView {
       button.type = 'button';
       button.classList.add('quick-actions__button');
       button.textContent = action.label;
-      button.dataset.action = action.key;
+      button.dataset.action = action.id;
 
       button.addEventListener('click', () => {
         // lempar ke presenter
-        this.#presenter.handleQuickAction(action.key);
+        this.#presenter.handleQuickAction(action.id);
       });
 
       container.appendChild(button);
@@ -109,6 +109,10 @@ export default class MessageView {
     this.#chatContainer.appendChild(container);
     this.#chatContainer.scrollTop = this.#chatContainer.scrollHeight;
     this.#quickActionsElement = container;
+  }
+  
+  showQuickActions(actions) {
+    this.renderQuickActions(actions);
   }
 
   clearQuickActions() {
