@@ -3,8 +3,11 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
+
 const authRoutes = require("./controllers/auth-controller.js");
-const { handleChat } = require("./controllers/chat-controller.js")
+const profileRoutes = require("./controllers/profile-controller");
+const { handleChat, handleChatJob } = require("./controllers/chat-controller.js");
+const { getRoadmapRecommendations, updateSkillLevel, autoUpdateRoadmap } = require("./controllers/roadmap-controller.js");
 
 const app = express();
 
@@ -26,7 +29,6 @@ app.use(cors({
 //       JSON PARSER
 // =========================
 app.use(express.json());
-
 
 // =========================
 //      SESSION CONFIG
@@ -51,14 +53,22 @@ app.use(session({
 
 // Chat ke ML
 app.post("/chat", handleChat);
+// Chat job-description -> generates personalized roadmap
+app.post("/chat/job", handleChatJob);
+
+// Roadmap management
+app.get("/api/roadmap/recommendations", getRoadmapRecommendations);
+app.post("/api/roadmap/update-skill", updateSkillLevel);
+app.post("/api/roadmap/auto-update", autoUpdateRoadmap);
+
+// Auth + Profile routes
+app.use("/api/auth", authRoutes);
+app.use("/api/profile", profileRoutes);
 
 // Health check
 app.get("/", (req, res) => {
   res.json({ message: "API is running" });
 });
-
-app.use("/api/auth", authRoutes);
-
 
 // =========================
 //   GLOBAL ERROR HANDLER

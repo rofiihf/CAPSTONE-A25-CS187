@@ -1,0 +1,353 @@
+{
+  "job_role": "Front-End Web Developer",
+  "version": "v1_enhanced",
+  "description": "Roadmap for Front-End with course mapping",
+  "subskills": [
+    {
+      "id": "html_css_fundamentals",
+      "name": "HTML & CSS Fundamentals",
+      "estimated_hours": 45,
+      "priority": 1,
+      "prerequisites": [],
+      "next_steps": ["javascript_basics"],
+      "keywords": [
+        "html", "html5", "semantic", "semantic html", "dom",
+        "web basics", "css", "css3", "flexbox", "grid",
+        "responsive", "responsive design", "tailwind", "bootstrap", "layout"
+      ],
+      "mapped_courses": {
+        "beginner": [ 
+          "39", 
+          "40"
+        ],
+        "intermediate": [
+          "41"
+        ],
+        "advanced": [
+          "42"
+        ]
+      },
+      "levels": {
+        "beginner": {
+          "description": "Memahami struktur dasar HTML, dapat membuat layout sederhana, dan menggunakan CSS dasar untuk styling.",
+          "indicators": [
+            "mengetahui struktur dokumen HTML5",
+            "menggunakan tag dasar seperti <div>, <p>, <h1>-<h6>, <a>, <img>",
+            "mengerti perbedaan class dan id",
+            "menggunakan CSS selectors dasar (class, id, tag)",
+            "memahami box model (margin, padding, border)",
+            "mampu membuat layout sederhana tanpa responsive",
+            "mengerti apa itu external dan internal stylesheet"
+          ]
+        },
+        "intermediate": {
+          "description": "Mampu menuliskan semantic HTML, menguasai layout modern (Flexbox, Grid), dan membuat tampilan responsive.",
+          "indicators": [
+            "menggunakan semantic HTML secara konsisten (header, main, nav, section, article, footer)",
+            "memahami pentingnya aksesibilitas HTML",
+            "memahami DOM tree dan hubungan parent/child",
+            "menguasai Flexbox dan Grid untuk layout kompleks",
+            "menggunakan media queries untuk membuat tampilan responsive",
+            "menggunakan CSS variables dan utility classes",
+            "memahami prinsip desain responsif (fluid, adaptive, responsive)"
+          ]
+        },
+        "advanced": {
+          "description": "Mampu mengoptimasi performa CSS/HTML, membuat UI kompleks, memanipulasi layout secara dinamis, dan menerapkan praktik aksesibilitas modern.",
+          "indicators": [
+            "menerapkan praktik aksesibilitas WAI-ARIA",
+            "mengerti dan mengoptimasi critical CSS",
+            "menggunakan CSS animations, transitions, transform",
+            "memahami CSS architecture (BEM, ITCSS, OOCSS)",
+            "menggunakan pseudo-class dan pseudo-element lanjutan",
+            "mampu meminimalkan reflow/repaint",
+            "mengerti container queries dan layout modern baru"
+          ]
+        }
+      }
+    },
+    {
+      "id": "javascript_basics",
+      "name": "JavaScript Basics",
+      "estimated_hours": 40,
+      "priority": 2,
+      "prerequisites": ["html_css_fundamentals"],
+      "next_steps": ["framework_foundations", "web_application"],
+      "keywords": [
+        "javascript", "js", "es6", "es2015", "async",
+        "fetch", "asynchronous", "promise", "function", "arrow function",
+        "node", "nodejs", "npm", "dom manipulation", "event handling"
+      ],
+      "mapped_courses": {
+        "beginner": [
+          "38"
+        ],
+        "intermediate": [
+          "40",
+          "41"
+        ],
+        "advanced": [
+          "42"
+        ]
+      },
+      "levels": {
+        "beginner": {
+          "description": "Menguasai dasar JavaScript dan konsep pemrograman fundamental.",
+          "indicators": [
+            "memahami variable (let, const)",
+            "memahami tipe data primitif",
+            "menggunakan operator dan conditional",
+            "menggunakan loop (for, while)",
+            "membuat function sederhana",
+            "menggunakan array dan object dasar",
+            "mengerti error dasar dan console.log debugging"
+          ]
+        },
+        "intermediate": {
+          "description": "Menguasai JavaScript modern (ES6), asynchronous programming, dan manipulasi DOM.",
+          "indicators": [
+            "menguasai arrow function",
+            "menggunakan map, filter, reduce",
+            "memahami promise dan async/await",
+            "menggunakan fetch API untuk HTTP request",
+            "memahami event loop dan execution order",
+            "melakukan DOM manipulation (querySelector, classList)",
+            "mengerti module import/export"
+          ]
+        },
+        "advanced": {
+          "description": "Memahami mekanisme internal JavaScript dan dapat mengoptimasi kode.",
+          "indicators": [
+            "mengerti closure dan lexical scope",
+            "memahami this binding dan prototype inheritance",
+            "menguasai advanced asynchronous patterns",
+            "menerapkan debouncing dan throttling",
+            "mengoptimasi event handling",
+            "menguasai error handling lanjutan",
+            "mengerti memory leaks dan optimisasi performa JS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "framework_foundations",
+      "name": "Front-End Framework Foundations",
+      "estimated_hours": 80,
+      "priority": 3,
+      "prerequisites": ["javascript_basics"],
+      "next_steps": ["web_application"],
+      "keywords": [
+        "react", "reactjs", "vue", "vuejs", "angular",
+        "components", "state", "props", "hooks", "pwa",
+        "spa", "single page application", "route", "routing", "progressive web app"
+      ],
+      "mapped_courses": {
+        "beginner": [
+          "40"
+        ],
+        "intermediate": [
+          "41",
+          "42"
+        ],
+        "advanced": [
+          "42"
+        ]
+      },
+      "levels": {
+        "beginner": {
+          "description": "Memahami dasar framework modern berbasis komponen.",
+          "indicators": [
+            "mengerti konsep SPA dan CSR",
+            "dapat membuat komponen sederhana",
+            "menggunakan props / input binding",
+            "mengerti state dasar",
+            "mengerti basic routing (client-side router)"
+          ]
+        },
+        "intermediate": {
+          "description": "Menguasai state management dan lifecycle.",
+          "indicators": [
+            "dapat menggunakan lifecycle methods/hooks",
+            "memahami state lifting & data flow",
+            "mengimplementasi routing dinamis",
+            "mengerti dasar PWA (manifest, service worker)",
+            "memahami virtual DOM dan reactivity"
+          ]
+        },
+        "advanced": {
+          "description": "Menguasai arsitektur aplikasi besar dan optimisasi performa.",
+          "indicators": [
+            "menggunakan state management (Redux, Pinia, Vuex)",
+            "code splitting & lazy loading",
+            "mengoptimasi render (memoization, keys, refs)",
+            "SSR/SSG frameworks (Next.js, Nuxt)",
+            "mengimplementasi caching strategies untuk PWA"
+          ]
+        }
+      }
+    },
+    {
+      "id": "version_control",
+      "name": "Git Basics Version Control",
+      "estimated_hours": 30,
+      "priority": 1,
+      "prerequisites": [],
+      "next_steps": ["javascript_basics"],
+      "keywords": [
+        "git", "github", "gitlab", "repo", "repository",
+        "commit", "branch", "merge", "push", "pull",
+        "remote", "bash", "origin", "version control", "collaboration"
+      ],
+      "mapped_courses": {
+        "beginner": [
+          "39"
+        ],
+        "intermediate": [
+          "41"
+        ],
+        "advanced": [
+          "42"
+        ]
+      },
+      "levels": {
+        "beginner": {
+          "description": "Memahami konsep dasar version control dan workflow Git.",
+          "indicators": [
+            "inisiasi repository",
+            "melakukan git add, commit, status",
+            "melakukan push/pull dari remote",
+            "mengerti working directory, staging, commit"
+          ]
+        },
+        "intermediate": {
+          "description": "Menguasai branching dan resolving conflicts.",
+          "indicators": [
+            "membuat dan merge branch",
+            "menyelesaikan merge conflict",
+            "menggunakan rebase secara aman",
+            "menggunakan stash dan restore",
+            "mengerti HEAD dan history rewriting"
+          ]
+        },
+        "advanced": {
+          "description": "Menguasai workflow tim besar dan advanced operations.",
+          "indicators": [
+            "menggunakan signed commits",
+            "squash commits dengan interactive rebase",
+            "mengerti bisect, cherry-pick",
+            "mengelola branching strategy (GitFlow, Trunk Based)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ui_ux_principles",
+      "name": "Basic of UI/UX Web",
+      "estimated_hours": 40,
+      "priority": 2,
+      "prerequisites": ["html_css_fundamentals"],
+      "next_steps": ["framework_foundations"],
+      "keywords": [
+        "ui", "ux", "user interface", "user experience", "functional web",
+        "design", "color", "typography", "intuitive", "user satisfaction",
+        "usability", "wireframe", "prototype", "accessibility", "wcag"
+      ],
+      "mapped_courses": {
+        "beginner": [
+          "40"
+        ],
+        "intermediate": [
+          "41"
+        ],
+        "advanced": [
+          "42"
+        ]
+      },
+      "levels": {
+        "beginner": {
+          "description": "Memahami prinsip dasar antarmuka dan pengalaman pengguna.",
+          "indicators": [
+            "memahami prinsip layout sederhana",
+            "mengerti warna dan kontras",
+            "memahami konsistensi UI",
+            "mengerti affordance dan feedback user"
+          ]
+        },
+        "intermediate": {
+          "description": "Mampu merancang antarmuka yang intuitive berbasis riset dan best-practices.",
+          "indicators": [
+            "membuat wireframe",
+            "melakukan basic usability testing",
+            "memahami design heuristics",
+            "menggunakan feedback loops untuk iterasi desain"
+          ]
+        },
+        "advanced": {
+          "description": "Menguasai desain berbasis data dan optimisasi pengalaman pengguna.",
+          "indicators": [
+            "melakukan A/B testing",
+            "menggunakan analytics untuk perbaikan UX",
+            "mengimplementasikan accessibility WCAG",
+            "mendesain flow kompleks dan multi-step"
+          ]
+        }
+      }
+    },
+    {
+      "id": "web_application",
+      "name": "Web Application Engineering",
+      "estimated_hours": 46,
+      "priority": 4,
+      "prerequisites": ["javascript_basics"],
+      "next_steps": [],
+      "keywords": [
+        "performance", "optimization", "api", "rest api", "security",
+        "webpack", "vite", "bundler", "testing", "unit test",
+        "debugging", "cors", "xss", "csrf", "csp"
+      ],
+      "mapped_courses": {
+        "beginner": [
+          "38"
+        ],
+        "intermediate": [
+          "40",
+          "42"
+        ],
+        "advanced": [
+          "42"
+        ]
+      },
+      "levels": {
+        "beginner": {
+          "description": "Memahami dasar API, error handling, dan debugging.",
+          "indicators": [
+            "mengerti konsep REST API",
+            "menggunakan fetch untuk API sederhana",
+            "mengerti console debugging",
+            "mengerti HTTP basic concepts"
+          ]
+        },
+        "intermediate": {
+          "description": "Menguasai build tools dan testing dasar.",
+          "indicators": [
+            "menggunakan webpack/vite",
+            "melakukan unit testing",
+            "mengerti authentication basics",
+            "mengimplementasi simple caching",
+            "mengatasi CORS sederhana"
+          ]
+        },
+        "advanced": {
+          "description": "Menguasai keamanan aplikasi dan optimisasi performa tingkat lanjut.",
+          "indicators": [
+            "mencegah XSS, CSRF, SQL injection",
+            "menggunakan CSP header",
+            "mengoptimasi bundle size dan network requests",
+            "mengimplementasi integration & e2e testing",
+            "memahami enkripsi dan keamanan transport"
+          ]
+        }
+      }
+    }
+  ]
+}

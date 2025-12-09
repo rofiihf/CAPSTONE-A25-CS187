@@ -1,0 +1,17 @@
+fastapi
+pydantic
+sqlalchemy
+requests
+apscheduler
+joblib
+pandas
+numpy
+scikit-learn
+sentence-transformers
+faiss-cpu
+regex
+openpyxl
+pyarrow
+fastparquet
+groq
+uvicorn
