@@ -1,6 +1,8 @@
 // src/scripts/presenter/messagePresenter.js
 
 import { sendMessage } from "../../data/api.js";
+import { LEVEL_TOPICS, LEVEL_THRESHOLD } from "../../data/dummy.js";
+
 
 export default class MessagePresenter {
   #view;
@@ -8,6 +10,8 @@ export default class MessagePresenter {
   #authModel;
   #authService;
   #quickActions;
+  #quizState;
+
 
   constructor({ model, authModel = null, authService = null } = {}) {
     this.#model = model;
@@ -32,7 +36,19 @@ export default class MessagePresenter {
         message:
           "Tolong jelaskan progres belajar saya minggu ini, skill apa yang paling berkembang.",
       },
+      {
+        id: "level-check",
+        label: "Sudah di level mana aku",
+      },
     ];
+      this.#quizState = {
+      step: "idle",       // idle | choose_topic | choose_count | questions
+      topic: null,
+      totalQuestions: 0,
+      currentIndex: 0,
+      totalScore: 0,
+      questions: [],
+    };
   }
 
 
@@ -70,8 +86,151 @@ export default class MessagePresenter {
     // 🔥 Hapus quick actions setelah dipilih
     this.#view.clearQuickActions();
 
+    // === QUICK ACTION KHUSUS QUIZ LEVEL ===
+    if (actionId === "level-check") {
+      this.startLevelCheckFlow();
+      return;
+    }
     // Kirim pesan template ke backend
     this.handleUserSubmit(action.message);
+  }
+
+  // ====== QUIZ "SUDAH DI LEVEL MANA AKU" (FRONTEND ONLY) ======
+  startLevelCheckFlow() {
+    this.#quizState = {
+      step: "choose_topic",
+      topic: null,
+      totalQuestions: 0,
+      currentIndex: 0,
+      totalScore: 0,
+      questions: [],
+    };
+
+    // Matikan input manual biar user pakai button saja
+    this.#view.setInputDisabled(true);
+
+    const intro = this.#model.addMessage(
+      "Halo! Aku bantu cek dulu level belajarmu ya. Pilih dulu 1 minat belajar yang paling ingin kamu kuasai.",
+      "bot"
+    );
+    this.#view.renderMessage(intro);
+
+    this.#view.renderChoiceBubble({
+      title: "Pilih 1 minat belajar",
+      options: LEVEL_TOPICS.map((t) => ({ value: t.id, label: t.label })),
+      onChoose: (opt) => this.handleChooseTopic(opt),
+    });
+  }
+
+  handleChooseTopic(opt) {
+    const topic = LEVEL_TOPICS.find((t) => t.id === opt.value);
+    if (!topic) return;
+
+    this.#quizState.topic = topic;
+    this.#quizState.step = "choose_count";
+
+    const userMsg = this.#model.addMessage(opt.label, "user");
+    this.#view.renderMessage(userMsg);
+
+    const explain = this.#model.addMessage(
+      `Jadi, ${topic.label} ya. Sebelum mulai, aku akan kasih beberapa pertanyaan biar tahu levelmu. Semakin banyak pertanyaan yang kamu jawab, semakin akurat hasilnya.`,
+      "bot"
+    );
+    this.#view.renderMessage(explain);
+
+    this.#view.renderChoiceBubble({
+      title: "Pilih jumlah pertanyaan",
+      options: [
+        { value: 5, label: "5 pertanyaan" },
+        { value: 10, label: "10 pertanyaan" },
+        { value: 15, label: "15 pertanyaan" },
+      ],
+      onChoose: (optCount) => this.handleChooseCount(optCount),
+    });
+  }
+
+  handleChooseCount(opt) {
+    const count = opt.value;
+    const topic = this.#quizState.topic;
+    const maxAvailable = topic.questions.length;
+
+    this.#quizState.totalQuestions = Math.min(count, maxAvailable);
+    this.#quizState.questions = topic.questions.slice(
+      0,
+      this.#quizState.totalQuestions
+    );
+    this.#quizState.step = "questions";
+    this.#quizState.currentIndex = 0;
+    this.#quizState.totalScore = 0;
+
+    const userMsg = this.#model.addMessage(opt.label, "user");
+    this.#view.renderMessage(userMsg);
+
+    const info = this.#model.addMessage(
+      `Nice! ${this.#quizState.totalQuestions} pertanyaan akan diajukan untukmu. Jawab saja sesuai yang kamu rasakan ya 😊`,
+      "bot"
+    );
+    this.#view.renderMessage(info);
+
+    this.showNextQuizQuestion();
+  }
+
+  showNextQuizQuestion() {
+    const { currentIndex, questions, totalQuestions } = this.#quizState;
+
+    if (currentIndex >= totalQuestions) {
+      this.finishQuiz();
+      return;
+    }
+
+    const question = questions[currentIndex];
+
+    this.#view.renderLevelQuizQuestion({
+      question,
+      index: currentIndex + 1,
+      total: totalQuestions,
+      onAnswer: (opt) => this.handleQuizAnswer(question, opt),
+    });
+  }
+
+  handleQuizAnswer(question, opt) {
+    // tampilkan jawaban user sebagai bubble biasa
+    const userMsg = this.#model.addMessage(
+      `${opt.code}. ${opt.label}`,
+      "user"
+    );
+    this.#view.renderMessage(userMsg);
+
+    this.#quizState.totalScore += opt.score;
+    this.#quizState.currentIndex += 1;
+
+    this.showNextQuizQuestion();
+  }
+
+  finishQuiz() {
+    const total = this.#quizState.totalScore;
+    const { beginner, intermediate, advance } = LEVEL_THRESHOLD;
+
+    let level = "Beginner";
+    if (total <= beginner) {
+      level = "Beginner";
+    } else if (total <= intermediate) {
+      level = "Intermediate";
+    } else if (total >= advance) {
+      level = "Advance";
+    }
+
+    const topicLabel = this.#quizState.topic?.label || "topik ini";
+
+    const resultMsg = this.#model.addMessage(
+      `Selesai! Berdasarkan jawabanmu, untuk ${topicLabel}, kamu saat ini berada di level **${level}**.`,
+      "bot"
+    );
+    this.#view.renderMessage(resultMsg);
+
+    // Reset state quiz & hidupkan lagi input manual
+    this.#quizState.step = "idle";
+    this.#view.setInputDisabled(false);
   }
 
 

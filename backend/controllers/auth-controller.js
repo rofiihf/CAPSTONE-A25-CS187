@@ -1,6 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const { findUserByEmail, findUserById } = require("../utils/read-users.js");
+const { ensureProfileExists } = require("../utils/user-profile.js");
 
 const router = express.Router();
 
@@ -20,11 +21,15 @@ router.post("/login", async (req, res) => {
 
   req.session.userId = user.id;
   req.session.user = { id: user.id, email: user.email, name: user.name };
-
-  return res.json({
-    message: "ok",
-    user: req.session.user,
-  });
+  try {
+    ensureProfileExists(user.id);
+    return res.json({
+      message: "ok",
+      user: req.session.user,
+    });
+  } catch (error) {
+    console.error("Error: ", error);
+  }
 });
 
 // LOGOUT

@@ -12,7 +12,7 @@ async function handleChat(req, res) {
       })
     }
     
-    const { message } = req.body;
+    const { message, mode } = req.body;
 
     if(!message || !message.trim()) {
       return res.status(400).json({ 
@@ -30,13 +30,13 @@ async function handleChat(req, res) {
       })
     }
 
+    const payload = { user_id: String(userId), text: message };
+    if (mode) payload.mode = mode; // optional hint (e.g., 'job_role')
+
     const fetchBotResponse = await fetch(BOT_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        user_id: String(userId),
-        text: message
-      })
+      body: JSON.stringify(payload)
     });
 
     if (!fetchBotResponse.ok) {
@@ -69,4 +69,12 @@ async function handleChat(req, res) {
   }
 }
 
-module.exports = { handleChat };
+// Convenience handler that explicitly requests job-role roadmap generation
+async function handleChatJob(req, res) {
+  // Reuse handleChat logic but force mode = 'job_role'
+  req.body = req.body || {};
+  req.body.mode = 'job_role';
+  return handleChat(req, res);
+}
+
+module.exports = { handleChat, handleChatJob };

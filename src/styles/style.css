@@ -470,6 +470,108 @@ body {
   color: var(--text-bubble-user);
 }
 
+/* ===== BUBBLE QUICK CHOICE & QUIZ ===== */
+.bubble-choice,
+.bubble-quiz {
+  max-width: 420px;
+  margin-bottom: 12px;
+}
+
+.choice-title {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.choice-chip-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.choice-chip {
+  border-radius: 999px;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  background-color: var(--bg-quick-action);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-light);
+}
+
+.choice-chip--selected {
+  background-color: var(--bg-bubble-user);
+  color: var(--text-bubble-user);
+}
+
+.choice-chip--disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.choice-chip:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+
+.quiz-meta {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-bottom: 4px;
+}
+
+.quiz-question-text {
+  margin-bottom: 8px;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.quiz-option-btn {
+  border-radius: 999px;
+  padding: 6px 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  background-color: var(--bg-quick-action);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-light);
+}
+
+.quiz-option-btn:hover {
+  background-color: var(--bg-quick-action-hover);
+}
+
+.quiz-option-code {
+  font-weight: 600;
+}
+
+.quiz-option-btn--selected {
+  /* warna sedikit lebih gelap biar kelihatan terpilih */
+  background-color: var(--bg-bubble-user);
+  color: var(--text-bubble-user);
+}
+
+.quiz-option-btn--disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+/* untuk jaga-jaga kalau pakai atribut disabled */
+.quiz-option-btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+
 /* LOGIN INPUT */
 
 .login-container {

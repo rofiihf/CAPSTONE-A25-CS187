@@ -3,6 +3,9 @@
 import MessagePresenter from "./messagePresenter.js";
 import { generateBubbleChat } from "../../components/generateBubbleChat.js";
 import MessageModel from "./messageModel.js";
+import { createChoiceBubble } from "../../components/bubbleChoice.js";
+import { createLevelQuizQuestionBubble } from "../../components/bubbleLevelQuiz.js";
+
 
 export default class MessageView {
   #presenter;
@@ -80,6 +83,29 @@ export default class MessageView {
     const bubble = generateBubbleChat(message);
     this.#chatContainer.appendChild(bubble);
     this.#chatContainer.scrollTop = this.#chatContainer.scrollHeight;
+  }
+
+  // helper kecil supaya nggak ulang-ulang kode append + scroll
+  #appendToChat(element) {
+    this.#chatContainer.appendChild(element);
+    this.#chatContainer.scrollTop = this.#chatContainer.scrollHeight;
+  }
+
+  // render bubble pilihan (chips) untuk pilih minat / jumlah pertanyaan
+  renderChoiceBubble({ title, options, onChoose }) {
+    const bubble = createChoiceBubble({ title, options, onChoose });
+    this.#appendToChat(bubble);
+  }
+
+  // render bubble pertanyaan quiz (A–E)
+  renderLevelQuizQuestion({ question, index, total, onAnswer }) {
+    const bubble = createLevelQuizQuestionBubble({
+      question,
+      index,
+      total,
+      onAnswer,
+    });
+    this.#appendToChat(bubble);
   }
 
   renderQuickActions(actions) {

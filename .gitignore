@@ -1,4 +1,6 @@
 node_modules
 .env
 backend/baca.txt
-backend_ml
+backend_ml/data
+backend_ml/app/data
+backend_ml/app/user_profiles
