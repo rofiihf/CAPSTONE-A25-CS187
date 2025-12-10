@@ -1,0 +1,48 @@
+{
+  "user_id": "70f05361-9ee5-4623-b6aa-6d4d7b96d217",
+  "platform_data": {
+    "name": "Eko Prasetyo",
+    "email": "eko.prasetyo238@example.com",
+    "active_courses": [
+      "Belajar Analisis Data dengan Python"
+    ],
+    "active_tutorials": 61,
+    "completed_tutorials": 61,
+    "is_graduated": 1,
+    "exam_score": "85",
+    "submission_rating": "4",
+    "course_progress": {
+      "Belajar Analisis Data dengan Python": 0
+    }
+  },
+  "learning_profile": {
+    "goals": [],
+    "skills": {},
+    "weaknesses": [],
+    "strengths": [],
+    "current_focus": {
+      "course": "Belajar Analisis Data dengan Python",
+      "module": 0
+    },
+    "learning_style": null,
+    "progress_score": {},
+    "history": []
+  },
+  "created_at": "2025-12-07T03:51:53.893Z",
+  "updated_at": 1765079513893,
+  "progress_history": [
+    {
+      "timestamp": 1765273534226,
+      "course_progress": {
+        "Belajar Analisis Data dengan Python": 0
+      }
+    }
+  ],
+  "roadmap_progress": {
+    "job_role": null,
+    "created_at": 1765273534226,
+    "last_updated": 1765273534226,
+    "skills_status": {},
+    "subskills": []
+  }
+}

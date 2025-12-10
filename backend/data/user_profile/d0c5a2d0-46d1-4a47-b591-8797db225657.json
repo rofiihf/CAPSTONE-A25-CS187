@@ -1,0 +1,48 @@
+{
+  "user_id": "d0c5a2d0-46d1-4a47-b591-8797db225657",
+  "platform_data": {
+    "name": "Rafi Putri",
+    "email": "rafi.putri261@example.com",
+    "active_courses": [
+      "Belajar Dasar AI"
+    ],
+    "active_tutorials": 39,
+    "completed_tutorials": 0,
+    "is_graduated": 0,
+    "exam_score": "",
+    "submission_rating": "",
+    "course_progress": {
+      "Belajar Dasar AI": 0
+    }
+  },
+  "learning_profile": {
+    "goals": [],
+    "skills": {},
+    "weaknesses": [],
+    "strengths": [],
+    "current_focus": {
+      "course": "Belajar Dasar AI",
+      "module": 0
+    },
+    "learning_style": null,
+    "progress_score": {},
+    "history": []
+  },
+  "created_at": "2025-12-07T03:51:53.905Z",
+  "updated_at": 1765079513905,
+  "progress_history": [
+    {
+      "timestamp": 1765273534241,
+      "course_progress": {
+        "Belajar Dasar AI": 0
+      }
+    }
+  ],
+  "roadmap_progress": {
+    "job_role": null,
+    "created_at": 1765273534241,
+    "last_updated": 1765273534241,
+    "skills_status": {},
+    "subskills": []
+  }
+}

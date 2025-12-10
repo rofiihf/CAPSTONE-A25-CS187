@@ -8,26 +8,16 @@ const path = require("path");
 const ROOT = path.join(__dirname, "..");
 const USERS_FILE = path.join(ROOT, "data", "users_hashed.json");
 const PROFILES_FILE = path.join(ROOT, "data", "user_profiles.json");
-const BACKEND_ML_USER_DIR = path.join(
-  __dirname,
-  "..",
-  "..",
-  "backend_ml",
-  "app",
-  "user_profiles"
-);
 
 // ---------------------------------------------------
 // UTIL HELPERS
 // ---------------------------------------------------
 function ensureDirs() {
   try {
-    const dirs = [path.dirname(PROFILES_FILE), BACKEND_ML_USER_DIR];
-    dirs.forEach(dir => {
-      if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
-      }
-    });
+    const dir = path.dirname(PROFILES_FILE);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
   } catch (err) {
     console.error("Error creating directories:", err);
     throw err;
@@ -58,37 +48,30 @@ function saveJson(filePath, obj) {
 }
 
 // ---------------------------------------------------
-// IMPROVED DEEP MERGE (handles arrays and nulls properly)
+// DEEP MERGE for profile data
 // ---------------------------------------------------
 function deepMerge(target, source) {
-  if (!source || typeof source !== "object") {
-    return target;
-  }
+  if (!source || typeof source !== "object") return target;
 
   for (const key of Object.keys(source)) {
     const srcVal = source[key];
-    const tgtVal = target[key];
 
-    // Handle null explicitly
     if (srcVal === null) {
       target[key] = null;
       continue;
     }
 
-    // Handle arrays - replace instead of merge
     if (Array.isArray(srcVal)) {
       target[key] = [...srcVal];
       continue;
     }
 
-    // Recursively merge nested objects
     if (typeof srcVal === "object") {
-      if (!tgtVal || typeof tgtVal !== "object" || Array.isArray(tgtVal)) {
+      if (!target[key] || typeof target[key] !== "object" || Array.isArray(target[key])) {
         target[key] = {};
       }
       target[key] = deepMerge(target[key], srcVal);
     } else {
-      // Primitives overwrite directly
       target[key] = srcVal;
     }
   }
@@ -101,62 +84,51 @@ function deepMerge(target, source) {
 function defaultLearningProfile() {
   return {
     goals: [],
-    skills: {},              // { skillName: level }
+    skills: {},
     weaknesses: [],
     strengths: [],
     current_focus: {
       course: null,
       module: 0,
     },
-    learning_style: null,    // e.g., "visual", "kinesthetic", etc.
-    progress_score: {},      // per course progress percentage
-    history: []              // log of timestamps <-> actions
+    learning_style: null,
+    progress_score: {},
+    history: []
   };
 }
 
 // ---------------------------------------------------
-// LOADING HELPERS
+// PLATFORM LOADERS
 // ---------------------------------------------------
 function getAllUsersFromPlatform() {
   const data = loadJson(USERS_FILE);
   if (!data) return [];
-  
-  // Handle both array and object formats
-  if (Array.isArray(data)) {
-    return data;
-  }
-  
-  // If it's an object, convert to array
-  if (typeof data === "object") {
-    return Object.values(data);
-  }
-  
+
+  if (Array.isArray(data)) return data;
+  if (typeof data === "object") return Object.values(data);
+
   return [];
 }
 
+// ---------------------------------------------------
+// MASTER PROFILE STORE
+// ---------------------------------------------------
 function loadProfilesMaster() {
   return loadJson(PROFILES_FILE) || {};
 }
 
 function saveProfilesMaster(profiles) {
-  const success = saveJson(PROFILES_FILE, profiles);
-  if (!success) {
-    throw new Error("Failed to save profiles master file");
-  }
+  const ok = saveJson(PROFILES_FILE, profiles);
+  if (!ok) throw new Error("Failed to save profiles master file");
 }
 
 // ---------------------------------------------------
-// MAIN PROFILE CREATION LOGIC
+// PROFILE CREATION
 // ---------------------------------------------------
 function createProfileFromPlatform(userObj) {
-  if (!userObj || typeof userObj !== "object") {
-    throw new Error("Invalid user object provided");
-  }
-
-  const courseName = userObj.course_name || "";  
+  const courseName = userObj.course_name || "";
   const activeCourses = courseName ? [courseName] : [];
 
-  // Prepare learning profile
   const lp = defaultLearningProfile();
   lp.current_focus.course = activeCourses[0] || null;
 
@@ -179,33 +151,10 @@ function createProfileFromPlatform(userObj) {
 }
 
 // ---------------------------------------------------
-// WRITE TO ML BACKEND
-// ---------------------------------------------------
-function writeProfileToMl(profile) {
-  try {
-    ensureDirs();
-    if (!profile || !profile.user_id) {
-      console.error("Invalid profile: missing user_id");
-      return false;
-    }
-    
-    const userFile = path.join(BACKEND_ML_USER_DIR, `${profile.user_id}.json`);
-    return saveJson(userFile, profile);
-  } catch (err) {
-    console.error("Error writing profile to ML backend:", err.message);
-    return false;
-  }
-}
-
-// ---------------------------------------------------
 // GET PROFILE
 // ---------------------------------------------------
 function getProfile(userId) {
   try {
-    if (!userId) {
-      throw new Error("User ID is required");
-    }
-    
     ensureDirs();
     const profiles = loadProfilesMaster();
     return profiles[userId] || null;
@@ -216,18 +165,10 @@ function getProfile(userId) {
 }
 
 // ---------------------------------------------------
-// UPDATE PROFILE WITH PATCH
+// UPDATE PROFILE (NO ML WRITE ANYMORE)
 // ---------------------------------------------------
 function updateProfile(userId, patch) {
   try {
-    if (!userId) {
-      throw new Error("User ID is required");
-    }
-    
-    if (!patch || typeof patch !== "object") {
-      throw new Error("Invalid patch object");
-    }
-    
     ensureDirs();
     const profiles = loadProfilesMaster();
 
@@ -238,27 +179,27 @@ function updateProfile(userId, patch) {
       created_at: new Date().toISOString(),
     };
 
-    // Create deep copies to avoid mutation
-    const existingPlatformData = JSON.parse(JSON.stringify(existing.platform_data || {}));
-    const existingLearningProfile = JSON.parse(JSON.stringify(existing.learning_profile || defaultLearningProfile()));
-    
     const merged = {
       ...existing,
-      platform_data: deepMerge(existingPlatformData, patch.platform_data || {}),
-      learning_profile: deepMerge(existingLearningProfile, patch.learning_profile || {}),
+      platform_data: deepMerge(
+        JSON.parse(JSON.stringify(existing.platform_data)),
+        patch.platform_data || {}
+      ),
+      learning_profile: deepMerge(
+        JSON.parse(JSON.stringify(existing.learning_profile)),
+        patch.learning_profile || {}
+      ),
       updated_at: new Date().toISOString(),
     };
 
-    // Allow top-level overwrites if needed
     Object.keys(patch).forEach(k => {
-      if (k !== "platform_data" && k !== "learning_profile" && k !== "created_at") {
+      if (!["platform_data", "learning_profile", "created_at"].includes(k)) {
         merged[k] = patch[k];
       }
     });
 
     profiles[userId] = merged;
     saveProfilesMaster(profiles);
-    writeProfileToMl(merged);
 
     return merged;
   } catch (err) {
@@ -271,94 +212,198 @@ function updateProfile(userId, patch) {
 // ENSURE PROFILE EXISTS
 // ---------------------------------------------------
 function ensureProfileExists(userId) {
-  try {
-    if (!userId) {
-      throw new Error("User ID is required");
-    }
-    
-    ensureDirs();
-    const profiles = loadProfilesMaster();
+  ensureDirs();
+  const profiles = loadProfilesMaster();
 
-    // If profile already exists, sync to ML and return
-    if (profiles[userId]) {
-      writeProfileToMl(profiles[userId]);
-      return profiles[userId];
-    }
-
-    // Try to find user in platform data
-    const allUsers = getAllUsersFromPlatform();
-    const userObj = allUsers.find(u => 
-      u.id === userId || u.email === userId
-    );
-
-    // Create profile from platform data or with minimal info
-    const profile = userObj 
-      ? createProfileFromPlatform(userObj)
-      : createProfileFromPlatform({ id: userId, email: "" });
-    
-    profiles[userId] = profile;
-
-    saveProfilesMaster(profiles);
-    writeProfileToMl(profile);
-
-    return profile;
-  } catch (err) {
-    console.error(`Error ensuring profile exists for ${userId}:`, err.message);
-    throw err;
+  if (profiles[userId]) {
+    return profiles[userId];
   }
+
+  const allUsers = getAllUsersFromPlatform();
+  const userObj = allUsers.find(u => u.id === userId || u.email === userId);
+
+  const profile = userObj
+    ? createProfileFromPlatform(userObj)
+    : createProfileFromPlatform({ id: userId, email: "" });
+
+  profiles[userId] = profile;
+  saveProfilesMaster(profiles);
+
+  return profile;
 }
 
-// ---------------------------------------------------
-// ONE-TIME SYSTEM BOOTSTRAP
-// ---------------------------------------------------
-function bootstrapAllProfiles() {
-  try {
-    ensureDirs();
-    const allUsers = getAllUsersFromPlatform();
-    const profiles = loadProfilesMaster();
+// -----------------------------
+// VALIDATOR & SANITIZER
+// -----------------------------
+/**
+ * validateProfilePatch
+ * - Menolak perubahan pada field yg tidak diizinkan
+ * - Memastikan tipe data dasar
+ * - Sanitasi sederhana untuk learning_profile.current_focus.module dan skill levels
+ *
+ * Returns: { ok: boolean, patch: sanitizedPatch, errors: [] }
+ */
+function validateProfilePatch(patch, existing) {
+  const errors = [];
+  if (!patch || typeof patch !== "object") {
+    errors.push("Patch harus berupa object");
+    return { ok: false, patch: null, errors };
+  }
 
-    if (!allUsers || allUsers.length === 0) {
-      console.log("No users found to bootstrap");
-      return { success: true, count: 0 };
+  const allowedTopKeys = new Set(["platform_data", "learning_profile", "updated_at", "meta", "roadmap_progress"]);
+  const sanitized = {};
+
+  // Top-level keys filter
+  Object.keys(patch).forEach(k => {
+    if (!allowedTopKeys.has(k)) {
+      errors.push(`Top-level key tidak diizinkan: ${k}`);
+    }
+  });
+
+  // platform_data validation
+  if (patch.platform_data && typeof patch.platform_data === "object") {
+    sanitized.platform_data = {};
+    const pd = patch.platform_data;
+
+    if (pd.name != null) sanitized.platform_data.name = String(pd.name);
+    if (pd.email != null) sanitized.platform_data.email = String(pd.email);
+
+    if (pd.active_courses != null) {
+      if (!Array.isArray(pd.active_courses)) {
+        errors.push("platform_data.active_courses harus array");
+      } else {
+        sanitized.platform_data.active_courses = pd.active_courses.map(c => String(c));
+      }
     }
 
-    let createdCount = 0;
-    
-    allUsers.forEach(user => {
-      if (!user || !user.id) {
-        console.warn("Skipping invalid user object:", user);
-        return;
+    if (pd.active_tutorials != null) sanitized.platform_data.active_tutorials = Number(pd.active_tutorials) || 0;
+    if (pd.completed_tutorials != null) sanitized.platform_data.completed_tutorials = Number(pd.completed_tutorials) || 0;
+    if (pd.is_graduated != null) sanitized.platform_data.is_graduated = Number(pd.is_graduated) ? 1 : 0;
+
+    // Allow course_progress as object of course->percent
+    if (pd.course_progress != null) {
+      if (typeof pd.course_progress !== "object" || Array.isArray(pd.course_progress)) {
+        errors.push("platform_data.course_progress harus object mapping");
+      } else {
+        sanitized.platform_data.course_progress = {};
+        Object.entries(pd.course_progress).forEach(([course, val]) => {
+          const pct = Number(val);
+          sanitized.platform_data.course_progress[String(course)] = Math.max(0, Math.min(100, isNaN(pct) ? 0 : Math.round(pct)));
+        });
       }
-      
-      if (!profiles[user.id]) {
-        try {
-          const profile = createProfileFromPlatform(user);
-          profiles[user.id] = profile;
-          writeProfileToMl(profile);
-          createdCount++;
-        } catch (err) {
-          console.error(`Error creating profile for user ${user.id}:`, err.message);
+    }
+  } else if (patch.platform_data != null) {
+    errors.push("platform_data harus object");
+  }
+
+  // learning_profile validation
+  if (patch.learning_profile && typeof patch.learning_profile === "object") {
+    sanitized.learning_profile = {};
+    const lp = patch.learning_profile;
+
+    if (lp.goals != null) {
+      if (!Array.isArray(lp.goals)) {
+        errors.push("learning_profile.goals harus array");
+      } else {
+        sanitized.learning_profile.goals = lp.goals.map(g => String(g));
+      }
+    }
+
+    if (lp.weaknesses != null) {
+      if (!Array.isArray(lp.weaknesses)) {
+        errors.push("learning_profile.weaknesses harus array");
+      } else {
+        sanitized.learning_profile.weaknesses = lp.weaknesses.map(w => String(w));
+      }
+    }
+
+    if (lp.skills != null) {
+      if (typeof lp.skills !== "object" || Array.isArray(lp.skills)) {
+        errors.push("learning_profile.skills harus object mapping");
+      } else {
+        sanitized.learning_profile.skills = {};
+        const allowedLevels = new Set(["Beginner", "Intermediate", "Advanced", "beginner", "intermediate", "advanced"]);
+        Object.entries(lp.skills).forEach(([k, v]) => {
+          const level = (v || "").toString();
+          if (allowedLevels.has(level)) {
+            // Normalize capitalization
+            sanitized.learning_profile.skills[String(k)] = level.charAt(0).toUpperCase() + level.slice(1).toLowerCase();
+          } else {
+            errors.push(`Level skill tidak valid untuk '${k}': ${v}`);
+          }
+        });
+      }
+    }
+
+    if (lp.current_focus && typeof lp.current_focus === "object") {
+      sanitized.learning_profile.current_focus = {};
+      if (lp.current_focus.course != null) sanitized.learning_profile.current_focus.course = String(lp.current_focus.course);
+      if (lp.current_focus.module != null) {
+        const mod = Number(lp.current_focus.module);
+        if (!Number.isFinite(mod) || mod < 0) {
+          errors.push("learning_profile.current_focus.module harus angka >= 0");
+        } else {
+          sanitized.learning_profile.current_focus.module = Math.floor(mod);
         }
       }
-    });
+    } else if (lp.current_focus != null) {
+      errors.push("learning_profile.current_focus harus object");
+    }
 
-    saveProfilesMaster(profiles);
-    
-    console.log(`Bootstrap completed: ${createdCount} profiles created`);
-    return { success: true, count: createdCount };
-  } catch (err) {
-    console.error("Error during bootstrap:", err.message);
-    throw err;
+    // allow appending history entries returned by the model
+    if (lp.history != null) {
+      if (!Array.isArray(lp.history)) {
+        errors.push("learning_profile.history harus array");
+      } else {
+        // sanitize history entries (ensure objects with minimal keys)
+        const existingHistory = (existing && existing.learning_profile && Array.isArray(existing.learning_profile.history)) ? existing.learning_profile.history : [];
+        const newEntries = lp.history.map(h => {
+          if (!h || typeof h !== 'object') return null;
+          return {
+            query: h.query != null ? String(h.query) : "",
+            response: h.response != null ? String(h.response) : "",
+            timestamp: h.timestamp != null ? String(h.timestamp) : new Date().toISOString(),
+            intent: h.intent != null ? h.intent : null
+          };
+        }).filter(Boolean);
+
+        sanitized.learning_profile.history = [...existingHistory, ...newEntries];
+      }
+    }
+  } else if (patch.learning_profile != null) {
+    errors.push("learning_profile harus object");
   }
+
+  // roadmap_progress top-level update (allow basic structure)
+  if (patch.roadmap_progress && typeof patch.roadmap_progress === "object") {
+    sanitized.roadmap_progress = {};
+    const rp = patch.roadmap_progress;
+    if (rp.job_role != null) sanitized.roadmap_progress.job_role = String(rp.job_role);
+    if (rp.last_updated != null) sanitized.roadmap_progress.last_updated = Number(rp.last_updated) || Date.now();
+    if (rp.created_at != null) sanitized.roadmap_progress.created_at = Number(rp.created_at) || Date.now();
+    if (rp.subskills != null) {
+      if (!Array.isArray(rp.subskills)) {
+        errors.push("roadmap_progress.subskills harus array");
+      } else {
+        sanitized.roadmap_progress.subskills = rp.subskills.map(s => s);
+      }
+    }
+    if (rp.skills_status != null && typeof rp.skills_status === 'object') {
+      sanitized.roadmap_progress.skills_status = rp.skills_status;
+    }
+  }
+
+  // If no errors, ok
+  const ok = errors.length === 0;
+  return { ok, patch: ok ? sanitized : null, errors };
 }
 
 // ---------------------------------------------------
 // EXPORTS
 // ---------------------------------------------------
 module.exports = {
-  ensureDirs,
   getProfile,
   updateProfile,
   ensureProfileExists,
-  bootstrapAllProfiles
+  validateProfilePatch
 };

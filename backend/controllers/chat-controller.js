@@ -1,79 +1,142 @@
-const { text } = require("express");
-// Fungsi Handle Bot Chat (KALO UDAH ADA LLM)
+const { 
+  getProfile, 
+  updateProfile, 
+  ensureProfileExists,
+  validateProfilePatch 
+} = require("../utils/user-profile");
+const { sendToModel } = require("../services/api-services");
+const ProfileSchema = require("../schemas/profile-schema");
+
+function stripProfileUpdateTags(text) {
+  if (!text) return text;
+  return text.replace(/<profile_update>[\s\S]*?<\/profile_update>/g, "").trim();
+}
+
+/**
+ * applySimpleUpdates - fallback heuristik bila model tidak kirim profile_updates
+ */
+function applySimpleUpdates(reply, profile) {
+  if (!profile || !reply) return profile;
+  const text = reply.toLowerCase();
+
+  if (!profile.learning_profile) {
+    profile.learning_profile = {
+      goals: [],
+      weaknesses: [],
+      strengths: [],
+      current_focus: { course: null, module: 0 }
+    };
+  }
+
+  if (
+    text.includes("lanjut modul") ||
+    text.includes("modul berikutnya") ||
+    text.match(/modul\s*\d+\s*(selesai|berhasil)/)
+  ) {
+    profile.learning_profile.current_focus.module += 1;
+  }
+
+  if (
+    text.includes("tujuan belajar") ||
+    text.includes("goal baru") ||
+    text.includes("ingin menjadi")
+  ) {
+    profile.learning_profile.goals.push("Goal baru berdasarkan percakapan");
+  }
+
+  if (text.includes("kesulitan") || text.includes("bingung") || text.includes("sulit")) {
+    profile.learning_profile.weaknesses.push("Kesulitan baru yang disampaikan user");
+  }
+
+  return profile;
+}
+
+/**
+ * handleChat - Main chat entrypoint
+ */
 async function handleChat(req, res) {
   try {
     console.log("BODY:", req.body);
-    const userId = req.session.userId;
+
+    const sessionUserId = req.session?.userId;
+    const userId = String(sessionUserId || req.body.user_id || "").trim();
 
     if (!userId) {
       return res.status(401).json({
         ok: false,
-        reply: "Anda belum login",
-      })
+        reply: "Anda belum login"
+      });
     }
-    
+
     const { message, mode } = req.body;
 
-    if(!message || !message.trim()) {
-      return res.status(400).json({ 
-        ok: false,
-        reply: "Pesan tidak boleh kosong",
-      });
-    }
-    
-    const BOT_URL = process.env.BOT_API_URL;
-    
-    if (!BOT_URL) {
+    if (!message || !message.trim()) {
       return res.status(400).json({
         ok: false,
-        reply: "Model tidak dapat dijangkau."
-      })
-    }
-
-    const payload = { user_id: String(userId), text: message };
-    if (mode) payload.mode = mode; // optional hint (e.g., 'job_role')
-
-    const fetchBotResponse = await fetch(BOT_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-
-    if (!fetchBotResponse.ok) {
-      const text = await fetchBotResponse.text();
-
-      return res.status(502).json({
-        ok: false,
-        reply: "ML backend error",
-        detail: text
+        reply: "Pesan tidak boleh kosong"
       });
     }
 
-    const data = await fetchBotResponse.json();
+    // Load or create profile
+    let profile = getProfile(userId);
+    if (!profile) {
+      profile = ensureProfileExists(userId);
+    }
+
+    // Validate profile before sending to model; if invalid, recreate minimal profile
+    const v = ProfileSchema.validate(profile);
+    if (!v.valid) {
+      console.warn("Profile failed validation, recreating minimal profile:", v.errors);
+      profile = ensureProfileExists(userId);
+    }
+
+    // Send complete profile to backend model
+    const modelResp = await sendToModel(userId, message, mode, profile);
+
+    const reply = modelResp?.response || modelResp?.reply || "Bot tidak menanggapi.";
+    const cleanReply = stripProfileUpdateTags(reply);
+
+    // Model-updates (accept multiple naming conventions)
+    const profileUpdates = modelResp?.profile_updates || modelResp?.profileUpdate || modelResp?.profile_update || null;
+
+    let mergedProfile = profile;
+
+    if (profileUpdates && typeof profileUpdates === "object") {
+      const validation = validateProfilePatch(profileUpdates, profile);
+
+      if (validation.ok) {
+        try {
+          mergedProfile = updateProfile(userId, validation.patch);
+        } catch (err) {
+          console.error("Failed updating profile:", err.message);
+        }
+      } else {
+        console.warn(`Rejected profile update from model:`, validation.errors);
+
+        // Optional: kirim ke model bahwa update ditolak
+        // (untuk debugging saat fine-tuning prompt)
+      }
+    }
 
     return res.json({
       ok: true,
-      reply: data.response || "Bot tidak menanggapi.",
-      intent: data.intent || null,
-      sources: data.sources || [],
-      meta: data.meta || null, 
+      reply: cleanReply,
+      profile_updated: true,
+      profile: mergedProfile
     });
 
-  } catch (error) {
-    console.error("Chat Handler Error: ", error);
-    console.log(error);
-    return res.status(500).json({ 
+  } catch (err) {
+    console.error("Chat Handler Error:", err);
+    return res.status(500).json({
       ok: false,
-      reply: "Terjadi kesalahan pada server",
+      reply: "Terjadi kesalahan pada server"
     });
   }
 }
 
-// Convenience handler that explicitly requests job-role roadmap generation
 async function handleChatJob(req, res) {
-  // Reuse handleChat logic but force mode = 'job_role'
   req.body = req.body || {};
-  req.body.mode = 'job_role';
+  req.body.mode = "job_role";
   return handleChat(req, res);
 }
 

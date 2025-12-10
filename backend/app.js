@@ -4,18 +4,22 @@ const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
 
+// Controllers
 const authRoutes = require("./controllers/auth-controller.js");
-const profileRoutes = require("./controllers/profile-controller");
+const profileRoutes = require("./controllers/profile-controller.js");
 const { handleChat, handleChatJob } = require("./controllers/chat-controller.js");
-const { getRoadmapRecommendations, updateSkillLevel, autoUpdateRoadmap } = require("./controllers/roadmap-controller.js");
+const { 
+  getRoadmapRecommendations, 
+  updateSkillLevel, 
+  autoUpdateRoadmap 
+} = require("./controllers/roadmap-controller.js");
 
 const app = express();
 
-
 // =========================
-//       CORS
+//          CORS
 // =========================
-// WAJIB: harus pakai { credentials: true } karena kita pakai session cookie
+// WAJIB: pakai credentials karena session cookie
 app.use(cors({
   origin: [
     "http://localhost:5500",
@@ -23,7 +27,6 @@ app.use(cors({
   ],
   credentials: true
 }));
-
 
 // =========================
 //       JSON PARSER
@@ -39,29 +42,28 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    httpOnly: true,     // tidak bisa diakses JS → aman
-    secure: false,      // true jika HTTPS
+    httpOnly: true,     
+    secure: false,      
     sameSite: "lax",
     maxAge: 1000 * 60 * 60 * 24 // 24 jam
   }
 }));
 
-
 // =========================
-//       ROUTES
+//          ROUTES
 // =========================
 
-// Chat ke ML
+// Chat → ML backend
 app.post("/chat", handleChat);
-// Chat job-description -> generates personalized roadmap
+// Chat khusus job-role → ML backend
 app.post("/chat/job", handleChatJob);
 
-// Roadmap management
+// Roadmap features
 app.get("/api/roadmap/recommendations", getRoadmapRecommendations);
 app.post("/api/roadmap/update-skill", updateSkillLevel);
 app.post("/api/roadmap/auto-update", autoUpdateRoadmap);
 
-// Auth + Profile routes
+// Auth + Profile
 app.use("/api/auth", authRoutes);
 app.use("/api/profile", profileRoutes);
 
@@ -78,11 +80,10 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Something went error" });
 });
 
-
 // =========================
 //       START SERVER
 // =========================
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 app.listen(port, () =>
   console.log(`🚀 Server running on port ${port}`)
 );

@@ -1,0 +1,48 @@
+{
+  "user_id": "325b79b7-6be9-4f31-a7ba-a6e6872e5daf",
+  "platform_data": {
+    "name": "Gilang Agustina",
+    "email": "gilang.agustina19@example.com",
+    "active_courses": [
+      "Belajar Membangun LINE Chatbot"
+    ],
+    "active_tutorials": 26,
+    "completed_tutorials": 44,
+    "is_graduated": 1,
+    "exam_score": "",
+    "submission_rating": "5",
+    "course_progress": {
+      "Belajar Membangun LINE Chatbot": 0
+    }
+  },
+  "learning_profile": {
+    "goals": [],
+    "skills": {},
+    "weaknesses": [],
+    "strengths": [],
+    "current_focus": {
+      "course": "Belajar Membangun LINE Chatbot",
+      "module": 0
+    },
+    "learning_style": null,
+    "progress_score": {},
+    "history": []
+  },
+  "created_at": "2025-12-07T03:51:53.818Z",
+  "updated_at": 1765079513818,
+  "progress_history": [
+    {
+      "timestamp": 1765273534070,
+      "course_progress": {
+        "Belajar Membangun LINE Chatbot": 0
+      }
+    }
+  ],
+  "roadmap_progress": {
+    "job_role": null,
+    "created_at": 1765273534070,
+    "last_updated": 1765273534070,
+    "skills_status": {},
+    "subskills": []
+  }
+}

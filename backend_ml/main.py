@@ -1,29 +1,26 @@
-from fastapi import FastAPI, HTTPException
+# ============================
+# FINAL CLEAN main.py (MVP VERSION)
+# ============================
+
+from fastapi import FastAPI
 from pydantic import BaseModel
-from app import init_db
-from app.handler import handle_query, handle_job_description_flow, load_my_courses, load_my_tutorials
-from app.roadmap_engine import (
-    auto_update_roadmap_from_progress,
-    get_adaptive_recommendations,
-    update_roadmap_skill_level
-)
-from app.scheduler import start_scheduler
 from fastapi.middleware.cors import CORSMiddleware
-import os
+from app.handler import handle_query, handle_job_description_flow
 import traceback
+import os
 
 
-engine = init_db()
-start_scheduler()
+app = FastAPI(title="Learning Buddy ML Backend (MVP)")
 
-app = FastAPI(title="Retrieval-Augmented Chat (Groq + SBERT + FAISS)")
 
-# Allow cross-origin requests from the web frontend. Configure via ENV or allow all in dev.
+# ============================
+# CORS
+# ============================
+
 allowed_origins = os.environ.get("MODEL_API_ALLOWED_ORIGINS", "*")
-if allowed_origins == "*":
-    origins = ["*"]
-else:
-    origins = [o.strip() for o in allowed_origins.split(",") if o.strip()]
+origins = ["*"] if allowed_origins == "*" else [
+    o.strip() for o in allowed_origins.split(",") if o.strip()
+]
 
 app.add_middleware(
     CORSMiddleware,
@@ -34,85 +31,80 @@ app.add_middleware(
 )
 
 
+# ============================
+# REQUEST MODELS
+# ============================
+
 class ChatReq(BaseModel):
     user_id: str
     text: str
-    # optional hint to force a specific flow, e.g. "job_role"
-    mode: str = None
+    mode: str | None = None
+    profile: dict | None = None
 
 
-class SkillUpdateReq(BaseModel):
-    user_id: str
-    subskill_id: str
-    level: str  # "Beginner", "Intermediate", or "Advanced"
-    notes: str = ""
-
+# ============================
+# HEALTH
+# ============================
 
 @app.get("/health")
 async def health():
-    return {"status": "ok", "message": "API is running"}
+    return {"status": "ok", "message": "ML backend running (MVP mode)"}
 
 
-@app.post('/chat')
+# ============================
+# CHAT ROUTE
+# ============================
+
+@app.post("/chat")
 async def chat(req: ChatReq):
+    """
+    Unified chat handler.
+    If mode=job_role → run job-role pipeline.
+    Otherwise → normal chat LLM pipeline.
+    """
     try:
-        # If caller requested a specific flow, handle it directly
+        # SPECIAL CASE: job role (roadmap generation)
         if req.mode == "job_role":
             try:
-                out = handle_job_description_flow(req.user_id, req.text)
-                return out
+                result = handle_job_description_flow(
+                    req.user_id,
+                    req.text,
+                    req.profile
+                )
+                return {
+                    "ok": True,
+                    "type": "job_role",
+                    "response": result.get("summary"),
+                    "roadmap": result.get("roadmap"),
+                    "profile_update": result.get("profile_update")
+                }
             except Exception as e:
-                print("=== SERVER CRASH (job_role) ===")
-                print(str(e))
+                print("=== Job-role flow crash ===")
                 traceback.print_exc()
-                return {"error": "server_crash", "detail": str(e)}
+                return {"ok": False, "error": "job_role_failed", "detail": str(e)}
 
+        # NORMAL CHAT MODE
         try:
-            result = await handle_query(user_id=req.user_id, text=req.text)
-            return result
+            result = await handle_query(
+                user_id=req.user_id,
+                text=req.text,
+                profile=req.profile
+            )
+            return {
+                "ok": True,
+                "type": "chat",
+                "response": result.get("response"),
+                "intent": result.get("intent"),
+                "sources": result.get("sources", []),
+                "meta": result.get("meta", {}),
+                "profile_update": result.get("profile_update")
+            }
         except Exception as e:
-            print("=== SERVER CRASH (handle_query) ===")
-            print(str(e))
+            print("=== handle_query crash ===")
             traceback.print_exc()
-            return {"error": "server_crash", "detail": str(e)}
+            return {"ok": False, "error": "chat_failed", "detail": str(e)}
+
     except Exception as e:
-        print("=== OUTER SERVER CRASH ===")
-        print(str(e))
+        print("=== outer handler crash ===")
         traceback.print_exc()
-        return {"error": "server_crash", "detail": str(e)}
-
-
-@app.post('/roadmap/auto-update')
-async def auto_update_roadmap(req: ChatReq):
-    """Automatically update roadmap skills based on current course progress."""
-    try:
-        course_rows = load_my_courses() or []
-        result = auto_update_roadmap_from_progress(req.user_id, course_rows)
-        return {"status": "ok", "roadmap_progress": result}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-@app.post('/roadmap/update-skill')
-async def update_skill(req: SkillUpdateReq):
-    """Manually update a specific skill's level in the roadmap."""
-    try:
-        result = update_roadmap_skill_level(req.user_id, req.subskill_id, req.level, req.notes)
-        if not result:
-            raise HTTPException(status_code=400, detail="Failed to update skill")
-        return {"status": "ok", "roadmap_progress": result}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-@app.get('/roadmap/recommendations/{user_id}')
-async def get_recommendations(user_id: str):
-    """Get adaptive recommendations based on current roadmap progress."""
-    try:
-        course_rows = load_my_courses() or []
-        result = get_adaptive_recommendations(user_id, course_rows)
-        if "error" in result:
-            raise HTTPException(status_code=404, detail=result["error"])
-        return {"status": "ok", "recommendations": result}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        return {"ok": False, "error": "server_crash", "detail": str(e)}

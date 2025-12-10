@@ -1,0 +1,48 @@
+{
+  "user_id": "84636478-9897-4482-a381-28002858a7d6",
+  "platform_data": {
+    "name": "Maya Gunawan",
+    "email": "maya.gunawan73@example.com",
+    "active_courses": [
+      "Belajar Membuat Aplikasi Flutter untuk Pemula"
+    ],
+    "active_tutorials": 51,
+    "completed_tutorials": 51,
+    "is_graduated": 1,
+    "exam_score": "100",
+    "submission_rating": "2",
+    "course_progress": {
+      "Belajar Membuat Aplikasi Flutter untuk Pemula": 0
+    }
+  },
+  "learning_profile": {
+    "goals": [],
+    "skills": {},
+    "weaknesses": [],
+    "strengths": [],
+    "current_focus": {
+      "course": "Belajar Membuat Aplikasi Flutter untuk Pemula",
+      "module": 0
+    },
+    "learning_style": null,
+    "progress_score": {},
+    "history": []
+  },
+  "created_at": "2025-12-07T03:51:53.836Z",
+  "updated_at": 1765079513836,
+  "progress_history": [
+    {
+      "timestamp": 1765273534114,
+      "course_progress": {
+        "Belajar Membuat Aplikasi Flutter untuk Pemula": 0
+      }
+    }
+  ],
+  "roadmap_progress": {
+    "job_role": null,
+    "created_at": 1765273534114,
+    "last_updated": 1765273534114,
+    "skills_status": {},
+    "subskills": []
+  }
+}

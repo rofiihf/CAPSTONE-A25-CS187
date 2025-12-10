@@ -1,0 +1,48 @@
+{
+  "user_id": "bc213025-db0c-41a3-95f2-95237badd203",
+  "platform_data": {
+    "name": "Dina Prasetyo",
+    "email": "dina.prasetyo177@example.com",
+    "active_courses": [
+      "Belajar Dasar Git dengan GitHub"
+    ],
+    "active_tutorials": 78,
+    "completed_tutorials": 234,
+    "is_graduated": 1,
+    "exam_score": "100",
+    "submission_rating": "",
+    "course_progress": {
+      "Belajar Dasar Git dengan GitHub": 0
+    }
+  },
+  "learning_profile": {
+    "goals": [],
+    "skills": {},
+    "weaknesses": [],
+    "strengths": [],
+    "current_focus": {
+      "course": "Belajar Dasar Git dengan GitHub",
+      "module": 0
+    },
+    "learning_style": null,
+    "progress_score": {},
+    "history": []
+  },
+  "created_at": "2025-12-07T03:51:53.872Z",
+  "updated_at": 1765079513872,
+  "progress_history": [
+    {
+      "timestamp": 1765273534187,
+      "course_progress": {
+        "Belajar Dasar Git dengan GitHub": 0
+      }
+    }
+  ],
+  "roadmap_progress": {
+    "job_role": null,
+    "created_at": 1765273534187,
+    "last_updated": 1765273534187,
+    "skills_status": {},
+    "subskills": []
+  }
+}

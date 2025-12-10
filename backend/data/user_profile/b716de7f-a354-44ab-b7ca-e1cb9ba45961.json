@@ -1,0 +1,48 @@
+{
+  "user_id": "b716de7f-a354-44ab-b7ca-e1cb9ba45961",
+  "platform_data": {
+    "name": "Citra Ramadhan",
+    "email": "citra.ramadhan148@example.com",
+    "active_courses": [
+      "Belajar Fundamental Back-End dengan JavaScript"
+    ],
+    "active_tutorials": 189,
+    "completed_tutorials": 13,
+    "is_graduated": 0,
+    "exam_score": "",
+    "submission_rating": "",
+    "course_progress": {
+      "Belajar Fundamental Back-End dengan JavaScript": 0
+    }
+  },
+  "learning_profile": {
+    "goals": [],
+    "skills": {},
+    "weaknesses": [],
+    "strengths": [],
+    "current_focus": {
+      "course": "Belajar Fundamental Back-End dengan JavaScript",
+      "module": 0
+    },
+    "learning_style": null,
+    "progress_score": {},
+    "history": []
+  },
+  "created_at": "2025-12-07T03:51:53.862Z",
+  "updated_at": 1765079513862,
+  "progress_history": [
+    {
+      "timestamp": 1765273534166,
+      "course_progress": {
+        "Belajar Fundamental Back-End dengan JavaScript": 0
+      }
+    }
+  ],
+  "roadmap_progress": {
+    "job_role": null,
+    "created_at": 1765273534166,
+    "last_updated": 1765273534166,
+    "skills_status": {},
+    "subskills": []
+  }
+}
