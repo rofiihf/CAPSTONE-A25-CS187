@@ -29,13 +29,414 @@
     "history": []
   },
   "created_at": "2025-12-11T13:48:16.453Z",
-  "updated_at": 1765460896453,
+  "updated_at": "2025-12-11T18:39:17.053Z",
   "progress_history": [],
   "roadmap_progress": {
-    "job_role": null,
-    "created_at": 1765460896453,
-    "last_updated": 1765460896453,
-    "skills_status": {},
-    "subskills": []
+    "job_role": "Google Cloud Professional",
+    "last_updated": 1765449555051,
+    "subskills": [
+      {
+        "id": "gcp_foundations_gcp",
+        "name": "GCP Foundations",
+        "estimated_hours": 30,
+        "priority": 1,
+        "prerequisites": [],
+        "next_steps": [
+          "compute_storage_gcp"
+        ],
+        "keywords": [
+          "gcp",
+          "iam",
+          "console"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            21,
+            48
+          ],
+          "intermediate": [
+            25,
+            52
+          ],
+          "advanced": [
+            24,
+            51
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "console & projects",
+            "indicators": [
+              "billing setup"
+            ]
+          },
+          "intermediate": {
+            "description": "managed services",
+            "indicators": [
+              "gke basics"
+            ]
+          },
+          "advanced": {
+            "description": "architecture design",
+            "indicators": [
+              "multi-region"
+            ]
+          }
+        }
+      },
+      {
+        "id": "compute_storage_gcp",
+        "name": "Compute & Storage",
+        "estimated_hours": 45,
+        "priority": 2,
+        "prerequisites": [
+          "gcp_foundations_gcp"
+        ],
+        "next_steps": [
+          "networking_gcp"
+        ],
+        "keywords": [
+          "compute engine",
+          "gke",
+          "cloud storage"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            21,
+            48
+          ],
+          "intermediate": [
+            25,
+            52
+          ],
+          "advanced": [
+            24
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "vm & storage basics",
+            "indicators": [
+              "create vm"
+            ]
+          },
+          "intermediate": {
+            "description": "gke usage",
+            "indicators": [
+              "deploy to gke"
+            ]
+          },
+          "advanced": {
+            "description": "cost optimization",
+            "indicators": [
+              "rightsizing"
+            ]
+          }
+        }
+      },
+      {
+        "id": "networking_gcp",
+        "name": "Networking & Security (GCP)",
+        "estimated_hours": 40,
+        "priority": 2,
+        "prerequisites": [
+          "compute_storage_gcp"
+        ],
+        "next_steps": [
+          "deployment_gcp"
+        ],
+        "keywords": [
+          "vpc",
+          "cloud armor",
+          "firewall"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            21,
+            48
+          ],
+          "intermediate": [
+            25,
+            52
+          ],
+          "advanced": [
+            24
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "vpc basics",
+            "indicators": [
+              "create vpc"
+            ]
+          },
+          "intermediate": {
+            "description": "security basics",
+            "indicators": [
+              "cloud armor"
+            ]
+          },
+          "advanced": {
+            "description": "enterprise network design",
+            "indicators": [
+              "interconnect"
+            ]
+          }
+        }
+      },
+      {
+        "id": "deployment_gcp",
+        "name": "Deployment & Automation",
+        "estimated_hours": 45,
+        "priority": 3,
+        "prerequisites": [
+          "networking_gcp"
+        ],
+        "next_steps": [
+          "observability_gcp"
+        ],
+        "keywords": [
+          "terraform",
+          "cloud build",
+          "ci/cd"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            21,
+            50
+          ],
+          "intermediate": [
+            25,
+            52
+          ],
+          "advanced": [
+            24,
+            51
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "cloud build basics",
+            "indicators": [
+              "simple deployment"
+            ]
+          },
+          "intermediate": {
+            "description": "terraform for gcp",
+            "indicators": [
+              "repeatable deployments"
+            ]
+          },
+          "advanced": {
+            "description": "governance",
+            "indicators": [
+              "org policies"
+            ]
+          }
+        }
+      },
+      {
+        "id": "observability_gcp",
+        "name": "Observability & Cost Management",
+        "estimated_hours": 30,
+        "priority": 3,
+        "prerequisites": [
+          "deployment_gcp"
+        ],
+        "next_steps": [],
+        "keywords": [
+          "stackdriver",
+          "cost management",
+          "budgets"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            21,
+            48
+          ],
+          "intermediate": [
+            25,
+            52
+          ],
+          "advanced": [
+            24
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "monitoring basics",
+            "indicators": [
+              "setup stackdriver"
+            ]
+          },
+          "intermediate": {
+            "description": "dashboards & budgets",
+            "indicators": [
+              "create budgets"
+            ]
+          },
+          "advanced": {
+            "description": "enterprise cost governance",
+            "indicators": [
+              "cost allocation"
+            ]
+          }
+        }
+      },
+      {
+        "id": "gcp_cert_prep",
+        "name": "GCP Certification Prep",
+        "estimated_hours": 40,
+        "priority": 4,
+        "prerequisites": [
+          "gcp_foundations_gcp"
+        ],
+        "next_steps": [],
+        "keywords": [
+          "certification",
+          "exam",
+          "architecture"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            21,
+            48
+          ],
+          "intermediate": [
+            25,
+            52
+          ],
+          "advanced": [
+            24
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "cert basics",
+            "indicators": [
+              "exam overview"
+            ]
+          },
+          "intermediate": {
+            "description": "practice tests",
+            "indicators": [
+              "mock exams"
+            ]
+          },
+          "advanced": {
+            "description": "scenario-based design",
+            "indicators": [
+              "case studies"
+            ]
+          }
+        }
+      }
+    ],
+    "skills_status": {
+      "gcp_foundations_gcp": {
+        "name": "GCP Foundations",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          21,
+          24,
+          25,
+          48,
+          51,
+          52
+        ]
+      },
+      "compute_storage_gcp": {
+        "name": "Compute & Storage",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          21,
+          24,
+          25,
+          48,
+          52
+        ]
+      },
+      "networking_gcp": {
+        "name": "Networking & Security (GCP)",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          21,
+          24,
+          25,
+          48,
+          52
+        ]
+      },
+      "deployment_gcp": {
+        "name": "Deployment & Automation",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          21,
+          24,
+          25,
+          50,
+          51,
+          52
+        ]
+      },
+      "observability_gcp": {
+        "name": "Observability & Cost Management",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          21,
+          24,
+          25,
+          48,
+          52
+        ]
+      },
+      "gcp_cert_prep": {
+        "name": "GCP Certification Prep",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          21,
+          24,
+          25,
+          48,
+          52
+        ]
+      }
+    }
   }
 }

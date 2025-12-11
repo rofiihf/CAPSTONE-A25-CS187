@@ -1,7 +1,7 @@
 
 
 
-module.exports = {
+{
   android: "Android Development",
   ios: "iOS Development",
   cloud_computing: "Cloud Computing",

@@ -181,6 +181,41 @@ function updateProfile(userId, patch) {
 
     const existing = getProfile(userId) || ensureProfileExists(userId);
 
+    // ======================================================
+    // IF JOB ROLE CHANGED → RESET ROADMAP (REPLACE, NOT MERGE)
+    // ======================================================
+    if (
+      patch.roadmap_progress &&
+      typeof patch.roadmap_progress === "object" &&
+      patch.roadmap_progress.job_role &&
+      existing.roadmap_progress &&
+      existing.roadmap_progress.job_role !== patch.roadmap_progress.job_role
+    ) {
+      console.log("[RESET] Roadmap progress replaced due to job role switch");
+
+      const updated = {
+        ...existing,
+        platform_data: deepMerge(
+          JSON.parse(JSON.stringify(existing.platform_data)),
+          patch.platform_data || {}
+        ),
+        learning_profile: deepMerge(
+          JSON.parse(JSON.stringify(existing.learning_profile)),
+          patch.learning_profile || {}
+        ),
+        roadmap_progress: {
+          ...patch.roadmap_progress  // REPLACE TOTAL
+        },
+        updated_at: new Date().toISOString(),
+      };
+
+      saveUserProfile(userId, updated);
+      return updated;
+    }
+
+    // ======================================================
+    // DEFAULT PATH (MERGE NORMAL)
+    // ======================================================
     const updated = {
       ...existing,
       platform_data: deepMerge(

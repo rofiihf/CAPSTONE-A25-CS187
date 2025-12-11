@@ -1,59 +1,140 @@
-# prototype_detect_job_role.py
-
 import re
 
+# ------------------------------------------------------------
+# DEFINISI KEYWORD (SIMPLE, TAPI AKURAT)
+# ------------------------------------------------------------
 JOB_ROLE_KEYWORDS = {
-    "AI Engineer": [
-        "ai", "machine learning", "deep learning", "neural", "model", "llm"
-    ],
-    "Android Developer": [
-        "android", "kotlin", "mobile android", "apk"
-    ],
-    "Back-End Developer JavaScript": [
-        "backend javascript", "back-end javascript", "nodejs", "node.js", "express"
-    ],
-    "Back-End Developer Python": [
-        "backend python", "back-end python", "django", "flask", "fastapi"
-    ],
-    "Data Scientist": [
-        "data science", "data scientist", "eda", "statistic", "analytics"
-    ],
-    "DevOps Engineer": [
-        "devops", "ci/cd", "docker", "kubernetes", "k8s", "pipeline"
-    ],
-    "Front-End Web Developer": [
-        "frontend", "front end", "web dev", "html", "css", "javascript"
+    "Google Cloud Professional": [
+        "cloud",
+        "aws",
+        "gcp",
+        "google cloud",
+        "cloud engineer",
+        "cloud architect",
+        "gke"
     ],
     "Gen AI Engineer": [
-        "gen ai", "generative ai", "llm", "prompt", "rag", "fine-tune"
+        "gen ai",
+        "generative ai",
+        "prompt",
+        "rag",
+        "fine tune"
     ],
-    "Google Cloud Professional": [
-        "gcp", "google cloud", "cloud engineer", "gke", "cloud architect"
+    "AI Engineer": [
+        "machine learning",
+        "deep learning",
+        "neural network",
+        "llm",
+        "ml engineer"
+    ],
+    "Front-End Web Developer": [
+        "frontend",
+        "front end",
+        "html",
+        "css",
+        "javascript",
+        "react",
+        "nextjs"
+    ],
+    "Back-End Developer Python": [
+        "django",
+        "flask",
+        "fastapi",
+        "backend python"
+    ],
+    "Back-End Developer JavaScript": [
+        "nodejs",
+        "express",
+        "backend javascript"
+    ],
+    "Android Developer": [
+        "android",
+        "kotlin",
+        "apk"
     ],
     "iOS Developer": [
-        "ios", "swift", "xcode", "apple developer"
+        "ios",
+        "swift",
+        "xcode"
     ],
-    "MLOps Engineer": [
-        "mlops", "model serving", "pipeline ml", "mlflow", "kubeflow"
+    "Data Scientist": [
+        "data science",
+        "statistik",
+        "eda",
+        "analytics"
     ],
-    "Multi-Platform App Developer": [
-        "flutter", "react native", "multi platform", "cross platform"
-    ],
-    "React Developer": [
-        "react", "reactjs", "react.js", "jsx", "nextjs", "next.js"
+    "DevOps Engineer": [
+        "devops",
+        "docker",
+        "kubernetes",
+        "k8s",
+        "ci cd"
     ]
 }
 
 
-def detect_job_role(user_text: str) -> str | None:
-    user_text = user_text.lower()
+# ------------------------------------------------------------
+# WORD BOUNDARY MATCH (NO MORE ai -> ml autodetect bullshit)
+# ------------------------------------------------------------
+def contains_word(text: str, word: str):
+    """Cocokkan kata secara utuh, bukan substring."""
+    return re.search(rf"\b{re.escape(word)}\b", text)
+
+
+# ------------------------------------------------------------
+# DETECTOR UTAMA
+# ------------------------------------------------------------
+def detect_job_role(user_text: str, profile=None):
+    text = user_text.lower()
     scores = {}
 
+    # --------------------------------------------------------
+    # 1. Hitung skor berdasarkan kemunculan kata kunci
+    # --------------------------------------------------------
     for role, keywords in JOB_ROLE_KEYWORDS.items():
-        scores[role] = 0
+        score = 0
         for kw in keywords:
-            if kw in user_text:
-                scores[role] += 1
+            if contains_word(text, kw.lower()):
+                score += 1
+        scores[role] = score
 
-    best = max(scores, key=scores.get)
-    return best if scores[best] > 0 else None
+    # --------------------------------------------------------
+    # 2. Jika ada match → ambil skor tertinggi
+    # --------------------------------------------------------
+    highest = max(scores.values())
+    if highest > 0:
+        # Ambil semua role dengan skor tertinggi
+        candidates = [r for r, s in scores.items() if s == highest]
+
+        # Jika cuma satu → selesai
+        if len(candidates) == 1:
+            return candidates[0]
+
+        # Kalau tie → pilih yang paling relevan dengan teks user
+        # (Cloud selalu menang jika mengandung cloud/aws)
+        cloud_priority = ["Google Cloud Professional", "DevOps Engineer"]
+        for c in cloud_priority:
+            if c in candidates:
+                return c
+
+        # Kalau tetap tie → ambil kandidat pertama
+        return candidates[0]
+
+    # --------------------------------------------------------
+    # 3. Fallback: cek current_focus course
+    # --------------------------------------------------------
+    if profile:
+        cf = profile.get("learning_profile", {}).get("current_focus", {})
+        course = cf.get("course", "")
+        course = course.lower()
+
+        for role, keywords in JOB_ROLE_KEYWORDS.items():
+            # HINDARI AI Engineer false match
+            if "gen ai" in course and role == "AI Engineer":
+                continue
+
+            for kw in keywords:
+                if contains_word(course, kw.lower()):
+                    return role
+
+    return None

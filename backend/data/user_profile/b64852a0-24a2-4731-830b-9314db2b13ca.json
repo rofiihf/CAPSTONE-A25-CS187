@@ -26,15 +26,22 @@
     },
     "learning_style": null,
     "progress_score": {},
-    "history": []
+    "history": [
+      {
+        "query": "hii",
+        "response": "Halo Dina! Senang bertemu denganmu!",
+        "timestamp": "2023-12-11T08:00:00.000Z",
+        "intent": "greeting"
+      }
+    ]
   },
   "created_at": "2025-12-11T13:48:16.342Z",
-  "updated_at": "2025-12-11T15:46:38.495Z",
+  "updated_at": "2025-12-11T17:33:04.954Z",
   "progress_history": [],
   "roadmap_progress": {
-    "job_role": "Front-End Web Developer",
+    "job_role": "AI Engineer",
     "created_at": 1765460896343,
-    "last_updated": 1765439196491,
+    "last_updated": 1765445459443,
     "skills_status": {
       "html_css_fundamentals_fe": {
         "name": "HTML & CSS Fundamentals",
@@ -59,304 +66,394 @@
       "web_application_fe": {
         "name": "Web Application Engineering",
         "status": "not_started"
+      },
+      "python_fundamentals_ai": {
+        "name": "Python Fundamentals",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          2,
+          5,
+          6
+        ]
+      },
+      "math_for_ml_ai": {
+        "name": "Mathematics for ML",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          1,
+          3,
+          4
+        ]
+      },
+      "ml_basics_ai": {
+        "name": "Machine Learning Basics",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          2,
+          3,
+          4
+        ]
+      },
+      "deep_learning_ai": {
+        "name": "Deep Learning Foundations",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          2,
+          5
+        ]
+      },
+      "nlp_cv_ai": {
+        "name": "NLP & Computer Vision Fundamentals",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          1,
+          3,
+          5
+        ]
+      },
+      "mlops_ai": {
+        "name": "MLOps Basics",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          4,
+          5,
+          6
+        ]
       }
     },
     "subskills": [
       {
-        "id": "html_css_fundamentals_fe",
-        "name": "HTML & CSS Fundamentals",
-        "estimated_hours": 45,
+        "id": "python_fundamentals_ai",
+        "name": "Python Fundamentals",
+        "estimated_hours": 60,
         "priority": 1,
         "prerequisites": [],
         "next_steps": [
-          "javascript_basics_fe"
+          "math_for_ml_ai"
         ],
         "keywords": [
-          "html",
-          "css",
-          "flexbox",
-          "grid"
+          "python",
+          "syntax",
+          "data types",
+          "functions",
+          "oop"
         ],
         "mapped_courses": {
           "beginner": [
-            39,
-            38
+            6
           ],
           "intermediate": [
-            40
+            2
           ],
           "advanced": [
-            42
+            5
           ]
         },
         "levels": {
           "beginner": {
-            "description": "struktur HTML & CSS dasar",
+            "description": "Dasar Python untuk AI",
             "indicators": [
-              "tags dasar",
-              "box model"
+              "script sederhana",
+              "tipe data",
+              "function"
             ]
           },
           "intermediate": {
-            "description": "responsive & layout",
+            "description": "Libraries dasar ML",
             "indicators": [
-              "flexbox",
-              "grid"
+              "numpy/pandas dasar",
+              "preprocessing"
             ]
           },
           "advanced": {
-            "description": "performance & accessibility",
+            "description": "Optimasi & advanced python",
             "indicators": [
-              "critical css"
+              "profiling",
+              "concurrency"
             ]
           }
         }
       },
       {
-        "id": "javascript_basics_fe",
-        "name": "JavaScript Basics",
-        "estimated_hours": 40,
+        "id": "math_for_ml_ai",
+        "name": "Mathematics for ML",
+        "estimated_hours": 60,
+        "priority": 1,
+        "prerequisites": [],
+        "next_steps": [
+          "ml_basics_ai"
+        ],
+        "keywords": [
+          "linear algebra",
+          "calculus",
+          "probability",
+          "statistics"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            1
+          ],
+          "intermediate": [
+            3
+          ],
+          "advanced": [
+            4
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "Statistik dasar",
+            "indicators": [
+              "mean/variance"
+            ]
+          },
+          "intermediate": {
+            "description": "Kalkulus dasar",
+            "indicators": [
+              "turunan/gradien"
+            ]
+          },
+          "advanced": {
+            "description": "Optimisasi lanjutan",
+            "indicators": [
+              "SVD",
+              "konveks"
+            ]
+          }
+        }
+      },
+      {
+        "id": "ml_basics_ai",
+        "name": "Machine Learning Basics",
+        "estimated_hours": 80,
         "priority": 2,
         "prerequisites": [
-          "html_css_fundamentals_fe"
+          "python_fundamentals_ai",
+          "math_for_ml_ai"
         ],
         "next_steps": [
-          "framework_foundations_fe",
-          "web_application_fe"
+          "deep_learning_ai"
         ],
         "keywords": [
-          "javascript",
-          "dom",
-          "es6"
+          "supervised",
+          "unsupervised",
+          "scikit-learn"
         ],
         "mapped_courses": {
           "beginner": [
-            38,
-            39
+            3
           ],
           "intermediate": [
-            40
+            2
           ],
           "advanced": [
-            42
+            4
           ]
         },
         "levels": {
           "beginner": {
-            "description": "js dasar",
+            "description": "Algoritma dasar",
             "indicators": [
-              "variables",
-              "loops"
+              "linear regression",
+              "decision tree"
             ]
           },
           "intermediate": {
-            "description": "es6 & dom",
+            "description": "Feature engineering",
             "indicators": [
-              "fetch",
-              "promise"
+              "cross-validation",
+              "tuning"
             ]
           },
           "advanced": {
-            "description": "advanced js",
+            "description": "Ensemble & production",
             "indicators": [
-              "closure",
-              "memory"
+              "ensemble methods"
             ]
           }
         }
       },
       {
-        "id": "framework_foundations_fe",
-        "name": "Front-End Framework Foundations",
-        "estimated_hours": 80,
+        "id": "deep_learning_ai",
+        "name": "Deep Learning Foundations",
+        "estimated_hours": 100,
         "priority": 3,
         "prerequisites": [
-          "javascript_basics_fe"
+          "ml_basics_ai"
         ],
         "next_steps": [
-          "web_application_fe"
+          "nlp_cv_ai"
         ],
         "keywords": [
-          "react",
-          "vue",
-          "components",
-          "hooks"
+          "neural networks",
+          "cnn",
+          "rnn",
+          "pytorch",
+          "tensorflow"
         ],
         "mapped_courses": {
           "beginner": [
-            41,
-            40
+            2
           ],
           "intermediate": [
-            42
+            5
           ],
           "advanced": [
-            42
+            5
           ]
         },
         "levels": {
           "beginner": {
-            "description": "komponen & state",
+            "description": "NN dasar",
             "indicators": [
-              "props",
-              "state"
+              "feedforward",
+              "loss"
             ]
           },
           "intermediate": {
-            "description": "lifecycle & hooks",
+            "description": "CNN/RNN",
             "indicators": [
-              "useEffect"
+              "conv nets",
+              "sequence models"
             ]
           },
           "advanced": {
-            "description": "architecture & ssr",
+            "description": "Optimisasi & transfer learning",
             "indicators": [
-              "ssr",
-              "code splitting"
+              "fine-tuning"
             ]
           }
         }
       },
       {
-        "id": "version_control_fe",
-        "name": "Git Basics Version Control",
-        "estimated_hours": 30,
-        "priority": 1,
-        "prerequisites": [],
-        "next_steps": [
-          "javascript_basics_fe"
-        ],
-        "keywords": [
-          "git",
-          "github",
-          "branch"
-        ],
-        "mapped_courses": {
-          "beginner": [
-            39
-          ],
-          "intermediate": [
-            41
-          ],
-          "advanced": [
-            42
-          ]
-        },
-        "levels": {
-          "beginner": {
-            "description": "git basic",
-            "indicators": [
-              "commit",
-              "push"
-            ]
-          },
-          "intermediate": {
-            "description": "branching",
-            "indicators": [
-              "merge conflict"
-            ]
-          },
-          "advanced": {
-            "description": "workflow",
-            "indicators": [
-              "gitflow"
-            ]
-          }
-        }
-      },
-      {
-        "id": "ui_ux_principles_fe",
-        "name": "Basic of UI/UX Web",
-        "estimated_hours": 40,
-        "priority": 2,
+        "id": "nlp_cv_ai",
+        "name": "NLP & Computer Vision Fundamentals",
+        "estimated_hours": 60,
+        "priority": 3,
         "prerequisites": [
-          "html_css_fundamentals_fe"
+          "deep_learning_ai"
         ],
         "next_steps": [
-          "framework_foundations_fe"
+          "mlops_ai"
         ],
         "keywords": [
-          "ui",
-          "ux",
-          "accessibility"
+          "nlp",
+          "transformer",
+          "object detection"
         ],
         "mapped_courses": {
           "beginner": [
-            40
+            1
           ],
           "intermediate": [
-            41
+            3
           ],
           "advanced": [
-            42
+            5
           ]
         },
         "levels": {
           "beginner": {
-            "description": "prinsip UI dasar",
+            "description": "Preprocessing dasar",
             "indicators": [
-              "layout"
+              "tokenization",
+              "image preprocessing"
             ]
           },
           "intermediate": {
-            "description": "usability testing",
+            "description": "Model pretrained",
             "indicators": [
-              "wireframe"
+              "fine-tune small models"
             ]
           },
           "advanced": {
-            "description": "a/b testing",
+            "description": "Multi-modal & research",
             "indicators": [
-              "analytics"
+              "multi-modal pipelines"
             ]
           }
         }
       },
       {
-        "id": "web_application_fe",
-        "name": "Web Application Engineering",
-        "estimated_hours": 46,
+        "id": "mlops_ai",
+        "name": "MLOps Basics",
+        "estimated_hours": 50,
         "priority": 4,
         "prerequisites": [
-          "javascript_basics_fe"
+          "deep_learning_ai"
         ],
         "next_steps": [],
         "keywords": [
-          "performance",
-          "webpack",
-          "testing"
+          "deployment",
+          "docker",
+          "monitoring",
+          "ci/cd"
         ],
         "mapped_courses": {
           "beginner": [
-            38
+            6
           ],
           "intermediate": [
-            40,
-            42
+            4
           ],
           "advanced": [
-            42
+            5
           ]
         },
         "levels": {
           "beginner": {
-            "description": "api & debugging",
+            "description": "Serve model sederhana",
             "indicators": [
-              "fetch api"
+              "wrap model API"
             ]
           },
           "intermediate": {
-            "description": "build tools",
+            "description": "CI/CD model",
             "indicators": [
-              "webpack",
-              "vite"
+              "pipeline retrain"
             ]
           },
           "advanced": {
-            "description": "security & perf",
+            "description": "Production ML lifecycle",
             "indicators": [
-              "csp",
-              "bundle optimization"
+              "model registry",
+              "drift detection"
             ]
           }
         }

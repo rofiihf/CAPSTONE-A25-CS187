@@ -11,8 +11,10 @@ from .embeddings_utils import load_kb, load_faiss, get_model
 from .intent_model import IntentPipeline
 from .logger import log_query
 # from .roadmap_kb_engine import kb_based_roadmap
+from .course_catalog import COURSE_CATALOG
+from .skill_progress_engine import generate_skill_progress_for_roadmap
 from .config import GROQ_API_KEY, SBERT_MODEL_PATH, DEFAULT_TOPK
-from .detect_jobrole import detect_job_role
+from .detect_jobrole import detect_job_role, JOB_ROLE_KEYWORDS
 from .roadmap_json_engine import generate_roadmap_response
 
 from groq import Groq
@@ -502,7 +504,38 @@ async def handle_query(
         if not text:  # Now safe to check
             return {"response": "Pesan tidak boleh kosong."}
 
+        print("DEBUG detect_job_role →", detect_job_role(text))
+
         job_role = detect_job_role(text)
+        if not job_role and "roadmap" in text.lower():
+            print("[FALLBACK] Trying to infer job_role from current_focus...")
+
+            course = (
+                profile.get("platform_data", {})
+                .get("active_courses", [])
+            )
+
+            if isinstance(course, list) and course:
+                course_name = course[0].lower()
+
+                for role, keywords in JOB_ROLE_KEYWORDS.items():
+                    # keywords sudah berupa list string (tidak ada dict)
+                    for kw in keywords:
+                        if kw.lower() in course_name:
+                            job_role = role
+                            print(f"[FALLBACK SUCCESS] Matched from course → {job_role}")
+                            break
+                    if job_role:
+                        break
+            # Jika tetap tidak ketemu → minta user pilih job_role
+            if not job_role:
+                return {
+                    "response": "Saya tidak dapat menentukan role Anda berdasarkan pesan dan course aktif. Anda ingin roadmap untuk role apa?",
+                    "intent": {"mode": "ask_job_role"},
+                    "sources": [],
+                    "meta": {"used_kb": False},
+                    "profile_update": {}
+                }
         if job_role:
             # Load roadmap dari JSON
             roadmap = generate_roadmap_response(job_role)
@@ -518,23 +551,48 @@ async def handle_query(
                 }
 
             # Hitung skill_status user
-            skill_status = generate_user_skill_status(roadmap, profile)
+            skill_status = generate_skill_progress_for_roadmap(
+                roadmap=roadmap,
+                profile=profile,
+                course_catalog=COURSE_CATALOG  # list course_id / course_name / hours_to_study
+            )
 
-            # *** APPLY ADAPTIVE FILTER ***
+            # -------------------------------------------------------------
+            # 2) Adaptive filtering berdasarkan level hasil skill_status
+            # -------------------------------------------------------------
             filtered_subskills = filter_roadmap_for_user(roadmap, skill_status)
 
             # Tambahkan hasil adaptif ke roadmap
             roadmap["subskills"] = filtered_subskills
 
-            # Buat profile_update baru
-            profile_update = {
-                "roadmap_progress": {
-                    "job_role": job_role,
-                    "last_updated": int(datetime.utcnow().timestamp() * 1000),
-                    "subskills": filtered_subskills,
-                    "skills_status": skill_status
+            
+            prev_role = (
+                profile.get("roadmap_progress", {}).get("job_role")
+                if isinstance(profile, dict) else None
+            )
+
+            # Jika user berpindah job role → roadmap lama harus DIHAPUS total
+            if prev_role and prev_role != job_role:
+                print(f"[ROADMAP RESET] User switching from {prev_role} → {job_role}")
+                profile_update = {
+                    "roadmap_progress": {
+                        "job_role": job_role,
+                        "created_at": int(datetime.utcnow().timestamp() * 1000),
+                        "last_updated": int(datetime.utcnow().timestamp() * 1000),
+                        "subskills": filtered_subskills,
+                        "skills_status": skill_status
+                    }
                 }
-            }
+            else:
+                profile_update = {
+                    "roadmap_progress": {
+                        "job_role": job_role,
+                        "last_updated": int(datetime.utcnow().timestamp() * 1000),
+                        "subskills": filtered_subskills,
+                        "skills_status": skill_status
+                    }
+                }
+
 
             # Kembalikan response tanpa LLM
             time.sleep(2)
@@ -572,17 +630,17 @@ async def handle_query(
         profile_text = format_profile_for_llm(profile)
 
         system = build_system_prompt(profile_text, conversation_text="")
-        print("=== PROFILE TEXT SENT TO LLM ===")
-        print(profile_text)
-        print("================================")
+        # print("=== PROFILE TEXT SENT TO LLM ===")
+        # print(profile_text)
+        # print("================================")
 
-        print("=== RAW INPUT FROM BACKEND WEB ===")
-        print(json.dumps({
-            "user_id": user_id,
-            "text": text,
-            "profile": profile
-        }, indent=2))
-        print("=================================")
+        # print("=== RAW INPUT FROM BACKEND WEB ===")
+        # print(json.dumps({
+        #     "user_id": user_id,
+        #     "text": text,
+        #     "profile": profile
+        # }, indent=2))
+        # print("=================================")
         # Intent detection (read only)
         try:
             intent = _intent.predict(text)
@@ -599,6 +657,7 @@ async def handle_query(
             personal = True
         kb_context = ""
         sources = []
+        print("DEBUG detect_job_role →", detect_job_role(text))
 
         # Only use KB for general queries
         if not personal:
