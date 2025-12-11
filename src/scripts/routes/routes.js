@@ -62,7 +62,6 @@ export async function router() {
 
     presenter.setView(view);
     view.render();
-    presenter.renderInitialMessages();
     return;
   }
 }

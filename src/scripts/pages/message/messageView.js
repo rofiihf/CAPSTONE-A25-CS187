@@ -22,9 +22,9 @@ export default class MessageView {
 
 
   
-  constructor({ presenter }) {
-    // console.log("MessageView constructor arg =", arg);
-    // const { presenter } = arg;
+  constructor(arg) {
+    console.log("🔥 MessageView constructor arg =", arg);
+    const { presenter } = arg;
     this.#presenter = presenter;
   }
   render() {
@@ -88,10 +88,6 @@ export default class MessageView {
     this.#bindEvents();
 
     this.#presenter.renderInitialMessages();
-  }
-
-  clearInputChat() {
-    this.#input.value = "";
   }
 
   clearChat() {
@@ -258,6 +254,23 @@ export default class MessageView {
         this.#applyTheme(!isCurrentlyDark);
       });
     }
+        // ===== listener untuk roadmap course click (delegasi ke presenter) =====
+    // listen pada chat container supaya event yang di-dispatch dari bubble (wrapper) bisa ditangkap
+    if (this.#chatContainer) {
+      this.#chatContainer.addEventListener("roadmap:courseClick", (ev) => {
+        // ev.detail = { courseRef, title, sourceMessageId }
+        try {
+          const detail = ev.detail || {};
+          // delegasikan ke presenter
+          if (this.#presenter && typeof this.#presenter.handleCourseClick === "function") {
+            this.#presenter.handleCourseClick(detail);
+          } else {
+            console.warn("Presenter tidak punya method handleCourseClick");
+          }
+        } catch (e) {
+          console.error("roadmap:courseClick handler error", e);
+        }
+      });
+    }
   }
 }
-

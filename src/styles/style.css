@@ -503,6 +503,42 @@ body {
   color: #374151;
 }
 
+/* --- roadmap collapsible + level badges --- */
+.roadmap-bubble .roadmap-desc { font-size: .92rem; opacity: .9; margin-bottom:8px; }
+.subskills-container { display:block; margin-top:8px; }
+.subskill-card { background: #fff; border-radius:10px; padding:10px; box-shadow: 0 1px 0 rgba(0,0,0,0.03); margin-bottom:8px; border:1px solid rgba(0,0,0,0.03); }
+.subskill-header { display:flex; justify-content:space-between; align-items:center; gap:12px; cursor:pointer; padding:6px; }
+.subskill-left .subskill-title { font-weight:600; margin-bottom:4px; }
+.subskill-left .subskill-meta { font-size:0.85rem; opacity:.85; color:#444; }
+.subskill-content { padding:8px 6px 0 6px; }
+
+/* level sections */
+.subskill-level-section { margin-bottom:8px; }
+.level-head { display:flex; align-items:center; gap:8px; margin-bottom:6px; }
+.level-badge { display:inline-block; padding:4px 8px; border-radius:999px; font-weight:700; font-size:0.82rem; color:#fff; }
+.level-beginner { background: #f39c12; }      /* orange */
+.level-intermediate { background: #27ae60; }  /* green */
+.level-advanced { background: #2980b9; }      /* blue */
+
+/* course list inside subskill */
+.level-course-list { display:block; margin-top:4px; }
+.level-course-list .course-row { background:#f6f7f8; border-radius:8px; padding:8px; margin-bottom:6px; font-size:0.95rem; }
+
+/* small UI for LP course items */
+.lp-course-item { display:flex; justify-content:space-between; align-items:center; padding:8px; border-radius:8px; background:#fafafa; margin-bottom:6px; }
+.lp-course-left .roadmap-skill-name { font-weight:600; }
+.lp-course-meta { font-size:0.82rem; opacity:.85; margin-top:4px; color:#444; }
+.lp-course-right { display:flex; gap:8px; align-items:center; }
+
+/* tiny quick-action button variant */
+.quick-actions__button.small { padding:6px 8px; font-size:0.8rem; }
+
+/* badge for LP style */
+.roadmap-skill-level { padding:6px 8px; border-radius:999px; font-weight:600; font-size:0.82rem; color:#fff; }
+.roadmap-skill-level.level-beginner { background:#f9c5c5; color:#8b1f1f; } /* mild red */
+.roadmap-skill-level.level-intermediate { background:#fff3cd; color:#8a5b00; } /* mild yellow */
+.roadmap-skill-level.level-advanced { background:#d1f7e6; color:#0a5a3a; } /* mild green */
+
 
 /* Bot bubble */
 .message.bot {
