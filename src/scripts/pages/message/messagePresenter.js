@@ -1,8 +1,10 @@
 // src/scripts/presenter/messagePresenter.js
-
 import { sendMessage } from "../../data/api.js";
 import { LEVEL_TOPICS, LEVEL_THRESHOLD } from "../../data/dummy.js";
-
+import {
+  makeRoadmapMessageForLearningPath,
+  FRONTEND_SUBSKILLS,
+} from "../../data/dummy-roadmap.js";
 
 export default class MessagePresenter {
   #view;
@@ -11,7 +13,6 @@ export default class MessagePresenter {
   #authService;
   #quickActions;
   #quizState;
-
 
   constructor({ model, authModel = null, authService = null } = {}) {
     this.#model = model;
@@ -41,8 +42,8 @@ export default class MessagePresenter {
         label: "Sudah di level mana aku",
       },
     ];
-      this.#quizState = {
-      step: "idle",       // idle | choose_topic | choose_count | questions
+    this.#quizState = {
+      step: "idle", // idle | choose_topic | choose_count | questions
       topic: null,
       totalQuestions: 0,
       currentIndex: 0,
@@ -51,8 +52,6 @@ export default class MessagePresenter {
     };
   }
 
-
-
   setView(view) {
     this.#view = view;
   }
@@ -60,17 +59,14 @@ export default class MessagePresenter {
   renderInitialMessages() {
     try {
       this.#view.clearChat();
-
       const messages = this.#model.getAllMessages();
       messages.forEach((msg) => this.#view.renderMessage(msg));
-
-      // 🔥 TAMPILKAN QUICK ACTION SETELAH PESAN AWAL
+      // Tampilkan quick actions setelah pesan awal
       this.#view.renderQuickActions(this.#quickActions);
     } catch (error) {
       console.error("Error rendering initial messages:", error);
     }
   }
-
 
   // ====== CLEAR CHAT ======
   async handleClearChat() {
@@ -79,20 +75,106 @@ export default class MessagePresenter {
     this.#view.resetInput();
     this.renderInitialMessages();
   }
+
   handleQuickAction(actionId) {
     const action = this.#quickActions.find((a) => a.id === actionId);
     if (!action) return;
 
-    // 🔥 Hapus quick actions setelah dipilih
+    // Hapus quick actions setelah dipilih
     this.#view.clearQuickActions();
 
-    // === QUICK ACTION KHUSUS QUIZ LEVEL ===
+    // QUICK ACTION KHUSUS QUIZ LEVEL
     if (actionId === "level-check") {
       this.startLevelCheckFlow();
       return;
     }
-    // Kirim pesan template ke backend
+
+    // ===== ask-courses: tampilkan LP frontend (learning path)
+    if (actionId === "ask-courses") {
+      const roadmapMsg = makeRoadmapMessageForLearningPath("lp-ai-engineer"); // LP biasa
+      if (roadmapMsg) {
+        try {
+          const saved = this.#model.addMessage(
+            roadmapMsg.text || (roadmapMsg.roadmap && roadmapMsg.roadmap.title) || "Roadmap",
+            "bot",
+            {
+              roadmap: roadmapMsg.roadmap,
+              type: "roadmap",
+            }
+          );
+          if (saved && typeof saved === "object") {
+            this.#view.renderMessage(saved);
+            return;
+          }
+        } catch (e) {
+          console.warn("Model addMessage (lp-frontend) failed — rendering directly", e);
+        }
+        this.#view.renderMessage(roadmapMsg);
+        return;
+      }
+      // fallback ke backend
+      this.handleUserSubmit(action.message);
+      return;
+    }
+
+    // ===== ask-roadmap: tampilkan struktur subskills (enhanced) — FRONTEND_SUBSKILLS
+    if (actionId === "ask-roadmap") {
+      const roadmapMsg = {
+        id: `roadmap-frontend-enhanced-${Date.now()}`,
+        sender: "bot",
+        type: "roadmap",
+        text:
+          (FRONTEND_SUBSKILLS && FRONTEND_SUBSKILLS.description) ||
+          `Roadmap: ${FRONTEND_SUBSKILLS?.job_role || "Front-End"}`,
+        timestamp: new Date().toISOString(),
+        roadmap: FRONTEND_SUBSKILLS,
+      };
+
+      try {
+        const saved = this.#model.addMessage(
+          roadmapMsg.text || (roadmapMsg.roadmap && roadmapMsg.roadmap.job_role) || "Roadmap",
+          "bot",
+          {
+            roadmap: roadmapMsg.roadmap,
+            type: "roadmap",
+          }
+        );
+        if (saved && typeof saved === "object") {
+          this.#view.renderMessage(saved);
+          return;
+        }
+      } catch (e) {
+        console.warn("Model addMessage (frontend subskills) failed — rendering directly", e);
+      }
+
+      this.#view.renderMessage(roadmapMsg);
+      return;
+    }
+
+    // default: kirim ke backend (quick action biasa)
     this.handleUserSubmit(action.message);
+  }
+
+  /* NOTE:
+   * Untuk "Lihat detail" kita sengaja tidak memicu presenter agar tidak men-generate chat baru.
+   * bubbleRoadmap sudah men-toggle detail di dalam bubble. Namun kita tetap simpan fungsi
+   * handleCourseClick untuk fallback atau jika nanti mau memanggil backend.
+   */
+  async handleCourseClick(detail = {}) {
+    try {
+      const { courseRef, title } = detail || {};
+      if (!courseRef) {
+        console.warn("handleCourseClick: missing courseRef", detail);
+        return;
+      }
+
+      // fallback: jika ingin memuat detail via backend atau dummy COURSES,
+      // biarkan implementasi saat dibutuhkan. Saat ini bubbleRoadmap menampilkan detail inline.
+      // Jika nanti ingin memunculkan detail sebagai message, bisa gunakan makeRoadmapMessageForCourse.
+      return;
+    } catch (error) {
+      console.error("handleCourseClick error:", error);
+    }
   }
 
   // ====== QUIZ "SUDAH DI LEVEL MANA AKU" (FRONTEND ONLY) ======
@@ -194,11 +276,7 @@ export default class MessagePresenter {
   }
 
   handleQuizAnswer(question, opt) {
-    // tampilkan jawaban user sebagai bubble biasa
-    const userMsg = this.#model.addMessage(
-      `${opt.code}. ${opt.label}`,
-      "user"
-    );
+    const userMsg = this.#model.addMessage(`${opt.code}. ${opt.label}`, "user");
     this.#view.renderMessage(userMsg);
 
     this.#quizState.totalScore += opt.score;
@@ -233,13 +311,9 @@ export default class MessagePresenter {
     this.#view.setInputDisabled(false);
   }
 
-
   // ================== HANDLE INPUT FORM ==================
-
   async handleUserSubmit(textOverride = null) {
     try {
-      // kalau dipanggil dari quick action → pakai textOverride
-      // kalau dari form → pakai this.#view.getUserInput()
       const rawText = textOverride ?? this.#view.getUserInput();
       const text = rawText.trim();
 
@@ -247,25 +321,19 @@ export default class MessagePresenter {
         return;
       }
 
-      // disable input saat proses
       this.#view.setInputDisabled(true);
 
-      // simpan & tampilkan pesan user
       const userMessage = this.#model.addMessage(text, "user");
       this.#view.renderMessage(userMessage);
 
-      // reset input + tampilkan typing indicator bot
       this.#view.resetInput();
       this.#view.showTypingIndicator();
 
-      // === PANGGIL BACKEND ===
       const response = await sendMessage(text);
 
-      // selesai loading
       this.#view.hideTypingIndicator();
       this.#view.setInputDisabled(false);
 
-      // kalau backend error / tidak ok
       if (!response.ok) {
         const errorBubble = this.#model.addMessage(
           "Maaf, server sedang diluar jangkauan.",
@@ -275,28 +343,19 @@ export default class MessagePresenter {
         return;
       }
 
-      // === PETAKAN META DARI BACKEND/ML KE EXTRA OPTIONS ===
       const extraOptions = {};
-
-      if (response.meta) {
-        extraOptions.meta = response.meta;
-      }
-      if (response.sources) {
-        extraOptions.sources = response.sources;
-      }
+      if (response.meta) extraOptions.meta = response.meta;
+      if (response.sources) extraOptions.sources = response.sources;
 
       const metaType = response.meta?.type;
       if (metaType) {
         extraOptions.type = metaType;
-
         if (metaType === "course-recommendation") {
           extraOptions.courses = response.meta.courses || [];
         }
-
         if (metaType === "roadmap") {
           extraOptions.roadmap = response.meta.roadmap || null;
         }
-
         if (metaType === "progress-summary") {
           extraOptions.progress = response.meta.progress || null;
         }
