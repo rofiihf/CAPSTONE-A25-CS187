@@ -28,20 +28,13 @@
     "progress_score": {},
     "history": []
   },
-  "created_at": "2025-12-07T03:51:53.892Z",
-  "updated_at": 1765079513892,
-  "progress_history": [
-    {
-      "timestamp": 1765273534223,
-      "course_progress": {
-        "Tes Seleksi Asah 2025 – FEBE AI dan REBE AI": 0
-      }
-    }
-  ],
+  "created_at": "2025-12-11T13:48:16.538Z",
+  "updated_at": 1765460896538,
+  "progress_history": [],
   "roadmap_progress": {
     "job_role": null,
-    "created_at": 1765273534223,
-    "last_updated": 1765273534223,
+    "created_at": 1765460896538,
+    "last_updated": 1765460896538,
     "skills_status": {},
     "subskills": []
   }

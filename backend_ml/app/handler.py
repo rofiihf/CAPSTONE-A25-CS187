@@ -5,11 +5,15 @@ import numpy as np
 from typing import Dict, Any
 from datetime import datetime
 
+from .adaptive_filter import filter_roadmap_for_user
+from .adaptive_roadmap_engine import generate_user_skill_status
 from .embeddings_utils import load_kb, load_faiss, get_model
 from .intent_model import IntentPipeline
 from .logger import log_query
-from .roadmap_kb_engine import kb_based_roadmap
+# from .roadmap_kb_engine import kb_based_roadmap
 from .config import GROQ_API_KEY, SBERT_MODEL_PATH, DEFAULT_TOPK
+from .detect_jobrole import detect_job_role
+from .roadmap_json_engine import generate_roadmap_response
 
 from groq import Groq
 import os
@@ -47,20 +51,43 @@ def extract_goal_from_assistant_history(profile: Dict) -> list:
     3) Jika menyebut Android/Kotlin/Java/Python → anggap goal itu.
     """
     try:
-        hist = (profile or {}).get("learning_profile", {}).get("history", []) or []
+        if not profile or not isinstance(profile, dict):
+            return []
+            
+        lp = profile.get("learning_profile")
+        if not isinstance(lp, dict):
+            return []
+            
+        hist = lp.get("history")
+        if not isinstance(hist, list):
+            return []
 
         for entry in reversed(hist):
+            if not isinstance(entry, dict):
+                continue
+                
             resp = entry.get("response")
             if not resp:
                 continue
+                
+            # Ensure string
+            try:
+                resp = str(resp)
+            except:
+                continue
 
+            if not resp.strip():
+                continue
+                
             # 1. Cari JSON di <profile_update>
             m = PROFILE_UPDATE_TAG_RE.search(resp)
             if m:
                 try:
                     j = json.loads(m.group(1).strip())
+                    if not isinstance(j, dict):
+                        continue
                     goals = j.get("learning_profile", {}).get("goals")
-                    if goals and isinstance(goals, list):
+                    if isinstance(goals, list) and goals:
                         return [str(g).strip() for g in goals if g]
                 except:
                     pass
@@ -78,8 +105,10 @@ def extract_goal_from_assistant_history(profile: Dict) -> list:
                 if re.search(rf'\b{re.escape(kw)}\b', resp, re.I):
                     return [kw]
 
-    except Exception:
-        pass
+    except Exception as e:
+        print("ERROR in extract_goal_from_assistant_history:", e)
+        import traceback
+        traceback.print_exc()
 
     return []
 
@@ -322,53 +351,72 @@ def format_profile_for_llm(profile: Dict[str, Any]) -> str:
         return "No profile available."
 
     try:
-        plat = profile.get("platform_data", {}) or {}
-        lp = profile.get("learning_profile", {}) or {}
+        # Safely get nested dicts
+        plat = profile.get("platform_data") or {}
+        if not isinstance(plat, dict):
+            plat = {}
+            
+        lp = profile.get("learning_profile") or {}
+        if not isinstance(lp, dict):
+            lp = {}
 
         lines = []
 
-        # Identity
+        # Identity - with safe string conversion
         name = plat.get("name")
-        email = plat.get("email")
         if name:
-            lines.append(f"Name: {name}")
+            lines.append(f"Name: {str(name)}")
 
+        email = plat.get("email")
         if email:
-            lines.append(f"Email: {email}")
+            lines.append(f"Email: {str(email)}")
 
-        # Active courses
-        active = plat.get("active_courses") or []
+        # Active courses - ensure it's a list
+        active = plat.get("active_courses")
         if isinstance(active, list) and active:
-            lines.append("Active Courses: " + ", ".join(active))
+            safe_courses = [str(c) for c in active if c]
+            if safe_courses:
+                lines.append("Active Courses: " + ", ".join(safe_courses))
 
-        # Current focus
-        cf = lp.get("current_focus") or {}
+        # Current focus - safely handle dict
+        cf = lp.get("current_focus")
         if isinstance(cf, dict) and cf.get("course"):
             module = cf.get("module", 0)
-            lines.append(f"Current Focus: {cf['course']} (module {module})")
+            try:
+                module = int(module)
+            except:
+                module = 0
+            lines.append(f"Current Focus: {str(cf['course'])} (module {module})")
 
-        # Goals
-        goals = lp.get("goals") or []
+        # Goals - ensure list and strings
+        goals = lp.get("goals")
         if isinstance(goals, list) and goals:
-            lines.append("Goals: " + ", ".join(goals))
+            safe_goals = [str(g) for g in goals if g]
+            if safe_goals:
+                lines.append("Goals: " + ", ".join(safe_goals))
 
         # Weaknesses
-        weaknesses = lp.get("weaknesses") or []
+        weaknesses = lp.get("weaknesses")
         if isinstance(weaknesses, list) and weaknesses:
-            lines.append("Weaknesses: " + ", ".join(weaknesses))
+            safe_weak = [str(w) for w in weaknesses if w]
+            if safe_weak:
+                lines.append("Weaknesses: " + ", ".join(safe_weak))
 
         # Strengths
-        strengths = lp.get("strengths") or []
+        strengths = lp.get("strengths")
         if isinstance(strengths, list) and strengths:
-            lines.append("Strengths: " + ", ".join(strengths))
+            safe_str = [str(s) for s in strengths if s]
+            if safe_str:
+                lines.append("Strengths: " + ", ".join(safe_str))
 
-        # Skills
-        skills = lp.get("skills") or {}
+        # Skills - ensure dict
+        skills = lp.get("skills")
         if isinstance(skills, dict) and skills:
-            skill_pairs = [f"{k}: {v}" for k, v in skills.items()]
-            lines.append("Skills: " + ", ".join(skill_pairs))
+            skill_pairs = [f"{str(k)}: {str(v)}" for k, v in skills.items() if k and v]
+            if skill_pairs:
+                lines.append("Skills: " + ", ".join(skill_pairs))
 
-        # If empty → avoid sending blank block
+        # If empty
         if not lines:
             return "No relevant student data available."
 
@@ -376,6 +424,8 @@ def format_profile_for_llm(profile: Dict[str, Any]) -> str:
 
     except Exception as e:
         print("ERROR in format_profile_for_llm:", e)
+        import traceback
+        traceback.print_exc()
         return "Profile formatting error."
 
 def extract_profile_update(text: str):
@@ -392,8 +442,22 @@ def extract_profile_update(text: str):
         if not m:
             return {}
 
-        raw = m.group(1).strip()
-        return json.loads(raw)
+        raw = m.group(1)
+
+        # Jika bukan string → convert dulu
+        if not isinstance(raw, str):
+            try:
+                raw = json.dumps(raw)
+            except:
+                return {}
+
+        raw = raw.strip()
+
+        try:
+            return json.loads(raw)
+        except:
+            return {}
+
     except Exception as e:
         print("ERROR in extract_profile_update:", e)
         return {}
@@ -408,14 +472,99 @@ async def handle_query(
     profile: Dict[str, Any],
     topk: int = DEFAULT_TOPK
 ) -> Dict[str, Any]:
+    try:
 
-
+        # Handle text input
+        if text is None:
+            text = ""
+        elif isinstance(text, dict):
+            text = text.get("message", text.get("text", text.get("query", "")))
+            if not isinstance(text, str):
+                text = json.dumps(text)
+        
+        text = str(text).strip()
+        
+        # Validate profile structure
+        if not isinstance(profile, dict):
+            print("WARNING: profile is not a dict, resetting to empty")
+            profile = {}
+            
+    except Exception as e:
+        print("ERROR in input handling:", e)
+        import traceback
+        traceback.print_exc()
+        return {"response": "Error processing input data."}
+    
     history_patch = {}
     extracted_update = {}
+    
     try:
-        if not text.strip():
+        if not text:  # Now safe to check
             return {"response": "Pesan tidak boleh kosong."}
 
+        job_role = detect_job_role(text)
+        if job_role:
+            # Load roadmap dari JSON
+            roadmap = generate_roadmap_response(job_role)
+
+            # Jika tidak ditemukan
+            if not roadmap.get("ok"):
+                return {
+                    "response": f"Roadmap untuk {job_role} tidak ditemukan.",
+                    "intent": {"mode": "roadmap"},
+                    "sources": [],
+                    "meta": {"used_kb": False, "latency_ms": 0},
+                    "profile_update": {}
+                }
+
+            # Hitung skill_status user
+            skill_status = generate_user_skill_status(roadmap, profile)
+
+            # *** APPLY ADAPTIVE FILTER ***
+            filtered_subskills = filter_roadmap_for_user(roadmap, skill_status)
+
+            # Tambahkan hasil adaptif ke roadmap
+            roadmap["subskills"] = filtered_subskills
+
+            # Buat profile_update baru
+            profile_update = {
+                "roadmap_progress": {
+                    "job_role": job_role,
+                    "last_updated": int(datetime.utcnow().timestamp() * 1000),
+                    "subskills": filtered_subskills,
+                    "skills_status": skill_status
+                }
+            }
+
+            # Kembalikan response tanpa LLM
+            time.sleep(2)
+            return {
+                "response": (
+                    f"Roadmap untuk {job_role} (versi adaptif):\n\n"
+                    f"{json.dumps(roadmap, indent=2, ensure_ascii=False)}"
+                ),
+                "intent": {"mode": "roadmap"},
+                "sources": [],
+                "meta": {"used_kb": False, "latency_ms": 0},
+                "profile_update": profile_update
+            }
+
+            # if roadmap.get("ok"):
+            #     time.sleep(2)
+            #     # Tidak perlu melewati LLM. Return roadmap langsung.
+            #     return {
+            #         "response": f"Roadmap untuk {job_role}:\n\n{json.dumps(roadmap, indent=2, ensure_ascii=False)}",
+            #         "intent": {"mode": "roadmap"},
+            #         "sources": [],
+            #         "meta": {"used_kb": False, "latency_ms": 0},
+            #         "profile_update": {
+            #             "roadmap_progress": {
+            #                 "job_role": job_role,
+            #                 "last_updated": int(datetime.utcnow().timestamp() * 1000),
+            #                 "subskills": roadmap["subskills"]
+            #             }
+            #         }
+            #     }
         _ensure_loaded()
         start = time.time()
 
@@ -446,6 +595,8 @@ async def handle_query(
             for x in ["saya", "progress", "modul", "kursus saya", "aku"]
         )
 
+        if detect_job_role(text):
+            personal = True
         kb_context = ""
         sources = []
 
@@ -537,35 +688,29 @@ def deep_merge(a, b):
 # ============================================================
 
 def handle_job_description_flow(user_id: str, text: str, profile: Dict[str, Any] = None) -> Dict[str, Any]:
-    """Minimal job-role → roadmap generator (stateless)."""
-    try:
-        roadmap = kb_based_roadmap(text)
+    """Deprecated: KB-based roadmap disabled. Use roadmap_json_engine instead."""
+    job_role = detect_job_role(text)
 
-        summary = f"Recommended role: {roadmap['job_role']}\n"
-        for s in roadmap["subskills"]:
-            summary += f"- {s['name']}: {s['next_step']}\n"
+    if not job_role:
+        return {
+            "summary": "Tidak menemukan job role yang cocok dari permintaan Anda.",
+            "error": None
+        }
 
-        # Profile update: set job role and subskills
-        profile_update = {
+    roadmap = generate_roadmap_response(job_role)
+
+    return {
+        "summary": f"Roadmap untuk {job_role} telah dihasilkan.",
+        "job_role": job_role,
+        "subskills": roadmap.get("subskills", []),
+        "roadmap": roadmap,
+        "profile_update": {
             "roadmap_progress": {
-                "job_role": roadmap.get("job_role"),
+                "job_role": job_role,
                 "last_updated": int(datetime.utcnow().timestamp() * 1000),
-                "subskills": roadmap.get("subskills", []),
+                "subskills": roadmap.get("subskills", [])
             }
         }
+    }
 
-        return {
-            "summary": summary,
-            "job_role": roadmap["job_role"],
-            "subskills": roadmap["subskills"],
-            "roadmap": roadmap,
-            "profile_update": profile_update
-        }
-
-    except Exception as e:
-        print("ERROR job role:", e)
-        return {
-            "summary": "Gagal menghasilkan roadmap.",
-            "error": str(e)
-        }
 

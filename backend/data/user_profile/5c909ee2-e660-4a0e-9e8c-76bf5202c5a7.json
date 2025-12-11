@@ -28,20 +28,13 @@
     "progress_score": {},
     "history": []
   },
-  "created_at": "2025-12-07T03:51:53.827Z",
-  "updated_at": 1765079513827,
-  "progress_history": [
-    {
-      "timestamp": 1765273534089,
-      "course_progress": {
-        "Memulai Pemrograman dengan Python": 0
-      }
-    }
-  ],
+  "created_at": "2025-12-11T13:48:16.383Z",
+  "updated_at": 1765460896383,
+  "progress_history": [],
   "roadmap_progress": {
     "job_role": null,
-    "created_at": 1765273534089,
-    "last_updated": 1765273534089,
+    "created_at": 1765460896383,
+    "last_updated": 1765460896383,
     "skills_status": {},
     "subskills": []
   }

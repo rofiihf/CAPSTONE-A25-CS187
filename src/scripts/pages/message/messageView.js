@@ -3,6 +3,9 @@
 import MessagePresenter from "./messagePresenter.js";
 import { generateBubbleChat } from "../../components/generateBubbleChat.js";
 import MessageModel from "./messageModel.js";
+import { createChoiceBubble } from "../../components/bubbleChoice.js";
+import { createLevelQuizQuestionBubble } from "../../components/bubbleLevelQuiz.js";
+
 
 export default class MessageView {
   #presenter;
@@ -15,11 +18,13 @@ export default class MessageView {
   #logoutButton;
   #themeToggleButton;
   #container;
+  #clearChatIcon;
+
 
   
-  constructor(arg) {
-    console.log("🔥 MessageView constructor arg =", arg);
-    const { presenter } = arg;
+  constructor({ presenter }) {
+    // console.log("MessageView constructor arg =", arg);
+    // const { presenter } = arg;
     this.#presenter = presenter;
   }
   render() {
@@ -31,10 +36,20 @@ export default class MessageView {
           <header class="page-header">
             <h1 class="brand-name">Dico</h1>
             <div class="header-actions">
-              <button type="button" class="clear-chat">Clear chat</button>
-              <button type="button" class="logout-btn">Logout</button>
-              <button class="theme-toggle" aria-label="Toggle dark mode">
-                <span class="theme-icon">🌓</span>
+            <button class="theme-toggle" aria-label="Toggle dark mode">
+              <span class="theme-toggle-track">
+                <span class="theme-toggle-thumb"></span>
+              </span>
+            </button>
+              <button type="button" class="clear-chat" aria-label="Clear chat">
+                <img
+                  src="./images/icons/broom.png"
+                  alt="Clear chat"
+                  class="clear-chat-icon"
+                />
+              </button>
+              <button type="button" class="logout-btn" aria-label="Logout">
+                <img src="./images/icons/logout.png" alt="Logout" class="logout-icon" />
               </button>
           </header>
         </div>
@@ -64,10 +79,19 @@ export default class MessageView {
     this.#logoutButton = root.querySelector(".logout-btn");
     this.#themeToggleButton = root.querySelector(".theme-toggle");
     this.#container = root.querySelector(".chatbot-container");
+    this.#clearChatIcon = root.querySelector(".clear-chat-icon")
+
+    const savedTheme = localStorage.getItem("dico_theme");
+    const isDark = savedTheme === "dark";
+    this.#applyTheme(isDark);
 
     this.#bindEvents();
 
     this.#presenter.renderInitialMessages();
+  }
+
+  clearInputChat() {
+    this.#input.value = "";
   }
 
   clearChat() {
@@ -80,6 +104,29 @@ export default class MessageView {
     const bubble = generateBubbleChat(message);
     this.#chatContainer.appendChild(bubble);
     this.#chatContainer.scrollTop = this.#chatContainer.scrollHeight;
+  }
+
+  // helper kecil supaya nggak ulang-ulang kode append + scroll
+  #appendToChat(element) {
+    this.#chatContainer.appendChild(element);
+    this.#chatContainer.scrollTop = this.#chatContainer.scrollHeight;
+  }
+
+  // render bubble pilihan (chips) untuk pilih minat / jumlah pertanyaan
+  renderChoiceBubble({ title, options, onChoose }) {
+    const bubble = createChoiceBubble({ title, options, onChoose });
+    this.#appendToChat(bubble);
+  }
+
+  // render bubble pertanyaan quiz (A–E)
+  renderLevelQuizQuestion({ question, index, total, onAnswer }) {
+    const bubble = createLevelQuizQuestionBubble({
+      question,
+      index,
+      total,
+      onAnswer,
+    });
+    this.#appendToChat(bubble);
   }
 
   renderQuickActions(actions) {
@@ -96,11 +143,11 @@ export default class MessageView {
       button.type = 'button';
       button.classList.add('quick-actions__button');
       button.textContent = action.label;
-      button.dataset.action = action.key;
+      button.dataset.action = action.id;
 
       button.addEventListener('click', () => {
         // lempar ke presenter
-        this.#presenter.handleQuickAction(action.key);
+        this.#presenter.handleQuickAction(action.id);
       });
 
       container.appendChild(button);
@@ -109,6 +156,10 @@ export default class MessageView {
     this.#chatContainer.appendChild(container);
     this.#chatContainer.scrollTop = this.#chatContainer.scrollHeight;
     this.#quickActionsElement = container;
+  }
+  
+  showQuickActions(actions) {
+    this.renderQuickActions(actions);
   }
 
   clearQuickActions() {
@@ -146,6 +197,22 @@ export default class MessageView {
     this.#typingElement.remove();
     this.#typingElement = null;
   }
+
+  #applyTheme(isDark) {
+    if (!this.#container) return;
+
+    // toggle class theme
+    this.#container.classList.toggle("dark-theme", isDark);
+    localStorage.setItem("dico_theme", isDark ? "dark" : "light");
+
+    // ganti icon clear chat
+    if (this.#clearChatIcon) {
+      this.#clearChatIcon.src = isDark
+        ? "./images/icons/clean.png"   // 🔥 icon untuk DARK theme
+        : "./images/icons/broom.png";  // 🔆 icon untuk LIGHT theme
+    }
+  }
+
 
   setInputDisabled(state) {
     this.#input.disabled = state;
@@ -187,11 +254,8 @@ export default class MessageView {
     // tombol toggle theme
     if (this.#themeToggleButton && this.#container) {
       this.#themeToggleButton.addEventListener("click", () => {
-        this.#container.classList.toggle("dark-theme");
-
-        // opsional: simpan preferensi
-        const isDark = this.#container.classList.contains("dark-theme");
-        localStorage.setItem("dico_theme", isDark ? "dark" : "light");
+        const isCurrentlyDark = this.#container.classList.contains("dark-theme");
+        this.#applyTheme(!isCurrentlyDark);
       });
     }
   }

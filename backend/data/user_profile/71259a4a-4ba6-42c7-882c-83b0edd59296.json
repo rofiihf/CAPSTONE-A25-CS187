@@ -28,20 +28,13 @@
     "progress_score": {},
     "history": []
   },
-  "created_at": "2025-12-07T03:51:53.853Z",
-  "updated_at": 1765079513853,
-  "progress_history": [
-    {
-      "timestamp": 1765273534147,
-      "course_progress": {
-        "Belajar Dasar Cloud dan Gen AI di AWS": 0
-      }
-    }
-  ],
+  "created_at": "2025-12-11T13:48:16.452Z",
+  "updated_at": 1765460896452,
+  "progress_history": [],
   "roadmap_progress": {
     "job_role": null,
-    "created_at": 1765273534147,
-    "last_updated": 1765273534147,
+    "created_at": 1765460896452,
+    "last_updated": 1765460896452,
     "skills_status": {},
     "subskills": []
   }

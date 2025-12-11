@@ -28,20 +28,13 @@
     "progress_score": {},
     "history": []
   },
-  "created_at": "2025-12-07T03:51:53.825Z",
-  "updated_at": 1765079513825,
-  "progress_history": [
-    {
-      "timestamp": 1765273534084,
-      "course_progress": {
-        "Memulai Pemrograman dengan Kotlin": 0
-      }
-    }
-  ],
+  "created_at": "2025-12-11T13:48:16.377Z",
+  "updated_at": 1765460896377,
+  "progress_history": [],
   "roadmap_progress": {
     "job_role": null,
-    "created_at": 1765273534084,
-    "last_updated": 1765273534084,
+    "created_at": 1765460896377,
+    "last_updated": 1765460896377,
     "skills_status": {},
     "subskills": []
   }

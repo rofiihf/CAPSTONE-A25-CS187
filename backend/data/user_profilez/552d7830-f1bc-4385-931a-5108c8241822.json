@@ -1,0 +1,48 @@
+{
+  "user_id": "552d7830-f1bc-4385-931a-5108c8241822",
+  "platform_data": {
+    "name": "Citra Kusuma",
+    "email": "citra.kusuma21@example.com",
+    "active_courses": [
+      "Belajar Membuat Aplikasi Android untuk Pemula"
+    ],
+    "active_tutorials": 49,
+    "completed_tutorials": 0,
+    "is_graduated": 0,
+    "exam_score": "",
+    "submission_rating": "",
+    "course_progress": {
+      "Belajar Membuat Aplikasi Android untuk Pemula": 0
+    }
+  },
+  "learning_profile": {
+    "goals": [],
+    "skills": {},
+    "weaknesses": [],
+    "strengths": [],
+    "current_focus": {
+      "course": "Belajar Membuat Aplikasi Android untuk Pemula",
+      "module": 0
+    },
+    "learning_style": null,
+    "progress_score": {},
+    "history": []
+  },
+  "created_at": "2025-12-07T03:51:53.819Z",
+  "updated_at": 1765079513819,
+  "progress_history": [
+    {
+      "timestamp": 1765273534072,
+      "course_progress": {
+        "Belajar Membuat Aplikasi Android untuk Pemula": 0
+      }
+    }
+  ],
+  "roadmap_progress": {
+    "job_role": null,
+    "created_at": 1765273534072,
+    "last_updated": 1765273534072,
+    "skills_status": {},
+    "subskills": []
+  }
+}

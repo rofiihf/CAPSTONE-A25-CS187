@@ -1,0 +1,48 @@
+{
+  "user_id": "8d9cc6f5-58ab-4c8d-8288-46dd257c49b9",
+  "platform_data": {
+    "name": "Maya Wijaya",
+    "email": "maya.wijaya158@example.com",
+    "active_courses": [
+      "Pengenalan Data pada Pemrograman (Data 101)"
+    ],
+    "active_tutorials": 39,
+    "completed_tutorials": 39,
+    "is_graduated": 1,
+    "exam_score": "100",
+    "submission_rating": "",
+    "course_progress": {
+      "Pengenalan Data pada Pemrograman (Data 101)": 0
+    }
+  },
+  "learning_profile": {
+    "goals": [],
+    "skills": {},
+    "weaknesses": [],
+    "strengths": [],
+    "current_focus": {
+      "course": "Pengenalan Data pada Pemrograman (Data 101)",
+      "module": 0
+    },
+    "learning_style": null,
+    "progress_score": {},
+    "history": []
+  },
+  "created_at": "2025-12-07T03:51:53.865Z",
+  "updated_at": 1765079513865,
+  "progress_history": [
+    {
+      "timestamp": 1765273534174,
+      "course_progress": {
+        "Pengenalan Data pada Pemrograman (Data 101)": 0
+      }
+    }
+  ],
+  "roadmap_progress": {
+    "job_role": null,
+    "created_at": 1765273534174,
+    "last_updated": 1765273534174,
+    "skills_status": {},
+    "subskills": []
+  }
+}

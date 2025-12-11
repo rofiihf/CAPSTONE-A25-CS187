@@ -1,0 +1,48 @@
+{
+  "user_id": "d0c2de13-ff1b-45c1-9f73-214854d6b907",
+  "platform_data": {
+    "name": "Irfan Utama",
+    "email": "irfan.utama127@example.com",
+    "active_courses": [
+      "Belajar Dasar Pemrograman JavaScript"
+    ],
+    "active_tutorials": 111,
+    "completed_tutorials": 73,
+    "is_graduated": 1,
+    "exam_score": "86",
+    "submission_rating": "",
+    "course_progress": {
+      "Belajar Dasar Pemrograman JavaScript": 0
+    }
+  },
+  "learning_profile": {
+    "goals": [],
+    "skills": {},
+    "weaknesses": [],
+    "strengths": [],
+    "current_focus": {
+      "course": "Belajar Dasar Pemrograman JavaScript",
+      "module": 0
+    },
+    "learning_style": null,
+    "progress_score": {},
+    "history": []
+  },
+  "created_at": "2025-12-07T03:51:53.856Z",
+  "updated_at": 1765079513856,
+  "progress_history": [
+    {
+      "timestamp": 1765273534154,
+      "course_progress": {
+        "Belajar Dasar Pemrograman JavaScript": 0
+      }
+    }
+  ],
+  "roadmap_progress": {
+    "job_role": null,
+    "created_at": 1765273534154,
+    "last_updated": 1765273534154,
+    "skills_status": {},
+    "subskills": []
+  }
+}

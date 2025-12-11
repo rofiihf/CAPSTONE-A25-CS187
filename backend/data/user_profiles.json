@@ -1,0 +1,726 @@
+{
+  "b64852a0-24a2-4731-830b-9314db2b13ca": {
+    "user_id": "b64852a0-24a2-4731-830b-9314db2b13ca",
+    "platform_data": {
+      "name": "Dina Wijaya",
+      "email": "dina.wijaya1@example.com",
+      "active_courses": [
+        "Belajar Fundamental Front-End Web Development"
+      ],
+      "active_tutorials": 4,
+      "completed_tutorials": 0,
+      "is_graduated": 0,
+      "exam_score": "",
+      "submission_rating": ""
+    },
+    "learning_profile": {
+      "goals": [
+        "menjadi android developer jagoo",
+        "membangun proyek deep learning tingkat mahir",
+        "menjadi back-end developer expert dengan javascript"
+      ],
+      "skills": {
+        "Cloud Computing": "Beginner",
+        "Android": "Beginner",
+        "Web": "Beginner",
+        "iOS": "Intermediate"
+      },
+      "weaknesses": [],
+      "strengths": [],
+      "current_focus": {
+        "course": "Belajar Fundamental Front-End Web Development",
+        "module": 0
+      },
+      "learning_style": null,
+      "progress_score": {},
+      "history": [
+        {
+          "query": "hawo",
+          "response": "Apakah kamu ingin memulai dari dasar-dasar membuat aplikasi back-end dengan Google Cloud atau ingin melanjutkan ke level yang lebih lanjut dengan JavaScript?",
+          "timestamp": "2023-12-10T14:30:00.000Z",
+          "intent": "exploratory"
+        },
+        {
+          "query": "Tolong jelaskan progres belajar saya minggu ini, skill apa yang paling berkembang.",
+          "response": "Halo Dina! ...",
+          "timestamp": "2023-12-11T00:00:00+07:00",
+          "intent": "ask_progress"
+        },
+        {
+          "query": "ga",
+          "response": "Saya akan membantu kamu memulai belajar cloud computing.",
+          "timestamp": "2023-12-11T12:00:00Z",
+          "intent": "memulai belajar cloud computing"
+        },
+        {
+          "query": "Tolong jelaskan progres belajar saya minggu ini, skill apa yang paling berkembang.",
+          "response": "Mengenai progres belajar Anda minggu ini, saya dapat melihat bahwa Anda sedang fokus pada Belajar Membangun Aplikasi Android Native Bagian I. Anda telah mencapai module 0 dan sudah mulai belajar dasar-dasar Android.",
+          "timestamp": "2023-12-11T00:00:00.000Z",
+          "intent": "progress"
+        },
+        {
+          "query": "hei",
+          "response": "Halo Dina!",
+          "timestamp": "2023-12-11T08:00:00.000Z",
+          "intent": null
+        },
+        {
+          "query": "Aku mau belajar android native lebih dalam, subskill nya apa aja?",
+          "response": "Membuat UI/UX, Mengembangkan Logika Bisnis, Menggunakan Database, Mengintegrasikan API, Mengoptimalkan Performa",
+          "timestamp": "2023-12-11T14:30:00.000Z",
+          "intent": "subskill"
+        },
+        {
+          "query": "skill ku saat ini",
+          "response": "Daftar kursus yang kamu telah pilih:",
+          "timestamp": "2023-12-11T12:00:00Z",
+          "intent": null
+        }
+      ]
+    },
+    "created_at": "2025-12-10T16:10:52.354Z",
+    "updated_at": "2025-12-11T13:56:24.551Z",
+    "roadmap_progress": {
+      "job_role": "AI Engineer",
+      "last_updated": 1765432584549,
+      "subskills": [
+        {
+          "id": "python_fundamentals_ai",
+          "name": "Python Fundamentals",
+          "estimated_hours": 60,
+          "priority": 1,
+          "prerequisites": [],
+          "next_steps": [
+            "math_for_ml_ai"
+          ],
+          "keywords": [
+            "python",
+            "syntax",
+            "data types",
+            "functions",
+            "oop"
+          ],
+          "mapped_courses": {
+            "beginner": [
+              6
+            ],
+            "intermediate": [
+              2
+            ],
+            "advanced": [
+              5
+            ]
+          },
+          "levels": {
+            "beginner": {
+              "description": "Dasar Python untuk AI",
+              "indicators": [
+                "script sederhana",
+                "tipe data",
+                "function"
+              ]
+            },
+            "intermediate": {
+              "description": "Libraries dasar ML",
+              "indicators": [
+                "numpy/pandas dasar",
+                "preprocessing"
+              ]
+            },
+            "advanced": {
+              "description": "Optimasi & advanced python",
+              "indicators": [
+                "profiling",
+                "concurrency"
+              ]
+            }
+          }
+        },
+        {
+          "id": "math_for_ml_ai",
+          "name": "Mathematics for ML",
+          "estimated_hours": 60,
+          "priority": 1,
+          "prerequisites": [],
+          "next_steps": [
+            "ml_basics_ai"
+          ],
+          "keywords": [
+            "linear algebra",
+            "calculus",
+            "probability",
+            "statistics"
+          ],
+          "mapped_courses": {
+            "beginner": [
+              1
+            ],
+            "intermediate": [
+              3
+            ],
+            "advanced": [
+              4
+            ]
+          },
+          "levels": {
+            "beginner": {
+              "description": "Statistik dasar",
+              "indicators": [
+                "mean/variance"
+              ]
+            },
+            "intermediate": {
+              "description": "Kalkulus dasar",
+              "indicators": [
+                "turunan/gradien"
+              ]
+            },
+            "advanced": {
+              "description": "Optimisasi lanjutan",
+              "indicators": [
+                "SVD",
+                "konveks"
+              ]
+            }
+          }
+        },
+        {
+          "id": "ml_basics_ai",
+          "name": "Machine Learning Basics",
+          "estimated_hours": 80,
+          "priority": 2,
+          "prerequisites": [
+            "python_fundamentals_ai",
+            "math_for_ml_ai"
+          ],
+          "next_steps": [
+            "deep_learning_ai"
+          ],
+          "keywords": [
+            "supervised",
+            "unsupervised",
+            "scikit-learn"
+          ],
+          "mapped_courses": {
+            "beginner": [
+              3
+            ],
+            "intermediate": [
+              2
+            ],
+            "advanced": [
+              4
+            ]
+          },
+          "levels": {
+            "beginner": {
+              "description": "Algoritma dasar",
+              "indicators": [
+                "linear regression",
+                "decision tree"
+              ]
+            },
+            "intermediate": {
+              "description": "Feature engineering",
+              "indicators": [
+                "cross-validation",
+                "tuning"
+              ]
+            },
+            "advanced": {
+              "description": "Ensemble & production",
+              "indicators": [
+                "ensemble methods"
+              ]
+            }
+          }
+        },
+        {
+          "id": "deep_learning_ai",
+          "name": "Deep Learning Foundations",
+          "estimated_hours": 100,
+          "priority": 3,
+          "prerequisites": [
+            "ml_basics_ai"
+          ],
+          "next_steps": [
+            "nlp_cv_ai"
+          ],
+          "keywords": [
+            "neural networks",
+            "cnn",
+            "rnn",
+            "pytorch",
+            "tensorflow"
+          ],
+          "mapped_courses": {
+            "beginner": [
+              2
+            ],
+            "intermediate": [
+              5
+            ],
+            "advanced": [
+              5
+            ]
+          },
+          "levels": {
+            "beginner": {
+              "description": "NN dasar",
+              "indicators": [
+                "feedforward",
+                "loss"
+              ]
+            },
+            "intermediate": {
+              "description": "CNN/RNN",
+              "indicators": [
+                "conv nets",
+                "sequence models"
+              ]
+            },
+            "advanced": {
+              "description": "Optimisasi & transfer learning",
+              "indicators": [
+                "fine-tuning"
+              ]
+            }
+          }
+        },
+        {
+          "id": "nlp_cv_ai",
+          "name": "NLP & Computer Vision Fundamentals",
+          "estimated_hours": 60,
+          "priority": 3,
+          "prerequisites": [
+            "deep_learning_ai"
+          ],
+          "next_steps": [
+            "mlops_ai"
+          ],
+          "keywords": [
+            "nlp",
+            "transformer",
+            "object detection"
+          ],
+          "mapped_courses": {
+            "beginner": [
+              1
+            ],
+            "intermediate": [
+              3
+            ],
+            "advanced": [
+              5
+            ]
+          },
+          "levels": {
+            "beginner": {
+              "description": "Preprocessing dasar",
+              "indicators": [
+                "tokenization",
+                "image preprocessing"
+              ]
+            },
+            "intermediate": {
+              "description": "Model pretrained",
+              "indicators": [
+                "fine-tune small models"
+              ]
+            },
+            "advanced": {
+              "description": "Multi-modal & research",
+              "indicators": [
+                "multi-modal pipelines"
+              ]
+            }
+          }
+        },
+        {
+          "id": "mlops_ai",
+          "name": "MLOps Basics",
+          "estimated_hours": 50,
+          "priority": 4,
+          "prerequisites": [
+            "deep_learning_ai"
+          ],
+          "next_steps": [],
+          "keywords": [
+            "deployment",
+            "docker",
+            "monitoring",
+            "ci/cd"
+          ],
+          "mapped_courses": {
+            "beginner": [
+              6
+            ],
+            "intermediate": [
+              4
+            ],
+            "advanced": [
+              5
+            ]
+          },
+          "levels": {
+            "beginner": {
+              "description": "Serve model sederhana",
+              "indicators": [
+                "wrap model API"
+              ]
+            },
+            "intermediate": {
+              "description": "CI/CD model",
+              "indicators": [
+                "pipeline retrain"
+              ]
+            },
+            "advanced": {
+              "description": "Production ML lifecycle",
+              "indicators": [
+                "model registry",
+                "drift detection"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "0c6c7b13-4c5e-430d-ba47-0b93f4dba736": {
+    "user_id": "0c6c7b13-4c5e-430d-ba47-0b93f4dba736",
+    "platform_data": {
+      "name": "Eko Siregar",
+      "email": "eko.siregar206@example.com",
+      "active_courses": [
+        "Belajar Jaringan Komputer untuk Pemula"
+      ],
+      "active_tutorials": 62,
+      "completed_tutorials": 62,
+      "is_graduated": 1,
+      "exam_score": "90",
+      "submission_rating": "4"
+    },
+    "learning_profile": {
+      "goals": [],
+      "skills": {},
+      "weaknesses": [],
+      "strengths": [],
+      "current_focus": {
+        "course": "Belajar Jaringan Komputer untuk Pemula",
+        "module": 0
+      },
+      "learning_style": null,
+      "progress_score": {},
+      "history": []
+    },
+    "created_at": "2025-12-11T13:54:33.878Z",
+    "updated_at": "2025-12-11T13:54:37.590Z",
+    "roadmap_progress": {
+      "job_role": "AI Engineer",
+      "last_updated": 1765432477586,
+      "subskills": [
+        {
+          "id": "python_fundamentals_ai",
+          "name": "Python Fundamentals",
+          "estimated_hours": 60,
+          "priority": 1,
+          "prerequisites": [],
+          "next_steps": [
+            "math_for_ml_ai"
+          ],
+          "keywords": [
+            "python",
+            "syntax",
+            "data types",
+            "functions",
+            "oop"
+          ],
+          "mapped_courses": {
+            "beginner": [
+              6
+            ],
+            "intermediate": [
+              2
+            ],
+            "advanced": [
+              5
+            ]
+          },
+          "levels": {
+            "beginner": {
+              "description": "Dasar Python untuk AI",
+              "indicators": [
+                "script sederhana",
+                "tipe data",
+                "function"
+              ]
+            },
+            "intermediate": {
+              "description": "Libraries dasar ML",
+              "indicators": [
+                "numpy/pandas dasar",
+                "preprocessing"
+              ]
+            },
+            "advanced": {
+              "description": "Optimasi & advanced python",
+              "indicators": [
+                "profiling",
+                "concurrency"
+              ]
+            }
+          }
+        },
+        {
+          "id": "math_for_ml_ai",
+          "name": "Mathematics for ML",
+          "estimated_hours": 60,
+          "priority": 1,
+          "prerequisites": [],
+          "next_steps": [
+            "ml_basics_ai"
+          ],
+          "keywords": [
+            "linear algebra",
+            "calculus",
+            "probability",
+            "statistics"
+          ],
+          "mapped_courses": {
+            "beginner": [
+              1
+            ],
+            "intermediate": [
+              3
+            ],
+            "advanced": [
+              4
+            ]
+          },
+          "levels": {
+            "beginner": {
+              "description": "Statistik dasar",
+              "indicators": [
+                "mean/variance"
+              ]
+            },
+            "intermediate": {
+              "description": "Kalkulus dasar",
+              "indicators": [
+                "turunan/gradien"
+              ]
+            },
+            "advanced": {
+              "description": "Optimisasi lanjutan",
+              "indicators": [
+                "SVD",
+                "konveks"
+              ]
+            }
+          }
+        },
+        {
+          "id": "ml_basics_ai",
+          "name": "Machine Learning Basics",
+          "estimated_hours": 80,
+          "priority": 2,
+          "prerequisites": [
+            "python_fundamentals_ai",
+            "math_for_ml_ai"
+          ],
+          "next_steps": [
+            "deep_learning_ai"
+          ],
+          "keywords": [
+            "supervised",
+            "unsupervised",
+            "scikit-learn"
+          ],
+          "mapped_courses": {
+            "beginner": [
+              3
+            ],
+            "intermediate": [
+              2
+            ],
+            "advanced": [
+              4
+            ]
+          },
+          "levels": {
+            "beginner": {
+              "description": "Algoritma dasar",
+              "indicators": [
+                "linear regression",
+                "decision tree"
+              ]
+            },
+            "intermediate": {
+              "description": "Feature engineering",
+              "indicators": [
+                "cross-validation",
+                "tuning"
+              ]
+            },
+            "advanced": {
+              "description": "Ensemble & production",
+              "indicators": [
+                "ensemble methods"
+              ]
+            }
+          }
+        },
+        {
+          "id": "deep_learning_ai",
+          "name": "Deep Learning Foundations",
+          "estimated_hours": 100,
+          "priority": 3,
+          "prerequisites": [
+            "ml_basics_ai"
+          ],
+          "next_steps": [
+            "nlp_cv_ai"
+          ],
+          "keywords": [
+            "neural networks",
+            "cnn",
+            "rnn",
+            "pytorch",
+            "tensorflow"
+          ],
+          "mapped_courses": {
+            "beginner": [
+              2
+            ],
+            "intermediate": [
+              5
+            ],
+            "advanced": [
+              5
+            ]
+          },
+          "levels": {
+            "beginner": {
+              "description": "NN dasar",
+              "indicators": [
+                "feedforward",
+                "loss"
+              ]
+            },
+            "intermediate": {
+              "description": "CNN/RNN",
+              "indicators": [
+                "conv nets",
+                "sequence models"
+              ]
+            },
+            "advanced": {
+              "description": "Optimisasi & transfer learning",
+              "indicators": [
+                "fine-tuning"
+              ]
+            }
+          }
+        },
+        {
+          "id": "nlp_cv_ai",
+          "name": "NLP & Computer Vision Fundamentals",
+          "estimated_hours": 60,
+          "priority": 3,
+          "prerequisites": [
+            "deep_learning_ai"
+          ],
+          "next_steps": [
+            "mlops_ai"
+          ],
+          "keywords": [
+            "nlp",
+            "transformer",
+            "object detection"
+          ],
+          "mapped_courses": {
+            "beginner": [
+              1
+            ],
+            "intermediate": [
+              3
+            ],
+            "advanced": [
+              5
+            ]
+          },
+          "levels": {
+            "beginner": {
+              "description": "Preprocessing dasar",
+              "indicators": [
+                "tokenization",
+                "image preprocessing"
+              ]
+            },
+            "intermediate": {
+              "description": "Model pretrained",
+              "indicators": [
+                "fine-tune small models"
+              ]
+            },
+            "advanced": {
+              "description": "Multi-modal & research",
+              "indicators": [
+                "multi-modal pipelines"
+              ]
+            }
+          }
+        },
+        {
+          "id": "mlops_ai",
+          "name": "MLOps Basics",
+          "estimated_hours": 50,
+          "priority": 4,
+          "prerequisites": [
+            "deep_learning_ai"
+          ],
+          "next_steps": [],
+          "keywords": [
+            "deployment",
+            "docker",
+            "monitoring",
+            "ci/cd"
+          ],
+          "mapped_courses": {
+            "beginner": [
+              6
+            ],
+            "intermediate": [
+              4
+            ],
+            "advanced": [
+              5
+            ]
+          },
+          "levels": {
+            "beginner": {
+              "description": "Serve model sederhana",
+              "indicators": [
+                "wrap model API"
+              ]
+            },
+            "intermediate": {
+              "description": "CI/CD model",
+              "indicators": [
+                "pipeline retrain"
+              ]
+            },
+            "advanced": {
+              "description": "Production ML lifecycle",
+              "indicators": [
+                "model registry",
+                "drift detection"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

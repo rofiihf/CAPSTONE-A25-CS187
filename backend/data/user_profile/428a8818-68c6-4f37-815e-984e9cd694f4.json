@@ -28,20 +28,13 @@
     "progress_score": {},
     "history": []
   },
-  "created_at": "2025-12-07T03:51:53.843Z",
-  "updated_at": 1765079513843,
-  "progress_history": [
-    {
-      "timestamp": 1765273534126,
-      "course_progress": {
-        "Belajar Machine Learning untuk Pemula": 0
-      }
-    }
-  ],
+  "created_at": "2025-12-11T13:48:16.428Z",
+  "updated_at": 1765460896428,
+  "progress_history": [],
   "roadmap_progress": {
     "job_role": null,
-    "created_at": 1765273534126,
-    "last_updated": 1765273534126,
+    "created_at": 1765460896428,
+    "last_updated": 1765460896428,
     "skills_status": {},
     "subskills": []
   }

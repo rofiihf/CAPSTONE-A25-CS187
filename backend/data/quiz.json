@@ -1,0 +1,3914 @@
+[
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan Activity dalam pengembangan aplikasi Android?",
+    "options": [
+      "Komponen yang menangani tampilan pengguna",
+      "Kelas untuk menyimpan data",
+      "Fungsi untuk menjalankan proses di latar belakang",
+      "Antarmuka untuk menghubungkan database"
+    ],
+    "correct_answer": "Komponen yang menangani tampilan pengguna"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari file AndroidManifest.xml?",
+    "options": [
+      "Menyimpan data aplikasi",
+      "Mendefinisikan struktur dan metadata aplikasi",
+      "Mengatur tata letak UI",
+      "Mengelola dependensi proyek"
+    ],
+    "correct_answer": "Mendefinisikan struktur dan metadata aplikasi"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Dalam konteks Android, apa yang dimaksud dengan Intent?",
+    "options": [
+      "Komponen untuk menyimpan data",
+      "Mekanisme untuk navigasi antar Activity",
+      "Fungsi untuk menangani error",
+      "Framework untuk membuat UI"
+    ],
+    "correct_answer": "Mekanisme untuk navigasi antar Activity"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Apa perbedaan utama antara LinearLayout dan RelativeLayout?",
+    "options": [
+      "LinearLayout hanya untuk orientasi vertikal, RelativeLayout untuk horizontal",
+      "LinearLayout mengatur elemen secara berurutan, RelativeLayout berdasarkan posisi relatif",
+      "LinearLayout untuk aplikasi sederhana, RelativeLayout untuk yang kompleks",
+      "Tidak ada perbedaan, keduanya dapat digunakan secara bergantian"
+    ],
+    "correct_answer": "LinearLayout mengatur elemen secara berurutan, RelativeLayout berdasarkan posisi relatif"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari metode onCreate() dalam sebuah Activity?",
+    "options": [
+      "Menghapus Activity",
+      "Menginisialisasi Activity dan memuat layout",
+      "Menjalankan proses di background",
+      "Mengatur animasi transisi"
+    ],
+    "correct_answer": "Menginisialisasi Activity dan memuat layout"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara menambahkan sebuah Button ke dalam layout XML?",
+    "options": [
+      "<Button> </Button>",
+      "<AndroidButton></AndroidButton>",
+      "<View type=\"button\"></View>",
+      "<UIButton></UIButton>"
+    ],
+    "correct_answer": "<Button> </Button>"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari atribut android:id dalam elemen XML?",
+    "options": [
+      "Mengatur warna elemen",
+      "Memberikan identifier unik untuk elemen",
+      "Menentukan ukuran elemen",
+      "Mengatur visibilitas elemen"
+    ],
+    "correct_answer": "Memberikan identifier unik untuk elemen"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara mendapatkan referensi ke sebuah View di dalam kode Java/Kotlin?",
+    "options": [
+      "getViewById(R.id.viewId)",
+      "findViewWithTag(\"viewId\")",
+      "findViewById(R.id.viewId)",
+      "getViewReference(\"viewId\")"
+    ],
+    "correct_answer": "findViewById(R.id.viewId)"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari Toast dalam pengembangan Android?",
+    "options": [
+      "Menampilkan notifikasi singkat",
+      "Membuat animasi transisi",
+      "Menyimpan data sementara",
+      "Mengatur tata letak"
+    ],
+    "correct_answer": "Menampilkan notifikasi singkat"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan Explicit Intent?",
+    "options": [
+      "Intent yang hanya bisa digunakan di dalam satu Activity",
+      "Intent yang menentukan komponen tujuan secara spesifik",
+      "Intent yang digunakan untuk mengirim data besar",
+      "Intent yang hanya bisa digunakan untuk sistem Android"
+    ],
+    "correct_answer": "Intent yang menentukan komponen tujuan secara spesifik"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara menambahkan data ke dalam Intent?",
+    "options": [
+      "intent.addData(key, value)",
+      "intent.putExtra(key, value)",
+      "intent.sendData(key, value)",
+      "intent.attachData(key, value)"
+    ],
+    "correct_answer": "intent.putExtra(key, value)"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari metode setContentView() dalam Activity?",
+    "options": [
+      "Mengatur tema aplikasi",
+      "Menentukan layout yang akan ditampilkan",
+      "Mengatur orientasi layar",
+      "Menambahkan menu ke Action Bar"
+    ],
+    "correct_answer": "Menentukan layout yang akan ditampilkan"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan ConstraintLayout?",
+    "options": [
+      "Layout yang hanya bisa digunakan untuk aplikasi game",
+      "Layout yang mengatur posisi dan ukuran widget secara fleksibel berdasarkan constraints",
+      "Layout yang hanya bisa digunakan di versi Android terbaru",
+      "Layout yang otomatis menyesuaikan dengan ukuran layar"
+    ],
+    "correct_answer": "Layout yang mengatur posisi dan ukuran widget secara fleksibel berdasarkan constraints"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari RecyclerView?",
+    "options": [
+      "Menampilkan data dalam bentuk list yang efisien",
+      "Membuat animasi scroll",
+      "Mengatur tata letak secara otomatis",
+      "Menampilkan iklan dalam aplikasi"
+    ],
+    "correct_answer": "Menampilkan data dalam bentuk list yang efisien"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan ViewHolder dalam konteks RecyclerView?",
+    "options": [
+      "Kelas untuk menyimpan data",
+      "Objek yang menyimpan referensi ke View-view dalam setiap item RecyclerView",
+      "Komponen untuk mengatur scrolling",
+      "Interface untuk menangani klik pada item"
+    ],
+    "correct_answer": "Objek yang menyimpan referensi ke View-view dalam setiap item RecyclerView"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari file strings.xml?",
+    "options": [
+      "Menyimpan konfigurasi database",
+      "Mendefinisikan animasi",
+      "Menyimpan string yang digunakan dalam aplikasi",
+      "Mengatur style aplikasi"
+    ],
+    "correct_answer": "Menyimpan string yang digunakan dalam aplikasi"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari metode onSaveInstanceState()?",
+    "options": [
+      "Menyimpan data permanen",
+      "Menyimpan state UI sementara saat terjadi perubahan konfigurasi",
+      "Mengirim data ke server",
+      "Membuat backup aplikasi"
+    ],
+    "correct_answer": "Menyimpan state UI sementara saat terjadi perubahan konfigurasi"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'resource' dalam konteks pengembangan Android?",
+    "options": [
+      "File Java yang berisi logika aplikasi",
+      "Aset eksternal seperti gambar, string, dan layout yang digunakan dalam aplikasi",
+      "Library pihak ketiga yang digunakan dalam proyek",
+      "Perangkat keras yang digunakan untuk menjalankan aplikasi"
+    ],
+    "correct_answer": "Aset eksternal seperti gambar, string, dan layout yang digunakan dalam aplikasi"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara menambahkan library eksternal ke dalam proyek Android?",
+    "options": [
+      "Menambahkannya di AndroidManifest.xml",
+      "Menambahkannya di build.gradle",
+      "Menambahkannya di MainActivity.java",
+      "Menambahkannya di res/values"
+    ],
+    "correct_answer": "Menambahkannya di build.gradle"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Di mana file layout XML biasanya disimpan dalam proyek Android?",
+    "options": [
+      "res/layout",
+      "src/layout",
+      "assets/layout",
+      "lib/layout"
+    ],
+    "correct_answer": "res/layout"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "beginner",
+    "question": "Apa itu Gradle dalam konteks pengembangan Android?",
+    "options": [
+      "Bahasa pemrograman",
+      "Plugin untuk debugging",
+      "Alat build automation",
+      "Pustaka UI"
+    ],
+    "correct_answer": "Alat build automation"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi dari SharedPreferences?",
+    "options": [
+      "Menyimpan data dalam jumlah besar",
+      "Menyimpan data key-value dalam jumlah kecil",
+      "Mengatur preferensi tampilan aplikasi",
+      "Membagi data antar aplikasi"
+    ],
+    "correct_answer": "Menyimpan data key-value dalam jumlah kecil"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "intermediate",
+    "question": "Bagaimana cara menambahkan menu ke Action Bar?",
+    "options": [
+      "Menggunakan metode addMenu()",
+      "Membuat file XML menu dan meng-inflate-nya di onCreateOptionsMenu()",
+      "Menambahkan elemen <menu> di layout XML",
+      "Menggunakan AlertDialog"
+    ],
+    "correct_answer": "Membuat file XML menu dan meng-inflate-nya di onCreateOptionsMenu()"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan Fragment dalam pengembangan Android?",
+    "options": [
+      "Komponen UI yang dapat digunakan kembali dan memiliki siklus hidup sendiri",
+      "Kelas untuk menyimpan data sementara",
+      "Framework untuk membuat animasi",
+      "Komponen untuk mengelola database"
+    ],
+    "correct_answer": "Komponen UI yang dapat digunakan kembali dan memiliki siklus hidup sendiri"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "intermediate",
+    "question": "Bagaimana cara menambahkan Fragment ke dalam Activity?",
+    "options": [
+      "Menggunakan metode addFragment()",
+      "Mendeklarasikan Fragment di layout XML",
+      "Menggunakan FragmentManager dan FragmentTransaction",
+      "Fragment otomatis ditambahkan ke semua Activity"
+    ],
+    "correct_answer": "Menggunakan FragmentManager dan FragmentTransaction"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan ViewModel dalam arsitektur Android?",
+    "options": [
+      "Komponen untuk mengelola data UI dan mempertahankannya selama perubahan konfigurasi",
+      "Kelas untuk membuat tampilan custom",
+      "Framework untuk membuat animasi kompleks",
+      "Komponen untuk mengatur tema aplikasi"
+    ],
+    "correct_answer": "Komponen untuk mengelola data UI dan mempertahankannya selama perubahan konfigurasi"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "intermediate",
+    "question": "Bagaimana cara mengimplementasikan navigasi menggunakan Navigation Component?",
+    "options": [
+      "Menggunakan Intent untuk setiap perpindahan",
+      "Membuat graph navigasi XML dan menggunakan NavController",
+      "Menggunakan FragmentManager untuk setiap perpindahan",
+      "Menambahkan listener ke setiap tombol navigasi"
+    ],
+    "correct_answer": "Membuat graph navigasi XML dan menggunakan NavController"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi utama dari LiveData dalam arsitektur Android?",
+    "options": [
+      "Menyimpan data di cloud",
+      "Membuat animasi real-time",
+      "Menyediakan observable data yang aware terhadap lifecycle",
+      "Mengoptimalkan penggunaan memori"
+    ],
+    "correct_answer": "Menyediakan observable data yang aware terhadap lifecycle"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi utama dari WorkManager dalam pengembangan Android?",
+    "options": [
+      "Mengelola tampilan aplikasi",
+      "Menjadwalkan dan menjalankan tugas di latar belakang yang dijamin akan dieksekusi",
+      "Mengoptimalkan penggunaan baterai",
+      "Mengelola koneksi jaringan"
+    ],
+    "correct_answer": "Menjadwalkan dan menjalankan tugas di latar belakang yang dijamin akan dieksekusi"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan Room dalam konteks Android?",
+    "options": [
+      "Library untuk membuat layout yang responsif",
+      "Framework untuk mengelola state aplikasi",
+      "Abstraksi di atas SQLite untuk mempermudah operasi database",
+      "Tool untuk mengoptimalkan penggunaan memori"
+    ],
+    "correct_answer": "Abstraksi di atas SQLite untuk mempermudah operasi database"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "intermediate",
+    "question": "Bagaimana cara mengimplementasikan notifikasi yang dapat diinteraksi di Android?",
+    "options": [
+      "Menggunakan Toast dengan durasi yang lama",
+      "Membuat custom Dialog",
+      "Menggunakan NotificationCompat.Builder dan menambahkan PendingIntent",
+      "Menampilkan AlertDialog secara otomatis"
+    ],
+    "correct_answer": "Menggunakan NotificationCompat.Builder dan menambahkan PendingIntent"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan Coroutines dalam Kotlin untuk Android?",
+    "options": [
+      "Framework untuk membuat animasi",
+      "Library untuk mengelola thread dan asynchronous tasks",
+      "Tool untuk mengoptimalkan compile time",
+      "Sistem untuk manajemen memori otomatis"
+    ],
+    "correct_answer": "Library untuk mengelola thread dan asynchronous tasks"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "intermediate",
+    "question": "Bagaimana cara mengimplementasikan deep linking dalam aplikasi Android?",
+    "options": [
+      "Menggunakan SharedPreferences untuk menyimpan link",
+      "Menambahkan intent-filter di AndroidManifest.xml dan menangani data di Activity",
+      "Membuat custom URL scheme di build.gradle",
+      "Menggunakan Firebase Dynamic Links"
+    ],
+    "correct_answer": "Menambahkan intent-filter di AndroidManifest.xml dan menangani data di Activity"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "intermediate",
+    "question": "Apa keuntungan menggunakan 'data class' di Kotlin dibandingkan class biasa?",
+    "options": [
+      "Performa yang lebih baik",
+      "Otomatis generate fungsi seperti equals(), hashCode(), dan toString()",
+      "Dapat digunakan sebagai singleton",
+      "Mendukung multiple inheritance"
+    ],
+    "correct_answer": "Otomatis generate fungsi seperti equals(), hashCode(), dan toString()"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "intermediate",
+    "question": "Apa perbedaan utama antara `val` dan `var` dalam Kotlin?",
+    "options": [
+      "`val` untuk variabel lokal, `var` untuk variabel global",
+      "`val` untuk tipe data primitif, `var` untuk objek",
+      "`val` untuk variabel yang bisa diubah, `var` untuk konstanta",
+      "`val` untuk variabel yang tidak bisa diubah setelah inisialisasi, `var` untuk yang bisa"
+    ],
+    "correct_answer": "`val` untuk variabel yang tidak bisa diubah setelah inisialisasi, `var` untuk yang bisa"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi dari 'extension function' dalam Kotlin?",
+    "options": [
+      "Untuk memperpanjang waktu eksekusi fungsi",
+      "Untuk menambahkan fungsi baru pada class yang sudah ada tanpa memodifikasinya",
+      "Untuk mengextend class abstract",
+      "Untuk mengoptimalkan penggunaan memori"
+    ],
+    "correct_answer": "Untuk menambahkan fungsi baru pada class yang sudah ada tanpa memodifikasinya"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "advanced",
+    "question": "Bagaimana cara mengimplementasikan dependency injection menggunakan Dagger di Android?",
+    "options": [
+      "Menggunakan konstruktor untuk semua dependensi",
+      "Mendeklarasikan semua dependensi di AndroidManifest.xml",
+      "Membuat module, component, dan menggunakan anotasi @Inject",
+      "Menggunakan Service untuk menyediakan dependensi"
+    ],
+    "correct_answer": "Membuat module, component, dan menggunakan anotasi @Inject"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "advanced",
+    "question": "Apa fungsi dari ProGuard dalam pengembangan aplikasi Android?",
+    "options": [
+      "Meningkatkan performa runtime aplikasi",
+      "Mengoptimalkan ukuran APK dengan obfuscation dan minification",
+      "Mendeteksi bug dan crash secara otomatis",
+      "Mengenkripsi source code aplikasi"
+    ],
+    "correct_answer": "Mengoptimalkan ukuran APK dengan obfuscation dan minification"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "advanced",
+    "question": "Bagaimana cara mengimplementasikan custom view yang kompleks di Android?",
+    "options": [
+      "Menggunakan WebView untuk menampilkan HTML custom",
+      "Menggabungkan beberapa view standar dalam satu layout",
+      "Meng-extend kelas View dan override metode onDraw() untuk custom rendering",
+      "Menggunakan library pihak ketiga untuk semua custom view"
+    ],
+    "correct_answer": "Meng-extend kelas View dan override metode onDraw() untuk custom rendering"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan Clean Architecture dalam pengembangan Android?",
+    "options": [
+      "Menggunakan design pattern MVC",
+      "Arsitektur yang memisahkan concerns dengan layer-layer seperti domain, data, dan presentation",
+      "Teknik untuk mengoptimalkan penggunaan memori",
+      "Framework untuk automated testing"
+    ],
+    "correct_answer": "Arsitektur yang memisahkan concerns dengan layer-layer seperti domain, data, dan presentation"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "advanced",
+    "question": "Bagaimana cara mengimplementasikan offline-first architecture di Android?",
+    "options": [
+      "Selalu menyimpan data di server dan mengaksesnya saat online",
+      "Menggunakan cache dan sinkronisasi data dengan strategi seperti Room + Retrofit + WorkManager",
+      "Membatasi fitur aplikasi saat offline",
+      "Menggunakan Firebase Realtime Database untuk semua data"
+    ],
+    "correct_answer": "Menggunakan cache dan sinkronisasi data dengan strategi seperti Room + Retrofit + WorkManager"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "advanced",
+    "question": "Apa fungsi dari Dagger Hilt dalam pengembangan Android?",
+    "options": [
+      "Framework untuk membuat UI",
+      "Library untuk mengoptimalkan gambar",
+      "Dependency injection toolkit yang built-in dengan Android framework",
+      "Tool untuk analisis performa aplikasi"
+    ],
+    "correct_answer": "Dependency injection toolkit yang built-in dengan Android framework"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "advanced",
+    "question": "Bagaimana cara mengimplementasikan testing komprehensif dalam aplikasi Android?",
+    "options": [
+      "Hanya melakukan manual testing",
+      "Menggunakan unit tests, integration tests, dan UI tests dengan tools seperti JUnit, Espresso, dan Mockito",
+      "Mengandalkan beta testers untuk menemukan bug",
+      "Hanya melakukan UI testing dengan Espresso"
+    ],
+    "correct_answer": "Menggunakan unit tests, integration tests, dan UI tests dengan tools seperti JUnit, Espresso, dan Mockito"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan Kotlin Flow dan bagaimana penggunaannya di Android?",
+    "options": [
+      "Library untuk membuat animasi fluid",
+      "Teknik untuk mengoptimalkan layout",
+      "API untuk stream data yang didesain untuk coroutines",
+      "Framework untuk mengelola state aplikasi"
+    ],
+    "correct_answer": "API untuk stream data yang didesain untuk coroutines"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "advanced",
+    "question": "Bagaimana cara mengoptimalkan performa aplikasi Android yang kompleks?",
+    "options": [
+      "Selalu menggunakan library pihak ketiga untuk semua fitur",
+      "Menggunakan AsyncTask untuk semua operasi",
+      "Mengimplementasikan teknik seperti lazy loading, efisien layout hierarchy, dan optimasi database queries",
+      "Menghindari penggunaan RecyclerView dan menggunakan ScrollView"
+    ],
+    "correct_answer": "Mengimplementasikan teknik seperti lazy loading, efisien layout hierarchy, dan optimasi database queries"
+  },
+  {
+    "tech_category": "Android",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan Jetpack Compose dan bagaimana pengaruhnya terhadap pengembangan UI Android?",
+    "options": [
+      "Library untuk membuat animasi kompleks",
+      "Modern toolkit untuk membangun native UI dengan pendekatan deklaratif",
+      "Framework untuk mengoptimalkan layout XML",
+      "Tool untuk otomatisasi desain UI"
+    ],
+    "correct_answer": "Modern toolkit untuk membangun native UI dengan pendekatan deklaratif"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan Cloud Computing?",
+    "options": [
+      "Teknologi untuk menyimpan data di awan",
+      "Layanan komputasi yang disediakan melalui internet",
+      "Sistem untuk mengontrol cuaca",
+      "Program untuk mendesain awan"
+    ],
+    "correct_answer": "Layanan komputasi yang disediakan melalui internet"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang merupakan salah satu model layanan cloud?",
+    "options": [
+      "Infrastructure as a Service (IaaS)",
+      "Weather as a Service (WaaS)",
+      "Computer as a Service (CaaS)",
+      "Internet as a Service (IaaS)"
+    ],
+    "correct_answer": "Infrastructure as a Service (IaaS)"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Apa kepanjangan dari VPC dalam konteks cloud computing?",
+    "options": [
+      "Virtual Private Computer",
+      "Virtual Public Cloud",
+      "Virtual Private Cloud",
+      "Virtual Processing Center"
+    ],
+    "correct_answer": "Virtual Private Cloud"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan istilah 'Region' dalam cloud computing?",
+    "options": [
+      "Lokasi fisik di mana data center berada",
+      "Zona waktu di mana server beroperasi",
+      "Wilayah geografis yang dilayani oleh cloud",
+      "Bagian dari benua yang menggunakan cloud"
+    ],
+    "correct_answer": "Lokasi fisik di mana data center berada"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang BUKAN merupakan keuntungan utama cloud computing?",
+    "options": [
+      "Skalabilitas",
+      "Efisiensi biaya",
+      "Keamanan data yang dijamin 100%",
+      "Aksesibilitas global"
+    ],
+    "correct_answer": "Keamanan data yang dijamin 100%"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'pay-as-you-go' dalam konteks cloud computing?",
+    "options": [
+      "Membayar sebelum menggunakan layanan",
+      "Membayar sesuai dengan penggunaan",
+      "Membayar secara bulanan",
+      "Membayar sekali untuk penggunaan seumur hidup"
+    ],
+    "correct_answer": "Membayar sesuai dengan penggunaan"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari Amazon EC2?",
+    "options": [
+      "Menyediakan layanan email",
+      "Menyediakan kapasitas komputasi yang dapat diubah ukurannya",
+      "Menyimpan data dalam jumlah besar",
+      "Menganalisis data big data"
+    ],
+    "correct_answer": "Menyediakan kapasitas komputasi yang dapat diubah ukurannya"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'instance' dalam konteks cloud computing?",
+    "options": [
+      "Sebuah contoh kode program",
+      "Server virtual yang berjalan di cloud",
+      "Sebuah kasus penggunaan cloud",
+      "Bagian dari data center fisik"
+    ],
+    "correct_answer": "Server virtual yang berjalan di cloud"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang merupakan layanan storage di Google Cloud Platform?",
+    "options": [
+      "Google Drive",
+      "Google Docs",
+      "Google Cloud Storage",
+      "Google Photos"
+    ],
+    "correct_answer": "Google Cloud Storage"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'serverless computing'?",
+    "options": [
+      "Komputasi tanpa menggunakan server sama sekali",
+      "Model di mana penyedia cloud mengelola infrastruktur server",
+      "Komputasi yang dilakukan di perangkat klien",
+      "Penggunaan server pribadi untuk komputasi"
+    ],
+    "correct_answer": "Model di mana penyedia cloud mengelola infrastruktur server"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'multi-tenancy' dalam cloud computing?",
+    "options": [
+      "Penggunaan multiple cloud provider",
+      "Berbagi sumber daya fisik antara multiple pelanggan",
+      "Memiliki banyak akun di satu cloud provider",
+      "Menggunakan banyak server untuk satu aplikasi"
+    ],
+    "correct_answer": "Berbagi sumber daya fisik antara multiple pelanggan"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang merupakan contoh layanan Platform as a Service (PaaS)?",
+    "options": [
+      "Amazon EC2",
+      "Google App Engine",
+      "Dropbox",
+      "Microsoft Office 365"
+    ],
+    "correct_answer": "Google App Engine"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'elasticity' dalam konteks cloud computing?",
+    "options": [
+      "Kemampuan untuk meregang infrastruktur fisik",
+      "Fleksibilitas dalam pembayaran layanan cloud",
+      "Kemampuan untuk meningkatkan atau menurunkan sumber daya sesuai kebutuhan",
+      "Elastisitas jaringan dalam mentransmisikan data"
+    ],
+    "correct_answer": "Kemampuan untuk meningkatkan atau menurunkan sumber daya sesuai kebutuhan"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari Amazon S3?",
+    "options": [
+      "Menyediakan layanan komputasi",
+      "Menyimpan dan mengambil data dalam jumlah besar",
+      "Mengelola database relasional",
+      "Menyediakan layanan email"
+    ],
+    "correct_answer": "Menyimpan dan mengambil data dalam jumlah besar"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'cloud migration'?",
+    "options": [
+      "Perpindahan awan dari satu tempat ke tempat lain",
+      "Proses memindahkan data dan aplikasi dari on-premise ke cloud",
+      "Migrasi pelanggan dari satu cloud provider ke provider lain",
+      "Perpindahan data center fisik ke lokasi baru"
+    ],
+    "correct_answer": "Proses memindahkan data dan aplikasi dari on-premise ke cloud"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang BUKAN merupakan jenis utama dari cloud deployment?",
+    "options": [
+      "Public cloud",
+      "Private cloud",
+      "Hybrid cloud",
+      "Secret cloud"
+    ],
+    "correct_answer": "Secret cloud"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'cloud-native'?",
+    "options": [
+      "Aplikasi yang hanya bisa berjalan di cloud",
+      "Aplikasi yang dirancang dan dibangun untuk berjalan optimal di lingkungan cloud",
+      "Teknologi cloud yang dikembangkan oleh perusahaan lokal",
+      "Layanan cloud yang hanya tersedia di negara asalnya"
+    ],
+    "correct_answer": "Aplikasi yang dirancang dan dibangun untuk berjalan optimal di lingkungan cloud"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari firewall dalam arsitektur cloud?",
+    "options": [
+      "Mempercepat koneksi internet",
+      "Mengenkripsi semua data",
+      "Melindungi jaringan dari akses yang tidak sah",
+      "Menyimpan data cadangan"
+    ],
+    "correct_answer": "Melindungi jaringan dari akses yang tidak sah"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Apa kepanjangan dari SLA dalam konteks layanan cloud?",
+    "options": [
+      "System Level Agreement",
+      "Service Level Agreement",
+      "Software License Agreement",
+      "Server Location Assignment"
+    ],
+    "correct_answer": "Service Level Agreement"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'auto-scaling' dalam cloud computing?",
+    "options": [
+      "Kemampuan sistem untuk memperbesar ukuran file secara otomatis",
+      "Fitur untuk mengubah warna antarmuka pengguna secara otomatis",
+      "Kemampuan untuk menambah atau mengurangi sumber daya komputasi secara otomatis berdasarkan kebutuhan",
+      "Proses backup otomatis untuk semua data"
+    ],
+    "correct_answer": "Kemampuan untuk menambah atau mengurangi sumber daya komputasi secara otomatis berdasarkan kebutuhan"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "beginner",
+    "question": "Dalam konteks keamanan cloud, apa yang dimaksud dengan 'Shared Responsibility Model'?",
+    "options": [
+      "Semua tanggung jawab keamanan ada pada penyedia cloud",
+      "Semua tanggung jawab keamanan ada pada pengguna",
+      "Pembagian tanggung jawab keamanan antara penyedia dan pengguna cloud",
+      "Model keamanan yang hanya berlaku untuk layanan berbagi file"
+    ],
+    "correct_answer": "Pembagian tanggung jawab keamanan antara penyedia dan pengguna cloud"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "intermediate",
+    "question": "Apa perbedaan utama antara horizontal scaling dan vertical scaling?",
+    "options": [
+      "Horizontal scaling menambah jumlah mesin, vertical scaling meningkatkan kapasitas mesin yang ada",
+      "Horizontal scaling untuk database, vertical scaling untuk aplikasi",
+      "Horizontal scaling lebih mahal, vertical scaling lebih murah",
+      "Horizontal scaling untuk public cloud, vertical scaling untuk private cloud"
+    ],
+    "correct_answer": "Horizontal scaling menambah jumlah mesin, vertical scaling meningkatkan kapasitas mesin yang ada"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'idempotency' dalam konteks API cloud?",
+    "options": [
+      "Kemampuan API untuk selalu memberikan respons yang sama",
+      "Sifat di mana multiple request identik memiliki efek yang sama dengan single request",
+      "Metode untuk mengenkripsi data yang dikirim melalui API",
+      "Teknik untuk meningkatkan kecepatan respons API"
+    ],
+    "correct_answer": "Sifat di mana multiple request identik memiliki efek yang sama dengan single request"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'Infrastructure as Code' (IaC)?",
+    "options": [
+      "Kode program yang berjalan di infrastruktur cloud",
+      "Metode untuk mengelola dan menyediakan infrastruktur melalui kode daripada konfigurasi manual",
+      "Bahasa pemrograman khusus untuk cloud computing",
+      "Sistem untuk mengenkripsi infrastruktur cloud"
+    ],
+    "correct_answer": "Metode untuk mengelola dan menyediakan infrastruktur melalui kode daripada konfigurasi manual"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi utama dari Amazon CloudFront?",
+    "options": [
+      "Menyediakan layanan komputasi",
+      "Mengelola database NoSQL",
+      "Menyediakan Content Delivery Network (CDN)",
+      "Mengatur keamanan jaringan"
+    ],
+    "correct_answer": "Menyediakan Content Delivery Network (CDN)"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'Blue-Green Deployment' dalam konteks cloud?",
+    "options": [
+      "Metode deployment yang menggunakan dua lingkungan identik dengan versi aplikasi yang berbeda",
+      "Teknik untuk mengoptimalkan penggunaan energi di data center",
+      "Strategi untuk memisahkan data penting dan tidak penting",
+      "Metode untuk menggabungkan public dan private cloud"
+    ],
+    "correct_answer": "Metode deployment yang menggunakan dua lingkungan identik dengan versi aplikasi yang berbeda"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "intermediate",
+    "question": "Apa peran utama dari AWS Lambda?",
+    "options": [
+      "Menyediakan layanan database relasional",
+      "Menjalankan kode tanpa perlu mengelola server",
+      "Mengatur lalu lintas jaringan",
+      "Menyimpan data dalam jumlah besar"
+    ],
+    "correct_answer": "Menjalankan kode tanpa perlu mengelola server"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'eventual consistency' dalam sistem database terdistribusi di cloud?",
+    "options": [
+      "Data akan selalu konsisten di semua node",
+      "Data akan menjadi konsisten setelah beberapa waktu",
+      "Konsistensi data hanya pada akhir hari",
+      "Data tidak pernah konsisten antar node"
+    ],
+    "correct_answer": "Data akan menjadi konsisten setelah beberapa waktu"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'Cloud-Native Application'?",
+    "options": [
+      "Aplikasi yang hanya bisa diakses melalui internet",
+      "Aplikasi yang dirancang khusus untuk berjalan di lingkungan cloud",
+      "Aplikasi yang menggunakan teknologi terbaru",
+      "Aplikasi yang dikembangkan oleh perusahaan cloud"
+    ],
+    "correct_answer": "Aplikasi yang dirancang khusus untuk berjalan di lingkungan cloud"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "intermediate",
+    "question": "Apa peran utama dari Virtual Private Cloud (VPC) di lingkungan AWS?",
+    "options": [
+      "Menyediakan jaringan virtual terisolasi di cloud",
+      "Mengenkripsi semua data yang disimpan di cloud",
+      "Menghubungkan multiple cloud providers",
+      "Menyediakan antarmuka visual untuk manajemen cloud"
+    ],
+    "correct_answer": "Menyediakan jaringan virtual terisolasi di cloud"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'Chaos Engineering' dalam konteks cloud?",
+    "options": [
+      "Teknik untuk membuat arsitektur cloud yang kompleks",
+      "Metode untuk mengacaukan sistem pesaing",
+      "Praktik untuk meningkatkan ketahanan sistem dengan secara sengaja menyebabkan kegagalan",
+      "Strategi untuk mengoptimalkan biaya cloud secara acak"
+    ],
+    "correct_answer": "Praktik untuk meningkatkan ketahanan sistem dengan secara sengaja menyebabkan kegagalan"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi utama dari AWS CloudFormation?",
+    "options": [
+      "Membuat formulir online di cloud",
+      "Memodelkan dan menyediakan sumber daya AWS menggunakan template",
+      "Menganalisis pembentukan awan di atmosfer",
+      "Mengenkripsi komunikasi antar layanan AWS"
+    ],
+    "correct_answer": "Memodelkan dan menyediakan sumber daya AWS menggunakan template"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'Edge Computing' dan bagaimana hubungannya dengan cloud?",
+    "options": [
+      "Komputasi yang dilakukan di perangkat end-user, mengurangi latency dibandingkan dengan cloud terpusat",
+      "Teknik untuk mengoptimalkan penggunaan GPU di cloud",
+      "Metode untuk meningkatkan keamanan di cloud dengan enkripsi tambahan",
+      "Strategi untuk menghubungkan multiple cloud providers"
+    ],
+    "correct_answer": "Komputasi yang dilakukan di perangkat end-user, mengurangi latency dibandingkan dengan cloud terpusat"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'cloud bursting'?",
+    "options": [
+      "Ketika cloud mengalami kegagalan total",
+      "Proses memindahkan semua data ke cloud dalam waktu singkat",
+      "Teknik di mana aplikasi berjalan on-premise dan 'meledak' ke cloud saat kebutuhan meningkat",
+      "Situasi di mana penggunaan cloud melebihi batas anggaran"
+    ],
+    "correct_answer": "Teknik di mana aplikasi berjalan on-premise dan 'meledak' ke cloud saat kebutuhan meningkat"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi utama dari load balancer dalam arsitektur cloud?",
+    "options": [
+      "Menyeimbangkan biaya penggunaan cloud",
+      "Mendistribusikan lalu lintas jaringan ke beberapa server",
+      "Mengoptimalkan kecepatan internet",
+      "Menyeimbangkan penggunaan daya listrik di data center"
+    ],
+    "correct_answer": "Mendistribusikan lalu lintas jaringan ke beberapa server"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "intermediate",
+    "question": "Manakah dari berikut ini yang merupakan contoh layanan Container Orchestration?",
+    "options": [
+      "Docker",
+      "Kubernetes",
+      "Jenkins",
+      "Maven"
+    ],
+    "correct_answer": "Kubernetes"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "advanced",
+    "question": "Apa fungsi utama dari service mesh dalam arsitektur microservices di cloud?",
+    "options": [
+      "Menghubungkan microservices ke database",
+      "Mengatur komunikasi dan manajemen antar microservices",
+      "Menyediakan antarmuka pengguna untuk microservices",
+      "Mengonversi microservices menjadi monolithic application"
+    ],
+    "correct_answer": "Mengatur komunikasi dan manajemen antar microservices"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "advanced",
+    "question": "Bagaimana 'Sharded Database' dapat meningkatkan kinerja dan skalabilitas dalam arsitektur cloud?",
+    "options": [
+      "Dengan mengenkripsi setiap bagian database secara terpisah",
+      "Dengan membagi database menjadi bagian-bagian yang lebih kecil dan mendistribusikannya ke beberapa server",
+      "Dengan menggabungkan semua data ke dalam satu database besar",
+      "Dengan membatasi akses ke database hanya untuk aplikasi tertentu"
+    ],
+    "correct_answer": "Dengan membagi database menjadi bagian-bagian yang lebih kecil dan mendistribusikannya ke beberapa server"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'Canary Deployment' dalam konteks CI/CD di cloud?",
+    "options": [
+      "Teknik deployment yang hanya berfungsi di Amazon Web Services",
+      "Metode untuk menguji kinerja aplikasi di lingkungan produksi",
+      "Strategi rilis di mana perubahan diperkenalkan secara bertahap ke subset pengguna sebelum rilis penuh",
+      "Pendekatan untuk mengamankan pipeline CI/CD dari serangan siber"
+    ],
+    "correct_answer": "Strategi rilis di mana perubahan diperkenalkan secara bertahap ke subset pengguna sebelum rilis penuh"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "advanced",
+    "question": "Bagaimana 'Event-Driven Architecture' diterapkan dalam pengembangan aplikasi cloud-native?",
+    "options": [
+      "Dengan menggunakan events sebagai mekanisme utama untuk komunikasi antar komponen",
+      "Dengan menjadwalkan semua operasi aplikasi pada waktu-waktu tertentu",
+      "Dengan menghindari penggunaan asynchronous processing",
+      "Dengan menggabungkan semua layanan menjadi satu monolith"
+    ],
+    "correct_answer": "Dengan menggunakan events sebagai mekanisme utama untuk komunikasi antar komponen"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "advanced",
+    "question": "Apa peran 'Service Mesh' dalam arsitektur microservices di cloud, dan apa contoh implementasinya?",
+    "options": [
+      "Menggabungkan semua microservices menjadi satu layanan; contohnya adalah Docker Swarm",
+      "Mengelola komunikasi antar-service, keamanan, dan observability; contohnya adalah Istio",
+      "Menyediakan antarmuka pengguna untuk microservices; contohnya adalah React",
+      "Mengonversi microservices ke format yang kompatibel dengan cloud; contohnya adalah Kubernetes"
+    ],
+    "correct_answer": "Mengelola komunikasi antar-service, keamanan, dan observability; contohnya adalah Istio"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "advanced",
+    "question": "Bagaimana 'Strangler Pattern' digunakan dalam modernisasi aplikasi di cloud?",
+    "options": [
+      "Untuk menghapus semua kode lama secara langsung",
+      "Untuk memigrasikan fitur-fitur aplikasi monolitik ke arsitektur baru secara bertahap",
+      "Untuk mengoptimalkan penggunaan CPU dalam instance cloud",
+      "Untuk mengisolasi aplikasi dari serangan DDoS"
+    ],
+    "correct_answer": "Untuk memigrasikan fitur-fitur aplikasi monolitik ke arsitektur baru secara bertahap"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'Polyglot Persistence' dalam arsitektur database cloud, dan apa keuntungannya?",
+    "options": [
+      "Menggunakan satu jenis database untuk semua kebutuhan; meningkatkan konsistensi",
+      "Menggunakan berbagai jenis database sesuai kebutuhan spesifik; meningkatkan fleksibilitas dan kinerja",
+      "Menyimpan data dalam berbagai bahasa; meningkatkan internasionalisasi",
+      "Mengenkripsi database dengan multiple algoritma; meningkatkan keamanan"
+    ],
+    "correct_answer": "Menggunakan berbagai jenis database sesuai kebutuhan spesifik; meningkatkan fleksibilitas dan kinerja"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "advanced",
+    "question": "Bagaimana 'Circuit Breaker Pattern' diterapkan dalam arsitektur microservices di cloud?",
+    "options": [
+      "Untuk memutus koneksi internet ke microservices yang bermasalah",
+      "Untuk mencegah kegagalan cascade dengan mendeteksi kegagalan dan mencegah operasi yang mungkin gagal",
+      "Untuk mengalihkan semua traffic ke backup service",
+      "Untuk mematikan semua microservices saat terjadi kegagalan sistem"
+    ],
+    "correct_answer": "Untuk mencegah kegagalan cascade dengan mendeteksi kegagalan dan mencegah operasi yang mungkin gagal"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'GitOps' dalam konteks manajemen infrastruktur cloud?",
+    "options": [
+      "Penggunaan Git hanya untuk menyimpan kode aplikasi",
+      "Praktik menggunakan Git sebagai sumber kebenaran untuk manajemen dan deployment infrastruktur",
+      "Metode untuk menggabungkan semua repositori Git menjadi satu",
+      "Teknik untuk mengamankan repositori Git dari akses tidak sah"
+    ],
+    "correct_answer": "Praktik menggunakan Git sebagai sumber kebenaran untuk manajemen dan deployment infrastruktur"
+  },
+  {
+    "tech_category": "Cloud Computing",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'Cloud-Native Observability' dan bagaimana ini berbeda dari metode monitoring tradisional?",
+    "options": [
+      "Hanya fokus pada monitoring infrastruktur cloud",
+      "Menggunakan AI untuk memprediksi masalah di cloud",
+      "Pendekatan holistik yang mengintegrasikan metrics, logs, dan tracing dalam lingkungan cloud yang dinamis",
+      "Metode untuk mengamati awan secara fisik menggunakan satelit"
+    ],
+    "correct_answer": "Pendekatan holistik yang mengintegrasikan metrics, logs, dan tracing dalam lingkungan cloud yang dinamis"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan visualisasi data?",
+    "options": [
+      "Proses membuat database",
+      "Teknik untuk menyembunyikan informasi dalam data",
+      "Representasi grafis dari informasi dan data",
+      "Metode untuk menghapus data yang tidak diperlukan"
+    ],
+    "correct_answer": "Representasi grafis dari informasi dan data"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang merupakan contoh dari tipe data kuantitatif?",
+    "options": [
+      "Warna mata",
+      "Feedback pelanggan",
+      "Jumlah penjualan",
+      "Jenis kelamin"
+    ],
+    "correct_answer": "Jumlah penjualan"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Apa kepanjangan dari SQL?",
+    "options": [
+      "Simple Query Language",
+      "Structured Question Language",
+      "Structured Query Language",
+      "Simple Question Language"
+    ],
+    "correct_answer": "Structured Query Language"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari Database Management System (DBMS)?",
+    "options": [
+      "Untuk membuat grafik dan chart",
+      "Untuk menganalisis data statistik",
+      "Untuk mengelola dan mengorganisir database",
+      "Untuk membuat website"
+    ],
+    "correct_answer": "Untuk mengelola dan mengorganisir database"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang BUKAN termasuk dalam tahapan analisis data?",
+    "options": [
+      "Pengumpulan data",
+      "Pembersihan data",
+      "Penjualan data",
+      "Interpretasi data"
+    ],
+    "correct_answer": "Penjualan data"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'data wrangling'?",
+    "options": [
+      "Proses menghapus semua data",
+      "Teknik untuk membuat data baru",
+      "Proses transformasi dan pemetaan data dari satu format ke format lain",
+      "Metode untuk menyembunyikan data penting"
+    ],
+    "correct_answer": "Proses transformasi dan pemetaan data dari satu format ke format lain"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang merupakan contoh dari data kualitatif?",
+    "options": [
+      "Usia seseorang",
+      "Jumlah penduduk",
+      "Tingkat kepuasan pelanggan",
+      "Suhu udara"
+    ],
+    "correct_answer": "Tingkat kepuasan pelanggan"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Apa tujuan utama dari Exploratory Data Analysis (EDA)?",
+    "options": [
+      "Untuk menghapus data yang tidak diperlukan",
+      "Untuk memahami karakteristik data dan menemukan pola atau anomali",
+      "Untuk membuat prediksi masa depan",
+      "Untuk mengenkripsi data sensitif"
+    ],
+    "correct_answer": "Untuk memahami karakteristik data dan menemukan pola atau anomali"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang merupakan contoh dari visualisasi data?",
+    "options": [
+      "Diagram alur",
+      "File log",
+      "Grafik batang",
+      "Struktur data"
+    ],
+    "correct_answer": "Grafik batang"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'data cleaning'?",
+    "options": [
+      "Proses menghapus semua data",
+      "Teknik untuk membuat data baru",
+      "Proses mendeteksi dan memperbaiki atau menghapus data yang tidak akurat dari dataset",
+      "Metode untuk mengenkripsi data"
+    ],
+    "correct_answer": "Proses mendeteksi dan memperbaiki atau menghapus data yang tidak akurat dari dataset"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang BUKAN merupakan tipe data dasar dalam SQL?",
+    "options": [
+      "INTEGER",
+      "VARCHAR",
+      "BOOLEAN",
+      "MATRIX"
+    ],
+    "correct_answer": "MATRIX"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari perintah SELECT dalam SQL?",
+    "options": [
+      "Untuk menambahkan data baru ke tabel",
+      "Untuk menghapus data dari tabel",
+      "Untuk mengambil data dari satu atau lebih tabel",
+      "Untuk mengubah struktur tabel"
+    ],
+    "correct_answer": "Untuk mengambil data dari satu atau lebih tabel"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'big data'?",
+    "options": [
+      "Data yang hanya bisa disimpan dalam satu komputer",
+      "Kumpulan data yang sangat besar dan kompleks yang tidak dapat dikelola dengan alat manajemen data tradisional",
+      "Data yang hanya digunakan oleh perusahaan besar",
+      "Kumpulan data yang berukuran kurang dari 1 GB"
+    ],
+    "correct_answer": "Kumpulan data yang sangat besar dan kompleks yang tidak dapat dikelola dengan alat manajemen data tradisional"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari pivot table?",
+    "options": [
+      "Untuk menghapus data duplikat",
+      "Untuk membuat grafik",
+      "Untuk merangkum data dan membuat laporan yang dapat disesuaikan",
+      "Untuk mengenkripsi data sensitif"
+    ],
+    "correct_answer": "Untuk merangkum data dan membuat laporan yang dapat disesuaikan"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang merupakan contoh dari Data Definition Language (DDL) dalam SQL?",
+    "options": [
+      "SELECT",
+      "INSERT",
+      "CREATE TABLE",
+      "UPDATE"
+    ],
+    "correct_answer": "CREATE TABLE"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'data mining'?",
+    "options": [
+      "Proses menggali tanah untuk mencari data",
+      "Teknik untuk mengekstrak informasi berharga dari kumpulan data besar",
+      "Metode untuk menghapus data lama",
+      "Proses membuat data baru secara acak"
+    ],
+    "correct_answer": "Teknik untuk mengekstrak informasi berharga dari kumpulan data besar"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari perintah WHERE dalam SQL?",
+    "options": [
+      "Untuk menentukan nama tabel",
+      "Untuk menambahkan kolom baru",
+      "Untuk memfilter hasil query berdasarkan kondisi tertentu",
+      "Untuk mengurutkan hasil query"
+    ],
+    "correct_answer": "Untuk memfilter hasil query berdasarkan kondisi tertentu"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang merupakan contoh dari data terstruktur?",
+    "options": [
+      "Video",
+      "Email",
+      "Tabel dalam database relasional",
+      "Posting media sosial"
+    ],
+    "correct_answer": "Tabel dalam database relasional"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'data warehouse'?",
+    "options": [
+      "Tempat penyimpanan fisik untuk hardisk dan server",
+      "Sistem untuk menyimpan data historis dan saat ini dari berbagai sumber untuk analisis bisnis",
+      "Aplikasi untuk membuat backup data",
+      "Metode untuk menghapus data lama secara otomatis"
+    ],
+    "correct_answer": "Sistem untuk menyimpan data historis dan saat ini dari berbagai sumber untuk analisis bisnis"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari Data Manipulation Language (DML) dalam SQL?",
+    "options": [
+      "Untuk mendefinisikan struktur database",
+      "Untuk mengontrol akses ke data dalam database",
+      "Untuk memanipulasi data dalam database, seperti insert, update, dan delete",
+      "Untuk membuat backup database"
+    ],
+    "correct_answer": "Untuk memanipulasi data dalam database, seperti insert, update, dan delete"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang BUKAN merupakan jenis visualisasi data yang umum?",
+    "options": [
+      "Grafik batang",
+      "Diagram lingkaran",
+      "Grafik garis",
+      "Tabel SQL"
+    ],
+    "correct_answer": "Tabel SQL"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'data normalization' dalam konteks database?",
+    "options": [
+      "Proses mengubah semua data menjadi huruf kapital",
+      "Teknik untuk menghilangkan redundansi data dan meningkatkan integritas data",
+      "Metode untuk mengenkripsi data sensitif",
+      "Proses menggabungkan semua tabel menjadi satu"
+    ],
+    "correct_answer": "Teknik untuk menghilangkan redundansi data dan meningkatkan integritas data"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi dari agregasi data dalam analisis?",
+    "options": [
+      "Untuk menghapus data yang tidak diperlukan",
+      "Untuk membuat data baru secara acak",
+      "Untuk meringkas data dan menghitung statistik seperti jumlah, rata-rata, atau maksimum",
+      "Untuk mengenkripsi data sensitif"
+    ],
+    "correct_answer": "Untuk meringkas data dan menghitung statistik seperti jumlah, rata-rata, atau maksimum"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'data lake'?",
+    "options": [
+      "Database yang hanya menyimpan data numerik",
+      "Sistem penyimpanan yang dapat menyimpan data terstruktur dan tidak terstruktur dalam format aslinya",
+      "Metode untuk menghapus data secara permanen",
+      "Aplikasi untuk membuat visualisasi data 3D"
+    ],
+    "correct_answer": "Sistem penyimpanan yang dapat menyimpan data terstruktur dan tidak terstruktur dalam format aslinya"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "intermediate",
+    "question": "Apa perbedaan utama antara OLTP (Online Transaction Processing) dan OLAP (Online Analytical Processing)?",
+    "options": [
+      "OLTP digunakan untuk analisis data, sementara OLAP untuk transaksi harian",
+      "OLTP fokus pada transaksi harian, sementara OLAP digunakan untuk analisis data kompleks",
+      "OLTP hanya dapat digunakan dengan database SQL, sementara OLAP dengan NoSQL",
+      "Tidak ada perbedaan, keduanya adalah istilah yang sama"
+    ],
+    "correct_answer": "OLTP fokus pada transaksi harian, sementara OLAP digunakan untuk analisis data kompleks"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'feature engineering' dalam konteks data science?",
+    "options": [
+      "Proses membuat fitur baru pada aplikasi",
+      "Teknik untuk memilih kolom terbaik dalam database",
+      "Proses menciptakan fitur baru atau memodifikasi fitur yang ada untuk meningkatkan performa model machine learning",
+      "Metode untuk menghapus fitur yang tidak diperlukan dari dataset"
+    ],
+    "correct_answer": "Proses menciptakan fitur baru atau memodifikasi fitur yang ada untuk meningkatkan performa model machine learning"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi utama dari 'cross-validation' dalam machine learning?",
+    "options": [
+      "Untuk membuat dataset baru",
+      "Untuk menguji performa model pada data yang belum pernah dilihat dan menghindari overfitting",
+      "Untuk menggabungkan dua dataset yang berbeda",
+      "Untuk mengenkripsi data sensitif dalam model"
+    ],
+    "correct_answer": "Untuk menguji performa model pada data yang belum pernah dilihat dan menghindari overfitting"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'dimensionality reduction' dalam analisis data?",
+    "options": [
+      "Proses mengurangi ukuran file data",
+      "Teknik untuk mengurangi jumlah variabel dalam dataset sambil mempertahankan sebagian besar informasi",
+      "Metode untuk menghapus outlier dari dataset",
+      "Proses mengubah data 3D menjadi 2D"
+    ],
+    "correct_answer": "Teknik untuk mengurangi jumlah variabel dalam dataset sambil mempertahankan sebagian besar informasi"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "intermediate",
+    "question": "Manakah dari berikut ini yang merupakan contoh dari teknik clustering dalam machine learning?",
+    "options": [
+      "Linear Regression",
+      "K-Means",
+      "Logistic Regression",
+      "Decision Trees"
+    ],
+    "correct_answer": "K-Means"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'data lineage'?",
+    "options": [
+      "Garis yang menghubungkan titik-titik data dalam grafik",
+      "Proses melacak asal-usul data, pergerakannya, dan perubahannya dari waktu ke waktu",
+      "Teknik untuk mengurutkan data berdasarkan waktu",
+      "Metode untuk menghapus data lama secara otomatis"
+    ],
+    "correct_answer": "Proses melacak asal-usul data, pergerakannya, dan perubahannya dari waktu ke waktu"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi dari 'JOIN' dalam SQL?",
+    "options": [
+      "Untuk menggabungkan baris dari dua atau lebih tabel berdasarkan kolom yang terkait",
+      "Untuk memisahkan satu tabel menjadi beberapa tabel",
+      "Untuk menggabungkan beberapa kolom menjadi satu",
+      "Untuk menghapus duplikat data dalam tabel"
+    ],
+    "correct_answer": "Untuk menggabungkan baris dari dua atau lebih tabel berdasarkan kolom yang terkait"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'data governance'?",
+    "options": [
+      "Proses pemilihan pemimpin dalam tim data",
+      "Kerangka kerja untuk mengelola ketersediaan, kegunaan, integritas, dan keamanan data dalam suatu organisasi",
+      "Teknik untuk mengenkripsi seluruh database",
+      "Metode untuk membatasi akses pengguna ke data"
+    ],
+    "correct_answer": "Kerangka kerja untuk mengelola ketersediaan, kegunaan, integritas, dan keamanan data dalam suatu organisasi"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "intermediate",
+    "question": "Apa perbedaan utama antara 'supervised learning' dan 'unsupervised learning'?",
+    "options": [
+      "Supervised learning menggunakan data berlabel, sementara unsupervised learning tidak",
+      "Supervised learning hanya digunakan untuk klasifikasi, sementara unsupervised learning untuk clustering",
+      "Supervised learning lebih cepat daripada unsupervised learning",
+      "Tidak ada perbedaan, keduanya adalah istilah yang sama"
+    ],
+    "correct_answer": "Supervised learning menggunakan data berlabel, sementara unsupervised learning tidak"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'data mart' dalam konteks data warehouse?",
+    "options": [
+      "Toko yang menjual perangkat keras untuk penyimpanan data",
+      "Subset dari data warehouse yang fokus pada area bisnis tertentu",
+      "Software untuk manajemen database",
+      "Teknik untuk mempartisi tabel besar dalam database"
+    ],
+    "correct_answer": "Subset dari data warehouse yang fokus pada area bisnis tertentu"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi utama dari 'indexing' dalam database?",
+    "options": [
+      "Untuk mengenkripsi data sensitif",
+      "Untuk membuat backup database",
+      "Untuk meningkatkan kecepatan pencarian dan pengambilan data",
+      "Untuk mengurutkan data dalam tabel"
+    ],
+    "correct_answer": "Untuk meningkatkan kecepatan pencarian dan pengambilan data"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'ETL' dalam konteks data warehousing?",
+    "options": [
+      "Encrypt, Transfer, Load",
+      "Extract, Transform, Load",
+      "Evaluate, Test, Launch",
+      "Extend, Track, Limit"
+    ],
+    "correct_answer": "Extract, Transform, Load"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'data sharding' dan apa manfaatnya?",
+    "options": [
+      "Teknik untuk menghapus data secara aman, bermanfaat untuk privasi data",
+      "Metode untuk mengenkripsi data, bermanfaat untuk keamanan data",
+      "Proses membagi database besar menjadi bagian-bagian kecil yang didistribusikan, bermanfaat untuk meningkatkan performa dan skalabilitas",
+      "Teknik untuk menggabungkan beberapa database, bermanfaat untuk analisis data terpadu"
+    ],
+    "correct_answer": "Proses membagi database besar menjadi bagian-bagian kecil yang didistribusikan, bermanfaat untuk meningkatkan performa dan skalabilitas"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "advanced",
+    "question": "Jelaskan konsep 'eventual consistency' dalam sistem database terdistribusi.",
+    "options": [
+      "Data selalu konsisten di semua node setiap saat",
+      "Data tidak pernah konsisten di antara node-node",
+      "Data akan menjadi konsisten di semua node setelah beberapa waktu, meskipun mungkin tidak konsisten untuk sementara",
+      "Konsistensi data hanya penting pada satu node utama"
+    ],
+    "correct_answer": "Data akan menjadi konsisten di semua node setelah beberapa waktu, meskipun mungkin tidak konsisten untuk sementara"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'curse of dimensionality' dalam machine learning?",
+    "options": [
+      "Masalah ketika model memiliki terlalu sedikit fitur",
+      "Fenomena di mana performa model menurun ketika jumlah fitur meningkat secara signifikan",
+      "Ketidakmampuan model untuk bekerja dengan data multidimensi",
+      "Keuntungan yang didapat ketika menggunakan data dengan dimensi tinggi"
+    ],
+    "correct_answer": "Fenomena di mana performa model menurun ketika jumlah fitur meningkat secara signifikan"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "advanced",
+    "question": "Apa perbedaan utama antara 'OLAP cube' dan 'star schema'?",
+    "options": [
+      "OLAP cube adalah struktur data multidimensi, sementara star schema adalah model data relasional",
+      "OLAP cube hanya digunakan untuk data numerik, sementara star schema untuk data kategorikal",
+      "OLAP cube digunakan untuk OLTP, sementara star schema untuk OLAP",
+      "Tidak ada perbedaan, keduanya adalah istilah yang sama"
+    ],
+    "correct_answer": "OLAP cube adalah struktur data multidimensi, sementara star schema adalah model data relasional"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'data fabric' dalam arsitektur data modern?",
+    "options": [
+      "Jenis database baru yang menggantikan SQL dan NoSQL",
+      "Lapisan keamanan untuk melindungi data dari akses tidak sah",
+      "Arsitektur dan teknologi yang mengintegrasikan berbagai lingkungan data, proses, dan tim dalam satu platform",
+      "Metode untuk menyimpan data dalam format terkompresi"
+    ],
+    "correct_answer": "Arsitektur dan teknologi yang mengintegrasikan berbagai lingkungan data, proses, dan tim dalam satu platform"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "advanced",
+    "question": "Jelaskan konsep 'homomorphic encryption' dan relevansinya dalam analisis data.",
+    "options": [
+      "Teknik enkripsi yang memungkinkan komputasi dilakukan pada data terenkripsi tanpa mendekripsinya, relevan untuk privasi dalam analisis data",
+      "Metode untuk mengubah semua data menjadi format yang sama, relevan untuk standardisasi data",
+      "Proses mengenkripsi data dengan kunci yang sama, relevan untuk keamanan database",
+      "Teknik untuk membuat data palsu yang mirip dengan data asli, relevan untuk pengujian"
+    ],
+    "correct_answer": "Teknik enkripsi yang memungkinkan komputasi dilakukan pada data terenkripsi tanpa mendekripsinya, relevan untuk privasi dalam analisis data"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'federated learning' dalam konteks machine learning?",
+    "options": [
+      "Teknik untuk menggabungkan beberapa model machine learning menjadi satu",
+      "Metode pembelajaran di mana model dilatih secara terdistribusi tanpa berbagi data mentah",
+      "Proses membagi dataset menjadi beberapa bagian untuk pelatihan paralel",
+      "Pendekatan untuk melatih model menggunakan data dari berbagai negara"
+    ],
+    "correct_answer": "Metode pembelajaran di mana model dilatih secara terdistribusi tanpa berbagi data mentah"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'data mesh' dan bagaimana berbeda dengan arsitektur data tradisional?",
+    "options": [
+      "Teknik untuk mengenkripsi data, berbeda karena lebih aman",
+      "Pendekatan desentralisasi untuk arsitektur data yang memperlakukan domain sebagai pemilik data, berbeda dari pendekatan terpusat tradisional",
+      "Metode untuk menghubungkan berbagai database, berbeda karena menggunakan protokol baru",
+      "Strategi untuk menyimpan data di cloud, berbeda karena tidak menggunakan penyimpanan lokal"
+    ],
+    "correct_answer": "Pendekatan desentralisasi untuk arsitektur data yang memperlakukan domain sebagai pemilik data, berbeda dari pendekatan terpusat tradisional"
+  },
+  {
+    "tech_category": "Data",
+    "difficulty": "advanced",
+    "question": "Jelaskan konsep 'differential privacy' dan mengapa penting dalam analisis data.",
+    "options": [
+      "Teknik untuk membedakan data privat dan publik, penting untuk manajemen akses",
+      "Metode matematika untuk menambahkan noise ke data agregat, penting untuk melindungi privasi individu dalam dataset besar",
+      "Proses untuk memisahkan data sensitif dari non-sensitif, penting untuk kepatuhan regulasi",
+      "Strategi untuk mengenkripsi data secara berbeda berdasarkan tingkat sensitivitasnya, penting untuk keamanan berlapis"
+    ],
+    "correct_answer": "Metode matematika untuk menambahkan noise ke data agregat, penting untuk melindungi privasi individu dalam dataset besar"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari Layout Anchor dalam pengembangan iOS?",
+    "options": [
+      "Mengatur warna UI",
+      "Menentukan posisi dan ukuran view secara programatik",
+      "Mengelola memori aplikasi",
+      "Mengoptimalkan kinerja aplikasi"
+    ],
+    "correct_answer": "Menentukan posisi dan ukuran view secara programatik"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan Human Interface Guidelines (HIG) dalam pengembangan iOS?",
+    "options": [
+      "Aturan wajib yang ditentukan oleh Apple untuk desain aplikasi",
+      "Panduan untuk membuat antarmuka yang konsisten dan intuitif",
+      "Sistem untuk mengukur kinerja aplikasi",
+      "Alat untuk mendesain ikon aplikasi"
+    ],
+    "correct_answer": "Panduan untuk membuat antarmuka yang konsisten dan intuitif"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari Apple Store dalam ekosistem iOS?",
+    "options": [
+      "Menyediakan perangkat keras Apple",
+      "Platform untuk mendistribusikan dan mengunduh aplikasi",
+      "Layanan penyimpanan cloud",
+      "Sistem operasi untuk iPhone"
+    ],
+    "correct_answer": "Platform untuk mendistribusikan dan mengunduh aplikasi"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Apa kegunaan dari Guard Statement dalam Swift?",
+    "options": [
+      "Melindungi aplikasi dari serangan hacker",
+      "Menangani error dalam aplikasi",
+      "Keluar lebih awal dari fungsi jika kondisi tidak terpenuhi",
+      "Membatasi akses ke variabel tertentu"
+    ],
+    "correct_answer": "Keluar lebih awal dari fungsi jika kondisi tidak terpenuhi"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara membuat IBOutlet di Xcode?",
+    "options": [
+      "Mengetik @IBOutlet di depan deklarasi variabel",
+      "Mengklik kanan pada view dan memilih 'Create Outlet'",
+      "Menarik garis dari view ke kode Swift",
+      "Menambahkan outlet di Interface Builder"
+    ],
+    "correct_answer": "Menarik garis dari view ke kode Swift"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari UITableView dalam pengembangan iOS?",
+    "options": [
+      "Menampilkan data dalam bentuk tabel",
+      "Membuat animasi transisi antar view",
+      "Mengelola penyimpanan lokal",
+      "Mengatur tata letak tombol"
+    ],
+    "correct_answer": "Menampilkan data dalam bentuk tabel"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari AppDelegate dalam aplikasi iOS?",
+    "options": [
+      "Mengatur tampilan utama aplikasi",
+      "Menangani event siklus hidup aplikasi",
+      "Menyimpan data pengguna",
+      "Mengatur koneksi jaringan"
+    ],
+    "correct_answer": "Menangani event siklus hidup aplikasi"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'Storyboard' dalam pengembangan iOS?",
+    "options": [
+      "Alat untuk membuat animasi",
+      "Antarmuka visual untuk merancang alur aplikasi",
+      "Kode Swift yang mengatur navigasi",
+      "Dokumentasi aplikasi"
+    ],
+    "correct_answer": "Antarmuka visual untuk merancang alur aplikasi"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara membuat IBAction di Xcode?",
+    "options": [
+      "Menambahkan @IBAction di depan deklarasi fungsi",
+      "Mengklik kanan pada view dan memilih 'Create Action'",
+      "Menarik garis dari view ke kode Swift",
+      "Mengetik 'action' di Interface Builder"
+    ],
+    "correct_answer": "Menarik garis dari view ke kode Swift"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari UINavigationController?",
+    "options": [
+      "Mengatur navigasi antar view controller",
+      "Menampilkan peta dalam aplikasi",
+      "Mengatur penyimpanan data",
+      "Membuat animasi transisi"
+    ],
+    "correct_answer": "Mengatur navigasi antar view controller"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Apa kegunaan utama dari UIStackView?",
+    "options": [
+      "Mengelompokkan view secara vertikal atau horizontal",
+      "Menampilkan data dalam bentuk tumpukan 3D",
+      "Mengatur navigasi aplikasi",
+      "Membuat efek paralaks"
+    ],
+    "correct_answer": "Mengelompokkan view secara vertikal atau horizontal"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'lazy' keyword dalam Swift?",
+    "options": [
+      "Untuk membuat variabel yang tidak dapat diubah",
+      "Untuk menunda inisialisasi properti hingga digunakan pertama kali",
+      "Untuk membuat fungsi yang berjalan lambat",
+      "Untuk mengoptimalkan performa aplikasi"
+    ],
+    "correct_answer": "Untuk menunda inisialisasi properti hingga digunakan pertama kali"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Apa kegunaan dari UIAlertController?",
+    "options": [
+      "Menampilkan pesan peringatan atau konfirmasi",
+      "Mengontrol kecerahan layar",
+      "Mengatur volume suara",
+      "Mengelola koneksi Bluetooth"
+    ],
+    "correct_answer": "Menampilkan pesan peringatan atau konfirmasi"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara menambahkan ikon aplikasi ke proyek iOS?",
+    "options": [
+      "Menambahkan gambar ke Assets.xcassets",
+      "Menggunakan UIImage untuk membuat ikon",
+      "Mendownload ikon saat runtime",
+      "Menggunakan CSS untuk menggambar ikon"
+    ],
+    "correct_answer": "Menambahkan gambar ke Assets.xcassets"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Apa kegunaan dari 'segue' dalam iOS development?",
+    "options": [
+      "Untuk membuat animasi",
+      "Untuk menghubungkan dua view controller dalam storyboard",
+      "Untuk mengatur warna aplikasi",
+      "Untuk mengompres gambar"
+    ],
+    "correct_answer": "Untuk menghubungkan dua view controller dalam storyboard"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari UITabBarController?",
+    "options": [
+      "Menampilkan tab untuk navigasi antar view controller",
+      "Mengatur tata letak tabel",
+      "Mengelola penyimpanan data",
+      "Membuat animasi tab"
+    ],
+    "correct_answer": "Menampilkan tab untuk navigasi antar view controller"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'Safe Area' dalam desain UI iOS?",
+    "options": [
+      "Area yang aman dari serangan hacker",
+      "Area layar yang tidak terhalang oleh fitur perangkat seperti notch",
+      "Area penyimpanan data yang terenkripsi",
+      "Area yang tidak dapat diakses oleh pengguna"
+    ],
+    "correct_answer": "Area layar yang tidak terhalang oleh fitur perangkat seperti notch"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari Auto Layout dalam pengembangan iOS?",
+    "options": [
+      "Mengatur ukuran font secara otomatis",
+      "Menentukan tata letak UI yang responsif untuk berbagai ukuran layar",
+      "Mengoptimalkan kinerja aplikasi secara otomatis",
+      "Mengatur navigasi antar halaman secara otomatis"
+    ],
+    "correct_answer": "Menentukan tata letak UI yang responsif untuk berbagai ukuran layar"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'Constraints' dalam Auto Layout?",
+    "options": [
+      "Batasan ukuran file aplikasi",
+      "Aturan yang menentukan posisi dan ukuran view",
+      "Batasan jumlah view dalam satu layar",
+      "Aturan penamaan variabel dalam Swift"
+    ],
+    "correct_answer": "Aturan yang menentukan posisi dan ukuran view"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari UIScrollView?",
+    "options": [
+      "Menampilkan konten yang lebih besar dari ukuran layar",
+      "Membuat efek parallax",
+      "Mengatur zoom in dan zoom out kamera",
+      "Mengelola memori aplikasi"
+    ],
+    "correct_answer": "Menampilkan konten yang lebih besar dari ukuran layar"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "beginner",
+    "question": "Apa kegunaan dari Assets.xcassets dalam proyek iOS?",
+    "options": [
+      "Menyimpan kode Swift",
+      "Mengelola gambar dan ikon aplikasi",
+      "Menyimpan data pengguna",
+      "Mengatur konfigurasi build"
+    ],
+    "correct_answer": "Mengelola gambar dan ikon aplikasi"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "intermediate",
+    "question": "Apa kegunaan utama dari XCTest framework dalam pengembangan iOS?",
+    "options": [
+      "Untuk melakukan unit testing dan UI testing",
+      "Untuk mengoptimalkan kinerja aplikasi",
+      "Untuk mengelola dependensi eksternal",
+      "Untuk membuat antarmuka pengguna"
+    ],
+    "correct_answer": "Untuk melakukan unit testing dan UI testing"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "intermediate",
+    "question": "Bagaimana cara mengirim notifikasi lokal dalam aplikasi iOS?",
+    "options": [
+      "Menggunakan UNUserNotificationCenter",
+      "Menggunakan UIAlertController",
+      "Menggunakan NSNotificationCenter",
+      "Menggunakan UILocalNotification"
+    ],
+    "correct_answer": "Menggunakan UNUserNotificationCenter"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'Background Modes' dalam pengembangan iOS?",
+    "options": [
+      "Fitur untuk menjalankan tugas tertentu saat aplikasi tidak aktif",
+      "Mode gelap dalam UI aplikasi",
+      "Pengaturan warna latar belakang",
+      "Mode debugging untuk Xcode"
+    ],
+    "correct_answer": "Fitur untuk menjalankan tugas tertentu saat aplikasi tidak aktif"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "intermediate",
+    "question": "Apa keunggulan menggunakan Alamofire dibandingkan URLSession standar?",
+    "options": [
+      "Sintaks yang lebih sederhana dan fitur tambahan seperti chaining request",
+      "Kecepatan proses yang lebih tinggi",
+      "Dukungan untuk protokol jaringan yang lebih luas",
+      "Kemampuan untuk melakukan caching otomatis"
+    ],
+    "correct_answer": "Sintaks yang lebih sederhana dan fitur tambahan seperti chaining request"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "intermediate",
+    "question": "Apa perbedaan utama antara UITest dan Unit Test dalam pengembangan iOS?",
+    "options": [
+      "UITest fokus pada pengujian antarmuka pengguna, sementara Unit Test fokus pada pengujian logika kode",
+      "UITest lebih cepat dijalankan dibandingkan Unit Test",
+      "UITest hanya dapat dilakukan pada perangkat fisik, sementara Unit Test dapat dilakukan pada simulator",
+      "UITest menggunakan bahasa Swift, sementara Unit Test menggunakan Objective-C"
+    ],
+    "correct_answer": "UITest fokus pada pengujian antarmuka pengguna, sementara Unit Test fokus pada pengujian logika kode"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "intermediate",
+    "question": "Bagaimana cara menerapkan 'push notification' dalam aplikasi iOS?",
+    "options": [
+      "Menggunakan Apple Push Notification Service (APNS) dan mengimplementasikan UNUserNotificationCenterDelegate",
+      "Menggunakan UILocalNotification dan NSTimer",
+      "Menggunakan Firebase Cloud Messaging (FCM)",
+      "Menggunakan UIAlertController dengan timer"
+    ],
+    "correct_answer": "Menggunakan Apple Push Notification Service (APNS) dan mengimplementasikan UNUserNotificationCenterDelegate"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'Grand Central Dispatch (GCD)' dalam iOS?",
+    "options": [
+      "Teknologi untuk mengelola tugas konkuren dan paralel",
+      "Framework untuk membuat animasi kompleks",
+      "Sistem untuk mengoptimalkan penggunaan baterai",
+      "Protokol untuk komunikasi antar aplikasi"
+    ],
+    "correct_answer": "Teknologi untuk mengelola tugas konkuren dan paralel"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "intermediate",
+    "question": "Apa keuntungan menggunakan 'Core Data' dibandingkan dengan penyimpanan data sederhana seperti UserDefaults?",
+    "options": [
+      "Core Data mendukung relasi antar entitas dan query kompleks",
+      "Core Data lebih cepat dalam operasi baca-tulis",
+      "Core Data otomatis mengenkripsi data yang disimpan",
+      "Core Data memungkinkan sinkronisasi data real-time dengan iCloud"
+    ],
+    "correct_answer": "Core Data mendukung relasi antar entitas dan query kompleks"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'Combine Framework' dalam Swift?",
+    "options": [
+      "Framework untuk menggabungkan multiple view controller",
+      "Library untuk melakukan operasi matematika kompleks",
+      "Framework untuk pemrograman reaktif dan penanganan event asinkron",
+      "Tool untuk menggabungkan multiple storyboard"
+    ],
+    "correct_answer": "Framework untuk pemrograman reaktif dan penanganan event asinkron"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'Universal Links' dalam pengembangan aplikasi iOS?",
+    "options": [
+      "Mekanisme untuk membuka aplikasi dari URL web",
+      "Fitur untuk berbagi konten antar aplikasi",
+      "Sistem untuk menghubungkan aplikasi dengan perangkat IoT",
+      "Metode untuk mengintegrasikan aplikasi dengan Siri"
+    ],
+    "correct_answer": "Mekanisme untuk membuka aplikasi dari URL web"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'Continuous Integration' dalam pengembangan iOS?",
+    "options": [
+      "Proses pengujian aplikasi secara terus-menerus",
+      "Metode untuk mengintegrasikan fitur baru secara bertahap",
+      "Praktik mengotomatisasi integrasi kode dari multiple developer",
+      "Teknik untuk memastikan kompatibilitas aplikasi dengan semua versi iOS"
+    ],
+    "correct_answer": "Praktik mengotomatisasi integrasi kode dari multiple developer"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "intermediate",
+    "question": "Bagaimana cara menangani operasi asinkron dalam Swift menggunakan 'async/await'?",
+    "options": [
+      "Dengan menggunakan blok 'try-catch'",
+      "Dengan menandai fungsi sebagai 'async' dan menggunakan keyword 'await' saat memanggilnya",
+      "Dengan menggunakan Grand Central Dispatch (GCD)",
+      "Dengan membuat thread baru untuk setiap operasi"
+    ],
+    "correct_answer": "Dengan menandai fungsi sebagai 'async' dan menggunakan keyword 'await' saat memanggilnya"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi utama dari URLSession dalam iOS development?",
+    "options": [
+      "Untuk mengatur sesi login pengguna",
+      "Untuk melakukan permintaan jaringan dan mengirim/menerima data",
+      "Untuk menyimpan URL bookmark dalam aplikasi",
+      "Untuk mengenkripsi URL dalam aplikasi"
+    ],
+    "correct_answer": "Untuk melakukan permintaan jaringan dan mengirim/menerima data"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'Protocol-Oriented Programming' dalam Swift?",
+    "options": [
+      "Paradigma pemrograman yang mengutamakan penggunaan protokol daripada pewarisan kelas",
+      "Teknik untuk mengoptimalkan performa aplikasi",
+      "Metode untuk mengelola dependensi dalam proyek",
+      "Pendekatan untuk mengorganisir kode berdasarkan fitur"
+    ],
+    "correct_answer": "Paradigma pemrograman yang mengutamakan penggunaan protokol daripada pewarisan kelas"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "intermediate",
+    "question": "Bagaimana cara menggunakan UserDefaults untuk menyimpan data sederhana di iOS?",
+    "options": [
+      "Menggunakan metode setValue(_:forKey:) dan object(forKey:)",
+      "Menyimpan data langsung ke file system",
+      "Menggunakan Core Data untuk semua jenis penyimpanan",
+      "Mengirim data ke iCloud untuk disimpan"
+    ],
+    "correct_answer": "Menggunakan metode setValue(_:forKey:) dan object(forKey:)"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "advanced",
+    "question": "Apa prinsip utama dari Clean Architecture dalam pengembangan iOS?",
+    "options": [
+      "Memisahkan kode menjadi lapisan-lapisan dengan tanggung jawab yang jelas",
+      "Menggunakan satu file Swift untuk seluruh aplikasi",
+      "Menggabungkan semua logika bisnis ke dalam satu kelas besar",
+      "Menghindari penggunaan framework pihak ketiga"
+    ],
+    "correct_answer": "Memisahkan kode menjadi lapisan-lapisan dengan tanggung jawab yang jelas"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'Dependency Inversion Principle' dalam SOLID?",
+    "options": [
+      "Modul tingkat tinggi tidak boleh bergantung pada modul tingkat rendah, keduanya harus bergantung pada abstraksi",
+      "Selalu menggunakan dependency injection dalam setiap kelas",
+      "Menghindari penggunaan framework pihak ketiga",
+      "Menggunakan singleton untuk semua dependensi"
+    ],
+    "correct_answer": "Modul tingkat tinggi tidak boleh bergantung pada modul tingkat rendah, keduanya harus bergantung pada abstraksi"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "advanced",
+    "question": "Apa keuntungan utama dari penerapan Test-Driven Development (TDD) dalam pengembangan iOS?",
+    "options": [
+      "Meningkatkan kualitas kode dan mengurangi bug",
+      "Mempercepat proses development",
+      "Mengurangi kebutuhan untuk dokumentasi",
+      "Menghilangkan kebutuhan untuk code review"
+    ],
+    "correct_answer": "Meningkatkan kualitas kode dan mengurangi bug"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "advanced",
+    "question": "Bagaimana cara menerapkan modularisasi dalam proyek iOS skala besar?",
+    "options": [
+      "Memecah aplikasi menjadi framework-framework terpisah",
+      "Menggabungkan semua kode ke dalam satu file besar",
+      "Menggunakan satu storyboard untuk seluruh aplikasi",
+      "Menghindari penggunaan third-party libraries"
+    ],
+    "correct_answer": "Memecah aplikasi menjadi framework-framework terpisah"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "advanced",
+    "question": "Apa keuntungan utama dari penggunaan RxSwift dalam pengembangan iOS?",
+    "options": [
+      "Menyederhanakan penanganan operasi asynchronous dan event-based",
+      "Meningkatkan kecepatan kompilasi",
+      "Mengurangi ukuran aplikasi",
+      "Mengotomatisasi proses deployment"
+    ],
+    "correct_answer": "Menyederhanakan penanganan operasi asynchronous dan event-based"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan arsitektur VIPER dalam pengembangan iOS?",
+    "options": [
+      "Pemisahan tanggung jawab menjadi View, Interactor, Presenter, Entity, dan Router",
+      "Teknik untuk mengoptimalkan performa visual aplikasi",
+      "Framework untuk membuat animasi kompleks",
+      "Metode untuk mengintegrasikan machine learning ke dalam aplikasi"
+    ],
+    "correct_answer": "Pemisahan tanggung jawab menjadi View, Interactor, Presenter, Entity, dan Router"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "advanced",
+    "question": "Bagaimana Continuous Integration dapat diimplementasikan dalam pengembangan aplikasi iOS?",
+    "options": [
+      "Menggunakan tools seperti Jenkins, Travis CI, atau Fastlane untuk otomatisasi build dan test",
+      "Melakukan manual testing setiap hari",
+      "Mengirim update aplikasi ke App Store setiap minggu",
+      "Menggunakan git branches untuk setiap fitur baru"
+    ],
+    "correct_answer": "Menggunakan tools seperti Jenkins, Travis CI, atau Fastlane untuk otomatisasi build dan test"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "advanced",
+    "question": "Apa keuntungan menggunakan Combine Framework dalam pengembangan iOS?",
+    "options": [
+      "Menyediakan cara deklaratif untuk menangani nilai asinkron dari waktu ke waktu",
+      "Meningkatkan kecepatan rendering UI",
+      "Mengotomatisasi proses localization",
+      "Menyederhanakan integrasi dengan web services"
+    ],
+    "correct_answer": "Menyediakan cara deklaratif untuk menangani nilai asinkron dari waktu ke waktu"
+  },
+  {
+    "tech_category": "iOS",
+    "difficulty": "advanced",
+    "question": "Bagaimana cara mengimplementasikan caching yang efektif dalam aplikasi iOS?",
+    "options": [
+      "Menggunakan NSCache atau membuat sistem caching kustom",
+      "Menyimpan semua data di UserDefaults",
+      "Selalu mengambil data baru dari server",
+      "Menggunakan Core Data untuk semua jenis data"
+    ],
+    "correct_answer": "Menggunakan NSCache atau membuat sistem caching kustom"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Dalam visualisasi data, manakah dari berikut ini yang paling sesuai untuk menampilkan distribusi data kontinu?",
+    "options": [
+      "Diagram batang",
+      "Diagram lingkaran",
+      "Histogram",
+      "Diagram garis"
+    ],
+    "correct_answer": "Histogram"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Fungsi VLOOKUP dalam spreadsheet paling tepat digunakan untuk:",
+    "options": [
+      "Menghitung jumlah total dari serangkaian cell",
+      "Mencari nilai dalam tabel berdasarkan kriteria tertentu",
+      "Mengurutkan data dalam urutan menaik",
+      "Menggabungkan teks dari beberapa sel"
+    ],
+    "correct_answer": "Mencari nilai dalam tabel berdasarkan kriteria tertentu"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Dalam Python, bagaimana cara mendeklarasikan variabel?",
+    "options": [
+      "var x = 5",
+      "let x = 5",
+      "x = 5",
+      "int x = 5"
+    ],
+    "correct_answer": "x = 5"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Apa output dari ekspresi Python berikut: 3 * 2 ** 3?",
+    "options": [
+      "18",
+      "24",
+      "9",
+      "36"
+    ],
+    "correct_answer": "24"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang merupakan tipe data sekuensial dalam Python?",
+    "options": [
+      "Integer",
+      "Float",
+      "List",
+      "Boolean"
+    ],
+    "correct_answer": "List"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan matriks dalam konteks pemrograman?",
+    "options": [
+      "Sekumpulan data yang tidak terstruktur",
+      "Array dua dimensi atau lebih",
+      "Fungsi matematika kompleks",
+      "Jenis variabel dalam Python"
+    ],
+    "correct_answer": "Array dua dimensi atau lebih"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari subprogram atau fungsi dalam pemrograman?",
+    "options": [
+      "Untuk menyimpan data",
+      "Untuk membuat antarmuka pengguna",
+      "Untuk mengorganisasi dan mengelompokkan kode yang dapat digunakan kembali",
+      "Untuk menghubungkan ke database"
+    ],
+    "correct_answer": "Untuk mengorganisasi dan mengelompokkan kode yang dapat digunakan kembali"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan Machine Learning?",
+    "options": [
+      "Teknologi yang memungkinkan komputer meniru perilaku manusia",
+      "Sistem yang dapat menghasilkan konten kreatif seperti gambar dan teks",
+      "Metode untuk memproses bahasa alami secara otomatis",
+      "Algoritma yang dapat menemukan pola dalam data besar"
+    ],
+    "correct_answer": "Algoritma yang dapat menemukan pola dalam data besar"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang merupakan jenis pembelajaran dalam Machine Learning?",
+    "options": [
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Reinforcement Learning",
+      "Semua jawaban benar"
+    ],
+    "correct_answer": "Semua jawaban benar"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Apa tujuan utama dari proses 'data cleaning' dalam Machine Learning?",
+    "options": [
+      "Menghapus semua data",
+      "Menambahkan data baru",
+      "Menghilangkan atau memperbaiki data yang tidak akurat atau tidak lengkap",
+      "Mengubah format file data"
+    ],
+    "correct_answer": "Menghilangkan atau memperbaiki data yang tidak akurat atau tidak lengkap"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "intermediate",
+    "question": "Apa perbedaan utama antara bagging dan boosting dalam ensemble learning?",
+    "options": [
+      "Bagging menggunakan satu model, boosting menggunakan banyak model",
+      "Bagging melatih model secara paralel, boosting melatih model secara sekuensial",
+      "Bagging hanya untuk klasifikasi, boosting hanya untuk regresi",
+      "Bagging menggunakan semua fitur, boosting hanya menggunakan satu fitur"
+    ],
+    "correct_answer": "Bagging melatih model secara paralel, boosting melatih model secara sekuensial"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari cross_val_score di Scikit-learn?",
+    "options": [
+      "Menghitung skor validasi silang dari estimator",
+      "Membagi data menjadi set pelatihan dan pengujian",
+      "Melakukan prediksi berdasarkan model yang dilatih",
+      "Menggabungkan beberapa dataset menjadi satu"
+    ],
+    "correct_answer": "Menghitung skor validasi silang dari estimator"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'feature extraction' dalam konteks Machine Learning?",
+    "options": [
+      "Proses menghapus fitur yang tidak penting",
+      "Proses membuat fitur baru dari data mentah",
+      "Proses mengubah skala fitur",
+      "Proses menggabungkan semua fitur menjadi satu"
+    ],
+    "correct_answer": "Proses membuat fitur baru dari data mentah"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari matriks konfusi (confusion matrix) dalam evaluasi model klasifikasi?",
+    "options": [
+      "Untuk memvisualisasikan data training",
+      "Untuk mengukur kecepatan training model",
+      "Untuk menampilkan performa model dalam memprediksi",
+      "Untuk menentukan jumlah layer dalam neural network"
+    ],
+    "correct_answer": "Untuk menampilkan performa model dalam memprediksi"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'hyperparameter' dalam konteks Machine Learning?",
+    "options": [
+      "Parameter yang dipelajari oleh model selama training",
+      "Parameter yang diatur oleh pengembang sebelum training",
+      "Hasil prediksi model",
+      "Jumlah total parameter dalam model"
+    ],
+    "correct_answer": "Parameter yang diatur oleh pengembang sebelum training"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang merupakan contoh algoritma Unsupervised Learning?",
+    "options": [
+      "Linear Regression",
+      "K-Means Clustering",
+      "Decision Trees",
+      "Support Vector Machines"
+    ],
+    "correct_answer": "K-Means Clustering"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan overfitting dalam konteks Machine Learning?",
+    "options": [
+      "Model terlalu sederhana untuk menangkap pola dalam data",
+      "Model terlalu kompleks dan menangkap noise dalam data training",
+      "Model tidak dapat belajar dari data sama sekali",
+      "Model belajar terlalu cepat"
+    ],
+    "correct_answer": "Model terlalu kompleks dan menangkap noise dalam data training"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Apa perbedaan utama antara klasifikasi dan regresi dalam Machine Learning?",
+    "options": [
+      "Klasifikasi untuk data numerik, regresi untuk data kategorikal",
+      "Klasifikasi memprediksi kategori, regresi memprediksi nilai kontinu",
+      "Klasifikasi hanya untuk dua kelas, regresi untuk banyak kelas",
+      "Tidak ada perbedaan, istilah tersebut sinonim"
+    ],
+    "correct_answer": "Klasifikasi memprediksi kategori, regresi memprediksi nilai kontinu"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari proses normalisasi data dalam Machine Learning?",
+    "options": [
+      "Menghapus data yang tidak diperlukan",
+      "Mengubah skala fitur agar berada dalam rentang yang sama",
+      "Menambahkan lebih banyak data",
+      "Mengacak urutan data"
+    ],
+    "correct_answer": "Mengubah skala fitur agar berada dalam rentang yang sama"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari proses 'regularization' dalam model Machine Learning?",
+    "options": [
+      "Meningkatkan kompleksitas model",
+      "Mengurangi overfitting",
+      "Mempercepat proses training",
+      "Meningkatkan jumlah parameter model"
+    ],
+    "correct_answer": "Mengurangi overfitting"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang BUKAN merupakan metrik evaluasi umum untuk model regresi?",
+    "options": [
+      "Mean Squared Error (MSE)",
+      "R-squared",
+      "Mean Absolute Error (MAE)",
+      "Accuracy"
+    ],
+    "correct_answer": "Accuracy"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang merupakan contoh aplikasi Supervised Learning?",
+    "options": [
+      "Klasifikasi email spam",
+      "Clustering karakteristik pelanggan",
+      "Pembelajaran reinforcement untuk game AI",
+      "Rekomendasi produk"
+    ],
+    "correct_answer": "Klasifikasi email spam"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi utama dari teknik 'dropout' dalam Neural Networks?",
+    "options": [
+      "Mempercepat proses training",
+      "Menonaktifkan neuron secara acak",
+      "Meningkatkan akurasi model",
+      "Menambah jumlah parameter dalam model"
+    ],
+    "correct_answer": "Menonaktifkan neuron secara acak"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'batch size' dalam pelatihan model Deep Learning?",
+    "options": [
+      "Jumlah total sampel dalam dataset",
+      "Jumlah sampel yang digunakan dalam satu iterasi update bobot",
+      "Jumlah epoch dalam training",
+      "Jumlah layer dalam model"
+    ],
+    "correct_answer": "Jumlah sampel yang digunakan dalam satu iterasi update bobot"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'transfer learning' dalam konteks deep learning?",
+    "options": [
+      "Mentransfer data dari satu dataset ke dataset lain",
+      "Menggunakan model yang dilatih pada satu task untuk membantu task lain yang terkait",
+      "Memindahkan model dari satu komputer ke komputer lain",
+      "Mengubah arsitektur model selama training"
+    ],
+    "correct_answer": "Menggunakan model yang dilatih pada satu task untuk membantu task lain yang terkait"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "intermediate",
+    "question": "Dalam konteks time series analysis, apa yang dimaksud dengan 'seasonality'?",
+    "options": [
+      "Tren jangka panjang dalam data",
+      "Fluktuasi acak dalam data",
+      "Pola yang berulang pada interval waktu tertentu",
+      "Perubahan mendadak dalam data"
+    ],
+    "correct_answer": "Pola yang berulang pada interval waktu tertentu"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'gradient descent' dalam konteks optimisasi model Machine Learning?",
+    "options": [
+      "Teknik untuk mengurangi jumlah data training",
+      "Algoritma untuk menemukan minimum lokal dari fungsi loss",
+      "Metode untuk menambah layer dalam neural network",
+      "Proses untuk menghapus outlier dari dataset"
+    ],
+    "correct_answer": "Algoritma untuk menemukan minimum lokal dari fungsi loss"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi utama dari teknik 'pruning' dalam Decision Trees?",
+    "options": [
+      "Menambah kedalaman tree",
+      "Mengurangi overfitting dengan memangkas cabang yang tidak penting",
+      "Meningkatkan akurasi dengan menambah lebih banyak node",
+      "Mengubah algoritma splitting node"
+    ],
+    "correct_answer": "Mengurangi overfitting dengan memangkas cabang yang tidak penting"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "intermediate",
+    "question": "Apa perbedaan utama antara L1 dan L2 regularisasi dalam konteks Machine Learning?",
+    "options": [
+      "L1 menggunakan nilai absolut, L2 menggunakan nilai kuadrat",
+      "L1 untuk klasifikasi, L2 untuk regresi",
+      "L1 lebih cepat, L2 lebih akurat",
+      "L1 untuk deep learning, L2 untuk shallow learning"
+    ],
+    "correct_answer": "L1 menggunakan nilai absolut, L2 menggunakan nilai kuadrat"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'ensemble diversity' dalam konteks ensemble learning?",
+    "options": [
+      "Menggunakan model dari berbagai bahasa pemrograman",
+      "Memastikan model-model dalam ensemble membuat kesalahan yang berbeda",
+      "Menggabungkan model dari berbagai library",
+      "Menggunakan data dari berbagai sumber"
+    ],
+    "correct_answer": "Memastikan model-model dalam ensemble membuat kesalahan yang berbeda"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "intermediate",
+    "question": "Apa perbedaan utama antara multilayer perceptron (MLP) dan convolutional neural network (CNN)?",
+    "options": [
+      "MLP memproses data secara sekuensial, CNN memproses data secara paralel",
+      "MLP lebih cocok untuk data terstruktur, CNN untuk data tidak terstruktur",
+      "MLP memerlukan lebih sedikit parameter, CNN memerlukan lebih banyak parameter",
+      "MLP lebih efektif untuk transfer learning, CNN kurang efektif untuk transfer learning"
+    ],
+    "correct_answer": "MLP lebih cocok untuk data terstruktur, CNN untuk data tidak terstruktur"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "intermediate",
+    "question": "Dalam konteks rekomendasi sistem, apa perbedaan utama antara 'collaborative filtering' dan 'content-based filtering'?",
+    "options": [
+      "Collaborative filtering menggunakan preferensi pengguna lain, content-based filtering menggunakan fitur item",
+      "Collaborative filtering hanya untuk item baru, content-based filtering untuk pengguna baru",
+      "Collaborative filtering lebih cepat, content-based filtering lebih akurat",
+      "Tidak ada perbedaan, keduanya adalah istilah yang sama"
+    ],
+    "correct_answer": "Collaborative filtering menggunakan preferensi pengguna lain, content-based filtering menggunakan fitur item"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "intermediate",
+    "question": "Dalam konteks NLP, apa fungsi utama dari 'word embedding'?",
+    "options": [
+      "Menghitung frekuensi kata",
+      "Mengubah kata menjadi vektor dense yang capture semantic meaning",
+      "Menerjemahkan teks ke bahasa lain",
+      "Menghapus stopwords dari teks"
+    ],
+    "correct_answer": "Mengubah kata menjadi vektor dense yang capture semantic meaning"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "intermediate",
+    "question": "Apa keuntungan utama dari menggunakan TensorFlow.js untuk deploy model machine learning?",
+    "options": [
+      "Meningkatkan akurasi model",
+      "Memungkinkan inferensi model di browser atau Node.js",
+      "Mempercepat proses training model",
+      "Mengurangi ukuran dataset yang diperlukan"
+    ],
+    "correct_answer": "Memungkinkan inferensi model di browser atau Node.js"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "intermediate",
+    "question": "Dalam konteks model bahasa, apa yang dimaksud dengan 'perplexity'?",
+    "options": [
+      "Jumlah parameter dalam model",
+      "Ukuran seberapa baik model memprediksi sampel",
+      "Waktu yang diperlukan untuk training model",
+      "Jumlah layer dalam arsitektur model"
+    ],
+    "correct_answer": "Ukuran seberapa baik model memprediksi sampel"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'sequence-to-sequence model' dalam deep learning?",
+    "options": [
+      "Model yang mengubah satu sekuens input menjadi sekuens output lain",
+      "Model untuk klasifikasi teks",
+      "Teknik untuk data augmentation",
+      "Algoritma untuk time series forecasting"
+    ],
+    "correct_answer": "Model yang mengubah satu sekuens input menjadi sekuens output lain"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "intermediate",
+    "question": "Dalam konteks image generation, apa keunggulan utama dari model diffusion dibandingkan dengan GAN?",
+    "options": [
+      "Diffusion models selalu menghasilkan gambar yang lebih realistis",
+      "Diffusion models lebih mudah di-training dan lebih stabil",
+      "Diffusion models memerlukan dataset yang lebih kecil",
+      "Diffusion models menghasilkan gambar lebih cepat"
+    ],
+    "correct_answer": "Diffusion models lebih mudah di-training dan lebih stabil"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "advanced",
+    "question": "Bagaimana 'Variational Autoencoders (VAEs)' berbeda dari autoencoder tradisional?",
+    "options": [
+      "VAEs hanya untuk data gambar, autoencoder tradisional untuk semua jenis data",
+      "VAEs menggunakan lebih sedikit parameter",
+      "VAEs melatih encoder untuk menghasilkan distribusi probabilitas, bukan nilai tetap",
+      "VAEs selalu menghasilkan rekonstruksi yang lebih baik"
+    ],
+    "correct_answer": "VAEs melatih encoder untuk menghasilkan distribusi probabilitas, bukan nilai tetap"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "advanced",
+    "question": "Apa fungsi utama dari 'attention mechanism' dalam arsitektur Transformer?",
+    "options": [
+      "Untuk mengoptimalkan alokasi sumber daya komputasi",
+      "Untuk memungkinkan model memprioritaskan informasi kontekstual yang relevan",
+      "Untuk meningkatkan paralelisasi dalam pemrosesan sekuens",
+      "Untuk memfasilitasi pembelajaran representasi hierarkis"
+    ],
+    "correct_answer": "Untuk memungkinkan model memprioritaskan informasi kontekstual yang relevan"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "advanced",
+    "question": "Apa perbedaan utama antara 'stochastic gradient descent (SGD)' dan 'mini-batch gradient descent'?",
+    "options": [
+      "SGD menggunakan semua data, mini-batch menggunakan subset",
+      "SGD mengupdate parameter setiap sampel, mini-batch setiap batch",
+      "SGD hanya untuk deep learning, mini-batch untuk shallow learning",
+      "SGD lebih cepat, mini-batch lebih akurat"
+    ],
+    "correct_answer": "SGD mengupdate parameter setiap sampel, mini-batch setiap batch"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'adversarial examples' dalam konteks Deep Learning?",
+    "options": [
+      "Data training yang sengaja dibuat salah untuk menguji robustness model",
+      "Input yang sedikit dimodifikasi untuk menyebabkan kesalahan klasifikasi pada model yang sudah terlatih dengan baik",
+      "Contoh dari kelas minoritas dalam dataset tidak seimbang",
+      "Data yang digunakan untuk melatih Generative Adversarial Networks"
+    ],
+    "correct_answer": "Input yang sedikit dimodifikasi untuk menyebabkan kesalahan klasifikasi pada model yang sudah terlatih dengan baik"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'meta-learning' atau 'learning to learn' dalam konteks Machine Learning?",
+    "options": [
+      "Teknik untuk mengotomatisasi proses pemilihan model",
+      "Pendekatan di mana model belajar bagaimana belajar secara efisien dari pengalaman sebelumnya",
+      "Metode untuk menggabungkan multiple learning algorithms",
+      "Proses belajar tentang machine learning secara teoritis"
+    ],
+    "correct_answer": "Pendekatan di mana model belajar bagaimana belajar secara efisien dari pengalaman sebelumnya"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "advanced",
+    "question": "Apa fungsi utama dari 'Generative Adversarial Networks (GANs)' dalam Deep Learning?",
+    "options": [
+      "Untuk melakukan klasifikasi multi-label",
+      "Untuk menghasilkan data sintetis yang mirip dengan data training",
+      "Untuk melakukan transfer learning antar domain",
+      "Untuk mengoptimalkan hyperparameter secara otomatis"
+    ],
+    "correct_answer": "Untuk menghasilkan data sintetis yang mirip dengan data training"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'few-shot learning' dalam konteks Machine Learning?",
+    "options": [
+      "Teknik untuk melatih model dengan dataset yang sangat besar",
+      "Metode untuk model belajar tugas baru dengan sangat sedikit contoh berlabel",
+      "Pendekatan untuk mempercepat proses training",
+      "Strategi untuk mengurangi jumlah parameter dalam model"
+    ],
+    "correct_answer": "Metode untuk model belajar tugas baru dengan sangat sedikit contoh berlabel"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "advanced",
+    "question": "Dalam konteks Reinforcement Learning, apa yang dimaksud dengan 'policy gradient methods'?",
+    "options": [
+      "Teknik untuk mengoptimalkan reward function",
+      "Algoritma yang langsung mengoptimalkan policy tanpa menggunakan value function",
+      "Metode untuk mengurangi variance dalam estimasi gradient",
+      "Teknik untuk mempercepat konvergensi Q-learning"
+    ],
+    "correct_answer": "Algoritma yang langsung mengoptimalkan policy tanpa menggunakan value function"
+  },
+  {
+    "tech_category": "Machine Learning",
+    "difficulty": "advanced",
+    "question": "Dalam konteks Natural Language Processing, apa keunggulan utama dari arsitektur 'BERT'?",
+    "options": [
+      "BERT hanya efektif untuk klasifikasi teks",
+      "BERT menggunakan attention mechanism untuk memahami konteks kata dalam kalimat",
+      "BERT tidak memerlukan fine-tuning untuk task spesifik",
+      "BERT hanya bekerja dengan bahasa Inggris"
+    ],
+    "correct_answer": "BERT menggunakan attention mechanism untuk memahami konteks kata dalam kalimat"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan Flutter dalam pengembangan aplikasi multi-platform?",
+    "options": [
+      "Sebuah bahasa pemrograman baru",
+      "UI toolkit dari Google untuk membuat aplikasi multi-platform",
+      "Sistem operasi untuk perangkat mobile",
+      "Framework untuk membuat game"
+    ],
+    "correct_answer": "UI toolkit dari Google untuk membuat aplikasi multi-platform"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Bahasa pemrograman apa yang digunakan untuk mengembangkan aplikasi Flutter?",
+    "options": [
+      "Java",
+      "Swift",
+      "Dart",
+      "Python"
+    ],
+    "correct_answer": "Dart"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Apa keunggulan utama pengembangan aplikasi dengan Flutter?",
+    "options": [
+      "Hanya bisa digunakan untuk Android",
+      "Membutuhkan kode terpisah untuk setiap platform",
+      "Dapat membuat aplikasi untuk berbagai platform dengan satu codebase",
+      "Hanya mendukung pengembangan web"
+    ],
+    "correct_answer": "Dapat membuat aplikasi untuk berbagai platform dengan satu codebase"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'hot reload' dalam pengembangan Flutter?",
+    "options": [
+      "Fitur untuk mempercepat kompilasi aplikasi",
+      "Kemampuan untuk melihat perubahan kode secara instan tanpa restart aplikasi",
+      "Metode untuk menghapus bug secara otomatis",
+      "Cara untuk mengoptimalkan performa aplikasi"
+    ],
+    "correct_answer": "Kemampuan untuk melihat perubahan kode secara instan tanpa restart aplikasi"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Apa peran utama dari widget dalam Flutter?",
+    "options": [
+      "Untuk mengelola database",
+      "Untuk membuat antarmuka pengguna",
+      "Untuk menangani jaringan",
+      "Untuk mengatur penyimpanan lokal"
+    ],
+    "correct_answer": "Untuk membuat antarmuka pengguna"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Apa perbedaan antara StatelessWidget dan StatefulWidget dalam Flutter?",
+    "options": [
+      "StatelessWidget lebih cepat daripada StatefulWidget",
+      "State pada StatefulWidget dapat berubah selama runtime, StatelessWidget tidak",
+      "StatelessWidget hanya digunakan untuk teks, StatefulWidget untuk gambar",
+      "Tidak ada perbedaan, keduanya dapat digunakan secara bergantian"
+    ],
+    "correct_answer": "State pada StatefulWidget dapat berubah selama runtime, StatelessWidget tidak"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari pubspec.yaml dalam proyek Flutter?",
+    "options": [
+      "Untuk menulis kode aplikasi utama",
+      "Untuk mendefinisikan dependensi dan konfigurasi proyek",
+      "Untuk menyimpan aset gambar",
+      "Untuk mengatur tata letak aplikasi"
+    ],
+    "correct_answer": "Untuk mendefinisikan dependensi dan konfigurasi proyek"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara menambahkan package eksternal ke proyek Flutter?",
+    "options": [
+      "Dengan mendownload package secara manual",
+      "Dengan menambahkan package ke pubspec.yaml dan menjalankan 'flutter pub get'",
+      "Tidak bisa menambahkan package eksternal di Flutter",
+      "Dengan mengimpor package langsung di kode"
+    ],
+    "correct_answer": "Dengan menambahkan package ke pubspec.yaml dan menjalankan 'flutter pub get'"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Apa itu Dart dalam konteks pengembangan Flutter?",
+    "options": [
+      "Sebuah IDE untuk Flutter",
+      "Bahasa pemrograman yang digunakan untuk mengembangkan aplikasi Flutter",
+      "Framework untuk mengelola state aplikasi",
+      "Alat untuk mendesain UI"
+    ],
+    "correct_answer": "Bahasa pemrograman yang digunakan untuk mengembangkan aplikasi Flutter"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari 'main()' dalam aplikasi Flutter?",
+    "options": [
+      "Untuk mendeklarasikan variabel global",
+      "Sebagai titik masuk (entrypoint) utama aplikasi Flutter",
+      "Untuk mengatur tema aplikasi",
+      "Untuk menangani error"
+    ],
+    "correct_answer": "Sebagai titik masuk (entrypoint) utama aplikasi Flutter"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara membuat layout dasar dalam Flutter?",
+    "options": [
+      "Menggunakan HTML dan CSS",
+      "Menggunakan widget dasar, seperti Column, Row, dan Container",
+      "Menggambar layout secara manual",
+      "Mengimpor layout dari file eksternal"
+    ],
+    "correct_answer": "Menggunakan widget dasar, seperti Column, Row, dan Container"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari setState() dalam StatefulWidget?",
+    "options": [
+      "Untuk menghapus widget",
+      "Untuk memberi tahu framework bahwa internal state telah berubah",
+      "Untuk mengubah StatefulWidget menjadi StatelessWidget",
+      "Untuk menyimpan data ke database"
+    ],
+    "correct_answer": "Untuk memberi tahu framework bahwa internal state telah berubah"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara menambahkan gambar ke aplikasi Flutter?",
+    "options": [
+      "Hanya bisa menggunakan URL gambar online",
+      "Menggunakan widget Image dan menentukan path gambar di pubspec.yaml",
+      "Tidak bisa menambahkan gambar di Flutter",
+      "Harus menggunakan library eksternal"
+    ],
+    "correct_answer": "Menggunakan widget Image dan menentukan path gambar di pubspec.yaml"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Apa itu 'const' dalam Dart?",
+    "options": [
+      "Variabel yang nilainya bisa diubah",
+      "Keyword untuk membuat fungsi",
+      "Variabel yang nilainya ditentukan saat compile-time dan tidak bisa diubah",
+      "Tipe data untuk angka bulat"
+    ],
+    "correct_answer": "Variabel yang nilainya ditentukan saat compile-time dan tidak bisa diubah"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara membuat navigasi antar halaman di Flutter?",
+    "options": [
+      "Menggunakan HTML hyperlink",
+      "Menggunakan Navigator.push() dan Navigator.pop()",
+      "Tidak bisa berpindah halaman di Flutter",
+      "Harus membuat aplikasi terpisah untuk setiap halaman"
+    ],
+    "correct_answer": "Menggunakan Navigator.push() dan Navigator.pop()"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari ListView widget di Flutter?",
+    "options": [
+      "Untuk menampilkan daftar item yang dapat di-scroll",
+      "Untuk membuat tabel",
+      "Untuk menampilkan grafik",
+      "Untuk membuat form input"
+    ],
+    "correct_answer": "Untuk menampilkan daftar item yang dapat di-scroll"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'null safety' di Dart?",
+    "options": [
+      "Fitur untuk menghapus semua null dari kode",
+      "Sistem tipe yang membantu mencegah error null-reference",
+      "Fungsi untuk mengenkripsi data",
+      "Metode untuk membuat variabel menjadi null"
+    ],
+    "correct_answer": "Sistem tipe yang membantu mencegah error null-reference"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara menangani input pengguna di Flutter?",
+    "options": [
+      "Hanya bisa menggunakan keyboard",
+      "Menggunakan widget seperti TextField dan GestureDetector",
+      "Input pengguna tidak didukung di Flutter",
+      "Harus menggunakan plugin eksternal"
+    ],
+    "correct_answer": "Menggunakan widget seperti TextField dan GestureDetector"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Apa itu 'async' dan 'await' dalam Dart?",
+    "options": [
+      "Keyword untuk membuat loop",
+      "Metode untuk menghentikan aplikasi",
+      "Keyword untuk menangani operasi asynchronous",
+      "Fungsi untuk mengatur tampilan"
+    ],
+    "correct_answer": "Keyword untuk menangani operasi asynchronous"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara menambahkan font kustom ke aplikasi Flutter?",
+    "options": [
+      "Tidak bisa menggunakan font kustom di Flutter",
+      "Menambahkan font ke assets di pubspec.yaml dan menggunakannya di TextStyle",
+      "Hanya bisa menggunakan font bawaan sistem",
+      "Mengimpor font dari internet setiap kali aplikasi dijalankan"
+    ],
+    "correct_answer": "Menambahkan font ke assets di pubspec.yaml dan menggunakannya di TextStyle"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari 'BuildContext' dalam Flutter?",
+    "options": [
+      "Untuk membangun UI",
+      "Untuk menyimpan data lokal",
+      "Untuk memberikan informasi tentang posisi widget dalam widget tree",
+      "Untuk mengatur warna aplikasi"
+    ],
+    "correct_answer": "Untuk memberikan informasi tentang posisi widget dalam widget tree"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'state management' dalam Flutter?",
+    "options": [
+      "Teknik untuk mengatur penyimpanan lokal",
+      "Cara untuk mengelola dan memperbarui data dalam aplikasi",
+      "Metode untuk mengatur tata letak widget",
+      "Sistem untuk mengelola versi aplikasi"
+    ],
+    "correct_answer": "Cara untuk mengelola dan memperbarui data dalam aplikasi"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "intermediate",
+    "question": "Apa perbedaan antara 'final' dan 'const' dalam Dart?",
+    "options": [
+      "Tidak ada perbedaan, keduanya sama",
+      "final' ditentukan saat runtime, 'const' saat compile-time",
+      "const' bisa diubah, 'final' tidak",
+      "final' hanya untuk string, 'const' untuk semua tipe data"
+    ],
+    "correct_answer": "final' ditentukan saat runtime, 'const' saat compile-time"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi dari 'FutureBuilder' widget dalam Flutter?",
+    "options": [
+      "Untuk membuat animasi",
+      "Untuk menangani operasi asynchronous dan membangun UI berdasarkan hasilnya",
+      "Untuk membuat tata letak responsif",
+      "Untuk menyimpan data secara permanen"
+    ],
+    "correct_answer": "Untuk menangani operasi asynchronous dan membangun UI berdasarkan hasilnya"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'Provider' dalam konteks state management Flutter?",
+    "options": [
+      "Package untuk mengatur routing",
+      "Solusi state management yang memungkinkan pemisahan antara data dan UI",
+      "Library untuk membuat animasi",
+      "Tool untuk mengoptimasi performa aplikasi"
+    ],
+    "correct_answer": "Solusi state management yang memungkinkan pemisahan antara data dan UI"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "intermediate",
+    "question": "Bagaimana cara menerapkan tema dinamis (seperti mode gelap) dalam aplikasi Flutter?",
+    "options": [
+      "Tidak mungkin menerapkan tema dinamis di Flutter",
+      "Menggunakan ThemeData dan setState untuk mengubah tema",
+      "Harus membuat dua aplikasi terpisah untuk tema terang dan gelap",
+      "Tema hanya bisa diubah saat kompilasi"
+    ],
+    "correct_answer": "Menggunakan ThemeData dan setState untuk mengubah tema"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi dari 'Stream' dalam Dart dan Flutter?",
+    "options": [
+      "Untuk menyimpan data secara permanen",
+      "Untuk menangani aliran data asinkron",
+      "Untuk membuat animasi aliran air",
+      "Untuk mengatur tata letak widget"
+    ],
+    "correct_answer": "Untuk menangani aliran data asinkron"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "intermediate",
+    "question": "Bagaimana cara mengimplementasikan infinite scrolling di Flutter?",
+    "options": [
+      "Menggunakan widget ScrollView biasa",
+      "Dengan ListView.builder dan mendeteksi scroll position",
+      "Infinite scrolling tidak mungkin di Flutter",
+      "Harus menggunakan plugin khusus"
+    ],
+    "correct_answer": "Dengan ListView.builder dan mendeteksi scroll position"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'mixin' dalam Dart?",
+    "options": [
+      "Cara untuk menambahkan methods ke class tanpa inheritance",
+      "Tipe data baru di Dart",
+      "Metode untuk menggabungkan dua widget",
+      "Fungsi untuk mencampur warna"
+    ],
+    "correct_answer": "Cara untuk menambahkan methods ke class tanpa inheritance"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "intermediate",
+    "question": "Bagaimana cara melakukan unit testing di Flutter?",
+    "options": [
+      "Unit testing tidak didukung di Flutter",
+      "Menggunakan package test dan menulis test cases",
+      "Hanya bisa melakukan manual testing",
+      "Menggunakan tool eksternal non-Dart"
+    ],
+    "correct_answer": "Menggunakan package test dan menulis test cases"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'Future' dalam Dart?",
+    "options": [
+      "Tipe data untuk menyimpan nilai yang akan datang",
+      "Fungsi untuk memprediksi performa aplikasi",
+      "Metode untuk mengatur jadwal eksekusi kode",
+      "Kelas untuk membuat animasi kompleks"
+    ],
+    "correct_answer": "Tipe data untuk menyimpan nilai yang akan datang"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "intermediate",
+    "question": "Bagaimana cara mengimplementasikan tema dinamis (seperti mode gelap) di Flutter?",
+    "options": [
+      "Menggunakan CSS media queries",
+      "Menggunakan ThemeData dan menyediakan tema terang dan gelap",
+      "Mengganti warna widget satu per satu",
+      "Menggunakan plugin pihak ketiga khusus untuk tema"
+    ],
+    "correct_answer": "Menggunakan ThemeData dan menyediakan tema terang dan gelap"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'isolate' dalam Dart?",
+    "options": [
+      "Teknik untuk mengisolasi bug dalam kode",
+      "Unit eksekusi independen yang tidak berbagi memori",
+      "Metode untuk mengenkapsulasi data sensitif",
+      "Cara untuk memisahkan UI dan logika bisnis"
+    ],
+    "correct_answer": "Unit eksekusi independen yang tidak berbagi memori"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "intermediate",
+    "question": "Bagaimana cara melakukan HTTP request di Flutter?",
+    "options": [
+      "Menggunakan XMLHttpRequest",
+      "Menggunakan package http dan metode seperti get(), post(), etc.",
+      "Menggunakan Ajax calls",
+      "Mengirim request langsung ke server tanpa library"
+    ],
+    "correct_answer": "Menggunakan package http dan metode seperti get(), post(), etc."
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "intermediate",
+    "question": "Bagaimana cara mengimplementasikan local storage di Flutter?",
+    "options": [
+      "Menggunakan cookies",
+      "Menggunakan package shared_preferences atau hive",
+      "Menyimpan data dalam variabel global",
+      "Menggunakan server database"
+    ],
+    "correct_answer": "Menggunakan package shared_preferences atau hive"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "intermediate",
+    "question": "Bagaimana cara mengimplementasikan state management menggunakan Provider di Flutter?",
+    "options": [
+      "Menggunakan StatefulWidget untuk semua komponen",
+      "Membuat kelas ChangeNotifier dan menggunakan ChangeNotifierProvider",
+      "Menyimpan semua state dalam variabel global",
+      "Menggunakan database untuk menyimpan state"
+    ],
+    "correct_answer": "Membuat kelas ChangeNotifier dan menggunakan ChangeNotifierProvider"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "advanced",
+    "question": "Bagaimana cara mengimplementasikan custom shader dalam Flutter?",
+    "options": [
+      "Menggunakan CSS shaders",
+      "Membuat FragmentProgram dan menggunakan CustomPainter",
+      "Mengimpor shader dari software 3D",
+      "Shader tidak dapat diimplementasikan di Flutter"
+    ],
+    "correct_answer": "Membuat FragmentProgram dan menggunakan CustomPainter"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'code generation' dalam konteks Flutter?",
+    "options": [
+      "Proses otomatis menghasilkan kode boilerplate",
+      "Teknik untuk mengoptimalkan performa kompilasi",
+      "Metode untuk mengenkripsi kode sumber",
+      "Cara untuk mengonversi kode Dart ke bahasa lain"
+    ],
+    "correct_answer": "Proses otomatis menghasilkan kode boilerplate"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "advanced",
+    "question": "Bagaimana cara mengimplementasikan custom render object di Flutter?",
+    "options": [
+      "Menggunakan widget CustomPaint",
+      "Membuat subclass RenderObject dan mengimplementasikan metode paint dan layout",
+      "Menggunakan library rendering pihak ketiga",
+      "Memodifikasi source code Flutter engine"
+    ],
+    "correct_answer": "Membuat subclass RenderObject dan mengimplementasikan metode paint dan layout"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "advanced",
+    "question": "Apa fungsi dari 'compute' function dalam Flutter?",
+    "options": [
+      "Untuk melakukan kalkulasi matematika kompleks",
+      "Untuk menjalankan task yang berat di isolate terpisah",
+      "Untuk mengoptimalkan rendering widget",
+      "Untuk mengompres data sebelum dikirim ke server"
+    ],
+    "correct_answer": "Untuk menjalankan task yang berat di isolate terpisah"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "advanced",
+    "question": "Bagaimana cara mengimplementasikan custom platform-specific code di Flutter?",
+    "options": [
+      "Menggunakan if-else statement untuk cek platform",
+      "Membuat MethodChannel untuk komunikasi antara Dart dan platform native",
+      "Menulis ulang seluruh aplikasi untuk masing-masing platform",
+      "Menggunakan compiler flag untuk memisahkan kode"
+    ],
+    "correct_answer": "Membuat MethodChannel untuk komunikasi antara Dart dan platform native"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'tree shaking' dalam konteks Flutter?",
+    "options": [
+      "Proses mengoptimalkan widget tree",
+      "Teknik untuk menghapus kode yang tidak digunakan saat kompilasi",
+      "Metode untuk meningkatkan performa animasi",
+      "Cara untuk mengurangi penggunaan memori saat runtime"
+    ],
+    "correct_answer": "Teknik untuk menghapus kode yang tidak digunakan saat kompilasi"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "advanced",
+    "question": "Bagaimana cara mengimplementasikan deep linking di Flutter?",
+    "options": [
+      "Menggunakan package url_launcher",
+      "Mengkonfigurasi AndroidManifest.xml dan Info.plist, serta menggunakan uni_links package",
+      "Membuat custom URL scheme di server",
+      "Menggunakan Firebase Dynamic Links"
+    ],
+    "correct_answer": "Mengkonfigurasi AndroidManifest.xml dan Info.plist, serta menggunakan uni_links package"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "advanced",
+    "question": "Apa fungsi dari 'InheritedWidget' dalam Flutter?",
+    "options": [
+      "Untuk membuat animasi yang kompleks",
+      "Untuk mengoptimalkan rendering widget",
+      "Untuk meneruskan data ke bawah widget tree tanpa passing manual",
+      "Untuk mengelola state aplikasi secara global"
+    ],
+    "correct_answer": "Untuk meneruskan data ke bawah widget tree tanpa passing manual"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "advanced",
+    "question": "Bagaimana cara mengimplementasikan custom lint rules di Flutter?",
+    "options": [
+      "Memodifikasi file analysis_options.yaml",
+      "Membuat package custom_lint dan mendefinisikan aturan baru",
+      "Menggunakan tool linting pihak ketiga",
+      "Menambahkan komentar khusus di kode"
+    ],
+    "correct_answer": "Membuat package custom_lint dan mendefinisikan aturan baru"
+  },
+  {
+    "tech_category": "Multi Platform",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'golden test' dalam Flutter?",
+    "options": [
+      "Test untuk mengukur performa aplikasi",
+      "Test yang membandingkan hasil render widget dengan screenshot yang diharapkan",
+      "Test untuk memeriksa penggunaan memori",
+      "Test yang berjalan di device high-end"
+    ],
+    "correct_answer": "Test yang membandingkan hasil render widget dengan screenshot yang diharapkan"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Apa kepanjangan dari HTML?",
+    "options": [
+      "Hyper Text Markup Language",
+      "High Tech Modern Language",
+      "Hyperlink and Text Markup Language",
+      "Home Tool Markup Language"
+    ],
+    "correct_answer": "Hyper Text Markup Language"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Tag HTML mana yang digunakan untuk membuat hyperlink?",
+    "options": [
+      "<link>",
+      "<a>",
+      "<hlink>",
+      "<url>"
+    ],
+    "correct_answer": "<a>"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari CSS?",
+    "options": [
+      "Menambahkan interaktivitas ke halaman web",
+      "Membuat struktur halaman web",
+      "Mengatur tampilan dan layout halaman web",
+      "Menghubungkan halaman web dengan database"
+    ],
+    "correct_answer": "Mengatur tampilan dan layout halaman web"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Manakah dari berikut ini yang merupakan selector CSS yang benar?",
+    "options": [
+      "#header",
+      "@header",
+      "?header",
+      "!header"
+    ],
+    "correct_answer": "#header"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Apa perbedaan utama antara margin dan padding dalam CSS?",
+    "options": [
+      "Margin adalah jarak di dalam elemen, padding adalah jarak di luar elemen",
+      "Margin adalah jarak di luar elemen, padding adalah jarak di dalam elemen",
+      "Margin hanya berlaku untuk elemen block, padding untuk semua elemen",
+      "Tidak ada perbedaan, keduanya sama"
+    ],
+    "correct_answer": "Margin adalah jarak di luar elemen, padding adalah jarak di dalam elemen"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama JavaScript dalam pengembangan web?",
+    "options": [
+      "Membuat struktur halaman web",
+      "Mengatur tampilan halaman web",
+      "Menambahkan interaktivitas dan dinamisme ke halaman web",
+      "Mengelola database server"
+    ],
+    "correct_answer": "Menambahkan interaktivitas dan dinamisme ke halaman web"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara mendeklarasikan variabel dalam JavaScript modern?",
+    "options": [
+      "var x = 5;",
+      "let x = 5;",
+      "const x = 5;",
+      "Semua jawaban benar"
+    ],
+    "correct_answer": "Semua jawaban benar"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'responsive web design'?",
+    "options": [
+      "Desain web yang cepat merespon input pengguna",
+      "Desain web yang dapat beradaptasi dengan berbagai ukuran layar",
+      "Desain web yang menggunakan banyak animasi",
+      "Desain web yang hanya untuk mobile"
+    ],
+    "correct_answer": "Desain web yang dapat beradaptasi dengan berbagai ukuran layar"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari tag <meta> dalam HTML?",
+    "options": [
+      "Menambahkan metadata tentang dokumen HTML",
+      "Membuat hyperlink",
+      "Menentukan judul halaman",
+      "Menambahkan gambar ke halaman"
+    ],
+    "correct_answer": "Menambahkan metadata tentang dokumen HTML"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'box model' dalam CSS?",
+    "options": [
+      "Model untuk membuat kotak dialog",
+      "Cara CSS memperlakukan elemen sebagai kotak dengan content, padding, border, dan margin",
+      "Teknik untuk membuat layout grid",
+      "Model untuk membuat animasi kotak"
+    ],
+    "correct_answer": "Cara CSS memperlakukan elemen sebagai kotak dengan content, padding, border, dan margin"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara menghubungkan file CSS eksternal ke dokumen HTML?",
+    "options": [
+      "<style src='styles.css'>",
+      "<link rel='stylesheet' href='styles.css'>",
+      "<css>styles.css</css>",
+      "<script src='styles.css'>"
+    ],
+    "correct_answer": "<link rel='stylesheet' href='styles.css'>"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Apa fungsi dari atribut 'alt' pada tag <img>?",
+    "options": [
+      "Menentukan sumber gambar",
+      "Mengatur ukuran gambar",
+      "Memberikan teks alternatif jika gambar tidak dapat ditampilkan",
+      "Menambahkan tautan ke gambar"
+    ],
+    "correct_answer": "Memberikan teks alternatif jika gambar tidak dapat ditampilkan"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'semantic HTML'?",
+    "options": [
+      "HTML yang menggunakan banyak warna",
+      "HTML yang memberikan makna pada struktur konten",
+      "HTML yang hanya menggunakan tag <div>",
+      "HTML yang fokus pada tampilan visual"
+    ],
+    "correct_answer": "HTML yang memberikan makna pada struktur konten"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara membuat komentar dalam JavaScript?",
+    "options": [
+      "// Ini adalah komentar",
+      "<!-- Ini adalah komentar -->",
+      "# Ini adalah komentar",
+      "``` Ini adalah komentar ```"
+    ],
+    "correct_answer": "// Ini adalah komentar"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari tag <header> dalam HTML5?",
+    "options": [
+      "Menandai bagian atas halaman web",
+      "Membuat judul besar",
+      "Menambahkan logo situs",
+      "Semua jawaban benar"
+    ],
+    "correct_answer": "Semua jawaban benar"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'flexbox' dalam CSS?",
+    "options": [
+      "Teknik untuk membuat animasi fleksibel",
+      "Model layout yang memudahkan pengaturan elemen dalam container",
+      "Cara untuk membuat teks yang fleksibel",
+      "Metode untuk membuat gambar yang responsif"
+    ],
+    "correct_answer": "Model layout yang memudahkan pengaturan elemen dalam container"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara mendeklarasikan fungsi dalam JavaScript?",
+    "options": [
+      "function myFunction() {}",
+      "def myFunction() {}",
+      "void myFunction() {}",
+      "func myFunction() {}"
+    ],
+    "correct_answer": "function myFunction() {}"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'DOM' dalam konteks web development?",
+    "options": [
+      "Document Object Model",
+      "Data Object Management",
+      "Digital Output Method",
+      "Dynamic Object Manipulation"
+    ],
+    "correct_answer": "Document Object Model"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Apa fungsi utama dari tag <footer> dalam HTML5?",
+    "options": [
+      "Menandai bagian bawah halaman web",
+      "Membuat tulisan kecil",
+      "Menambahkan hak cipta",
+      "Semua jawaban benar"
+    ],
+    "correct_answer": "Semua jawaban benar"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Apa yang dimaksud dengan 'pseudo-class' dalam CSS?",
+    "options": [
+      "Kelas palsu yang tidak ada dalam HTML",
+      "Selector khusus yang memilih elemen dalam keadaan tertentu",
+      "Kelas yang hanya bisa digunakan sekali",
+      "Selector untuk elemen yang tersembunyi"
+    ],
+    "correct_answer": "Selector khusus yang memilih elemen dalam keadaan tertentu"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara menambahkan event listener ke elemen HTML menggunakan JavaScript?",
+    "options": [
+      "element.addEvent('click', function() {});",
+      "element.onClick = function() {};",
+      "element.addEventListener('click', function() {});",
+      "element.on('click', function() {});"
+    ],
+    "correct_answer": "element.addEventListener('click', function() {});"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "beginner",
+    "question": "Bagaimana cara terbaik menangani form dalam React?",
+    "options": [
+      "Selalu menggunakan uncontrolled components",
+      "Selalu menggunakan controlled components",
+      "Menggunakan controlled components untuk sebagian besar kasus",
+      "Tidak ada perbedaan antara controlled dan uncontrolled components"
+    ],
+    "correct_answer": "Menggunakan controlled components untuk sebagian besar kasus"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi utama dari PropTypes dalam pengembangan React?",
+    "options": [
+      "Untuk mengoptimalkan performa komponen",
+      "Untuk memvalidasi tipe data props yang diterima komponen",
+      "Untuk menentukan urutan render komponen",
+      "Untuk mengatur state komponen"
+    ],
+    "correct_answer": "Untuk memvalidasi tipe data props yang diterima komponen"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "intermediate",
+    "question": "Dalam konteks React Router, apa yang dimaksud dengan 'Single-Page Application'?",
+    "options": [
+      "Aplikasi yang hanya memiliki satu halaman HTML",
+      "Aplikasi yang menggunakan satu komponen React",
+      "Aplikasi yang memuat konten baru tanpa me-refresh seluruh halaman",
+      "Aplikasi yang hanya bisa diakses oleh satu pengguna"
+    ],
+    "correct_answer": "Aplikasi yang memuat konten baru tanpa me-refresh seluruh halaman"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "intermediate",
+    "question": "Bagaimana cara menangani parameter URL dalam React Router?",
+    "options": [
+      "Menggunakan props.params",
+      "Menggunakan useParams hook",
+      "Menggunakan state komponen",
+      "Menggunakan localStorage"
+    ],
+    "correct_answer": "Menggunakan useParams hook"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'Component Lifecycle' dalam React?",
+    "options": [
+      "Urutan eksekusi metode dalam komponen React",
+      "Proses pembuatan komponen React",
+      "Cara menghapus komponen React",
+      "Metode untuk mengoptimalkan performa komponen"
+    ],
+    "correct_answer": "Urutan eksekusi metode dalam komponen React"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "intermediate",
+    "question": "Dalam konteks React, apa fungsi utama dari useEffect hook?",
+    "options": [
+      "Untuk menangani state komponen",
+      "Untuk melakukan side effects dalam functional component",
+      "Untuk membuat custom hooks",
+      "Untuk merender komponen"
+    ],
+    "correct_answer": "Untuk melakukan side effects dalam functional component"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "intermediate",
+    "question": "Apa keuntungan menggunakan React Context dibandingkan dengan prop drilling?",
+    "options": [
+      "React Context selalu lebih cepat",
+      "React Context memungkinkan sharing state tanpa passing props secara manual",
+      "React Context otomatis mengoptimalkan performa aplikasi",
+      "React Context menghilangkan kebutuhan state management"
+    ],
+    "correct_answer": "React Context memungkinkan sharing state tanpa passing props secara manual"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "intermediate",
+    "question": "Apa perbedaan utama antara useState dan useReducer hooks?",
+    "options": [
+      "useState hanya untuk string, useReducer untuk tipe data lainnya",
+      "useState untuk state sederhana, useReducer untuk state yang lebih kompleks",
+      "useState sync, useReducer async",
+      "useState untuk functional component, useReducer untuk class component"
+    ],
+    "correct_answer": "useState untuk state sederhana, useReducer untuk state yang lebih kompleks"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi utama dari 'Express.js' dalam pengembangan web?",
+    "options": [
+      "Framework front-end untuk membuat UI",
+      "Library untuk manipulasi DOM",
+      "Web application framework untuk Node.js",
+      "Tool untuk mengoptimalkan gambar web"
+    ],
+    "correct_answer": "Web application framework untuk Node.js"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'JWT' dalam konteks autentikasi web?",
+    "options": [
+      "JavaScript Web Token",
+      "JSON Web Token",
+      "Java Web Toolkit",
+      "Joint Web Technology"
+    ],
+    "correct_answer": "JSON Web Token"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi dari key prop saat me-render list di React?",
+    "options": [
+      "Untuk styling elemen list",
+      "Untuk membantu React mengidentifikasi item yang berubah, ditambah, atau dihapus",
+      "Untuk menentukan urutan render list",
+      "Hanya sebagai identifier unik tanpa fungsi khusus"
+    ],
+    "correct_answer": "Untuk membantu React mengidentifikasi item yang berubah, ditambah, atau dihapus"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi utama dari 'Babel' dalam pengembangan JavaScript modern?",
+    "options": [
+      "Untuk membuat animasi web",
+      "Untuk mengompres kode JavaScript",
+      "Untuk menerjemahkan kode JavaScript modern ke versi yang kompatibel dengan browser lama",
+      "Untuk mendeteksi bug dalam kode JavaScript"
+    ],
+    "correct_answer": "Untuk menerjemahkan kode JavaScript modern ke versi yang kompatibel dengan browser lama"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "intermediate",
+    "question": "Bagaimana cara terbaik menangani error dalam React?",
+    "options": [
+      "Menggunakan try-catch di setiap komponen",
+      "Menggunakan Error Boundaries",
+      "Mengandalkan global error handler",
+      "Mengabaikan error dan fokus pada user experience"
+    ],
+    "correct_answer": "Menggunakan Error Boundaries"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi utama dari 'GraphQL' dalam pengembangan API?",
+    "options": [
+      "Untuk membuat grafik dan chart",
+      "Query language untuk API yang memungkinkan client menentukan data yang dibutuhkan",
+      "Tool untuk mengoptimalkan database graph",
+      "Framework untuk membuat UI berbasis grafik"
+    ],
+    "correct_answer": "Query language untuk API yang memungkinkan client menentukan data yang dibutuhkan"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'closure' dalam JavaScript?",
+    "options": [
+      "Fungsi yang menutup browser",
+      "Fungsi yang memiliki akses ke variabel di lingkup luar",
+      "Fungsi yang tidak dapat diakses dari luar",
+      "Fungsi yang hanya berjalan sekali"
+    ],
+    "correct_answer": "Fungsi yang memiliki akses ke variabel di lingkup luar"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "intermediate",
+    "question": "Apa perbedaan utama antara 'props' dan 'state' dalam React?",
+    "options": [
+      "Props bisa diubah, state tidak",
+      "State diteruskan dari parent ke child, props tidak",
+      "Props adalah data yang diteruskan ke komponen, state adalah data yang dikelola dalam komponen",
+      "Tidak ada perbedaan, keduanya sama"
+    ],
+    "correct_answer": "Props adalah data yang diteruskan ke komponen, state adalah data yang dikelola dalam komponen"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "intermediate",
+    "question": "Apa fungsi utama dari 'useEffect' hook dalam React?",
+    "options": [
+      "Untuk menambahkan efek visual ke komponen",
+      "Untuk mengelola state komponen",
+      "Untuk melakukan side effects dalam functional components",
+      "Untuk meningkatkan performa rendering"
+    ],
+    "correct_answer": "Untuk melakukan side effects dalam functional components"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "intermediate",
+    "question": "Apa yang dimaksud dengan 'RESTful API'?",
+    "options": [
+      "API yang selalu dalam keadaan istirahat",
+      "Architectural style untuk merancang networked applications",
+      "API yang hanya menggunakan metode GET",
+      "Protokol untuk mentransfer data besar"
+    ],
+    "correct_answer": "Architectural style untuk merancang networked applications"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'Application Shell' dalam konteks Progressive Web Apps?",
+    "options": [
+      "Struktur UI minimal yang dapat dimuat dengan cepat saat aplikasi pertama kali dibuka",
+      "Kerangka kerja untuk mengembangkan aplikasi mobile",
+      "Lapisan keamanan untuk melindungi aplikasi web",
+      "Metode untuk mengoptimalkan performa server"
+    ],
+    "correct_answer": "Struktur UI minimal yang dapat dimuat dengan cepat saat aplikasi pertama kali dibuka"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "advanced",
+    "question": "Bagaimana cara terbaik menerapkan 'Offline Capability' pada Progressive Web App?",
+    "options": [
+      "Menyimpan semua data di localStorage",
+      "Menggunakan Service Worker dan Cache API",
+      "Menonaktifkan semua fitur online",
+      "Menggunakan cookie untuk menyimpan data"
+    ],
+    "correct_answer": "Menggunakan Service Worker dan Cache API"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "advanced",
+    "question": "Apa keuntungan utama menggunakan Redux Middleware dalam manajemen state aplikasi React?",
+    "options": [
+      "Meningkatkan performa rendering komponen",
+      "Memungkinkan penanganan side effects dan logika asinkron dalam alur Redux",
+      "Mengurangi ukuran bundle aplikasi",
+      "Mempermudah routing dalam aplikasi"
+    ],
+    "correct_answer": "Memungkinkan penanganan side effects dan logika asinkron dalam alur Redux"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "advanced",
+    "question": "Dalam konteks Clean Architecture pada pengembangan back-end, apa yang dimaksud dengan 'Use Case'?",
+    "options": [
+      "Lapisan yang berinteraksi langsung dengan database",
+      "Komponen yang menangani logika bisnis aplikasi",
+      "Antarmuka untuk berinteraksi dengan pengguna",
+      "Modul yang menangani konfigurasi server"
+    ],
+    "correct_answer": "Komponen yang menangani logika bisnis aplikasi"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "advanced",
+    "question": "Apa tujuan utama dari penerapan 'Code Splitting' dalam aplikasi React?",
+    "options": [
+      "Meningkatkan keamanan aplikasi",
+      "Memisahkan kode berdasarkan fungsinya",
+      "Mengoptimalkan performa dengan memuat kode sesuai kebutuhan",
+      "Mempermudah proses debugging"
+    ],
+    "correct_answer": "Mengoptimalkan performa dengan memuat kode sesuai kebutuhan"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "advanced",
+    "question": "Bagaimana cara terbaik menerapkan 'Server-Side Rendering' (SSR) pada aplikasi React?",
+    "options": [
+      "Menggunakan Create React App",
+      "Mengimplementasikan Next.js atau framework SSR lainnya",
+      "Merender semua komponen di server",
+      "Menggunakan Static Site Generation untuk semua halaman"
+    ],
+    "correct_answer": "Mengimplementasikan Next.js atau framework SSR lainnya"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'Domain-Driven Design' (DDD) dalam pengembangan aplikasi back-end?",
+    "options": [
+      "Teknik untuk mengoptimalkan query database",
+      "Pendekatan pengembangan yang fokus pada domain bisnis dan logikanya",
+      "Metode untuk merancang antarmuka pengguna",
+      "Strategi untuk meningkatkan SEO website"
+    ],
+    "correct_answer": "Pendekatan pengembangan yang fokus pada domain bisnis dan logikanya"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "advanced",
+    "question": "Dalam konteks pengujian aplikasi web, apa perbedaan utama antara 'Integration Testing' dan 'End-to-End Testing'?",
+    "options": [
+      "Integration Testing lebih cepat, E2E Testing lebih lambat tetapi lebih komprehensif",
+      "Integration Testing untuk back-end, E2E Testing untuk front-end",
+      "Integration Testing menggunakan data palsu, E2E Testing menggunakan data real",
+      "Integration Testing manual, E2E Testing otomatis"
+    ],
+    "correct_answer": "Integration Testing lebih cepat, E2E Testing lebih lambat tetapi lebih komprehensif"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "advanced",
+    "question": "Apa keuntungan utama menggunakan 'Microservices Architecture' dibandingkan dengan 'Monolithic Architecture'?",
+    "options": [
+      "Microservices selalu lebih cepat",
+      "Microservices memungkinkan skalabilitas dan pengembangan yang lebih fleksibel",
+      "Microservices menghilangkan kebutuhan akan database",
+      "Microservices otomatis meningkatkan keamanan aplikasi"
+    ],
+    "correct_answer": "Microservices memungkinkan skalabilitas dan pengembangan yang lebih fleksibel"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "advanced",
+    "question": "Apa yang dimaksud dengan 'lazy loading' dalam konteks pengembangan aplikasi Front-End?",
+    "options": [
+      "Teknik untuk memperlambat loading komponen UI",
+      "Memuat berkas JavaScript hanya ketika dibutuhkan",
+      "Mengoptimalkan gambar dalam aplikasi web",
+      "Menunda inisialisasi state komponen"
+    ],
+    "correct_answer": "Memuat berkas JavaScript hanya ketika dibutuhkan"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "advanced",
+    "question": "Apa keuntungan menggunakan CSS-in-JS dalam React?",
+    "options": [
+      "Selalu menghasilkan performa yang lebih baik",
+      "Memungkinkan dynamic styling berdasarkan props atau state",
+      "Menghilangkan kebutuhan akan CSS",
+      "Otomatis mengoptimalkan CSS untuk berbagai browser"
+    ],
+    "correct_answer": "Memungkinkan dynamic styling berdasarkan props atau state"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "advanced",
+    "question": "Dalam konteks web development, apa yang dimaksud dengan 'Progressive Enhancement'?",
+    "options": [
+      "Teknik untuk meningkatkan performa website secara bertahap",
+      "Strategi membuat website yang berfungsi untuk semua pengguna, kemudian menambahkan fitur canggih untuk browser modern",
+      "Metode untuk meningkatkan SEO website",
+      "Proses upgrade framework secara bertahap"
+    ],
+    "correct_answer": "Strategi membuat website yang berfungsi untuk semua pengguna, kemudian menambahkan fitur canggih untuk browser modern"
+  },
+  {
+    "tech_category": "Web",
+    "difficulty": "advanced",
+    "question": "Apa fungsi utama dari service worker dalam web development?",
+    "options": [
+      "Untuk mengelola state aplikasi",
+      "Untuk memungkinkan fungsionalitas offline dan meningkatkan performa",
+      "Untuk mengoptimalkan rendering komponen React",
+      "Untuk menangani autentikasi pengguna"
+    ],
+    "correct_answer": "Untuk memungkinkan fungsionalitas offline dan meningkatkan performa"
+  }
+]

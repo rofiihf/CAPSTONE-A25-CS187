@@ -1,0 +1,968 @@
+[
+  {
+    "job_role": "AI Engineer",
+    "version": "v1_enhanced",
+    "description": "Roadmap for AI Engineer with course mapping (strict)",
+    "subskills": [
+      {
+        "id": "python_fundamentals_ai",
+        "name": "Python Fundamentals",
+        "estimated_hours": 60,
+        "priority": 1,
+        "prerequisites": [],
+        "next_steps": ["math_for_ml_ai"],
+        "keywords": ["python","syntax","data types","functions","oop"],
+        "mapped_courses": {
+          "beginner": [6],
+          "intermediate": [2],
+          "advanced": [5]
+        },
+        "levels": {
+          "beginner": {"description":"Dasar Python untuk AI","indicators":["script sederhana","tipe data","function"]},
+          "intermediate": {"description":"Libraries dasar ML","indicators":["numpy/pandas dasar","preprocessing"]},
+          "advanced": {"description":"Optimasi & advanced python","indicators":["profiling","concurrency"]}
+        }
+      },
+      {
+        "id": "math_for_ml_ai",
+        "name": "Mathematics for ML",
+        "estimated_hours": 60,
+        "priority": 1,
+        "prerequisites": [],
+        "next_steps": ["ml_basics_ai"],
+        "keywords": ["linear algebra","calculus","probability","statistics"],
+        "mapped_courses": {"beginner":[1],"intermediate":[3],"advanced":[4]},
+        "levels": {
+          "beginner":{"description":"Statistik dasar","indicators":["mean/variance"]},
+          "intermediate":{"description":"Kalkulus dasar","indicators":["turunan/gradien"]},
+          "advanced":{"description":"Optimisasi lanjutan","indicators":["SVD","konveks"]}
+        }
+      },
+      {
+        "id": "ml_basics_ai",
+        "name": "Machine Learning Basics",
+        "estimated_hours": 80,
+        "priority": 2,
+        "prerequisites": ["python_fundamentals_ai","math_for_ml_ai"],
+        "next_steps": ["deep_learning_ai"],
+        "keywords": ["supervised","unsupervised","scikit-learn"],
+        "mapped_courses": {"beginner":[3],"intermediate":[2],"advanced":[4]},
+        "levels": {
+          "beginner":{"description":"Algoritma dasar","indicators":["linear regression","decision tree"]},
+          "intermediate":{"description":"Feature engineering","indicators":["cross-validation","tuning"]},
+          "advanced":{"description":"Ensemble & production","indicators":["ensemble methods"]}
+        }
+      },
+      {
+        "id": "deep_learning_ai",
+        "name": "Deep Learning Foundations",
+        "estimated_hours": 100,
+        "priority": 3,
+        "prerequisites": ["ml_basics_ai"],
+        "next_steps": ["nlp_cv_ai"],
+        "keywords": ["neural networks","cnn","rnn","pytorch","tensorflow"],
+        "mapped_courses": {"beginner":[2],"intermediate":[5],"advanced":[5]},
+        "levels": {
+          "beginner":{"description":"NN dasar","indicators":["feedforward","loss"]},
+          "intermediate":{"description":"CNN/RNN","indicators":["conv nets","sequence models"]},
+          "advanced":{"description":"Optimisasi & transfer learning","indicators":["fine-tuning"]}
+        }
+      },
+      {
+        "id": "nlp_cv_ai",
+        "name": "NLP & Computer Vision Fundamentals",
+        "estimated_hours": 60,
+        "priority": 3,
+        "prerequisites": ["deep_learning_ai"],
+        "next_steps": ["mlops_ai"],
+        "keywords": ["nlp","transformer","object detection"],
+        "mapped_courses": {"beginner":[1],"intermediate":[3],"advanced":[5]},
+        "levels": {
+          "beginner":{"description":"Preprocessing dasar","indicators":["tokenization","image preprocessing"]},
+          "intermediate":{"description":"Model pretrained","indicators":["fine-tune small models"]},
+          "advanced":{"description":"Multi-modal & research","indicators":["multi-modal pipelines"]}
+        }
+      },
+      {
+        "id": "mlops_ai",
+        "name": "MLOps Basics",
+        "estimated_hours": 50,
+        "priority": 4,
+        "prerequisites": ["deep_learning_ai"],
+        "next_steps": [],
+        "keywords": ["deployment","docker","monitoring","ci/cd"],
+        "mapped_courses": {"beginner":[6],"intermediate":[4],"advanced":[5]},
+        "levels": {
+          "beginner":{"description":"Serve model sederhana","indicators":["wrap model API"]},
+          "intermediate":{"description":"CI/CD model","indicators":["pipeline retrain"]},
+          "advanced":{"description":"Production ML lifecycle","indicators":["model registry","drift detection"]}
+        }
+      }
+    ]
+  },
+  {
+    "job_role": "Android Developer",
+    "version": "v1_enhanced",
+    "description": "Roadmap for Android Developer (strict)",
+    "subskills": [
+      {
+        "id":"kotlin_basics_android",
+        "name":"Kotlin Fundamentals",
+        "estimated_hours":50,
+        "priority":1,
+        "prerequisites":[],
+        "next_steps":["android_sdk_android"],
+        "keywords":["kotlin","null-safety","coroutines"],
+        "mapped_courses":{"beginner":[11],"intermediate":[7],"advanced":[12]},
+        "levels":{"beginner":{"description":"Syntax Kotlin dasar","indicators":["function/class"]},"intermediate":{"description":"Coroutine & stdlib","indicators":["flows"]},"advanced":{"description":"Pattern & interop","indicators":["delegation"]}}
+      },
+      {
+        "id":"android_sdk_android",
+        "name":"Android SDK & Architecture",
+        "estimated_hours":80,
+        "priority":2,
+        "prerequisites":["kotlin_basics_android"],
+        "next_steps":["ui_material_android"],
+        "keywords":["android","jetpack","lifecycle"],
+        "mapped_courses":{"beginner":[8],"intermediate":[7],"advanced":[9]},
+        "levels":{"beginner":{"description":"Activity & layout basic","indicators":["activity lifecycle"]},"intermediate":{"description":"jetpack components","indicators":["viewmodel","room"]},"advanced":{"description":"modular apps","indicators":["performance tuning"]}}
+      },
+      {
+        "id":"ui_material_android",
+        "name":"UI & Material Design",
+        "estimated_hours":40,
+        "priority":2,
+        "prerequisites":["android_sdk_android"],
+        "next_steps":["data_storage_android"],
+        "keywords":["material","compose","ui"],
+        "mapped_courses":{"beginner":[8],"intermediate":[7],"advanced":[9]},
+        "levels":{"beginner":{"description":"Material basics","indicators":["components"]},"intermediate":{"description":"Compose & animation","indicators":["theming"]},"advanced":{"description":"custom components","indicators":["complex animations"]}}
+      },
+      {
+        "id":"data_storage_android",
+        "name":"Data Storage & Networking",
+        "estimated_hours":50,
+        "priority":3,
+        "prerequisites":["android_sdk_android"],
+        "next_steps":["testing_android"],
+        "keywords":["room","retrofit","okhttp"],
+        "mapped_courses":{"beginner":[8],"intermediate":[9],"advanced":[7]},
+        "levels":{"beginner":{"description":"SharedPrefs & retrofit","indicators":["simple REST"]},"intermediate":{"description":"Room & caching","indicators":["offline sync"]},"advanced":{"description":"realtime & migrations","indicators":["data migration"]}}
+      },
+      {
+        "id":"testing_android",
+        "name":"Testing & CI for Android",
+        "estimated_hours":35,
+        "priority":3,
+        "prerequisites":["android_sdk_android"],
+        "next_steps":["deployment_playstore_android"],
+        "keywords":["espresso","ci","unit test"],
+        "mapped_courses":{"beginner":[8],"intermediate":[10],"advanced":[12]},
+        "levels":{"beginner":{"description":"unit test basics","indicators":["viewmodel tests"]},"intermediate":{"description":"ci pipelines","indicators":["github actions"]},"advanced":{"description":"performance testing","indicators":["profiling"]}}
+      },
+      {
+        "id":"deployment_playstore_android",
+        "name":"Deployment & Release Management",
+        "estimated_hours":25,
+        "priority":4,
+        "prerequisites":["testing_android"],
+        "next_steps":[],
+        "keywords":["playstore","signing","release"],
+        "mapped_courses":{"beginner":[8],"intermediate":[12],"advanced":[7]},
+        "levels":{"beginner":{"description":"release basics","indicators":["signing"]},"intermediate":{"description":"staged rollout","indicators":["A/B testing"]},"advanced":{"description":"enterprise release","indicators":["multi-store"]}}
+      }
+    ]
+  },
+  {
+    "job_role": "Back-End Developer JavaScript",
+    "version": "v1_enhanced",
+    "description": "Roadmap for Back-End Developer JavaScript (strict)",
+    "subskills": [
+      {
+        "id":"nodejs_basics_bejs",
+        "name":"Node.js Fundamentals",
+        "estimated_hours":40,
+        "priority":1,
+        "prerequisites":["javascript_basics"],
+        "next_steps":["api_design_bejs"],
+        "keywords":["nodejs","event loop","npm"],
+        "mapped_courses":{"beginner":[16,14],"intermediate":[17,19],"advanced":[18]},
+        "levels":{"beginner":{"description":"node basics","indicators":["run node script"]},"intermediate":{"description":"async & streams","indicators":["promises"]},"advanced":{"description":"scaling","indicators":["cluster"]}}
+      },
+      {
+        "id":"api_design_bejs",
+        "name":"API Design & HTTP",
+        "estimated_hours":45,
+        "priority":1,
+        "prerequisites":["nodejs_basics_bejs"],
+        "next_steps":["db_design_bejs"],
+        "keywords":["rest","graphql","express"],
+        "mapped_courses":{"beginner":[14],"intermediate":[17,19],"advanced":[18]},
+        "levels":{"beginner":{"description":"REST basics","indicators":["express routes"]},"intermediate":{"description":"graphql & auth","indicators":["jwt"]},"advanced":{"description":"api gateway patterns","indicators":["rate limiting"]}}
+      },
+      {
+        "id":"db_design_bejs",
+        "name":"Database Design & ORMs",
+        "estimated_hours":50,
+        "priority":2,
+        "prerequisites":[],
+        "next_steps":["scaling_backend_bejs"],
+        "keywords":["sql","nosql","orm"],
+        "mapped_courses":{"beginner":[14,16],"intermediate":[17],"advanced":[18]},
+        "levels":{"beginner":{"description":"basic queries","indicators":["crud"]},"intermediate":{"description":"optimizations","indicators":["indexes"]},"advanced":{"description":"sharding & replication","indicators":["sharding"]}}
+      },
+      {
+        "id":"security_backend_bejs",
+        "name":"Security & Authentication",
+        "estimated_hours":35,
+        "priority":2,
+        "prerequisites":["api_design_bejs"],
+        "next_steps":["observability_bejs"],
+        "keywords":["jwt","oauth2","owasp"],
+        "mapped_courses":{"beginner":[14],"intermediate":[17],"advanced":[18]},
+        "levels":{"beginner":{"description":"auth basics","indicators":["jwt"]},"intermediate":{"description":"oauth flows","indicators":["refresh token"]},"advanced":{"description":"threat modelling","indicators":["pen test"]}}
+      },
+      {
+        "id":"observability_bejs",
+        "name":"Observability & Testing",
+        "estimated_hours":30,
+        "priority":3,
+        "prerequisites":["api_design_bejs"],
+        "next_steps":["scaling_backend_bejs"],
+        "keywords":["logging","metrics","jest"],
+        "mapped_courses":{"beginner":[14],"intermediate":[19,17],"advanced":[18]},
+        "levels":{"beginner":{"description":"logging & unit test","indicators":["jest basics"]},"intermediate":{"description":"metrics & tracing","indicators":["prometheus"]},"advanced":{"description":"slo/sli","indicators":["advanced alerting"]}}
+      },
+      {
+        "id":"scaling_backend_bejs",
+        "name":"Scaling & System Design",
+        "estimated_hours":60,
+        "priority":4,
+        "prerequisites":["db_design_bejs","observability_bejs"],
+        "next_steps":[],
+        "keywords":["microservices","kafka","design patterns"],
+        "mapped_courses":{"beginner":[19,17],"intermediate":[18],"advanced":[18]},
+        "levels":{"beginner":{"description":"basic system design","indicators":["load balancing"]},"intermediate":{"description":"resiliency patterns","indicators":["circuit breaker"]},"advanced":{"description":"global scaling","indicators":["state management"]}}
+      }
+    ]
+  },
+  {
+    "job_role": "Back-End Developer Python",
+    "version": "v1_enhanced",
+    "description": "Roadmap for Back-End Developer Python (strict)",
+    "subskills": [
+      {
+        "id":"python_backend_basics_bepython",
+        "name":"Python Backend Fundamentals",
+        "estimated_hours":40,
+        "priority":1,
+        "prerequisites":["python_fundamentals"],
+        "next_steps":["web_frameworks_bepython"],
+        "keywords":["python","asyncio","wsgi"],
+        "mapped_courses":{"beginner":[23,20],"intermediate":[22],"advanced":[24]},
+        "levels":{"beginner":{"description":"flask/basic server","indicators":["routing"]},"intermediate":{"description":"async & deployment","indicators":["uvicorn"]},"advanced":{"description":"profiling","indicators":["memory mgmt"]}}
+      },
+      {
+        "id":"web_frameworks_bepython",
+        "name":"Web Frameworks (Django/FastAPI)",
+        "estimated_hours":60,
+        "priority":2,
+        "prerequisites":["python_backend_basics_bepython"],
+        "next_steps":["db_design_python_bepython"],
+        "keywords":["django","fastapi","orm"],
+        "mapped_courses":{"beginner":[20,23],"intermediate":[22],"advanced":[24]},
+        "levels":{"beginner":{"description":"endpoint basics","indicators":["rest endpoints"]},"intermediate":{"description":"dependency injection","indicators":["pydantic"]},"advanced":{"description":"tuning","indicators":["middleware"]}}
+      },
+      {
+        "id":"db_design_python_bepython",
+        "name":"Database & Data Modeling",
+        "estimated_hours":50,
+        "priority":2,
+        "prerequisites":[],
+        "next_steps":["security_backend_python"],
+        "keywords":["postgres","sqlalchemy","migrations"],
+        "mapped_courses":{"beginner":[23,20],"intermediate":[22],"advanced":[24]},
+        "levels":{"beginner":{"description":"models & migrations","indicators":["crud"]},"intermediate":{"description":"optimization","indicators":["indexes"]},"advanced":{"description":"partitioning","indicators":["replication"]}}
+      },
+      {
+        "id":"security_backend_python",
+        "name":"Security & Testing (Python)",
+        "estimated_hours":35,
+        "priority":3,
+        "prerequisites":["web_frameworks_bepython"],
+        "next_steps":["observability_python"],
+        "keywords":["pytest","jwt","oauth2"],
+        "mapped_courses":{"beginner":[20,23],"intermediate":[22],"advanced":[24]},
+        "levels":{"beginner":{"description":"testing basics","indicators":["pytest basics"]},"intermediate":{"description":"analysis & security","indicators":["static analysis"]},"advanced":{"description":"incident response","indicators":["pen test"]}}
+      },
+      {
+        "id":"observability_python",
+        "name":"Observability & Deployment",
+        "estimated_hours":30,
+        "priority":3,
+        "prerequisites":["web_frameworks_bepython"],
+        "next_steps":["scaling_python_bepython"],
+        "keywords":["docker","prometheus","kubernetes"],
+        "mapped_courses":{"beginner":[21,23],"intermediate":[25],"advanced":[24]},
+        "levels":{"beginner":{"description":"containerize app","indicators":["docker basics"]},"intermediate":{"description":"monitoring","indicators":["prometheus"]},"advanced":{"description":"k8s ops","indicators":["autoscaling"]}}
+      },
+      {
+        "id":"scaling_python_bepython",
+        "name":"Scaling & System Design (Python)",
+        "estimated_hours":55,
+        "priority":4,
+        "prerequisites":["db_design_python_bepython","observability_python"],
+        "next_steps":[],
+        "keywords":["microservices","celery","grpc"],
+        "mapped_courses":{"beginner":[22,20],"intermediate":[24],"advanced":[24]},
+        "levels":{"beginner":{"description":"background tasks","indicators":["celery basics"]},"intermediate":{"description":"microservices","indicators":["rpc patterns"]},"advanced":{"description":"high availability","indicators":["distributed transactions"]}}
+      }
+    ]
+  },
+  {
+    "job_role": "Data Scientist",
+    "version": "v1_enhanced",
+    "description": "Roadmap for Data Scientist (strict)",
+    "subskills": [
+      {
+        "id":"python_for_data_ds",
+        "name":"Python for Data Science",
+        "estimated_hours":60,
+        "priority":1,
+        "prerequisites":["python_fundamentals"],
+        "next_steps":["eda_ds"],
+        "keywords":["pandas","numpy","matplotlib"],
+        "mapped_courses":{"beginner":[32,26],"intermediate":[26],"advanced":[31]},
+        "levels":{"beginner":{"description":"dataframes & plotting","indicators":["df ops"]},"intermediate":{"description":"feature engineering","indicators":["groupby"]},"advanced":{"description":"big data tools","indicators":["spark basics"]}}
+      },
+      {
+        "id":"eda_ds",
+        "name":"Exploratory Data Analysis & Visualization",
+        "estimated_hours":40,
+        "priority":1,
+        "prerequisites":["python_for_data_ds"],
+        "next_steps":["stat_inference_ds"],
+        "keywords":["eda","visualization","plotly"],
+        "mapped_courses":{"beginner":[27,28],"intermediate":[26],"advanced":[31]},
+        "levels":{"beginner":{"description":"plotting basics","indicators":["distributions"]},"intermediate":{"description":"dashboards","indicators":["interactive plots"]},"advanced":{"description":"visualization perf","indicators":["large dashboards"]}}
+      },
+      {
+        "id":"stat_inference_ds",
+        "name":"Statistical Inference & Experiment Design",
+        "estimated_hours":50,
+        "priority":2,
+        "prerequisites":["eda_ds"],
+        "next_steps":["ml_for_ds"],
+        "keywords":["hypothesis","anova","sampling"],
+        "mapped_courses":{"beginner":[27],"intermediate":[30],"advanced":[31]},
+        "levels":{"beginner":{"description":"p-value & CI","indicators":["t-test basics"]},"intermediate":{"description":"A/B testing","indicators":["sample size"]},"advanced":{"description":"causal inference","indicators":["IV methods"]}}
+      },
+      {
+        "id":"ml_for_ds",
+        "name":"Machine Learning for Data Science",
+        "estimated_hours":70,
+        "priority":2,
+        "prerequisites":["stat_inference_ds","python_for_data_ds"],
+        "next_steps":["model_interpretability_ds"],
+        "keywords":["sklearn","regression","classification"],
+        "mapped_courses":{"beginner":[29],"intermediate":[26,31],"advanced":[31]},
+        "levels":{"beginner":{"description":"ml basics","indicators":["regression","kmeans"]},"intermediate":{"description":"pipelines & tuning","indicators":["cv"]},"advanced":{"description":"ensembling","indicators":["stacking"]}}
+      },
+      {
+        "id":"model_interpretability_ds",
+        "name":"Model Interpretability & Productionization",
+        "estimated_hours":45,
+        "priority":3,
+        "prerequisites":["ml_for_ds"],
+        "next_steps":["big_data_ds"],
+        "keywords":["explainability","serving","api"],
+        "mapped_courses":{"beginner":[31],"intermediate":[26,29],"advanced":[31]},
+        "levels":{"beginner":{"description":"feature importance","indicators":["pdp"]},"intermediate":{"description":"serving","indicators":["api wrapping"]},"advanced":{"description":"governance","indicators":["compliance"]}}
+      },
+      {
+        "id":"big_data_ds",
+        "name":"Big Data & Data Engineering Basics",
+        "estimated_hours":60,
+        "priority":4,
+        "prerequisites":["model_interpretability_ds"],
+        "next_steps":[],
+        "keywords":["spark","etl","airflow"],
+        "mapped_courses":{"beginner":[31],"intermediate":[30],"advanced":[31]},
+        "levels":{"beginner":{"description":"etl basics","indicators":["spark jobs"]},"intermediate":{"description":"streaming","indicators":["partitioning"]},"advanced":{"description":"lakehouse","indicators":["lineage"]}}
+      }
+    ]
+  },
+  {
+    "job_role": "DevOps Engineer",
+    "version": "v1_enhanced",
+    "description": "Roadmap for DevOps Engineer (strict)",
+    "subskills": [
+      {
+        "id":"linux_shell_devops",
+        "name":"Linux & Shell Scripting",
+        "estimated_hours":35,
+        "priority":1,
+        "prerequisites":[],
+        "next_steps":["networking_devops"],
+        "keywords":["linux","bash","cli"],
+        "mapped_courses":{"beginner":[37,33],"intermediate":[34,37],"advanced":[36]},
+        "levels":{"beginner":{"description":"filesystem & scripts","indicators":["bash scripts"]},"intermediate":{"description":"automation","indicators":["cron"]},"advanced":{"description":"system internals","indicators":["kernel basics"]}}
+      },
+      {
+        "id":"networking_devops",
+        "name":"Networking & Security Fundamentals",
+        "estimated_hours":40,
+        "priority":1,
+        "prerequisites":["linux_shell_devops"],
+        "next_steps":["containerization_devops"],
+        "keywords":["tcp","ip","firewall"],
+        "mapped_courses":{"beginner":[35,33],"intermediate":[37],"advanced":[36]},
+        "levels":{"beginner":{"description":"ip & subnet basics","indicators":["ip addressing"]},"intermediate":{"description":"troubleshooting","indicators":["packet inspection"]},"advanced":{"description":"zero trust","indicators":["network policy"]}}
+      },
+      {
+        "id":"containerization_devops",
+        "name":"Containerization & Orchestration",
+        "estimated_hours":60,
+        "priority":2,
+        "prerequisites":["linux_shell_devops","networking_devops"],
+        "next_steps":["ci_cd_devops"],
+        "keywords":["docker","kubernetes","helm"],
+        "mapped_courses":{"beginner":[33,34],"intermediate":[36],"advanced":[36]},
+        "levels":{"beginner":{"description":"docker basics","indicators":["dockerfile"]},"intermediate":{"description":"k8s basics","indicators":["deployments"]},"advanced":{"description":"operators & autoscale","indicators":["cluster autoscaling"]}}
+      },
+      {
+        "id":"ci_cd_devops",
+        "name":"CI/CD Pipelines",
+        "estimated_hours":45,
+        "priority":2,
+        "prerequisites":["containerization_devops"],
+        "next_steps":["observability_devops"],
+        "keywords":["jenkins","github actions","pipelines"],
+        "mapped_courses":{"beginner":[34,33],"intermediate":[36],"advanced":[36]},
+        "levels":{"beginner":{"description":"pipeline basics","indicators":["build & test"]},"intermediate":{"description":"deploy strategies","indicators":["blue-green"]},"advanced":{"description":"policy & security","indicators":["secret mgmt"]}}
+      },
+      {
+        "id":"observability_devops",
+        "name":"Observability & Monitoring",
+        "estimated_hours":35,
+        "priority":3,
+        "prerequisites":["ci_cd_devops"],
+        "next_steps":["infrastructure_as_code_devops"],
+        "keywords":["prometheus","grafana","logging"],
+        "mapped_courses":{"beginner":[34,37],"intermediate":[36],"advanced":[36]},
+        "levels":{"beginner":{"description":"basic monitoring","indicators":["prometheus setup"]},"intermediate":{"description":"tracing & dashboards","indicators":["dashboards"]},"advanced":{"description":"SLO/SLA","indicators":["root cause analysis"]}}
+      },
+      {
+        "id":"infrastructure_as_code_devops",
+        "name":"Infrastructure as Code & Cloud",
+        "estimated_hours":50,
+        "priority":4,
+        "prerequisites":["containerization_devops","networking_devops"],
+        "next_steps":[],
+        "keywords":["terraform","cloud","iac"],
+        "mapped_courses":{"beginner":[33,34],"intermediate":[36],"advanced":[36]},
+        "levels":{"beginner":{"description":"iac basics","indicators":["terraform config"]},"intermediate":{"description":"modules & remote state","indicators":["module reuse"]},"advanced":{"description":"governance","indicators":["policy as code"]}}
+      }
+    ]
+  },
+  {
+    "job_role": "Front-End Web Developer",
+    "version": "v1_enhanced",
+    "description": "Roadmap for Front-End with course mapping (strict)",
+    "subskills": [
+      {
+        "id":"html_css_fundamentals_fe",
+        "name":"HTML & CSS Fundamentals",
+        "estimated_hours":45,
+        "priority":1,
+        "prerequisites":[],
+        "next_steps":["javascript_basics_fe"],
+        "keywords":["html","css","flexbox","grid"],
+        "mapped_courses":{"beginner":[39,38],"intermediate":[40],"advanced":[42]},
+        "levels":{"beginner":{"description":"struktur HTML & CSS dasar","indicators":["tags dasar","box model"]},"intermediate":{"description":"responsive & layout","indicators":["flexbox","grid"]},"advanced":{"description":"performance & accessibility","indicators":["critical css"]}}
+      },
+      {
+        "id":"javascript_basics_fe",
+        "name":"JavaScript Basics",
+        "estimated_hours":40,
+        "priority":2,
+        "prerequisites":["html_css_fundamentals_fe"],
+        "next_steps":["framework_foundations_fe","web_application_fe"],
+        "keywords":["javascript","dom","es6"],
+        "mapped_courses":{"beginner":[38,39],"intermediate":[40],"advanced":[42]},
+        "levels":{"beginner":{"description":"js dasar","indicators":["variables","loops"]},"intermediate":{"description":"es6 & dom","indicators":["fetch","promise"]},"advanced":{"description":"advanced js","indicators":["closure","memory"]}}
+      },
+      {
+        "id":"framework_foundations_fe",
+        "name":"Front-End Framework Foundations",
+        "estimated_hours":80,
+        "priority":3,
+        "prerequisites":["javascript_basics_fe"],
+        "next_steps":["web_application_fe"],
+        "keywords":["react","vue","components","hooks"],
+        "mapped_courses":{"beginner":[41,40],"intermediate":[42],"advanced":[42]},
+        "levels":{"beginner":{"description":"komponen & state","indicators":["props","state"]},"intermediate":{"description":"lifecycle & hooks","indicators":["useEffect"]},"advanced":{"description":"architecture & ssr","indicators":["ssr","code splitting"]}}
+      },
+      {
+        "id":"version_control_fe",
+        "name":"Git Basics Version Control",
+        "estimated_hours":30,
+        "priority":1,
+        "prerequisites":[],
+        "next_steps":["javascript_basics_fe"],
+        "keywords":["git","github","branch"],
+        "mapped_courses":{"beginner":[39],"intermediate":[41],"advanced":[42]},
+        "levels":{"beginner":{"description":"git basic","indicators":["commit","push"]},"intermediate":{"description":"branching","indicators":["merge conflict"]},"advanced":{"description":"workflow","indicators":["gitflow"]}}
+      },
+      {
+        "id":"ui_ux_principles_fe",
+        "name":"Basic of UI/UX Web",
+        "estimated_hours":40,
+        "priority":2,
+        "prerequisites":["html_css_fundamentals_fe"],
+        "next_steps":["framework_foundations_fe"],
+        "keywords":["ui","ux","accessibility"],
+        "mapped_courses":{"beginner":[40],"intermediate":[41],"advanced":[42]},
+        "levels":{"beginner":{"description":"prinsip UI dasar","indicators":["layout"]},"intermediate":{"description":"usability testing","indicators":["wireframe"]},"advanced":{"description":"a/b testing","indicators":["analytics"]}}
+      },
+      {
+        "id":"web_application_fe",
+        "name":"Web Application Engineering",
+        "estimated_hours":46,
+        "priority":4,
+        "prerequisites":["javascript_basics_fe"],
+        "next_steps":[],
+        "keywords":["performance","webpack","testing"],
+        "mapped_courses":{"beginner":[38],"intermediate":[40,42],"advanced":[42]},
+        "levels":{"beginner":{"description":"api & debugging","indicators":["fetch api"]},"intermediate":{"description":"build tools","indicators":["webpack","vite"]},"advanced":{"description":"security & perf","indicators":["csp","bundle optimization"]}}
+      }
+    ]
+  },
+  {
+    "job_role": "Gen AI Engineer",
+    "version": "v1_enhanced",
+    "description": "Roadmap for Generative AI Engineer (strict)",
+    "subskills": [
+      {
+        "id":"foundation_ml_genai",
+        "name":"Foundations of Machine Learning",
+        "estimated_hours":60,
+        "priority":1,
+        "prerequisites":["python_fundamentals_ai"],
+        "next_steps":["transformer_arch_genai"],
+        "keywords":["ml","supervised","unsupervised"],
+        "mapped_courses":{"beginner":[46,43],"intermediate":[44],"advanced":[45]},
+        "levels":{"beginner":{"description":"ml basics for genai","indicators":["regression"]},"intermediate":{"description":"autoencoders/gan intro","indicators":["autoencoder"]},"advanced":{"description":"training stable gans","indicators":["gan stability"]}}
+      },
+      {
+        "id":"transformer_arch_genai",
+        "name":"Transformer Architecture & Attention",
+        "estimated_hours":80,
+        "priority":2,
+        "prerequisites":["foundation_ml_genai"],
+        "next_steps":["llm_genai"],
+        "keywords":["transformer","attention","bert","gpt"],
+        "mapped_courses":{"beginner":[44],"intermediate":[44],"advanced":[44]},
+        "levels":{"beginner":{"description":"attention basics","indicators":["attention mechanism"]},"intermediate":{"description":"build small transformer","indicators":["toy transformer"]},"advanced":{"description":"scaling transformers","indicators":["fp16 training"]}}
+      },
+      {
+        "id":"llm_genai",
+        "name":"Large Language Models (LLMs)",
+        "estimated_hours":90,
+        "priority":3,
+        "prerequisites":["transformer_arch_genai"],
+        "next_steps":["prompt_engineering_genai"],
+        "keywords":["llm","gpt","inference","fine-tuning"],
+        "mapped_courses":{"beginner":[43,46],"intermediate":[44],"advanced":[45]},
+        "levels":{"beginner":{"description":"using llm apis","indicators":["api calls"]},"intermediate":{"description":"fine-tuning small models","indicators":["dataset prep"]},"advanced":{"description":"rlhf & governance","indicators":["safety"]}}
+      },
+      {
+        "id":"prompt_engineering_genai",
+        "name":"Prompt Engineering & Evaluation",
+        "estimated_hours":30,
+        "priority":2,
+        "prerequisites":["llm_genai"],
+        "next_steps":["generation_applications_genai"],
+        "keywords":["prompt","few-shot","evaluation"],
+        "mapped_courses":{"beginner":[47,43],"intermediate":[44],"advanced":[45]},
+        "levels":{"beginner":{"description":"crafting prompts","indicators":["zero-shot"]},"intermediate":{"description":"prompt chaining","indicators":["RAG basics"]},"advanced":{"description":"automated prompt tuning","indicators":["metric-driven optimization"]}}
+      },
+      {
+        "id":"generation_applications_genai",
+        "name":"Generative Applications & Multimodal",
+        "estimated_hours":60,
+        "priority":3,
+        "prerequisites":["llm_genai"],
+        "next_steps":["deployment_genai"],
+        "keywords":["text generation","image generation","multimodal"],
+        "mapped_courses":{"beginner":[43,46],"intermediate":[44],"advanced":[45]},
+        "levels":{"beginner":{"description":"simple gen apps","indicators":["text generation integration"]},"intermediate":{"description":"multimodal fusion","indicators":["image+text"]},"advanced":{"description":"safety & scaling","indicators":["safety filters"]}}
+      },
+      {
+        "id":"deployment_genai",
+        "name":"Deployment & Productionization for GenAI",
+        "estimated_hours":50,
+        "priority":4,
+        "prerequisites":["generation_applications_genai","mlops_ai"],
+        "next_steps":[],
+        "keywords":["serving","latency","monitoring"],
+        "mapped_courses":{"beginner":[46,43],"intermediate":[44],"advanced":[45]},
+        "levels":{"beginner":{"description":"wrap model in api","indicators":["serve model"]},"intermediate":{"description":"optimize inference","indicators":["batching"]},"advanced":{"description":"production governance","indicators":["cost/perf tradeoffs"]}}
+      }
+    ]
+  },
+  {
+    "job_role": "Google Cloud Professional",
+    "version": "v1_enhanced",
+    "description": "Roadmap for Google Cloud Professional (strict)",
+    "subskills": [
+      {
+        "id":"gcp_foundations_gcp",
+        "name":"GCP Foundations",
+        "estimated_hours":30,
+        "priority":1,
+        "prerequisites":[],
+        "next_steps":["compute_storage_gcp"],
+        "keywords":["gcp","iam","console"],
+        "mapped_courses":{"beginner":[21,48],"intermediate":[25,52],"advanced":[24,51]},
+        "levels":{"beginner":{"description":"console & projects","indicators":["billing setup"]},"intermediate":{"description":"managed services","indicators":["gke basics"]},"advanced":{"description":"architecture design","indicators":["multi-region"]}}
+      },
+      {
+        "id":"compute_storage_gcp",
+        "name":"Compute & Storage",
+        "estimated_hours":45,
+        "priority":2,
+        "prerequisites":["gcp_foundations_gcp"],
+        "next_steps":["networking_gcp"],
+        "keywords":["compute engine","gke","cloud storage"],
+        "mapped_courses":{"beginner":[21,48],"intermediate":[25,52],"advanced":[24]},
+        "levels":{"beginner":{"description":"vm & storage basics","indicators":["create vm"]},"intermediate":{"description":"gke usage","indicators":["deploy to gke"]},"advanced":{"description":"cost optimization","indicators":["rightsizing"]}}
+      },
+      {
+        "id":"networking_gcp",
+        "name":"Networking & Security (GCP)",
+        "estimated_hours":40,
+        "priority":2,
+        "prerequisites":["compute_storage_gcp"],
+        "next_steps":["deployment_gcp"],
+        "keywords":["vpc","cloud armor","firewall"],
+        "mapped_courses":{"beginner":[21,48],"intermediate":[25,52],"advanced":[24]},
+        "levels":{"beginner":{"description":"vpc basics","indicators":["create vpc"]},"intermediate":{"description":"security basics","indicators":["cloud armor"]},"advanced":{"description":"enterprise network design","indicators":["interconnect"]}}
+      },
+      {
+        "id":"deployment_gcp",
+        "name":"Deployment & Automation",
+        "estimated_hours":45,
+        "priority":3,
+        "prerequisites":["networking_gcp"],
+        "next_steps":["observability_gcp"],
+        "keywords":["terraform","cloud build","ci/cd"],
+        "mapped_courses":{"beginner":[21,50],"intermediate":[25,52],"advanced":[24,51]},
+        "levels":{"beginner":{"description":"cloud build basics","indicators":["simple deployment"]},"intermediate":{"description":"terraform for gcp","indicators":["repeatable deployments"]},"advanced":{"description":"governance","indicators":["org policies"]}}
+      },
+      {
+        "id":"observability_gcp",
+        "name":"Observability & Cost Management",
+        "estimated_hours":30,
+        "priority":3,
+        "prerequisites":["deployment_gcp"],
+        "next_steps":[],
+        "keywords":["stackdriver","cost management","budgets"],
+        "mapped_courses":{"beginner":[21,48],"intermediate":[25,52],"advanced":[24]},
+        "levels":{"beginner":{"description":"monitoring basics","indicators":["setup stackdriver"]},"intermediate":{"description":"dashboards & budgets","indicators":["create budgets"]},"advanced":{"description":"enterprise cost governance","indicators":["cost allocation"]}}
+      },
+      {
+        "id":"gcp_cert_prep",
+        "name":"GCP Certification Prep",
+        "estimated_hours":40,
+        "priority":4,
+        "prerequisites":["gcp_foundations_gcp"],
+        "next_steps":[],
+        "keywords":["certification","exam","architecture"],
+        "mapped_courses":{"beginner":[21,48],"intermediate":[25,52],"advanced":[24]},
+        "levels":{"beginner":{"description":"cert basics","indicators":["exam overview"]},"intermediate":{"description":"practice tests","indicators":["mock exams"]},"advanced":{"description":"scenario-based design","indicators":["case studies"]}}
+      }
+    ]
+  },
+  {
+    "job_role": "iOS Developer",
+    "version": "v1_enhanced",
+    "description": "Roadmap for iOS Developer (strict)",
+    "subskills": [
+      {
+        "id":"swift_basics_ios",
+        "name":"Swift Fundamentals",
+        "estimated_hours":40,
+        "priority":1,
+        "prerequisites":[],
+        "next_steps":["ios_foundations_ios"],
+        "keywords":["swift","optionals","protocols"],
+        "mapped_courses":{"beginner":[56],"intermediate":[53,54],"advanced":[57]},
+        "levels":{"beginner":{"description":"swift syntax","indicators":["closures","optionals"]},"intermediate":{"description":"protocol oriented","indicators":["generics"]},"advanced":{"description":"concurrency & perf","indicators":["async/await"]}}
+      },
+      {
+        "id":"ios_foundations_ios",
+        "name":"iOS SDK & App Architecture",
+        "estimated_hours":80,
+        "priority":2,
+        "prerequisites":["swift_basics_ios"],
+        "next_steps":["ui_apple_design_ios"],
+        "keywords":["uikit","swiftui","lifecycle"],
+        "mapped_courses":{"beginner":[54],"intermediate":[53],"advanced":[57]},
+        "levels":{"beginner":{"description":"view controllers & layout","indicators":["navigation"]},"intermediate":{"description":"swiftui & mvvm","indicators":["state management"]},"advanced":{"description":"modularization","indicators":["dependency injection"]}}
+      },
+      {
+        "id":"ui_apple_design_ios",
+        "name":"UI/UX & Apple Guidelines",
+        "estimated_hours":35,
+        "priority":2,
+        "prerequisites":["ios_foundations_ios"],
+        "next_steps":["data_persistence_ios"],
+        "keywords":["human interface","accessibility","swiftui"],
+        "mapped_courses":{"beginner":[54],"intermediate":[53],"advanced":[57]},
+        "levels":{"beginner":{"description":"hig basics","indicators":["basic accessibility"]},"intermediate":{"description":"adaptive layouts","indicators":["custom transitions"]},"advanced":{"description":"usability testing","indicators":["microinteractions"]}}
+      },
+      {
+        "id":"data_persistence_ios",
+        "name":"Data Persistence & Networking",
+        "estimated_hours":45,
+        "priority":3,
+        "prerequisites":["ios_foundations_ios"],
+        "next_steps":["testing_ios"],
+        "keywords":["coredata","urlsession","combine"],
+        "mapped_courses":{"beginner":[54],"intermediate":[53],"advanced":[57]},
+        "levels":{"beginner":{"description":"network & persistence","indicators":["urlsession"]},"intermediate":{"description":"coredata patterns","indicators":["offline sync"]},"advanced":{"description":"large dataset handling","indicators":["migration"]}}
+      },
+      {
+        "id":"testing_ios",
+        "name":"Testing & App Distribution",
+        "estimated_hours":30,
+        "priority":3,
+        "prerequisites":["data_persistence_ios"],
+        "next_steps":["deployment_appstore_ios"],
+        "keywords":["xctest","ui test","ci"],
+        "mapped_courses":{"beginner":[54],"intermediate":[53],"advanced":[57]},
+        "levels":{"beginner":{"description":"unit & ui test","indicators":["xctest basics"]},"intermediate":{"description":"ci for ios","indicators":["beta distribution"]},"advanced":{"description":"release management","indicators":["enterprise distribution"]}}
+      },
+      {
+        "id":"deployment_appstore_ios",
+        "name":"Deployment & Performance",
+        "estimated_hours":25,
+        "priority":4,
+        "prerequisites":["testing_ios"],
+        "next_steps":[],
+        "keywords":["app store","signing","profiling"],
+        "mapped_courses":{"beginner":[54],"intermediate":[56],"advanced":[57]},
+        "levels":{"beginner":{"description":"app signing & upload","indicators":["archive upload"]},"intermediate":{"description":"profiling & instruments","indicators":["memory profiling"]},"advanced":{"description":"app thinning & performance","indicators":["optimize launch time"]}}
+      }
+    ]
+  },
+  {
+    "job_role": "MLOps Engineer",
+    "version": "v1_enhanced",
+    "description": "Roadmap for MLOps Engineer (strict)",
+    "subskills": [
+      {
+        "id":"ml_workflow_mlop",
+        "name":"ML Workflow & Pipelines",
+        "estimated_hours":60,
+        "priority":1,
+        "prerequisites":["ml_basics_ai"],
+        "next_steps":["model_serving_mlop"],
+        "keywords":["pipeline","airflow","kubeflow","mlflow"],
+        "mapped_courses":{"beginner":[61,63],"intermediate":[62],"advanced":[61]},
+        "levels":{"beginner":{"description":"pipeline basics","indicators":["run dag"]},"intermediate":{"description":"reproducible experiments","indicators":["artifact mgmt"]},"advanced":{"description":"orchestration at scale","indicators":["orchestration"]}}
+      },
+      {
+        "id":"model_serving_mlop",
+        "name":"Model Serving & Infrastructure",
+        "estimated_hours":50,
+        "priority":2,
+        "prerequisites":["ml_workflow_mlop"],
+        "next_steps":["monitoring_models_mlop"],
+        "keywords":["serving","torchserve","tf serving"],
+        "mapped_courses":{"beginner":[61,63],"intermediate":[62],"advanced":[61]},
+        "levels":{"beginner":{"description":"wrap model api","indicators":["flask/fastapi"]},"intermediate":{"description":"k8s serving","indicators":["seldon"]},"advanced":{"description":"high throughput serving","indicators":["batching"]}}
+      },
+      {
+        "id":"monitoring_models_mlop",
+        "name":"Monitoring & Observability for Models",
+        "estimated_hours":40,
+        "priority":2,
+        "prerequisites":["model_serving_mlop"],
+        "next_steps":["ci_cd_ml_mlop"],
+        "keywords":["drift","metrics","prometheus"],
+        "mapped_courses":{"beginner":[61],"intermediate":[62],"advanced":[61]},
+        "levels":{"beginner":{"description":"latency/throughput tracking","indicators":["basic logging"]},"intermediate":{"description":"drift detection","indicators":["drift techniques"]},"advanced":{"description":"auto rollback","indicators":["automated retraining"]}}
+      },
+      {
+        "id":"ci_cd_ml_mlop",
+        "name":"CI/CD for ML",
+        "estimated_hours":45,
+        "priority":3,
+        "prerequisites":["ml_workflow_mlop"],
+        "next_steps":["infrastructure_ml_mlop"],
+        "keywords":["ci/cd","docker","gitops"],
+        "mapped_courses":{"beginner":[63,61],"intermediate":[62],"advanced":[61]},
+        "levels":{"beginner":{"description":"test & deploy model","indicators":["automated tests"]},"intermediate":{"description":"gitops","indicators":["artifact promotion"]},"advanced":{"description":"secure model delivery","indicators":["policy enforcement"]}}
+      },
+      {
+        "id":"infrastructure_ml_mlop",
+        "name":"Infrastructure & Cost Optimization",
+        "estimated_hours":40,
+        "priority":3,
+        "prerequisites":["ci_cd_ml_mlop"],
+        "next_steps":["governance_ml_mlop"],
+        "keywords":["gpu","cloud","cost"],
+        "mapped_courses":{"beginner":[63,61],"intermediate":[62],"advanced":[61]},
+        "levels":{"beginner":{"description":"instance selection","indicators":["gpu basics"]},"intermediate":{"description":"resource pooling","indicators":["spot usage"]},"advanced":{"description":"cost governance","indicators":["quota mgmt"]}}
+      },
+      {
+        "id":"governance_ml_mlop",
+        "name":"Governance, Compliance & Data Management",
+        "estimated_hours":50,
+        "priority":4,
+        "prerequisites":["monitoring_models_mlop","infrastructure_ml_mlop"],
+        "next_steps":[],
+        "keywords":["governance","privacy","compliance"],
+        "mapped_courses":{"beginner":[63,61],"intermediate":[62],"advanced":[61]},
+        "levels":{"beginner":{"description":"data access basics","indicators":["privacy basics"]},"intermediate":{"description":"lineage & catalog","indicators":["data catalogs"]},"advanced":{"description":"policy as code","indicators":["automated compliance"]}}
+      }
+    ]
+  },
+  {
+    "job_role": "Multi-Platform App Developer",
+    "version": "v1_enhanced",
+    "description": "Roadmap for Multi-Platform App Developer (strict)",
+    "subskills": [
+      {
+        "id":"dart_js_basics_mp",
+        "name":"Dart / JavaScript Basics",
+        "estimated_hours":35,
+        "priority":1,
+        "prerequisites":[],
+        "next_steps":["cross_platform_frameworks_mp"],
+        "keywords":["dart","javascript","syntax"],
+        "mapped_courses":{"beginner":[68,70],"intermediate":[64,65],"advanced":[69]},
+        "levels":{"beginner":{"description":"language basics","indicators":["functions"]},"intermediate":{"description":"interop & async","indicators":["plugin interop"]},"advanced":{"description":"profiling & plugin dev","indicators":["plugin creation"]}}
+      },
+      {
+        "id":"cross_platform_frameworks_mp",
+        "name":"Frameworks (Flutter, React Native)",
+        "estimated_hours":70,
+        "priority":2,
+        "prerequisites":["dart_js_basics_mp"],
+        "next_steps":["ui_multi_platform_mp"],
+        "keywords":["flutter","react native","widgets"],
+        "mapped_courses":{"beginner":[65,64],"intermediate":[66,72],"advanced":[69]},
+        "levels":{"beginner":{"description":"widgets & navigation","indicators":["build UI"]},"intermediate":{"description":"state mgmt","indicators":["provider/bloc"]},"advanced":{"description":"native modules","indicators":["platform channels"]}}
+      },
+      {
+        "id":"ui_multi_platform_mp",
+        "name":"UI/UX for Multiple Platforms",
+        "estimated_hours":40,
+        "priority":2,
+        "prerequisites":["cross_platform_frameworks_mp"],
+        "next_steps":["testing_multi_mp"],
+        "keywords":["responsive","adaptive","material","cupertino"],
+        "mapped_courses":{"beginner":[65,64],"intermediate":[66,72],"advanced":[69]},
+        "levels":{"beginner":{"description":"responsive basics","indicators":["platform-specific components"]},"intermediate":{"description":"theming","indicators":["adaptive UI"]},"advanced":{"description":"ux optimization","indicators":["user testing across devices"]}}
+      },
+      {
+        "id":"testing_multi_mp",
+        "name":"Testing & CI for Multi-Platform",
+        "estimated_hours":35,
+        "priority":3,
+        "prerequisites":["ui_multi_platform_mp"],
+        "next_steps":["deployment_multi_mp"],
+        "keywords":["e2e","detox","ci"],
+        "mapped_courses":{"beginner":[65,64],"intermediate":[66,72],"advanced":[69]},
+        "levels":{"beginner":{"description":"unit tests","indicators":["component tests"]},"intermediate":{"description":"e2e across devices","indicators":["detox"]},"advanced":{"description":"distributed testing","indicators":["flakiness mitigation"]}}
+      },
+      {
+        "id":"deployment_multi_mp",
+        "name":"Deployment & Release Management",
+        "estimated_hours":30,
+        "priority":3,
+        "prerequisites":["testing_multi_mp"],
+        "next_steps":[],
+        "keywords":["playstore","appstore","bundle"],
+        "mapped_courses":{"beginner":[65,64],"intermediate":[69,72],"advanced":[69]},
+        "levels":{"beginner":{"description":"release basics","indicators":["generate builds"]},"intermediate":{"description":"multi-store releases","indicators":["staged rollouts"]},"advanced":{"description":"enterprise release","indicators":["continuous delivery"]}}
+      }
+    ]
+  },
+  {
+    "job_role": "React Developer",
+    "version": "v1_enhanced",
+    "description": "Roadmap for React Developer (strict)",
+    "subskills": [
+      {
+        "id":"js_es6_react",
+        "name":"Advanced JavaScript (ES6+)",
+        "estimated_hours":40,
+        "priority":1,
+        "prerequisites":["javascript_basics"],
+        "next_steps":["react_core_react"],
+        "keywords":["es6","promises","modules"],
+        "mapped_courses":{"beginner":[70,71],"intermediate":[72],"advanced":[75]},
+        "levels":{"beginner":{"description":"es6 essentials","indicators":["arrow functions"]},"intermediate":{"description":"async patterns","indicators":["async/await"]},"advanced":{"description":"internals & perf","indicators":["closures"]}}
+      },
+      {
+        "id":"react_core_react",
+        "name":"React Core Concepts",
+        "estimated_hours":60,
+        "priority":2,
+        "prerequisites":["js_es6_react"],
+        "next_steps":["state_management_react"],
+        "keywords":["react","jsx","hooks"],
+        "mapped_courses":{"beginner":[73,72],"intermediate":[72],"advanced":[75]},
+        "levels":{"beginner":{"description":"components & jsx","indicators":["props","state"]},"intermediate":{"description":"hooks & lifecycle","indicators":["useEffect"]},"advanced":{"description":"concurrent & perf","indicators":["memoization"]}}
+      },
+      {
+        "id":"state_management_react",
+        "name":"State Management & Data Flow",
+        "estimated_hours":50,
+        "priority":2,
+        "prerequisites":["react_core_react"],
+        "next_steps":["testing_react_react"],
+        "keywords":["redux","context","recoil"],
+        "mapped_courses":{"beginner":[73,72],"intermediate":[72],"advanced":[75]},
+        "levels":{"beginner":{"description":"lift state & context","indicators":["local state"]},"intermediate":{"description":"redux & middleware","indicators":["async flows"]},"advanced":{"description":"architect large apps","indicators":["normalized state"]}}
+      },
+      {
+        "id":"testing_react_react",
+        "name":"Testing & Tooling for React",
+        "estimated_hours":35,
+        "priority":3,
+        "prerequisites":["react_core_react"],
+        "next_steps":["ssr_ssg_react"],
+        "keywords":["jest","rtl","cypress","storybook"],
+        "mapped_courses":{"beginner":[73],"intermediate":[72],"advanced":[75]},
+        "levels":{"beginner":{"description":"unit tests","indicators":["jest basics"]},"intermediate":{"description":"integration & e2e","indicators":["cypress"]},"advanced":{"description":"visual regression","indicators":["storybook"]}}
+      },
+      {
+        "id":"ssr_ssg_react",
+        "name":"SSR / SSG and Performance",
+        "estimated_hours":45,
+        "priority":3,
+        "prerequisites":["react_core_react"],
+        "next_steps":["deployment_react"],
+        "keywords":["nextjs","ssr","ssg","optimisation"],
+        "mapped_courses":{"beginner":[72,73],"intermediate":[72],"advanced":[75]},
+        "levels":{"beginner":{"description":"ssr basics","indicators":["static export"]},"intermediate":{"description":"nextjs features","indicators":["isr"]},"advanced":{"description":"edge & streaming","indicators":["edge rendering"]}}
+      },
+      {
+        "id":"deployment_react",
+        "name":"Deployment & CI for React",
+        "estimated_hours":30,
+        "priority":4,
+        "prerequisites":["ssr_ssg_react"],
+        "next_steps":[],
+        "keywords":["vercel","netlify","ci","cdn"],
+        "mapped_courses":{"beginner":[74,73],"intermediate":[72],"advanced":[75]},
+        "levels":{"beginner":{"description":"deploy static sites","indicators":["vercel deploy"]},"intermediate":{"description":"build optimization","indicators":["image optimization"]},"advanced":{"description":"enterprise delivery","indicators":["observability front-end"]}}
+      }
+    ]
+  }
+]

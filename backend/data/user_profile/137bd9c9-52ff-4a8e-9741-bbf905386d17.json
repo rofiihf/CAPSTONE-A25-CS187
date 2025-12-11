@@ -28,20 +28,13 @@
     "progress_score": {},
     "history": []
   },
-  "created_at": "2025-12-07T03:51:53.862Z",
-  "updated_at": 1765079513862,
-  "progress_history": [
-    {
-      "timestamp": 1765273534165,
-      "course_progress": {
-        "Architecting on AWS (Membangun Arsitektur Cloud di AWS)": 0
-      }
-    }
-  ],
+  "created_at": "2025-12-11T13:48:16.470Z",
+  "updated_at": 1765460896470,
+  "progress_history": [],
   "roadmap_progress": {
     "job_role": null,
-    "created_at": 1765273534165,
-    "last_updated": 1765273534165,
+    "created_at": 1765460896470,
+    "last_updated": 1765460896470,
     "skills_status": {},
     "subskills": []
   }

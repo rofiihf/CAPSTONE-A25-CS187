@@ -28,20 +28,13 @@
     "progress_score": {},
     "history": []
   },
-  "created_at": "2025-12-07T03:51:53.877Z",
-  "updated_at": 1765079513877,
-  "progress_history": [
-    {
-      "timestamp": 1765273534195,
-      "course_progress": {
-        "Menjadi Google Cloud Architect": 0
-      }
-    }
-  ],
+  "created_at": "2025-12-11T13:48:16.504Z",
+  "updated_at": 1765460896504,
+  "progress_history": [],
   "roadmap_progress": {
     "job_role": null,
-    "created_at": 1765273534195,
-    "last_updated": 1765273534195,
+    "created_at": 1765460896504,
+    "last_updated": 1765460896504,
     "skills_status": {},
     "subskills": []
   }

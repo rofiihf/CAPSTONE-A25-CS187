@@ -1,0 +1,48 @@
+{
+  "user_id": "07d1e607-8e05-480a-b4ee-008278c9363f",
+  "platform_data": {
+    "name": "Dina Wibowo",
+    "email": "dina.wibowo86@example.com",
+    "active_courses": [
+      "Belajar Dasar Visualisasi Data"
+    ],
+    "active_tutorials": 50,
+    "completed_tutorials": 33,
+    "is_graduated": 1,
+    "exam_score": "86",
+    "submission_rating": "",
+    "course_progress": {
+      "Belajar Dasar Visualisasi Data": 0
+    }
+  },
+  "learning_profile": {
+    "goals": [],
+    "skills": {},
+    "weaknesses": [],
+    "strengths": [],
+    "current_focus": {
+      "course": "Belajar Dasar Visualisasi Data",
+      "module": 0
+    },
+    "learning_style": null,
+    "progress_score": {},
+    "history": []
+  },
+  "created_at": "2025-12-07T03:51:53.841Z",
+  "updated_at": 1765079513841,
+  "progress_history": [
+    {
+      "timestamp": 1765273534123,
+      "course_progress": {
+        "Belajar Dasar Visualisasi Data": 0
+      }
+    }
+  ],
+  "roadmap_progress": {
+    "job_role": null,
+    "created_at": 1765273534123,
+    "last_updated": 1765273534123,
+    "skills_status": {},
+    "subskills": []
+  }
+}

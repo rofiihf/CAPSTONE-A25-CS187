@@ -5,6 +5,7 @@ const cors = require("cors");
 const session = require("express-session");
 
 // Controllers
+const quizRoutes = require("./routes/quiz-routes");
 const authRoutes = require("./controllers/auth-controller.js");
 const profileRoutes = require("./controllers/profile-controller.js");
 const { handleChat, handleChatJob } = require("./controllers/chat-controller.js");
@@ -67,6 +68,7 @@ app.post("/api/roadmap/auto-update", autoUpdateRoadmap);
 app.use("/api/auth", authRoutes);
 app.use("/api/profile", profileRoutes);
 
+app.use("/api/quiz", quizRoutes);
 // Health check
 app.get("/", (req, res) => {
   res.json({ message: "API is running" });

@@ -8,16 +8,16 @@ const path = require("path");
 const ROOT = path.join(__dirname, "..");
 const USERS_FILE = path.join(ROOT, "data", "users_hashed.json");
 const PROFILES_FILE = path.join(ROOT, "data", "user_profiles.json");
+const USER_PROFILE_DIR = path.join(ROOT, "data", "user_profile");
 
 // ---------------------------------------------------
 // UTIL HELPERS
 // ---------------------------------------------------
 function ensureDirs() {
   try {
-    const dir = path.dirname(PROFILES_FILE);
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
+    if (!fs.existsSync(USER_PROFILE_DIR)) {
+    fs.mkdirSync(USER_PROFILE_DIR, { recursive: true });
+  }
   } catch (err) {
     console.error("Error creating directories:", err);
     throw err;
@@ -122,6 +122,13 @@ function saveProfilesMaster(profiles) {
   if (!ok) throw new Error("Failed to save profiles master file");
 }
 
+function saveUserProfile(userId, profile) {
+  ensureDirs();
+  const file = path.join(USER_PROFILE_DIR, `${userId}.json`);
+  return saveJson(file, profile);
+}
+
+
 // ---------------------------------------------------
 // PROFILE CREATION
 // ---------------------------------------------------
@@ -156,8 +163,9 @@ function createProfileFromPlatform(userObj) {
 function getProfile(userId) {
   try {
     ensureDirs();
-    const profiles = loadProfilesMaster();
-    return profiles[userId] || null;
+    const file = path.join(USER_PROFILE_DIR, `${userId}.json`);
+    const profile = loadJson(file);
+    return profile || null;
   } catch (err) {
     console.error(`Error getting profile for ${userId}:`, err.message);
     return null;
@@ -170,16 +178,10 @@ function getProfile(userId) {
 function updateProfile(userId, patch) {
   try {
     ensureDirs();
-    const profiles = loadProfilesMaster();
 
-    const existing = profiles[userId] || {
-      user_id: userId,
-      platform_data: {},
-      learning_profile: defaultLearningProfile(),
-      created_at: new Date().toISOString(),
-    };
+    const existing = getProfile(userId) || ensureProfileExists(userId);
 
-    const merged = {
+    const updated = {
       ...existing,
       platform_data: deepMerge(
         JSON.parse(JSON.stringify(existing.platform_data)),
@@ -189,47 +191,49 @@ function updateProfile(userId, patch) {
         JSON.parse(JSON.stringify(existing.learning_profile)),
         patch.learning_profile || {}
       ),
+      roadmap_progress: deepMerge(
+        JSON.parse(JSON.stringify(existing.roadmap_progress || {
+          job_role: null,
+          subskills: [],
+          skills_status: {},
+          created_at: Date.now(),
+          last_updated: Date.now()
+        })),
+        patch.roadmap_progress || {}
+      ),
       updated_at: new Date().toISOString(),
     };
 
-    Object.keys(patch).forEach(k => {
-      if (!["platform_data", "learning_profile", "created_at"].includes(k)) {
-        merged[k] = patch[k];
-      }
-    });
+    saveUserProfile(userId, updated);
+    return updated;
 
-    profiles[userId] = merged;
-    saveProfilesMaster(profiles);
-
-    return merged;
   } catch (err) {
-    console.error(`Error updating profile for ${userId}:`, err.message);
+    console.error("Error updating profile:", err.message);
     throw err;
   }
 }
+
+
 
 // ---------------------------------------------------
 // ENSURE PROFILE EXISTS
 // ---------------------------------------------------
 function ensureProfileExists(userId) {
   ensureDirs();
-  const profiles = loadProfilesMaster();
+  const existing = getProfile(userId);
+  if (existing) return existing;
 
-  if (profiles[userId]) {
-    return profiles[userId];
-  }
-
+  // Load from platform
   const allUsers = getAllUsersFromPlatform();
   const userObj = allUsers.find(u => u.id === userId || u.email === userId);
 
-  const profile = userObj
+  const newProfile = userObj
     ? createProfileFromPlatform(userObj)
-    : createProfileFromPlatform({ id: userId, email: "" });
+    : createProfileFromPlatform({ id: userId });
 
-  profiles[userId] = profile;
-  saveProfilesMaster(profiles);
+  saveUserProfile(userId, newProfile);
 
-  return profile;
+  return newProfile;
 }
 
 // -----------------------------
