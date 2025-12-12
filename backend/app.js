@@ -14,6 +14,7 @@ const {
   updateSkillLevel, 
   autoUpdateRoadmap 
 } = require("./controllers/roadmap-controller.js");
+const courseRoutes = require("./routes/course-routes");
 
 const app = express();
 
@@ -69,6 +70,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/profile", profileRoutes);
 
 app.use("/api/quiz", quizRoutes);
+app.use("/api", courseRoutes);
 // Health check
 app.get("/", (req, res) => {
   res.json({ message: "API is running" });

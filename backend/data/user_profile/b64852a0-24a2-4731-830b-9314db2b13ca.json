@@ -36,428 +36,390 @@
     ]
   },
   "created_at": "2025-12-11T13:48:16.342Z",
-  "updated_at": "2025-12-11T17:33:04.954Z",
+  "updated_at": "2025-12-12T03:28:47.553Z",
   "progress_history": [],
   "roadmap_progress": {
-    "job_role": "AI Engineer",
-    "created_at": 1765460896343,
-    "last_updated": 1765445459443,
-    "skills_status": {
-      "html_css_fundamentals_fe": {
-        "name": "HTML & CSS Fundamentals",
-        "status": "not_started"
-      },
-      "javascript_basics_fe": {
-        "name": "JavaScript Basics",
-        "status": "not_started"
-      },
-      "framework_foundations_fe": {
-        "name": "Front-End Framework Foundations",
-        "status": "not_started"
-      },
-      "version_control_fe": {
-        "name": "Git Basics Version Control",
-        "status": "not_started"
-      },
-      "ui_ux_principles_fe": {
-        "name": "Basic of UI/UX Web",
-        "status": "not_started"
-      },
-      "web_application_fe": {
-        "name": "Web Application Engineering",
-        "status": "not_started"
-      },
-      "python_fundamentals_ai": {
-        "name": "Python Fundamentals",
-        "level": "not_started",
-        "overall_percent": 0,
-        "per_level_percent": {
-          "beginner": null,
-          "intermediate": null,
-          "advanced": null
-        },
-        "source_course_ids": [
-          2,
-          5,
-          6
-        ]
-      },
-      "math_for_ml_ai": {
-        "name": "Mathematics for ML",
-        "level": "not_started",
-        "overall_percent": 0,
-        "per_level_percent": {
-          "beginner": null,
-          "intermediate": null,
-          "advanced": null
-        },
-        "source_course_ids": [
-          1,
-          3,
-          4
-        ]
-      },
-      "ml_basics_ai": {
-        "name": "Machine Learning Basics",
-        "level": "not_started",
-        "overall_percent": 0,
-        "per_level_percent": {
-          "beginner": null,
-          "intermediate": null,
-          "advanced": null
-        },
-        "source_course_ids": [
-          2,
-          3,
-          4
-        ]
-      },
-      "deep_learning_ai": {
-        "name": "Deep Learning Foundations",
-        "level": "not_started",
-        "overall_percent": 0,
-        "per_level_percent": {
-          "beginner": null,
-          "intermediate": null,
-          "advanced": null
-        },
-        "source_course_ids": [
-          2,
-          5
-        ]
-      },
-      "nlp_cv_ai": {
-        "name": "NLP & Computer Vision Fundamentals",
-        "level": "not_started",
-        "overall_percent": 0,
-        "per_level_percent": {
-          "beginner": null,
-          "intermediate": null,
-          "advanced": null
-        },
-        "source_course_ids": [
-          1,
-          3,
-          5
-        ]
-      },
-      "mlops_ai": {
-        "name": "MLOps Basics",
-        "level": "not_started",
-        "overall_percent": 0,
-        "per_level_percent": {
-          "beginner": null,
-          "intermediate": null,
-          "advanced": null
-        },
-        "source_course_ids": [
-          4,
-          5,
-          6
-        ]
-      }
-    },
+    "job_role": "Android Developer",
+    "last_updated": 1765481291989,
+    "created_at": 1765454050298,
     "subskills": [
       {
-        "id": "python_fundamentals_ai",
-        "name": "Python Fundamentals",
-        "estimated_hours": 60,
+        "id": "kotlin_basics_android",
+        "name": "Kotlin Fundamentals",
+        "estimated_hours": 50,
         "priority": 1,
         "prerequisites": [],
         "next_steps": [
-          "math_for_ml_ai"
+          "android_sdk_android"
         ],
         "keywords": [
-          "python",
-          "syntax",
-          "data types",
-          "functions",
-          "oop"
+          "kotlin",
+          "null-safety",
+          "coroutines"
         ],
         "mapped_courses": {
           "beginner": [
-            6
+            11
           ],
           "intermediate": [
-            2
+            7
           ],
           "advanced": [
-            5
+            12
           ]
         },
         "levels": {
           "beginner": {
-            "description": "Dasar Python untuk AI",
+            "description": "Syntax Kotlin dasar",
             "indicators": [
-              "script sederhana",
-              "tipe data",
-              "function"
+              "function/class"
             ]
           },
           "intermediate": {
-            "description": "Libraries dasar ML",
+            "description": "Coroutine & stdlib",
             "indicators": [
-              "numpy/pandas dasar",
-              "preprocessing"
+              "flows"
             ]
           },
           "advanced": {
-            "description": "Optimasi & advanced python",
+            "description": "Pattern & interop",
             "indicators": [
-              "profiling",
-              "concurrency"
+              "delegation"
             ]
           }
         }
       },
       {
-        "id": "math_for_ml_ai",
-        "name": "Mathematics for ML",
-        "estimated_hours": 60,
-        "priority": 1,
-        "prerequisites": [],
-        "next_steps": [
-          "ml_basics_ai"
-        ],
-        "keywords": [
-          "linear algebra",
-          "calculus",
-          "probability",
-          "statistics"
-        ],
-        "mapped_courses": {
-          "beginner": [
-            1
-          ],
-          "intermediate": [
-            3
-          ],
-          "advanced": [
-            4
-          ]
-        },
-        "levels": {
-          "beginner": {
-            "description": "Statistik dasar",
-            "indicators": [
-              "mean/variance"
-            ]
-          },
-          "intermediate": {
-            "description": "Kalkulus dasar",
-            "indicators": [
-              "turunan/gradien"
-            ]
-          },
-          "advanced": {
-            "description": "Optimisasi lanjutan",
-            "indicators": [
-              "SVD",
-              "konveks"
-            ]
-          }
-        }
-      },
-      {
-        "id": "ml_basics_ai",
-        "name": "Machine Learning Basics",
+        "id": "android_sdk_android",
+        "name": "Android SDK & Architecture",
         "estimated_hours": 80,
         "priority": 2,
         "prerequisites": [
-          "python_fundamentals_ai",
-          "math_for_ml_ai"
+          "kotlin_basics_android"
         ],
         "next_steps": [
-          "deep_learning_ai"
+          "ui_material_android"
         ],
         "keywords": [
-          "supervised",
-          "unsupervised",
-          "scikit-learn"
+          "android",
+          "jetpack",
+          "lifecycle"
         ],
         "mapped_courses": {
           "beginner": [
-            3
+            8
           ],
           "intermediate": [
-            2
+            7
           ],
           "advanced": [
-            4
+            9
           ]
         },
         "levels": {
           "beginner": {
-            "description": "Algoritma dasar",
+            "description": "Activity & layout basic",
             "indicators": [
-              "linear regression",
-              "decision tree"
+              "activity lifecycle"
             ]
           },
           "intermediate": {
-            "description": "Feature engineering",
+            "description": "jetpack components",
             "indicators": [
-              "cross-validation",
-              "tuning"
+              "viewmodel",
+              "room"
             ]
           },
           "advanced": {
-            "description": "Ensemble & production",
+            "description": "modular apps",
             "indicators": [
-              "ensemble methods"
+              "performance tuning"
             ]
           }
         }
       },
       {
-        "id": "deep_learning_ai",
-        "name": "Deep Learning Foundations",
-        "estimated_hours": 100,
-        "priority": 3,
+        "id": "ui_material_android",
+        "name": "UI & Material Design",
+        "estimated_hours": 40,
+        "priority": 2,
         "prerequisites": [
-          "ml_basics_ai"
+          "android_sdk_android"
         ],
         "next_steps": [
-          "nlp_cv_ai"
+          "data_storage_android"
         ],
         "keywords": [
-          "neural networks",
-          "cnn",
-          "rnn",
-          "pytorch",
-          "tensorflow"
+          "material",
+          "compose",
+          "ui"
         ],
         "mapped_courses": {
           "beginner": [
-            2
+            8
           ],
           "intermediate": [
-            5
+            7
           ],
           "advanced": [
-            5
+            9
           ]
         },
         "levels": {
           "beginner": {
-            "description": "NN dasar",
+            "description": "Material basics",
             "indicators": [
-              "feedforward",
-              "loss"
+              "components"
             ]
           },
           "intermediate": {
-            "description": "CNN/RNN",
+            "description": "Compose & animation",
             "indicators": [
-              "conv nets",
-              "sequence models"
+              "theming"
             ]
           },
           "advanced": {
-            "description": "Optimisasi & transfer learning",
+            "description": "custom components",
             "indicators": [
-              "fine-tuning"
+              "complex animations"
             ]
           }
         }
       },
       {
-        "id": "nlp_cv_ai",
-        "name": "NLP & Computer Vision Fundamentals",
-        "estimated_hours": 60,
-        "priority": 3,
-        "prerequisites": [
-          "deep_learning_ai"
-        ],
-        "next_steps": [
-          "mlops_ai"
-        ],
-        "keywords": [
-          "nlp",
-          "transformer",
-          "object detection"
-        ],
-        "mapped_courses": {
-          "beginner": [
-            1
-          ],
-          "intermediate": [
-            3
-          ],
-          "advanced": [
-            5
-          ]
-        },
-        "levels": {
-          "beginner": {
-            "description": "Preprocessing dasar",
-            "indicators": [
-              "tokenization",
-              "image preprocessing"
-            ]
-          },
-          "intermediate": {
-            "description": "Model pretrained",
-            "indicators": [
-              "fine-tune small models"
-            ]
-          },
-          "advanced": {
-            "description": "Multi-modal & research",
-            "indicators": [
-              "multi-modal pipelines"
-            ]
-          }
-        }
-      },
-      {
-        "id": "mlops_ai",
-        "name": "MLOps Basics",
+        "id": "data_storage_android",
+        "name": "Data Storage & Networking",
         "estimated_hours": 50,
+        "priority": 3,
+        "prerequisites": [
+          "android_sdk_android"
+        ],
+        "next_steps": [
+          "testing_android"
+        ],
+        "keywords": [
+          "room",
+          "retrofit",
+          "okhttp"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            8
+          ],
+          "intermediate": [
+            9
+          ],
+          "advanced": [
+            7
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "SharedPrefs & retrofit",
+            "indicators": [
+              "simple REST"
+            ]
+          },
+          "intermediate": {
+            "description": "Room & caching",
+            "indicators": [
+              "offline sync"
+            ]
+          },
+          "advanced": {
+            "description": "realtime & migrations",
+            "indicators": [
+              "data migration"
+            ]
+          }
+        }
+      },
+      {
+        "id": "testing_android",
+        "name": "Testing & CI for Android",
+        "estimated_hours": 35,
+        "priority": 3,
+        "prerequisites": [
+          "android_sdk_android"
+        ],
+        "next_steps": [
+          "deployment_playstore_android"
+        ],
+        "keywords": [
+          "espresso",
+          "ci",
+          "unit test"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            8
+          ],
+          "intermediate": [
+            10
+          ],
+          "advanced": [
+            12
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "unit test basics",
+            "indicators": [
+              "viewmodel tests"
+            ]
+          },
+          "intermediate": {
+            "description": "ci pipelines",
+            "indicators": [
+              "github actions"
+            ]
+          },
+          "advanced": {
+            "description": "performance testing",
+            "indicators": [
+              "profiling"
+            ]
+          }
+        }
+      },
+      {
+        "id": "deployment_playstore_android",
+        "name": "Deployment & Release Management",
+        "estimated_hours": 25,
         "priority": 4,
         "prerequisites": [
-          "deep_learning_ai"
+          "testing_android"
         ],
         "next_steps": [],
         "keywords": [
-          "deployment",
-          "docker",
-          "monitoring",
-          "ci/cd"
+          "playstore",
+          "signing",
+          "release"
         ],
         "mapped_courses": {
           "beginner": [
-            6
+            8
           ],
           "intermediate": [
-            4
+            12
           ],
           "advanced": [
-            5
+            7
           ]
         },
         "levels": {
           "beginner": {
-            "description": "Serve model sederhana",
+            "description": "release basics",
             "indicators": [
-              "wrap model API"
+              "signing"
             ]
           },
           "intermediate": {
-            "description": "CI/CD model",
+            "description": "staged rollout",
             "indicators": [
-              "pipeline retrain"
+              "A/B testing"
             ]
           },
           "advanced": {
-            "description": "Production ML lifecycle",
+            "description": "enterprise release",
             "indicators": [
-              "model registry",
-              "drift detection"
+              "multi-store"
             ]
           }
         }
       }
-    ]
+    ],
+    "skills_status": {
+      "kotlin_basics_android": {
+        "name": "Kotlin Fundamentals",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          7,
+          11,
+          12
+        ]
+      },
+      "android_sdk_android": {
+        "name": "Android SDK & Architecture",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          7,
+          8,
+          9
+        ]
+      },
+      "ui_material_android": {
+        "name": "UI & Material Design",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          7,
+          8,
+          9
+        ]
+      },
+      "data_storage_android": {
+        "name": "Data Storage & Networking",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          7,
+          8,
+          9
+        ]
+      },
+      "testing_android": {
+        "name": "Testing & CI for Android",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          8,
+          10,
+          12
+        ]
+      },
+      "deployment_playstore_android": {
+        "name": "Deployment & Release Management",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          7,
+          8,
+          12
+        ]
+      }
+    }
   }
 }

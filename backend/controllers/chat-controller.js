@@ -57,10 +57,9 @@ function applySimpleUpdates(reply, profile) {
 async function handleChat(req, res) {
   try {
     console.log("BODY:", req.body);
-
     const sessionUserId = req.session?.userId;
     const userId = String(sessionUserId || req.body.user_id || "").trim();
-
+    
     if (!userId) {
       return res.status(401).json({
         ok: false,
@@ -69,7 +68,7 @@ async function handleChat(req, res) {
     }
 
     const { message, mode } = req.body;
-
+    
     if (!message || !message.trim()) {
       return res.status(400).json({
         ok: false,
@@ -83,50 +82,75 @@ async function handleChat(req, res) {
       profile = ensureProfileExists(userId);
     }
 
-    // Validate profile before sending to model; if invalid, recreate minimal profile
+    // Validate profile
     const v = ProfileSchema.validate(profile);
     if (!v.valid) {
       console.warn("Profile failed validation, recreating minimal profile:", v.errors);
       profile = ensureProfileExists(userId);
     }
 
-    // Send complete profile to backend model
+    // ============================================================
+    // SEND TO MODEL BACKEND
+    // ============================================================
     const modelResp = await sendToModel(userId, message, mode, profile);
 
+    console.log("🟢 MODEL RESPONSE:", JSON.stringify(modelResp, null, 2));
+    console.log("=== MODEL RESPONSE DEBUG ===");
+    console.log("Full response:", JSON.stringify(modelResp, null, 2));
+    console.log("Has meta?", !!modelResp?.meta);
+    console.log("meta.type:", modelResp?.meta?.type);
+    console.log("meta.roadmap:", modelResp?.meta?.roadmap);
+    console.log("============================");
+    // Extract response text
     const reply = modelResp?.response || modelResp?.reply || "Bot tidak menanggapi.";
     const cleanReply = stripProfileUpdateTags(reply);
 
-    // Model-updates (accept multiple naming conventions)
-    const profileUpdates = modelResp?.profile_updates || modelResp?.profileUpdate || modelResp?.profile_update || null;
+    // ============================================================
+    // EXTRACT META (ROADMAP, COURSE RECOMMENDATION, ETC)
+    // ============================================================
+    const meta = modelResp?.meta || {};
+    const sources = modelResp?.sources || [];
+    const intent = modelResp?.intent || {};
+
+    // Model profile updates
+    const profileUpdates = 
+      modelResp?.profile_updates || 
+      modelResp?.profileUpdate || 
+      modelResp?.profile_update || 
+      null;
 
     let mergedProfile = profile;
 
     if (profileUpdates && typeof profileUpdates === "object") {
       const validation = validateProfilePatch(profileUpdates, profile);
-
+      
       if (validation.ok) {
         try {
           mergedProfile = updateProfile(userId, validation.patch);
+          console.log("✅ Profile updated successfully");
         } catch (err) {
-          console.error("Failed updating profile:", err.message);
+          console.error("❌ Failed updating profile:", err.message);
         }
       } else {
-        console.warn(`Rejected profile update from model:`, validation.errors);
-
-        // Optional: kirim ke model bahwa update ditolak
-        // (untuk debugging saat fine-tuning prompt)
+        console.warn("⚠️ Rejected profile update from model:", validation.errors);
       }
     }
 
+    // ============================================================
+    // RETURN COMPLETE RESPONSE WITH META
+    // ============================================================
     return res.json({
       ok: true,
       reply: cleanReply,
-      profile_updated: true,
+      meta: meta,              // ← CRITICAL: Include meta field
+      sources: sources,        // ← Include sources
+      intent: intent,          // ← Include intent
+      profile_updated: !!profileUpdates,
       profile: mergedProfile
     });
 
   } catch (err) {
-    console.error("Chat Handler Error:", err);
+    console.error("❌ Chat Handler Error:", err);
     return res.status(500).json({
       ok: false,
       reply: "Terjadi kesalahan pada server"

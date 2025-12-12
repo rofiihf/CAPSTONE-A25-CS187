@@ -5,7 +5,10 @@ import { generateBubbleChat } from "../../components/generateBubbleChat.js";
 import MessageModel from "./messageModel.js";
 import { createChoiceBubble } from "../../components/bubbleChoice.js";
 import { createLevelQuizQuestionBubble } from "../../components/bubbleLevelQuiz.js";
+import bubbleRoadmap from "../../components/bubbleRoadmap.js";
 
+// import { bubbleRoadmap } from "../../components/bubbleRoadmap.js";
+// import { bubbleCourseRecommendation } from "../../components/bubbleRecommendation.js";
 
 export default class MessageView {
   #presenter;
@@ -97,9 +100,62 @@ export default class MessageView {
   }
 
   renderMessage(message) {
-    const bubble = generateBubbleChat(message);
-    this.#chatContainer.appendChild(bubble);
-    this.#chatContainer.scrollTop = this.#chatContainer.scrollHeight;
+    if (!message) return;
+
+    const extra = message.extra || {};
+    const type = extra.type;
+
+    // ===== RENDER ROADMAP BUBBLE =====
+    if (type === "roadmap") {
+      try {
+        // Pastikan modul sudah di-import secara global (di index.js biasanya)
+        if (typeof bubbleRoadmap === "function") {
+          const bubble = bubbleRoadmap({
+            id: message.id,
+            sender: "bot",
+            text: message.text,
+            roadmap: extra.roadmap || null,
+            meta: extra
+          });
+          this.#appendToChat(bubble);
+          return;
+        } else {
+          console.warn("bubbleRoadmap tidak ditemukan.");
+        }
+      } catch (err) {
+        console.error("Error render roadmap bubble:", err);
+      }
+    }
+
+    // ===== RENDER COURSE RECOMMENDATION BUBBLE =====
+    if (type === "course-recommendation") {
+      try {
+        if (typeof bubbleCourseRecommendation === "function") {
+          const bubble = bubbleCourseRecommendation({
+            id: message.id,
+            sender: "bot",
+            text: message.text,
+            timestamp: message.timestamp,
+            courses: extra.courses || []
+          });
+          this.#appendToChat(bubble);
+          return;
+        } else {
+          console.warn("bubbleCourseRecommendation tidak ditemukan.");
+        }
+      } catch (err) {
+        console.error("Error render course recommendation bubble:", err);
+      }
+    }
+
+    // ===== DEFAULT BUBBLE (BUBBLE TEXT BIASA) =====
+    try {
+      const bubble = generateBubbleChat(message);
+      this.#appendToChat(bubble);
+    } catch (err) {
+      console.error("Error render default bubble:", err);
+    }
+
   }
 
   // helper kecil supaya nggak ulang-ulang kode append + scroll
@@ -274,3 +330,4 @@ export default class MessageView {
     }
   }
 }
+

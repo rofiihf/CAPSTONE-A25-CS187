@@ -88,3 +88,14 @@ export async function submitQuizScore(topic, answers) {
     return { ok: false };
   }
 }
+
+export async function loadCourseMap() {
+  try {
+    const res = await fetch("/api/courses-map");
+    const data = await res.json();
+    window.COURSE_MAP = data.courses || {};
+  } catch (err) {
+    console.error("Failed to load course map", err);
+    window.COURSE_MAP = {};
+  }
+}

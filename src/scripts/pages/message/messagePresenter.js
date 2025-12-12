@@ -1,10 +1,9 @@
 // src/scripts/presenter/messagePresenter.js
-import { sendMessage } from "../../data/api.js";
-import { LEVEL_TOPICS, LEVEL_THRESHOLD } from "../../data/dummy.js";
-import {
-  makeRoadmapMessageForLearningPath,
-  FRONTEND_SUBSKILLS,
-} from "../../data/dummy-roadmap.js";
+import { sendMessage, getQuizTopics, getQuizQuestions, submitQuizScore, loadCourseMap } from "../../data/api.js";
+import { LEVEL_TOPICS as LEVEL_TOPICS_FALLBACK, LEVEL_THRESHOLD } from "../../data/dummy.js";
+import { detectIntent } from "../../utils/intent-detector.js";
+import bubbleRoadmap from "../../components/bubbleRoadmap.js";
+import { bubbleCourseRecommendation } from "../../components/bubbleRoadmap.js";
 
 export default class MessagePresenter {
   #view;
@@ -39,32 +38,53 @@ export default class MessagePresenter {
       },
       {
         id: "level-check",
-        label: "Sudah di level mana aku",
+        label: "Aku mau tes skill ku",
       },
     ];
     this.#quizState = {
-      step: "idle", // idle | choose_topic | choose_count | questions
-      topic: null,
+      step: "idle",       // idle | choose_topic | choose_count | questions
+      topic: null,        // object: { id?, label? } as returned by API or fallback
       totalQuestions: 0,
       currentIndex: 0,
-      totalScore: 0,
-      questions: [],
+      totalScore: 0,      // not used for backend mode, kept for compatibility
+      questions: [],      // array of question objects for rendering { text, options: [{code,label}], raw: original }
+      answers: [],        // collected answers: { question, answer }
     };
+    
   }
 
   setView(view) {
     this.#view = view;
   }
 
-  renderInitialMessages() {
+  setProfile(profile) {
+    this.profile = profile;
+  }
+
+  async renderInitialMessages() {
     try {
       this.#view.clearChat();
+
       const messages = this.#model.getAllMessages();
       messages.forEach((msg) => this.#view.renderMessage(msg));
-      // Tampilkan quick actions setelah pesan awal
+      await this.preloadCourseMap();
+      this.renderRoadmapFromProfile();
+
+      // tampilkan quick actions setelah pesan awal
       this.#view.renderQuickActions(this.#quickActions);
     } catch (error) {
       console.error("Error rendering initial messages:", error);
+    }
+  }
+
+  async preloadCourseMap() {
+    try {
+      const resp = await loadCourseMap();
+      if (resp?.ok) {
+        window.COURSE_MAP = resp.courses;
+      }
+    } catch (e) {
+      console.warn("Could not load course map:", e);
     }
   }
 
@@ -75,110 +95,50 @@ export default class MessagePresenter {
     this.#view.resetInput();
     this.renderInitialMessages();
   }
+  
+  renderRoadmapFromProfile() {
+    if (!this.profile || !this.profile.roadmap_progress) return;
+
+    const rp = this.profile.roadmap_progress;
+
+    const msg = this.#model.addMessage(
+      "Ini roadmap belajarmu:",
+      "bot",
+      {
+        type: "roadmap",
+        roadmap: rp
+      }
+    );
+
+    this.#view.renderMessage(msg);
+  }
+
 
   handleQuickAction(actionId) {
     const action = this.#quickActions.find((a) => a.id === actionId);
     if (!action) return;
 
-    // Hapus quick actions setelah dipilih
+    // hapus quick actions setelah dipilih
     this.#view.clearQuickActions();
 
-    // QUICK ACTION KHUSUS QUIZ LEVEL
+    // quick action khusus quiz level
     if (actionId === "level-check") {
       this.startLevelCheckFlow();
       return;
     }
 
-    // ===== ask-courses: tampilkan LP frontend (learning path)
-    if (actionId === "ask-courses") {
-      const roadmapMsg = makeRoadmapMessageForLearningPath("lp-ai-engineer"); // LP biasa
-      if (roadmapMsg) {
-        try {
-          const saved = this.#model.addMessage(
-            roadmapMsg.text || (roadmapMsg.roadmap && roadmapMsg.roadmap.title) || "Roadmap",
-            "bot",
-            {
-              roadmap: roadmapMsg.roadmap,
-              type: "roadmap",
-            }
-          );
-          if (saved && typeof saved === "object") {
-            this.#view.renderMessage(saved);
-            return;
-          }
-        } catch (e) {
-          console.warn("Model addMessage (lp-frontend) failed — rendering directly", e);
-        }
-        this.#view.renderMessage(roadmapMsg);
-        return;
-      }
-      // fallback ke backend
-      this.handleUserSubmit(action.message);
-      return;
-    }
-
-    // ===== ask-roadmap: tampilkan struktur subskills (enhanced) — FRONTEND_SUBSKILLS
-    if (actionId === "ask-roadmap") {
-      const roadmapMsg = {
-        id: `roadmap-frontend-enhanced-${Date.now()}`,
-        sender: "bot",
-        type: "roadmap",
-        text:
-          (FRONTEND_SUBSKILLS && FRONTEND_SUBSKILLS.description) ||
-          `Roadmap: ${FRONTEND_SUBSKILLS?.job_role || "Front-End"}`,
-        timestamp: new Date().toISOString(),
-        roadmap: FRONTEND_SUBSKILLS,
-      };
-
-      try {
-        const saved = this.#model.addMessage(
-          roadmapMsg.text || (roadmapMsg.roadmap && roadmapMsg.roadmap.job_role) || "Roadmap",
-          "bot",
-          {
-            roadmap: roadmapMsg.roadmap,
-            type: "roadmap",
-          }
-        );
-        if (saved && typeof saved === "object") {
-          this.#view.renderMessage(saved);
-          return;
-        }
-      } catch (e) {
-        console.warn("Model addMessage (frontend subskills) failed — rendering directly", e);
-      }
-
-      this.#view.renderMessage(roadmapMsg);
-      return;
-    }
-
-    // default: kirim ke backend (quick action biasa)
+    // kirim pesan template ke backend
     this.handleUserSubmit(action.message);
   }
-
-  /* NOTE:
-   * Untuk "Lihat detail" kita sengaja tidak memicu presenter agar tidak men-generate chat baru.
-   * bubbleRoadmap sudah men-toggle detail di dalam bubble. Namun kita tetap simpan fungsi
-   * handleCourseClick untuk fallback atau jika nanti mau memanggil backend.
-   */
-  async handleCourseClick(detail = {}) {
-    try {
-      const { courseRef, title } = detail || {};
-      if (!courseRef) {
-        console.warn("handleCourseClick: missing courseRef", detail);
-        return;
-      }
-
-      // fallback: jika ingin memuat detail via backend atau dummy COURSES,
-      // biarkan implementasi saat dibutuhkan. Saat ini bubbleRoadmap menampilkan detail inline.
-      // Jika nanti ingin memunculkan detail sebagai message, bisa gunakan makeRoadmapMessageForCourse.
-      return;
-    } catch (error) {
-      console.error("handleCourseClick error:", error);
-    }
+  getRecommendedCourses(profile) {
+    const list = Object.values(window.COURSE_MAP);
+    return list.filter(c => c.level.toLowerCase().includes("beginner")).slice(0, 5);
   }
 
-  // ====== QUIZ "SUDAH DI LEVEL MANA AKU" (FRONTEND ONLY) ======
-  startLevelCheckFlow() {
+
+  // ====== QUIZ "SUDAH DI LEVEL MANA AKU" (BACKEND MODE) ======
+  async startLevelCheckFlow() {
+    // reset state
     this.#quizState = {
       step: "choose_topic",
       topic: null,
@@ -186,40 +146,75 @@ export default class MessagePresenter {
       currentIndex: 0,
       totalScore: 0,
       questions: [],
+      answers: [],
     };
 
-    // Matikan input manual biar user pakai button saja
+    // matikan input manual supaya user pakai button saja
     this.#view.setInputDisabled(true);
 
+    // tampilkan intro
     const intro = this.#model.addMessage(
-      "Halo! Aku bantu cek dulu level belajarmu ya. Pilih dulu 1 minat belajar yang paling ingin kamu kuasai.",
+      "Saya akan membantu mengecek level Anda. Pertama, pilih minat/topik yang ingin diuji.",
       "bot"
     );
     this.#view.renderMessage(intro);
 
+    // ambil daftar topik dari backend
+    let topicsResp;
+    try {
+      topicsResp = await getQuizTopics();
+    } catch (err) {
+      console.error("Failed to fetch quiz topics:", err);
+      topicsResp = null;
+    }
+
+    let options;
+    if (topicsResp && topicsResp.ok && Array.isArray(topicsResp.topics) && topicsResp.topics.length) {
+      // backend may return topics as array of strings or objects
+      options = topicsResp.topics.map((t) => {
+        if (typeof t === "string") {
+          return { value: t, label: t };
+        }
+        // if object, try common props
+        return {
+          value: t.id ?? t.key ?? t.tech_category ?? t.name ?? JSON.stringify(t),
+          label: t.label ?? t.name ?? t.tech_category ?? (typeof t.title === "string" ? t.title : String(t.value ?? t.id ?? "")),
+          raw: t
+        };
+      });
+    } else {
+      // fallback ke static LEVEL_TOPICS dari dummy.js
+      console.warn("Using fallback LEVEL_TOPICS for quiz topics");
+      options = (LEVEL_TOPICS_FALLBACK || []).map((t) => ({ value: t.id, label: t.label, raw: t }));
+    }
+
+    // render choice bubble with topics
     this.#view.renderChoiceBubble({
       title: "Pilih 1 minat belajar",
-      options: LEVEL_TOPICS.map((t) => ({ value: t.id, label: t.label })),
+      options,
       onChoose: (opt) => this.handleChooseTopic(opt),
     });
   }
 
   handleChooseTopic(opt) {
-    const topic = LEVEL_TOPICS.find((t) => t.id === opt.value);
-    if (!topic) return;
+    // opt: { value, label, raw? }
+    if (!opt) return;
 
-    this.#quizState.topic = topic;
+    // set topic
+    this.#quizState.topic = opt;
     this.#quizState.step = "choose_count";
 
+    // tampilkan pilihan user di chat
     const userMsg = this.#model.addMessage(opt.label, "user");
     this.#view.renderMessage(userMsg);
 
     const explain = this.#model.addMessage(
-      `Jadi, ${topic.label} ya. Sebelum mulai, aku akan kasih beberapa pertanyaan biar tahu levelmu. Semakin banyak pertanyaan yang kamu jawab, semakin akurat hasilnya.`,
+      `Baik. Untuk topik ${opt.label}, silakan pilih jumlah pertanyaan yang ingin kamu jawab.`,
       "bot"
     );
     this.#view.renderMessage(explain);
 
+    // render choice untuk jumlah pertanyaan
     this.#view.renderChoiceBubble({
       title: "Pilih jumlah pertanyaan",
       options: [
@@ -231,29 +226,82 @@ export default class MessagePresenter {
     });
   }
 
-  handleChooseCount(opt) {
-    const count = opt.value;
-    const topic = this.#quizState.topic;
-    const maxAvailable = topic.questions.length;
+  async handleChooseCount(opt) {
+    const count = Number(opt.value) || 5;
+    const topicObj = this.#quizState.topic;
+    if (!topicObj) return;
 
-    this.#quizState.totalQuestions = Math.min(count, maxAvailable);
-    this.#quizState.questions = topic.questions.slice(
-      0,
-      this.#quizState.totalQuestions
-    );
-    this.#quizState.step = "questions";
-    this.#quizState.currentIndex = 0;
-    this.#quizState.totalScore = 0;
-
+    // tampilkan pilihan user
     const userMsg = this.#model.addMessage(opt.label, "user");
     this.#view.renderMessage(userMsg);
 
+    // inform user
     const info = this.#model.addMessage(
-      `Nice! ${this.#quizState.totalQuestions} pertanyaan akan diajukan untukmu. Jawab saja sesuai yang kamu rasakan ya 😊`,
+      `Mengambil ${count} soal untuk topik ${topicObj.label}. Tunggu sebentar.`,
       "bot"
     );
     this.#view.renderMessage(info);
 
+    // ambil soal dari backend
+    let questionsResp;
+    try {
+      const topicIdentifier = topicObj.value ?? topicObj.label;
+      questionsResp = await getQuizQuestions(topicIdentifier, count);
+    } catch (err) {
+      console.error("Failed to fetch quiz questions:", err);
+      questionsResp = null;
+    }
+
+    if (!questionsResp || !questionsResp.ok || !Array.isArray(questionsResp.questions) || questionsResp.questions.length === 0) {
+      // gagal ambil soal — beri info dan enable input kembali
+      const errMsg = this.#model.addMessage(
+        "Gagal mengambil soal. Silakan coba lagi nanti.",
+        "bot"
+      );
+      this.#view.renderMessage(errMsg);
+      this.#quizState.step = "idle";
+      this.#view.setInputDisabled(false);
+      return;
+    }
+
+    // map soal backend ke format yang dipakai komponen UI
+    const mapped = questionsResp.questions.map((q, idx) => {
+      // backend expected fields: question (or question_desc), options array, correct_answer (not used here)
+      const text = q.question ?? q.question_desc ?? q.question_text ?? "";
+      const opts = Array.isArray(q.options) ? q.options : [
+        q.option_1, q.option_2, q.option_3, q.option_4
+      ].filter(Boolean);
+
+      // map to { code: 'A'|'B'..., label }
+      const codes = ["A", "B", "C", "D", "E"];
+      const mappedOpts = opts.map((o, i) => ({
+        code: codes[i] ?? String(i + 1),
+        label: String(o)
+      }));
+
+      return {
+        id: q.id ?? `q-${idx}`,
+        text,
+        options: mappedOpts,
+        raw: q
+      };
+    });
+
+    // store questions and reset answers
+    this.#quizState.questions = mapped;
+    this.#quizState.totalQuestions = mapped.length;
+    this.#quizState.step = "questions";
+    this.#quizState.currentIndex = 0;
+    this.#quizState.answers = [];
+
+    // inform readiness
+    const readyMsg = this.#model.addMessage(
+      `Siap. ${this.#quizState.totalQuestions} pertanyaan akan muncul sekarang.`,
+      "bot"
+    );
+    this.#view.renderMessage(readyMsg);
+
+    // show first question
     this.showNextQuizQuestion();
   }
 
@@ -268,7 +316,10 @@ export default class MessagePresenter {
     const question = questions[currentIndex];
 
     this.#view.renderLevelQuizQuestion({
-      question,
+      question: {
+        text: question.text,
+        options: question.options
+      },
       index: currentIndex + 1,
       total: totalQuestions,
       onAnswer: (opt) => this.handleQuizAnswer(question, opt),
@@ -276,64 +327,196 @@ export default class MessagePresenter {
   }
 
   handleQuizAnswer(question, opt) {
-    const userMsg = this.#model.addMessage(`${opt.code}. ${opt.label}`, "user");
+    // tampilkan jawaban user sebagai bubble biasa
+    const userMsg = this.#model.addMessage(
+      `${opt.code}. ${opt.label}`,
+      "user"
+    );
     this.#view.renderMessage(userMsg);
 
-    this.#quizState.totalScore += opt.score;
-    this.#quizState.currentIndex += 1;
+    // simpan jawaban (kirim nanti ke backend)
+    this.#quizState.answers.push({
+      question: question.text,
+      answer: opt.label
+    });
 
+    // next
+    this.#quizState.currentIndex += 1;
     this.showNextQuizQuestion();
   }
 
-  finishQuiz() {
-    const total = this.#quizState.totalScore;
-    const { beginner, intermediate, advance } = LEVEL_THRESHOLD;
+  async finishQuiz() {
+    const topicObj = this.#quizState.topic;
+    const answers = this.#quizState.answers || [];
 
-    let level = "Beginner";
-    if (total <= beginner) {
-      level = "Beginner";
-    } else if (total <= intermediate) {
-      level = "Intermediate";
-    } else if (total >= advance) {
-      level = "Advance";
+    if (!topicObj) {
+      const errMsg = this.#model.addMessage(
+        "Topik quiz tidak ditemukan. Quiz dibatalkan.",
+        "bot"
+      );
+      this.#view.renderMessage(errMsg);
+      this.#quizState.step = "idle";
+      this.#view.setInputDisabled(false);
+      return;
     }
 
-    const topicLabel = this.#quizState.topic?.label || "topik ini";
+    // disable input supaya user menunggu sampai proses selesai
+    this.#view.setInputDisabled(true);
+
+    // panggil backend untuk penilaian
+    let result;
+    try {
+      const topicIdentifier = topicObj.value ?? topicObj.label;
+      result = await submitQuizScore(topicIdentifier, answers);
+    } catch (err) {
+      console.error("Failed to submit quiz score:", err);
+      result = null;
+    }
+
+    if (!result || !result.ok) {
+      const failMsg = this.#model.addMessage(
+        "Gagal menghitung hasil. Silakan coba lagi nanti.",
+        "bot"
+      );
+      this.#view.renderMessage(failMsg);
+      this.#quizState.step = "idle";
+      this.#view.setInputDisabled(false);
+      return;
+    }
+
+    // tampilkan hasil dari backend
+    // expected response: { ok:true, topic, total_questions, score, level, profile? }
+    const level = result.level ?? "Unknown";
+    const score = result.score ?? 0;
+    const totalQ = result.total_questions ?? answers.length;
 
     const resultMsg = this.#model.addMessage(
-      `Selesai! Berdasarkan jawabanmu, untuk ${topicLabel}, kamu saat ini berada di level **${level}**.`,
+      `Selesai. Untuk topik ${topicObj.label}, hasil: skor ${score}/${totalQ}. Level yang ditetapkan: ${level}.`,
       "bot"
     );
     this.#view.renderMessage(resultMsg);
 
-    // Reset state quiz & hidupkan lagi input manual
-    this.#quizState.step = "idle";
+    // === Integrasi profile update (MVP) ===
+    // preferensi: jika backend sudah mengembalikan profile di response, gunakan itu;
+    // jika tidak, minta authService atau authModel untuk refresh profile.
+    try {
+      // jika backend mengirimkan profile yang sudah di-update
+      if (result.profile && this.#authModel && typeof this.#authModel.setUser === "function") {
+        try {
+          this.#authModel.setUser(result.profile);
+        } catch (e) {
+          console.warn("authModel.setUser failed:", e);
+        }
+      } else if (this.#authService && typeof this.#authService.fetchProfile === "function") {
+        // panggil service untuk refresh profile
+        try {
+          await this.#authService.fetchProfile();
+        } catch (e) {
+          console.warn("authService.fetchProfile failed:", e);
+        }
+      } else if (this.#authModel && typeof this.#authModel.fetchProfile === "function") {
+        // fallback ke model fetch
+        try {
+          await this.#authModel.fetchProfile();
+        } catch (e) {
+          console.warn("authModel.fetchProfile failed:", e);
+        }
+      } else {
+        // tidak ada mekanisme refresh tersedia — hanya warn
+        console.warn("No profile refresh mechanism available (authService/authModel).");
+      }
+    } catch (err) {
+      console.warn("Error while attempting to refresh profile:", err);
+    }
+
+    // reset quiz state and re-enable input
+    this.#quizState = {
+      step: "idle",
+      topic: null,
+      totalQuestions: 0,
+      currentIndex: 0,
+      totalScore: 0,
+      questions: [],
+      answers: []
+    };
     this.#view.setInputDisabled(false);
   }
 
-  // ================== HANDLE INPUT FORM ==================
+  // ================== HANDLE INPUT FORM (Chat with model) ==================
   async handleUserSubmit(textOverride = null) {
     try {
+      
       const rawText = textOverride ?? this.#view.getUserInput();
       const text = rawText.trim();
-
+      
       if (!text) {
         return;
       }
 
+      const intentResult = detectIntent(text);
+      if (intentResult.intent && intentResult.confidence >= 0.7) {
+        // treat as intent
+        // this.#view.clearInputChat();
+        if (intentResult.intent === "skill_assessment") {
+          // render user message
+          const userMessage = this.#model.addMessage(text, "user");
+          this.#view.renderMessage(userMessage);
+          this.#view.clearQuickActions();
+          // start quiz flow
+          this.startLevelCheckFlow();
+          return;
+        }
+        // if (intentResult.intent === "roadmap_request") {
+        //   // handle roadmap quick action
+        //   const userMessage = this.#model.addMessage(text, "user");
+        //   this.#view.renderMessage(userMessage);
+        //   // call presenter method to show roadmap
+        //   // e.g., this.handleRoadmapRequest();
+        //   return;
+        // }
+        // ... other intents
+      }
+
+
+      // kalau dipanggil dari quick action → pakai textOverride
+      // kalau dari form → pakai this.#view.getUserInput()
+
+      // disable input saat proses
       this.#view.setInputDisabled(true);
 
+      // simpan & tampilkan pesan user
       const userMessage = this.#model.addMessage(text, "user");
       this.#view.renderMessage(userMessage);
 
+      // reset input + tampilkan typing indicator bot
       this.#view.resetInput();
       this.#view.showTypingIndicator();
 
+      // === panggil backend chat ===
       const response = await sendMessage(text);
+      console.log("DEBUG RESPONSE:", response);
+      if (!response.meta && response.profile?.roadmap_progress) {
+          console.warn("⚠️ Backend tidak mengirim meta, menggunakan profile.roadmap_progress");
+          
+          const rp = response.profile.roadmap_progress;
+          
+          // Inject meta ke response
+          response.meta = {
+              type: "roadmap",
+              roadmap: {
+                  job_role: rp.job_role,
+                  subskills: rp.subskills,
+                  skills_status: rp.skills_status
+              }
+          };
+      }
 
+
+      // selesai loading
       this.#view.hideTypingIndicator();
       this.#view.setInputDisabled(false);
 
+      // kalau backend error / tidak ok
       if (!response.ok) {
         const errorBubble = this.#model.addMessage(
           "Maaf, server sedang diluar jangkauan.",
@@ -343,22 +526,72 @@ export default class MessagePresenter {
         return;
       }
 
+      // petakan meta dari backend/ML ke extra options
       const extraOptions = {};
       if (response.meta) extraOptions.meta = response.meta;
       if (response.sources) extraOptions.sources = response.sources;
 
       const metaType = response.meta?.type;
+
       if (metaType) {
-        extraOptions.type = metaType;
-        if (metaType === "course-recommendation") {
-          extraOptions.courses = response.meta.courses || [];
-        }
-        if (metaType === "roadmap") {
-          extraOptions.roadmap = response.meta.roadmap || null;
-        }
-        if (metaType === "progress-summary") {
-          extraOptions.progress = response.meta.progress || null;
-        }
+          extraOptions.type = metaType;
+
+          // =============================================
+          // 1) COURSE RECOMMENDATION
+          // =============================================
+          if (metaType === "course-recommendation") {
+              const courses = response.meta.courses || [];
+
+              const botCard = this.#model.addMessage(
+                  "Berikut rekomendasi kelas untukmu:",
+                  "bot",
+                  { type: "course-recommendation", courses }
+              );
+
+              this.#view.renderMessage(botCard);
+              return;
+          }
+
+          // =============================================
+          // 2) ROADMAP HANDLING
+          // =============================================
+          if (metaType === "roadmap") {
+              const roadmap = response.meta?.roadmap ?? null;
+
+              console.debug("[PRESENTER] roadmap meta:", roadmap);
+              console.debug("[PRESENTER] full response:", response);
+
+              // Validasi roadmap
+              if (!roadmap || 
+                  typeof roadmap !== "object" || 
+                  !roadmap.job_role || 
+                  !Array.isArray(roadmap.subskills)) {
+                  
+                  // Roadmap invalid → tampilkan error message
+                  const errorMsg = this.#model.addMessage(
+                      "Maaf, roadmap tidak dapat dimuat. Data tidak valid.",
+                      "bot"
+                  );
+                  this.#view.renderMessage(errorMsg);
+                  return;
+              }
+
+              // Roadmap valid → render dengan bubble khusus
+              const replyText = response.reply || `Roadmap untuk ${roadmap.job_role} telah dibuat!`;
+              
+              const botCard = this.#model.addMessage(
+                  replyText,
+                  "bot",
+                  { 
+                      type: "roadmap", 
+                      roadmap: roadmap 
+                  }
+              );
+
+              this.#view.renderMessage(botCard);
+              return;
+          }
+
       }
 
       const botMessage = this.#model.addMessage(
@@ -399,4 +632,26 @@ export default class MessagePresenter {
       window.location.hash = "/login";
     }
   }
+
+  handleCourseClick({ courseRef }) {
+    const course = window.COURSE_MAP?.[courseRef];
+
+    if (!course) {
+      const msg = this.#model.addMessage(
+        `Detail course dengan ID ${courseRef} tidak ditemukan.`,
+        "bot"
+      );
+      this.#view.renderMessage(msg);
+      return;
+    }
+
+    // const msg = this.#model.addMessage(
+    //   `Detail course: ${course.title}`,
+    //   "bot",
+    //   { type: "course-detail", course }
+    // );
+
+    this.#view.renderMessage(msg);
+  }
+
 }

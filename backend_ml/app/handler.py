@@ -16,6 +16,7 @@ from .skill_progress_engine import generate_skill_progress_for_roadmap
 from .config import GROQ_API_KEY, SBERT_MODEL_PATH, DEFAULT_TOPK
 from .detect_jobrole import detect_job_role, JOB_ROLE_KEYWORDS
 from .roadmap_json_engine import generate_roadmap_response
+from .config import BACKEND_URL, SECRET
 
 from groq import Groq
 import os
@@ -596,17 +597,47 @@ async def handle_query(
 
             # Kembalikan response tanpa LLM
             time.sleep(2)
+            # ============================================================
+# SEND PATCH TO BACKEND WEB (server-to-server)
+# ============================================================
+            try:
+                import requests
+                # BACKEND_URL = os.getenv("BACKEND_PROFILE_PATCH_URL")
+                # SECRET = os.getenv("PROFILE_PATCH_SECRET")
+
+                if BACKEND_URL and SECRET:
+                    requests.post(
+                        BACKEND_URL,
+                        json={
+                            "user_id": user_id,
+                            "patch": profile_update
+                        },
+                        headers={"x-admin-secret": SECRET},
+                        timeout=5
+                    )
+                else:
+                    print("[WARN] BACKEND_URL or SECRET not configured")
+
+            except Exception as e:
+                print("[ERROR] Failed to push roadmap patch to backend web:", e)
+
             return {
-                "response": (
-                    f"Roadmap untuk {job_role} (versi adaptif):\n\n"
-                    f"{json.dumps(roadmap, indent=2, ensure_ascii=False)}"
-                ),
+                "ok": True,
+                "reply": f"Roadmap untuk {job_role} telah dibuat!",
                 "intent": {"mode": "roadmap"},
                 "sources": [],
-                "meta": {"used_kb": False, "latency_ms": 0},
+                "meta": {  # ← INI YANG PENTING!
+                    "type": "roadmap",
+                    "roadmap": {
+                        "job_role": job_role,
+                        "subskills": filtered_subskills,
+                        "skills_status": skill_status
+                    },
+                    "used_kb": False,
+                    "latency_ms": 0
+                },
                 "profile_update": profile_update
             }
-
             # if roadmap.get("ok"):
             #     time.sleep(2)
             #     # Tidak perlu melewati LLM. Return roadmap langsung.

@@ -3,6 +3,8 @@
 
 export default function bubbleRoadmap(message = {}) {
   const data = message.roadmap || message.meta?.roadmap || message.meta || null;
+  console.log("🗺️ COURSE_MAP available?", !!window.COURSE_MAP);
+  console.log("🗺️ Total courses in map:", window.COURSE_MAP ? Object.keys(window.COURSE_MAP).length : 0);
 
   const wrapper = document.createElement("div");
   wrapper.classList.add(
@@ -176,14 +178,58 @@ export default function bubbleRoadmap(message = {}) {
         head.appendChild(badge);
         section.appendChild(head);
 
-        const list = document.createElement("div");
-        list.classList.add("level-course-list");
-        arr.forEach((course) => {
-          const item = document.createElement("div");
-          item.classList.add("roadmap-item", "course-row");
-          item.textContent = typeof course === "string" ? course : (course.name || course.title || String(course.id));
-          list.appendChild(item);
+        // Di bagian render level courses
+      const list = document.createElement("div");
+      list.classList.add("level-course-list");
+
+      arr.forEach((course) => {
+        const item = document.createElement("div");
+        item.classList.add("roadmap-item", "course-row");
+        
+        // ===== FIX: Handle course ID to name mapping =====
+        let courseName = "Course tidak ditemukan";
+        let courseId = null;
+        
+        if (typeof course === "string") {
+          courseId = course;
+        } else if (typeof course === "number") {
+          courseId = String(course);
+        } else if (course && course.id) {
+          courseId = String(course.id);
+        }
+        console.log(`📚 Looking for course ID: ${courseId}`);
+        console.log(`📚 Found in COURSE_MAP?`, !!window.COURSE_MAP?.[courseId]);
+        console.log(`📚 Course data:`, window.COURSE_MAP?.[courseId]);
+        // Coba ambil dari COURSE_MAP
+        if (courseId && window.COURSE_MAP && window.COURSE_MAP[courseId]) {
+          const courseData = window.COURSE_MAP[courseId];
+          courseName = courseData.name || courseData.title || courseData.course_name || courseName;
+        } else if (course && course.name) {
+          courseName = course.name;
+        } else if (course && course.title) {
+          courseName = course.title;
+        } else {
+          courseName = `Course ID: ${courseId || 'Unknown'}`;
+        }
+        
+        item.textContent = courseName;
+        
+        // Click handler
+        item.addEventListener("click", () => {
+          wrapper.dispatchEvent(
+            new CustomEvent("roadmap:courseClick", {
+              bubbles: true,
+              detail: {
+                courseRef: courseId || String(course),
+                title: courseName,
+                sourceMessageId: message.id
+              }
+            })
+          );
         });
+        
+        list.appendChild(item);
+      });
         section.appendChild(list);
         content.appendChild(section);
       });
