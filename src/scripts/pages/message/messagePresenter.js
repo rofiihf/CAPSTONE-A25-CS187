@@ -5,7 +5,9 @@ import { detectIntent } from "../../utils/intent-detector.js";
 import bubbleRoadmap from "../../components/bubbleRoadmap.js";
 import { bubbleCourseRecommendation } from "../../components/bubbleRecommendation.js";
 
+
 export default class MessagePresenter {
+  shouldRenderRoadmapOnStart = true;
   #view;
   #model;
   #authModel;
@@ -68,7 +70,10 @@ export default class MessagePresenter {
       const messages = this.#model.getAllMessages();
       messages.forEach((msg) => this.#view.renderMessage(msg));
       await this.preloadCourseMap();
-      this.renderRoadmapFromProfile();
+      if (this.shouldRenderRoadmapOnStart) {
+          this.renderRoadmapFromProfile();
+      }
+
 
       // tampilkan quick actions setelah pesan awal
       this.#view.renderQuickActions(this.#quickActions);
@@ -93,6 +98,7 @@ export default class MessagePresenter {
     this.#model.resetMessages();
     this.#view.clearChat();
     this.#view.resetInput();
+    this.shouldRenderRoadmapOnStart = false;
     this.renderInitialMessages();
   }
   
@@ -496,21 +502,31 @@ export default class MessagePresenter {
 
       // === panggil backend chat ===
       const response = await sendMessage(text);
+
+      if (response.profile) {
+          console.log("Updating profile with backend data...");
+          this.profile = response.profile;
+
+          if (this.#authModel?.setUser) {
+              this.#authModel.setUser(response.profile);
+          }
+
+          // And replace roadmap shown to UI
+          if (response.meta?.type === "roadmap") {
+              response.meta.roadmap = response.profile.roadmap_progress;
+          }
+      }
+
       console.log("DEBUG RESPONSE:", response);
-      if (!response.meta && response.profile?.roadmap_progress) {
-          console.warn("⚠️ Backend tidak mengirim meta, menggunakan profile.roadmap_progress");
-          
-          const rp = response.profile.roadmap_progress;
-          
-          // Inject meta ke response
-          response.meta = {
-              type: "roadmap",
-              roadmap: {
-                  job_role: rp.job_role,
-                  subskills: rp.subskills,
-                  skills_status: rp.skills_status
-              }
-          };
+      if (!response.meta) {
+          const rp = response.profile?.roadmap_progress;
+          if (rp) {
+              console.warn("⚠️ Using fallback roadmap from profile (backend sent no meta)");
+              response.meta = {
+                  type: "roadmap",
+                  roadmap: rp     // <-- use rp directly, do not cherry pick fields
+              };
+          }
       }
 
 

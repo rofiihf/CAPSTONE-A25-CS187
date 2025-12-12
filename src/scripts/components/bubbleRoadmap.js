@@ -137,7 +137,7 @@ export default function bubbleRoadmap(message = {}) {
     (data.subskills || []).forEach((sub, idx) => {
       const card = document.createElement("div");
       card.classList.add("subskill-card");
-
+      
       const header = document.createElement("div");
       header.classList.add("subskill-header");
       header.setAttribute("role", "button");
@@ -147,6 +147,47 @@ export default function bubbleRoadmap(message = {}) {
       left.classList.add("subskill-left");
       left.innerHTML = `<div class="subskill-title">${idx + 1}. ${escapeHtml(sub.name || "-")}</div>
                         <div class="subskill-meta">Est: ${sub.estimated_hours || "-"}h • P:${sub.priority || "-"}</div>`;
+
+       // ====== PROGRESS COLORING & BADGE ======
+      const skillStatus =
+        message.meta?.roadmap?.skills_status ||
+        data.skills_status ||
+        (message.skills_status || {});
+
+      let percent = null;
+      console.log("DEBUG sub.id =", sub.id);
+      console.log("DEBUG skillStatus =", skillStatus);
+      console.log("DEBUG skillStatus[sub.id] =", skillStatus?.[sub.id]);
+
+      if (skillStatus && sub.id && skillStatus[sub.id]) {
+        percent = skillStatus[sub.id].overall_percent ?? null;
+      }
+      console.log("DEBUG percent =", percent);
+      if (percent !== null) {
+        if (percent >= 100) {
+          card.classList.add("subskill-completed");
+        } else if (percent > 0) {
+          card.classList.add("subskill-inprogress");
+        } else {
+          card.classList.add("subskill-notstarted");
+        }
+        console.log("DEBUG applied class =", card.classList.value);
+        const badge = document.createElement("span");
+        badge.classList.add("subskill-status-badge");
+
+        if (percent >= 100) {
+          badge.textContent = "Completed";
+          badge.classList.add("badge-completed");
+        } else if (percent > 0) {
+          badge.textContent = "In Progress";
+          badge.classList.add("badge-inprogress");
+        } else {
+          badge.textContent = "Not Started";
+          badge.classList.add("badge-notstarted");
+        }
+
+        left.appendChild(badge);
+      }
 
       const right = document.createElement("div");
       right.classList.add("subskill-right");

@@ -19,7 +19,10 @@
     "goals": [
       "Anda minggu ini"
     ],
-    "skills": {},
+    "skills": {
+      "Cloud Computing": "Beginner",
+      "iOS": "Beginner"
+    },
     "weaknesses": [],
     "strengths": [],
     "current_focus": {
@@ -46,15 +49,34 @@
         "response": "Saya tidak menemukan informasi tentang apa yang kamu cari. Kamu bisa memberitahu saya lebih lanjut tentang apa yang kamu ingin tahu atau cari?",
         "timestamp": "2023-12-12T12:00:00Z",
         "intent": "informasi"
+      },
+      {
+        "query": "front-end",
+        "response": "Front-end adalah bagian dari pengembangan web yang berfokus pada bagian depan atau user interface (UI) dari sebuah aplikasi web.",
+        "timestamp": "2023-12-12T10:00:00.000Z",
+        "intent": "informasi"
+      },
+      {
+        "query": "cloud",
+        "response": "Pertanyaan tentang cloud computing",
+        "timestamp": "2023-12-12T12:00:00.000Z",
+        "intent": "informasi umum"
+      },
+      {
+        "query": "Tolong jelaskan progres belajar saya minggu ini, skill apa yang paling berkembang",
+        "response": "Halo Nando! Untuk melihat progres belajar Anda minggu ini, mari kita lihat apa saja yang telah Anda lakukan. Anda masih fokus pada kursus Belajar Dasar Structured Query Language (SQL) dan telah mencapai module 0.",
+        "timestamp": "2023-12-12T12:00:00+07:00",
+        "intent": "menanyakan progres belajar"
       }
     ]
   },
   "created_at": "2025-12-11T13:48:16.546Z",
-  "updated_at": "2025-12-12T09:42:21.184Z",
+  "updated_at": "2025-12-12T09:56:15.379Z",
   "progress_history": [],
   "roadmap_progress": {
     "job_role": "Front-End Web Developer",
-    "last_updated": 1765502569093,
+    "last_updated": 1765504566297,
+    "created_at": 1765504566297,
     "subskills": [
       {
         "id": "html_css_fundamentals_fe",

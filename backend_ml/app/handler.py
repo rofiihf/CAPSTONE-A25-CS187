@@ -710,8 +710,9 @@ async def handle_query(
                         break
             # Jika tetap tidak ketemu → minta user pilih job_role
             if not job_role:
+                time.sleep(0.5)
                 return {
-                    "response": "Saya tidak dapat menentukan role Anda berdasarkan pesan dan course aktif. Anda ingin roadmap untuk role apa?",
+                    "response": "Saya tidak dapat menentukan learning path anda Anda berdasarkan pesan yang anda berikan dan course aktif. Anda ingin roadmap untuk learning path apa? (Contoh: Front-End Web Developer, Back-End Developer, Android Developer)",
                     "intent": {"mode": "ask_job_role"},
                     "sources": [],
                     "meta": {"used_kb": False},
@@ -751,7 +752,7 @@ async def handle_query(
                 profile.get("roadmap_progress", {}).get("job_role")
                 if isinstance(profile, dict) else None
             )
-
+            prev_skill_status = (profile.get("roadmap_progress") or {}).get("skills_status")
             # Jika user berpindah job role → roadmap lama harus DIHAPUS total
             if prev_role and prev_role != job_role:
                 print(f"[ROADMAP RESET] User switching from {prev_role} → {job_role}")
@@ -770,7 +771,7 @@ async def handle_query(
                         "job_role": job_role,
                         "last_updated": int(datetime.utcnow().timestamp() * 1000),
                         "subskills": filtered_subskills,
-                        "skills_status": skill_status
+                        "skills_status": prev_skill_status
                     }
                 }
 

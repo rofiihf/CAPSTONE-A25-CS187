@@ -29,11 +29,11 @@
     "history": []
   },
   "created_at": "2025-12-11T13:48:16.453Z",
-  "updated_at": "2025-12-11T19:06:27.080Z",
+  "updated_at": "2025-12-12T10:39:46.084Z",
   "progress_history": [],
   "roadmap_progress": {
     "job_role": "Google Cloud Professional",
-    "last_updated": 1765451185079,
+    "last_updated": 1765507184063,
     "subskills": [
       {
         "id": "gcp_foundations_gcp",
@@ -336,7 +336,7 @@
       "gcp_foundations_gcp": {
         "name": "GCP Foundations",
         "level": "not_started",
-        "overall_percent": 0,
+        "overall_percent": 100,
         "per_level_percent": {
           "beginner": null,
           "intermediate": null,
@@ -354,7 +354,7 @@
       "compute_storage_gcp": {
         "name": "Compute & Storage",
         "level": "not_started",
-        "overall_percent": 0,
+        "overall_percent": 50,
         "per_level_percent": {
           "beginner": null,
           "intermediate": null,
@@ -423,7 +423,7 @@
       "gcp_cert_prep": {
         "name": "GCP Certification Prep",
         "level": "not_started",
-        "overall_percent": 0,
+        "overall_percent": 100,
         "per_level_percent": {
           "beginner": null,
           "intermediate": null,

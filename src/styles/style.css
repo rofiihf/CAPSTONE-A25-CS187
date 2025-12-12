@@ -99,6 +99,67 @@
   --badge-text: #e5e7eb;
 }
 
+/* ===== DARK THEME COLORS FOR ROADMAP SUBSKILLS ===== */
+.chatbot-container.dark-theme .subskill-card.subskill-completed {
+  background: #1f3d1f !important;        /* deep green tint */
+  border-color: #2f6b2f !important;
+}
+
+.chatbot-container.dark-theme .subskill-card.subskill-completed .roadmap-item,
+.chatbot-container.dark-theme .subskill-card.subskill-completed .course-row,
+.chatbot-container.dark-theme .subskill-card.subskill-completed .subskill-level-section {
+  background: #264b26 !important;
+  border-color: #3d7e3d !important;
+}
+
+.chatbot-container.dark-theme .subskill-card.subskill-completed .level-badge {
+  background: #3fae3f !important;
+  color: #ffffff !important;
+}
+
+
+/* ----- IN PROGRESS (Yellow/Orange) ----- */
+.chatbot-container.dark-theme .subskill-card.subskill-inprogress {
+  background: #4a3920 !important;       /* warm brown-yellow tint */
+  border-color: #b8862b !important;
+}
+
+.chatbot-container.dark-theme .subskill-card.subskill-inprogress .roadmap-item,
+.chatbot-container.dark-theme .subskill-card.subskill-inprogress .course-row,
+.chatbot-container.dark-theme .subskill-card.subskill-inprogress .subskill-level-section {
+  background: #5a4426 !important;
+  border-color: #c89733 !important;
+}
+
+.chatbot-container.dark-theme .subskill-card.subskill-inprogress .level-badge {
+  background: #d88c1f !important;
+  color: #ffffff !important;
+}
+
+
+/* ----- NOT STARTED (Gray) ----- */
+.chatbot-container.dark-theme .subskill-card.subskill-notstarted {
+  background: #2b2b2b !important;
+  border-color: #555 !important;
+}
+
+.chatbot-container.dark-theme .subskill-card.subskill-notstarted .roadmap-item,
+.chatbot-container.dark-theme .subskill-card.subskill-notstarted .course-row,
+.chatbot-container.dark-theme .subskill-card.subskill-notstarted .subskill-level-section {
+  background: #333 !important;
+  border-color: #555 !important;
+}
+
+.chatbot-container.dark-theme .subskill-card.subskill-notstarted .level-badge {
+  background: #777 !important;
+  color: #ffffff !important;
+}
+
+.chatbot-container.dark-theme .subskill-left .subskill-meta {
+    color: #d1d5db !important; /* soft gray */
+    opacity: 0.9 !important;   /* increase readability */
+}
+
 body {
   font-family: Quicksand, sans-serif;
   background-color: var(--bg-body);
@@ -512,6 +573,83 @@ body {
 .subskill-left .subskill-meta { font-size:0.85rem; opacity:.85; color:#444; }
 .subskill-content { padding:8px 6px 0 6px; }
 
+.subskill-status-badge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 3px 8px;
+  font-size: 11px;
+  border-radius: 8px;
+}
+
+.badge-completed {
+  background: #4CAF50;
+  color: white;
+}
+
+.badge-inprogress {
+  background: #ffbb33;
+  color: white;
+}
+
+.badge-notstarted {
+  background: #999;
+  color: white;
+}
+
+/* -------- Completed (Green) -------- */
+.subskill-card.subskill-completed {
+  background: #eaffea;
+  border-color: #9bd69b;
+}
+
+.subskill-card.subskill-completed .roadmap-item,
+.subskill-card.subskill-completed .course-row,
+.subskill-card.subskill-completed .subskill-level-section {
+  background: #f5fff5 !important;
+  border-color: #c6efc6 !important;
+}
+
+.subskill-card.subskill-completed .level-badge {
+  background: #4CAF50 !important;
+  color: white !important;
+}
+
+/* -------- In Progress (Yellow / Orange) -------- */
+.subskill-card.subskill-inprogress {
+  background: #fff6e0;
+  border-color: #ffcc80;
+}
+
+.subskill-card.subskill-inprogress .roadmap-item,
+.subskill-card.subskill-inprogress .course-row,
+.subskill-card.subskill-inprogress .subskill-level-section {
+  background: #fff9e8 !important;
+  border-color: #ffe0b3 !important;
+}
+
+.subskill-card.subskill-inprogress .level-badge {
+  background: #fb8c00 !important;
+  color: white !important;
+}
+
+/* -------- Not Started (Gray) -------- */
+.subskill-card.subskill-notstarted {
+  background: #f4f4f4;
+  border-color: #d0d0d0;
+}
+
+.subskill-card.subskill-notstarted .roadmap-item,
+.subskill-card.subskill-notstarted .course-row,
+.subskill-card.subskill-notstarted .subskill-level-section {
+  background: #fafafa !important;
+  border-color: #e5e5e5 !important;
+}
+
+.subskill-card.subskill-notstarted .level-badge {
+  background: #9e9e9e !important;
+  color: white !important;
+}
+
 /* level sections */
 .subskill-level-section { margin-bottom:8px; }
 .level-head { display:flex; align-items:center; gap:8px; margin-bottom:6px; }
@@ -771,7 +909,7 @@ body {
 /* ===== INPUT AREA ===== */
 
 .input-text-container {
-  box-shadow: var(--shadow-input-top);
+  /* box-shadow: var(--shadow-input-top); */
   background-color: var(--bg-input-area);
 }
 
