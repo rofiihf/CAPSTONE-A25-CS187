@@ -909,16 +909,27 @@ async def handle_query(
             exclude_course_ids = set()
             exclude_course_names = set(c.lower().strip() for c in active_courses)
 
-            for skill_data in (roadmap_progress.get("skills_status") or {}).values():
-                exclude_course_ids.update(skill_data.get("source_course_ids", []))
-
+           # normalize preferred LP and add debug
             preferred_lp = ROLE_LEARNING_PATH.get(desired_role)
+            print("[COURSE REC DEBUG] desired_role ->", desired_role, "| preferred_lp (raw) ->", preferred_lp)
+
             recommended = []
 
-            # PRIORITAS 1 — Learning Path sesuai ROLE
-            if preferred_lp:
-                for course in catalog:
-                    if course.get("learning_path_id") == preferred_lp:
+            # convert preferred_lp to string for robust comparison (catalog might store IDs as str)
+            pref_lp_str = str(preferred_lp) if preferred_lp is not None else None
+
+            # PRIORITAS 1 — Learning Path sesuai ROLE (robust comparison)
+            if pref_lp_str:
+                for idx, course in enumerate(catalog):
+                    # normalize course learning_path_id (may be int or str or None)
+                    lp_id = course.get("learning_path_id")
+                    lp_id_str = str(lp_id) if lp_id is not None else None
+
+                    # debug sample first few entries
+                    if idx < 3:
+                        print(f"[COURSE REC DEBUG] catalog[{idx}] id={course.get('course_id')} name={course.get('course_name')} lp_id_raw={lp_id} lp_id_str={lp_id_str}")
+
+                    if lp_id_str == pref_lp_str:
                         cid = course.get("course_id")
                         cname = (course.get("course_name") or "").lower()
 
@@ -933,6 +944,24 @@ async def handle_query(
                             "path": f"Learning Path {preferred_lp}",
                             "description": f"Durasi: {course.get('hours_to_study', 0)} jam"
                         })
+
+                        if len(recommended) >= 5:
+                            break
+
+                        cid = course.get("course_id")
+                        cname = (course.get("course_name") or "").lower()
+
+                        if cid in exclude_course_ids or cname in exclude_course_names:
+                            continue
+
+                        # recommended.append({
+                        #     "id": cid,
+                        #     "title": course.get("course_name"),
+                        #     "level": convert_level(course.get("course_level_str", 1)),
+                        #     "hours": course.get("hours_to_study", 0),
+                        #     "path": f"Learning Path {preferred_lp}",
+                        #     "description": f"Durasi: {course.get('hours_to_study', 0)} jam"
+                        # })
 
                         if len(recommended) >= 5:
                             break
