@@ -131,8 +131,10 @@ export default class MessagePresenter {
     this.handleUserSubmit(action.message);
   }
   getRecommendedCourses(profile) {
-    const list = Object.values(window.COURSE_MAP);
-    return list.filter(c => c.level.toLowerCase().includes("beginner")).slice(0, 5);
+    // const list = Object.values(window.COURSE_MAP);
+    // return list.filter(c => c.level.toLowerCase().includes("beginner")).slice(0, 5);
+    return [];
+    
   }
 
 
@@ -541,6 +543,7 @@ export default class MessagePresenter {
           // =============================================
           if (metaType === "course-recommendation") {
             console.log("🎓 COURSE RECOMMENDATION DETECTED");
+            console.log("META TYPE FROM BACKEND:", response.meta?.type);
             console.log("📚 Courses:", response.meta.courses);
             console.log("📦 bubbleCourseRecommendation available?", typeof bubbleCourseRecommendation);
             

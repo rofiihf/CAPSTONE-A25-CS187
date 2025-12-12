@@ -16,7 +16,9 @@
     }
   },
   "learning_profile": {
-    "goals": [],
+    "goals": [
+      "Anda minggu ini"
+    ],
     "skills": {},
     "weaknesses": [],
     "strengths": [],
@@ -26,16 +28,427 @@
     },
     "learning_style": null,
     "progress_score": {},
-    "history": []
+    "history": [
+      {
+        "query": "Tolong jelaskan progres belajar saya minggu ini, skill apa yang paling berkembang.",
+        "response": "Halo Nando Agustina! Mengenai progres belajar Anda minggu ini, saya dapat melihat bahwa Anda sedang fokus pada kursus Belajar Dasar Structured Query Language (SQL). Anda sudah mencapai modul 0.",
+        "timestamp": "2023-12-12T12:00:00.000Z",
+        "intent": null
+      },
+      {
+        "query": "gas",
+        "response": "Halo Nando! Saya lihat kamu sedang mencari informasi tentang Linux System Administration, JavaScript, dan Data Scientist. ...",
+        "timestamp": "2023-12-12T14:30:00.000Z",
+        "intent": "informasi kursus"
+      },
+      {
+        "query": "gas",
+        "response": "Saya tidak menemukan informasi tentang apa yang kamu cari. Kamu bisa memberitahu saya lebih lanjut tentang apa yang kamu ingin tahu atau cari?",
+        "timestamp": "2023-12-12T12:00:00Z",
+        "intent": "informasi"
+      }
+    ]
   },
   "created_at": "2025-12-11T13:48:16.546Z",
-  "updated_at": 1765460896546,
+  "updated_at": "2025-12-12T09:36:34.049Z",
   "progress_history": [],
   "roadmap_progress": {
-    "job_role": null,
-    "created_at": 1765460896546,
-    "last_updated": 1765460896546,
-    "skills_status": {},
-    "subskills": []
+    "job_role": "Front-End Web Developer",
+    "last_updated": 1765502569093,
+    "subskills": [
+      {
+        "id": "html_css_fundamentals_fe",
+        "name": "HTML & CSS Fundamentals",
+        "estimated_hours": 45,
+        "priority": 1,
+        "prerequisites": [],
+        "next_steps": [
+          "javascript_basics_fe"
+        ],
+        "keywords": [
+          "html",
+          "css",
+          "flexbox",
+          "grid"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            39,
+            38
+          ],
+          "intermediate": [
+            40
+          ],
+          "advanced": [
+            42
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "struktur HTML & CSS dasar",
+            "indicators": [
+              "tags dasar",
+              "box model"
+            ]
+          },
+          "intermediate": {
+            "description": "responsive & layout",
+            "indicators": [
+              "flexbox",
+              "grid"
+            ]
+          },
+          "advanced": {
+            "description": "performance & accessibility",
+            "indicators": [
+              "critical css"
+            ]
+          }
+        }
+      },
+      {
+        "id": "javascript_basics_fe",
+        "name": "JavaScript Basics",
+        "estimated_hours": 40,
+        "priority": 2,
+        "prerequisites": [
+          "html_css_fundamentals_fe"
+        ],
+        "next_steps": [
+          "framework_foundations_fe",
+          "web_application_fe"
+        ],
+        "keywords": [
+          "javascript",
+          "dom",
+          "es6"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            38,
+            39
+          ],
+          "intermediate": [
+            40
+          ],
+          "advanced": [
+            42
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "js dasar",
+            "indicators": [
+              "variables",
+              "loops"
+            ]
+          },
+          "intermediate": {
+            "description": "es6 & dom",
+            "indicators": [
+              "fetch",
+              "promise"
+            ]
+          },
+          "advanced": {
+            "description": "advanced js",
+            "indicators": [
+              "closure",
+              "memory"
+            ]
+          }
+        }
+      },
+      {
+        "id": "framework_foundations_fe",
+        "name": "Front-End Framework Foundations",
+        "estimated_hours": 80,
+        "priority": 3,
+        "prerequisites": [
+          "javascript_basics_fe"
+        ],
+        "next_steps": [
+          "web_application_fe"
+        ],
+        "keywords": [
+          "react",
+          "vue",
+          "components",
+          "hooks"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            41,
+            40
+          ],
+          "intermediate": [
+            42
+          ],
+          "advanced": [
+            42
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "komponen & state",
+            "indicators": [
+              "props",
+              "state"
+            ]
+          },
+          "intermediate": {
+            "description": "lifecycle & hooks",
+            "indicators": [
+              "useEffect"
+            ]
+          },
+          "advanced": {
+            "description": "architecture & ssr",
+            "indicators": [
+              "ssr",
+              "code splitting"
+            ]
+          }
+        }
+      },
+      {
+        "id": "version_control_fe",
+        "name": "Git Basics Version Control",
+        "estimated_hours": 30,
+        "priority": 1,
+        "prerequisites": [],
+        "next_steps": [
+          "javascript_basics_fe"
+        ],
+        "keywords": [
+          "git",
+          "github",
+          "branch"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            39
+          ],
+          "intermediate": [
+            41
+          ],
+          "advanced": [
+            42
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "git basic",
+            "indicators": [
+              "commit",
+              "push"
+            ]
+          },
+          "intermediate": {
+            "description": "branching",
+            "indicators": [
+              "merge conflict"
+            ]
+          },
+          "advanced": {
+            "description": "workflow",
+            "indicators": [
+              "gitflow"
+            ]
+          }
+        }
+      },
+      {
+        "id": "ui_ux_principles_fe",
+        "name": "Basic of UI/UX Web",
+        "estimated_hours": 40,
+        "priority": 2,
+        "prerequisites": [
+          "html_css_fundamentals_fe"
+        ],
+        "next_steps": [
+          "framework_foundations_fe"
+        ],
+        "keywords": [
+          "ui",
+          "ux",
+          "accessibility"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            40
+          ],
+          "intermediate": [
+            41
+          ],
+          "advanced": [
+            42
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "prinsip UI dasar",
+            "indicators": [
+              "layout"
+            ]
+          },
+          "intermediate": {
+            "description": "usability testing",
+            "indicators": [
+              "wireframe"
+            ]
+          },
+          "advanced": {
+            "description": "a/b testing",
+            "indicators": [
+              "analytics"
+            ]
+          }
+        }
+      },
+      {
+        "id": "web_application_fe",
+        "name": "Web Application Engineering",
+        "estimated_hours": 46,
+        "priority": 4,
+        "prerequisites": [
+          "javascript_basics_fe"
+        ],
+        "next_steps": [],
+        "keywords": [
+          "performance",
+          "webpack",
+          "testing"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            38
+          ],
+          "intermediate": [
+            40,
+            42
+          ],
+          "advanced": [
+            42
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "api & debugging",
+            "indicators": [
+              "fetch api"
+            ]
+          },
+          "intermediate": {
+            "description": "build tools",
+            "indicators": [
+              "webpack",
+              "vite"
+            ]
+          },
+          "advanced": {
+            "description": "security & perf",
+            "indicators": [
+              "csp",
+              "bundle optimization"
+            ]
+          }
+        }
+      }
+    ],
+    "skills_status": {
+      "html_css_fundamentals_fe": {
+        "name": "HTML & CSS Fundamentals",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          38,
+          39,
+          40,
+          42
+        ]
+      },
+      "javascript_basics_fe": {
+        "name": "JavaScript Basics",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          38,
+          39,
+          40,
+          42
+        ]
+      },
+      "framework_foundations_fe": {
+        "name": "Front-End Framework Foundations",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          40,
+          41,
+          42
+        ]
+      },
+      "version_control_fe": {
+        "name": "Git Basics Version Control",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          39,
+          41,
+          42
+        ]
+      },
+      "ui_ux_principles_fe": {
+        "name": "Basic of UI/UX Web",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          40,
+          41,
+          42
+        ]
+      },
+      "web_application_fe": {
+        "name": "Web Application Engineering",
+        "level": "not_started",
+        "overall_percent": 0,
+        "per_level_percent": {
+          "beginner": null,
+          "intermediate": null,
+          "advanced": null
+        },
+        "source_course_ids": [
+          38,
+          40,
+          42
+        ]
+      }
+    }
   }
 }

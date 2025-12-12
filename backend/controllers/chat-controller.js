@@ -56,7 +56,7 @@ function applySimpleUpdates(reply, profile) {
  */
 async function handleChat(req, res) {
   try {
-    console.log("BODY:", req.body);
+    // console.log("BODY:", req.body);
     const sessionUserId = req.session?.userId;
     const userId = String(sessionUserId || req.body.user_id || "").trim();
     

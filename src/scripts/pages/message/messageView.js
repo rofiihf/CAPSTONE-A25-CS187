@@ -6,9 +6,7 @@ import MessageModel from "./messageModel.js";
 import { createChoiceBubble } from "../../components/bubbleChoice.js";
 import { createLevelQuizQuestionBubble } from "../../components/bubbleLevelQuiz.js";
 import bubbleRoadmap from "../../components/bubbleRoadmap.js";
-
-// import { bubbleRoadmap } from "../../components/bubbleRoadmap.js";
-// import { bubbleCourseRecommendation } from "../../components/bubbleRecommendation.js";
+import { bubbleCourseRecommendation } from "../../components/bubbleRecommendation.js";
 
 export default class MessageView {
   #presenter;

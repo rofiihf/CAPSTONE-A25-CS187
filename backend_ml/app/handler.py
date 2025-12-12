@@ -17,6 +17,7 @@ from .config import GROQ_API_KEY, SBERT_MODEL_PATH, DEFAULT_TOPK
 from .detect_jobrole import detect_job_role, JOB_ROLE_KEYWORDS
 from .roadmap_json_engine import generate_roadmap_response
 from .config import BACKEND_URL, SECRET
+from .micro_confirm import detect_confirmation_micro
 
 from groq import Groq
 import os
@@ -25,6 +26,27 @@ import os
 # ============================================================
 # MODEL CLIENT
 # ============================================================
+def is_confirmation_for_course_rec(text: str, profile: Dict) -> bool:
+    """Detect confirmation response for course recommendation"""
+    if not text:
+        return False
+    
+    text_lower = text.lower()
+    
+    confirmation_words = ["ya", "iya", "ok", "oke", "baik", "betul", "gunakan", "pakai", "lanjut"]
+    has_confirmation = any(word in text_lower for word in confirmation_words)
+    
+    has_path_context = any(word in text_lower for word in ["path", "learning", "itu"])
+    has_stored_role = bool(profile.get("roadmap_progress", {}).get("job_role"))
+    
+    # Short confirmation without context
+    is_short_confirm = text_lower.strip() in ["ya", "iya", "ok", "oke", "baik"]
+    
+    return has_stored_role and (
+        (has_confirmation and has_path_context) or 
+        is_short_confirm
+    )
+
 CONFIRMATION_RE = re.compile(
     r'\b(ya|iya|ok|oke|baik|lanjut|setuju|mulai dari awal|aku mau|saya mau|betul)\b',
     re.IGNORECASE
@@ -431,6 +453,116 @@ def format_profile_for_llm(profile: Dict[str, Any]) -> str:
         traceback.print_exc()
         return "Profile formatting error."
 
+def detect_course_recommendation(text: str) -> bool:
+    """
+    Multi-stage detection:
+    1. Exact keyword match (fastest)
+    2. Regex pattern match (medium)
+    3. Semantic similarity (slowest, but most accurate)
+    """
+    if not text:
+        return False
+    
+    text_lower = text.lower()
+    
+    # Stage 1: Exact keyword match
+    exact_keywords = [
+        "rekomendasi kelas",
+        "rekomendasikan kelas",
+        "rekomendasiin kelas",
+        "kasih rekomendasi",
+        "minta rekomendasi",
+        "saran kelas",
+        "ada kelas apa"
+    ]
+    
+    if any(kw in text_lower for kw in exact_keywords):
+        print("[COURSE REC] Detected via exact keyword")
+        return True
+    
+    # Stage 2: Regex patterns
+    patterns = [
+        r'\b(rekomend?asi(kan|in)?)\s*(kelas|course)',
+        r'\b(kasih|minta|butuh|cari)\s+(rekomend?asi|saran|kelas|course)',
+        r'\b(ada|punya)\s+(kelas|course)',
+        r'\b(kelas|course)\s+(apa|yang)',
+        r'\btolong.*(kelas|course)',
+    ]
+    
+    for pattern in patterns:
+        if re.search(pattern, text_lower):
+            print(f"[COURSE REC] Detected via regex: {pattern}")
+            return True
+    
+    # Stage 3: Semantic similarity (optional, if model loaded)
+    if _model is not None:
+        try:
+            ref_queries = [
+                "rekomendasikan kelas untuk saya",
+                "ada kelas apa yang cocok",
+                "saya butuh saran course"
+            ]
+            
+            query_emb = _model.encode([text], normalize_embeddings=True).astype("float32")
+            ref_embs = _model.encode(ref_queries, normalize_embeddings=True).astype("float32")
+            
+            scores = np.dot(ref_embs, query_emb.T).squeeze()
+            max_score = float(np.max(scores))
+            
+            if max_score >= 0.60:
+                print(f"[COURSE REC] Detected via semantic similarity: {max_score:.3f}")
+                return True
+        except Exception as e:
+            print("Semantic detection error:", e)
+    
+    return False
+
+
+def detect_course_from_text(text: str, catalog):
+    """Try to detect a course name mentioned in `text` by scanning `catalog`.
+    Returns course_name (str) or None.
+    """
+    if not text or not catalog:
+        return None
+
+    txt = text.lower()
+
+    # Normalize catalog if wrapped
+    if isinstance(catalog, list) and catalog and isinstance(catalog[0], list):
+        catalog = catalog[0]
+
+    # First pass: exact substring match of full course name
+    for c in catalog:
+        try:
+            name = (c.get("course_name") or "").strip().lower()
+            if not name:
+                continue
+            if name in txt:
+                return c.get("course_name")
+        except Exception:
+            continue
+
+    # Second pass: word-level token match (look for distinctive words)
+    words = [w for w in re.findall(r"\w+", txt) if len(w) > 3]
+    if not words:
+        return None
+
+    for c in catalog:
+        try:
+            name = (c.get("course_name") or "").strip().lower()
+            if not name:
+                continue
+            score = 0
+            for w in words:
+                if re.search(rf"\b{re.escape(w)}\b", name):
+                    score += 1
+            if score >= 2:
+                return c.get("course_name")
+        except Exception:
+            continue
+
+    return None
+
 def convert_level(level_num):
     """Convert numeric level to string"""
     if level_num <= 1:
@@ -480,7 +612,43 @@ def extract_profile_update(text: str):
 # ============================================================
 # MAIN CHAT HANDLER (STATELESS)
 # ============================================================
+ROLE_LEARNING_PATH = {
+    "Front-End Web Developer": 7,
+    "Back-End Developer JavaScript": 3,
+    "Back-End Developer Python": 4,
+    "Google Cloud Professional": 9,
+    "Android Developer": 2,
+    "iOS Developer": 10,
+    "Data Scientist": 5,
+    "AI Engineer": 1,
+    "Gen AI Engineer": 9,
+    "DevOps Engineer": 6
+}
 
+def is_confirmation_for_course_rec(text: str, profile: Dict) -> bool:
+    """
+    Detect if user is confirming to use stored role for course recommendation
+    """
+    if not text:
+        return False
+    
+    text_lower = text.lower()
+    
+    # Confirmation keywords
+    confirmation_words = [
+        "ya", "iya", "ok", "oke", "baik", "betul", "benar",
+        "gunakan", "pakai", "lanjut", "setuju"
+    ]
+    
+    has_confirmation = any(word in text_lower for word in confirmation_words)
+    
+    # Context: mentions "learning path" or "path"
+    has_path_context = any(word in text_lower for word in ["path", "learning path", "itu"])
+    
+    # User has stored role
+    has_stored_role = bool(profile.get("roadmap_progress", {}).get("job_role"))
+    
+    return has_confirmation and (has_path_context or text_lower in ["ya", "iya", "ok", "oke"]) and has_stored_role
 async def handle_query(
     user_id: str,
     text: str,
@@ -610,8 +778,8 @@ async def handle_query(
             # Kembalikan response tanpa LLM
             time.sleep(2)
             # ============================================================
-# SEND PATCH TO BACKEND WEB (server-to-server)
-# ============================================================
+            # SEND PATCH TO BACKEND WEB (server-to-server)
+            # ============================================================
             try:
                 import requests
                 # BACKEND_URL = os.getenv("BACKEND_PROFILE_PATCH_URL")
@@ -650,80 +818,190 @@ async def handle_query(
                 },
                 "profile_update": profile_update
             }
-         # ============================================================
-        # 2. COURSE RECOMMENDATION DETECTION (INSERT HERE - AFTER ROADMAP, BEFORE _ensure_loaded)
         # ============================================================
-        course_request_keywords = [
-            "rekomendasi kelas",
-            "rekomendasikan kelas", 
-            "kelas yang cocok",
-            "course untuk saya",
-            "kelas apa yang harus",
-            "minta rekomendasi",
-            "saran kelas",
-            "kursus yang bagus"
-        ]
+        # 2. COURSE RECOMMENDATION DETECTION (INSERT HERE - AFTER ROADMAP, BEFORE _ensure_loaded)
         
-        is_course_request = any(kw in text.lower() for kw in course_request_keywords)
-        
-        if is_course_request:
-            print("[COURSE RECOMMENDATION] Detected course recommendation request")
-            
-            # Get user profile info
-            active_courses = profile.get("platform_data", {}).get("active_courses", [])
-            current_focus = profile.get("learning_profile", {}).get("current_focus", {}).get("course", "")
-            
-            # Simple recommendation: filter courses from catalog
-            recommended_courses = []
-            
-            try:
-                # Filter beginner/intermediate courses (top 5)
-                for course in COURSE_CATALOG[:10]:
-                    level_num = course.get("course_level_str", 1)
-                    
-                    # Convert level
-                    if level_num <= 1:
-                        level = "Beginner"
-                    elif level_num == 2:
-                        level = "Intermediate"
-                    elif level_num == 3:
-                        level = "Intermediate+"
-                    else:
-                        level = "Advanced"
-                    
-                    # Skip if user already taking this course
-                    course_name = course.get("course_name", "")
-                    if course_name in active_courses:
+        # 1) DETEKSI MICRO CONFIRM (YES / NO)
+        stored_role = (profile.get("roadmap_progress") or {}).get("job_role")
+        micro = detect_confirmation_micro(text)
+
+        confirmed_yes = (micro == "confirm_yes")
+        confirmed_no = (micro == "confirm_no")
+
+        # Jika user TIDAK MAU pakai role lama → tanya role baru
+        if confirmed_no and stored_role:
+            return {
+                "response": "Baik! Silakan pilih role baru untuk rekomendasi kelas.",
+                "intent": {"mode": "ask_job_role"},
+                "meta": {"used_kb": False},
+                "profile_update": {}
+            }
+
+        # 2) DETEKSI apakah user memang meminta rekomendasi kelas
+        is_course_request = detect_course_recommendation(text)
+
+        # 3) Jika user TIDAK minta rekomendasi kelas → lanjut ke LLM
+        if not is_course_request and not confirmed_yes:
+            # tidak melakukan course recommendation di sini
+            # LLM flow lanjut di bawah
+            pass
+        else:
+            # User masuk flow course recommendation
+            print("[COURSE REC] Entering course recommendation flow")
+
+            # 4) Tentukan desired_role
+            role_from_text = detect_job_role(text, profile)
+            desired_role = None
+
+            # CASE A: user menyebut role eksplisit
+            if role_from_text:
+                desired_role = role_from_text
+
+            # CASE B: user konfirmasi YES untuk stored_role
+            elif confirmed_yes and stored_role:
+                desired_role = stored_role
+
+            # CASE C: user minta rekomendasi tapi punya stored_role → MINTA KONFIRMASI
+            elif stored_role and not confirmed_yes:
+                return {
+                    "response": (
+                        f"Saya melihat learning path kamu sebelumnya adalah {stored_role}. "
+                        "Apakah kamu ingin saya gunakan learning path ini sebagai acuan rekomendasi kelas?"
+                    ),
+                    "intent": {"mode": "confirm_role"},
+                    "meta": {"stored_role": stored_role},
+                    "profile_update": {}
+                }
+
+            # CASE D: tidak ada role sama sekali → minta user pilih role
+            else:
+                return {
+                    "response": (
+                        "Sebelum saya rekomendasikan kelas, kamu perlu memilih role terlebih dahulu. "
+                        "Contoh: Front-End Developer, Back-End Developer, Android Developer."
+                    ),
+                    "intent": {"mode": "ask_job_role"},
+                    "meta": {"used_kb": False},
+                    "profile_update": {}
+                }
+
+            # SAFETY CHECK — kalau masih None, jangan lanjut
+            if not desired_role:
+                return {
+                    "response": "Saya tidak dapat menentukan role kamu. Pilih role dulu sebelum lanjut.",
+                    "intent": {"mode": "ask_job_role"},
+                    "meta": {"used_kb": False},
+                    "profile_update": {}
+                }
+
+            print("[COURSE REC] FINAL desired_role =", desired_role)
+
+            # ============================================================
+            # START RECOMMENDATION LOGIC
+            # ============================================================
+            catalog = COURSE_CATALOG
+            if isinstance(catalog, list) and catalog and isinstance(catalog[0], list):
+                catalog = catalog[0]
+
+            active_courses = (profile.get("platform_data") or {}).get("active_courses") or []
+            roadmap_progress = profile.get("roadmap_progress") or {}
+
+            exclude_course_ids = set()
+            exclude_course_names = set(c.lower().strip() for c in active_courses)
+
+            for skill_data in (roadmap_progress.get("skills_status") or {}).values():
+                exclude_course_ids.update(skill_data.get("source_course_ids", []))
+
+            preferred_lp = ROLE_LEARNING_PATH.get(desired_role)
+            recommended = []
+
+            # PRIORITAS 1 — Learning Path sesuai ROLE
+            if preferred_lp:
+                for course in catalog:
+                    if course.get("learning_path_id") == preferred_lp:
+                        cid = course.get("course_id")
+                        cname = (course.get("course_name") or "").lower()
+
+                        if cid in exclude_course_ids or cname in exclude_course_names:
+                            continue
+
+                        recommended.append({
+                            "id": cid,
+                            "title": course.get("course_name"),
+                            "level": convert_level(course.get("course_level_str", 1)),
+                            "hours": course.get("hours_to_study", 0),
+                            "path": f"Learning Path {preferred_lp}",
+                            "description": f"Durasi: {course.get('hours_to_study', 0)} jam"
+                        })
+
+                        if len(recommended) >= 5:
+                            break
+
+            # PRIORITAS 2 — fallback: LP dari active course
+            if len(recommended) < 5 and active_courses:
+                first_active = active_courses[0].lower()
+                active_lp_id = None
+                for c in catalog:
+                    if (c.get("course_name") or "").lower() == first_active:
+                        active_lp_id = c.get("learning_path_id")
+                        break
+
+                if active_lp_id:
+                    for course in catalog:
+                        if course.get("learning_path_id") == active_lp_id:
+                            cid = course.get("course_id")
+                            cname = (course.get("course_name") or "").lower()
+
+                            if cid in exclude_course_ids or cname in exclude_course_names:
+                                continue
+
+                            recommended.append({
+                                "id": cid,
+                                "title": course.get("course_name"),
+                                "level": convert_level(course.get("course_level_str", 1)),
+                                "hours": course.get("hours_to_study", 0),
+                                "path": f"Learning Path {active_lp_id}",
+                                "description": f"Durasi: {course.get('hours_to_study', 0)} jam"
+                            })
+
+                            if len(recommended) >= 5:
+                                break
+
+            # PRIORITAS 3 — fill random
+            if len(recommended) < 5:
+                for course in catalog:
+                    cid = course.get("course_id")
+                    cname = (course.get("course_name") or "").lower()
+
+                    if cid in exclude_course_ids or cname in exclude_course_names:
                         continue
-                    
-                    recommended_courses.append({
-                        "id": course.get("course_id"),
-                        "title": course_name,
-                        "level": level,
+
+                    recommended.append({
+                        "id": cid,
+                        "title": course.get("course_name"),
+                        "level": convert_level(course.get("course_level_str", 1)),
                         "hours": course.get("hours_to_study", 0),
-                        "path": f"Learning Path {course.get('learning_path_id', 'General')}",
+                        "path": f"Learning Path {course.get('learning_path_id')}",
                         "description": f"Durasi: {course.get('hours_to_study', 0)} jam"
                     })
-                    
-                    if len(recommended_courses) >= 5:
+
+                    if len(recommended) >= 5:
                         break
-                        
-            except Exception as e:
-                print("Error filtering courses:", e)
-                recommended_courses = []
-            
-            # Return course recommendation response
+
+            # RETURN COURSE RECOMMENDATION
             return {
                 "ok": True,
-                "reply": "Berikut rekomendasi kelas untuk Anda berdasarkan profil Anda:",
+                "reply": f"Berikut rekomendasi kelas untuk {desired_role}:",
                 "intent": {"mode": "course_recommendation"},
                 "sources": [],
                 "meta": {
                     "type": "course-recommendation",
-                    "courses": recommended_courses
+                    "role": desired_role,
+                    "courses": recommended[:5]
                 },
                 "profile_update": {}
             }
+
             # if roadmap.get("ok"):
             #     time.sleep(2)
             #     # Tidak perlu melewati LLM. Return roadmap langsung.
@@ -866,7 +1144,14 @@ def deep_merge(a, b):
 def handle_job_description_flow(user_id: str, text: str, profile: Dict[str, Any] = None) -> Dict[str, Any]:
     """Deprecated: KB-based roadmap disabled. Use roadmap_json_engine instead."""
     job_role = detect_job_role(text)
+    current_role = (profile.get("roadmap_progress") or {}).get("job_role")
 
+    role_override = detect_job_role(text)
+    if role_override:
+        if not current_role or role_override != current_role:
+            print(f"[ROLE SWITCH] User wants to switch from {current_role} → {role_override}")
+            job_role = role_override
+            
     if not job_role:
         return {
             "summary": "Tidak menemukan job role yang cocok dari permintaan Anda.",
