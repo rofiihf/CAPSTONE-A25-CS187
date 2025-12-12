@@ -3,7 +3,7 @@ import { sendMessage, getQuizTopics, getQuizQuestions, submitQuizScore, loadCour
 import { LEVEL_TOPICS as LEVEL_TOPICS_FALLBACK, LEVEL_THRESHOLD } from "../../data/dummy.js";
 import { detectIntent } from "../../utils/intent-detector.js";
 import bubbleRoadmap from "../../components/bubbleRoadmap.js";
-import { bubbleCourseRecommendation } from "../../components/bubbleRoadmap.js";
+import { bubbleCourseRecommendation } from "../../components/bubbleRecommendation.js";
 
 export default class MessagePresenter {
   #view;
@@ -540,6 +540,10 @@ export default class MessagePresenter {
           // 1) COURSE RECOMMENDATION
           // =============================================
           if (metaType === "course-recommendation") {
+            console.log("🎓 COURSE RECOMMENDATION DETECTED");
+            console.log("📚 Courses:", response.meta.courses);
+            console.log("📦 bubbleCourseRecommendation available?", typeof bubbleCourseRecommendation);
+            
               const courses = response.meta.courses || [];
 
               const botCard = this.#model.addMessage(

@@ -431,6 +431,18 @@ def format_profile_for_llm(profile: Dict[str, Any]) -> str:
         traceback.print_exc()
         return "Profile formatting error."
 
+def convert_level(level_num):
+    """Convert numeric level to string"""
+    if level_num <= 1:
+        return "Beginner"
+    elif level_num == 2:
+        return "Intermediate"
+    elif level_num == 3:
+        return "Intermediate+"
+    elif level_num >= 4:
+        return "Advanced"
+    return "Unknown"
+
 def extract_profile_update(text: str):
     """
     Extract <profile_update>{...JSON...}</profile_update> from LLM output.
@@ -637,6 +649,80 @@ async def handle_query(
                     "latency_ms": 0
                 },
                 "profile_update": profile_update
+            }
+         # ============================================================
+        # 2. COURSE RECOMMENDATION DETECTION (INSERT HERE - AFTER ROADMAP, BEFORE _ensure_loaded)
+        # ============================================================
+        course_request_keywords = [
+            "rekomendasi kelas",
+            "rekomendasikan kelas", 
+            "kelas yang cocok",
+            "course untuk saya",
+            "kelas apa yang harus",
+            "minta rekomendasi",
+            "saran kelas",
+            "kursus yang bagus"
+        ]
+        
+        is_course_request = any(kw in text.lower() for kw in course_request_keywords)
+        
+        if is_course_request:
+            print("[COURSE RECOMMENDATION] Detected course recommendation request")
+            
+            # Get user profile info
+            active_courses = profile.get("platform_data", {}).get("active_courses", [])
+            current_focus = profile.get("learning_profile", {}).get("current_focus", {}).get("course", "")
+            
+            # Simple recommendation: filter courses from catalog
+            recommended_courses = []
+            
+            try:
+                # Filter beginner/intermediate courses (top 5)
+                for course in COURSE_CATALOG[:10]:
+                    level_num = course.get("course_level_str", 1)
+                    
+                    # Convert level
+                    if level_num <= 1:
+                        level = "Beginner"
+                    elif level_num == 2:
+                        level = "Intermediate"
+                    elif level_num == 3:
+                        level = "Intermediate+"
+                    else:
+                        level = "Advanced"
+                    
+                    # Skip if user already taking this course
+                    course_name = course.get("course_name", "")
+                    if course_name in active_courses:
+                        continue
+                    
+                    recommended_courses.append({
+                        "id": course.get("course_id"),
+                        "title": course_name,
+                        "level": level,
+                        "hours": course.get("hours_to_study", 0),
+                        "path": f"Learning Path {course.get('learning_path_id', 'General')}",
+                        "description": f"Durasi: {course.get('hours_to_study', 0)} jam"
+                    })
+                    
+                    if len(recommended_courses) >= 5:
+                        break
+                        
+            except Exception as e:
+                print("Error filtering courses:", e)
+                recommended_courses = []
+            
+            # Return course recommendation response
+            return {
+                "ok": True,
+                "reply": "Berikut rekomendasi kelas untuk Anda berdasarkan profil Anda:",
+                "intent": {"mode": "course_recommendation"},
+                "sources": [],
+                "meta": {
+                    "type": "course-recommendation",
+                    "courses": recommended_courses
+                },
+                "profile_update": {}
             }
             # if roadmap.get("ok"):
             #     time.sleep(2)

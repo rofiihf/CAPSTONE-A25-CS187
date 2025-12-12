@@ -1,5 +1,4 @@
-COURSE_CATALOG = [
-  [
+COURSE_CATALOG =  [
   {
     "course_id": 1,
     "learning_path_id": 1,
@@ -525,5 +524,4 @@ COURSE_CATALOG = [
     "course_level_str": 4,
     "hours_to_study": 70
   }
-]
 ]
