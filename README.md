@@ -2,6 +2,18 @@
 
 Selamat datang di repositori resmi untuk Capstone Project A25-CS187. Proyek ini adalah asisten belajar berbasis chatbot cerdas yang dirancang untuk membuat peta jalan (roadmap) pembelajaran yang dipersonalisasi, merekomendasikan kursus, dan melacak progres pengguna menggunakan kecerdasan buatan (AI) dan pembelajaran adaptif.
 
+## 👥 Anggota Kelompok (Cohort A25-CS187)
+
+Berikut adalah tim pengembang di balik proyek ini:
+
+| No | ID Dicoding | Nama Anggota | Role |
+|----|-------------|--------------|------|
+| 1  | M269D5Y1338 | Muhammad Pidha Iqbal Fadillah | Machine Learning |
+| 2  | M891D5X1834 | Shafira Maulidina | Machine Learning |
+| 3  | F269D5Y1759 | Rofi Hanif Fauzan | Front-End Web & Back-End with AI |
+| 4  | F269D5Y1208 | Muhammad Alfian Adien | Front-End Web & Back-End with AI |
+| 5  | F269D5Y1248 | Muhammad Faisal Ramdhani | Front-End Web & Back-End with AI |
+
 ## 🌟 Fitur Utama
 
 * **Adaptive Roadmap Generation:** Membuat alur belajar yang disesuaikan dengan profil, minat, dan tingkat kemampuan pengguna menggunakan *Machine Learning*.
@@ -47,7 +59,18 @@ Sebelum memulai, pastikan perangkat Anda telah terinstal:
 
 Karena proyek ini terdiri dari beberapa layanan, Anda perlu menjalankannya di terminal yang berbeda.
 
-### Langkah 1: Setup Backend (Node.js)
+### Langkah 1: Clone Repository
+
+1.  Copy dibawah ini:
+    ```bash
+    git clone https://github.com/username/capstone-a25-cs187.git
+    ```
+2.  Pindah folder:
+    ```bash
+    cd capstone-a25-cs187
+    ```
+
+### Langkah 2: Setup Backend (Node.js)
 
 1.  Buka terminal dan masuk ke folder backend:
     ```bash
@@ -65,7 +88,7 @@ Karena proyek ini terdiri dari beberapa layanan, Anda perlu menjalankannya di te
     ```
     *Server backend biasanya berjalan di port 3000 atau sesuai konfigurasi `.env`.*
 
-### Langkah 2: Setup Machine Learning Engine (Python)
+### Langkah 3: Setup Machine Learning Engine (Python)
 
 1.  Buka terminal baru dan masuk ke folder ML:
     ```bash
@@ -84,10 +107,15 @@ Karena proyek ini terdiri dari beberapa layanan, Anda perlu menjalankannya di te
     ```
 4.  Jalankan layanan ML:
     ```bash
-    python main.py
+    -m uvicorn main:app --reload
+    ```
+    atau
+    
+    ```bash
+    python -m uvicorn main:app --reload
     ```
 
-### Langkah 3: Setup Frontend
+### Langkah 4: Setup Frontend
 
 1.  Buka terminal baru dan kembali ke root folder proyek:
     ```bash
