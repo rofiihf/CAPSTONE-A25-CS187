@@ -689,18 +689,28 @@ async def handle_query(
 
         job_role = detect_job_role(text)
         if not job_role and "roadmap" in text.lower():
-            print("[FALLBACK] Trying to infer job_role from current_focus...")
+            stored_role = (profile.get("roadmap_progress") or {}).get("job_role")
 
-            course = (
-                profile.get("platform_data", {})
-                .get("active_courses", [])
-            )
+            # kalau profile kosong DAN user belum nyebut role → baru tanya
+            if not stored_role:
+                return {
+                    "response": (
+                        "Saya belum tahu learning path kamu. "
+                        "Sebutkan role yang kamu inginkan "
+                        "(contoh: Front-End Web Developer, Android Developer)."
+                    ),
+                    "intent": {"mode": "ask_job_role"},
+                    "profile_update": {}
+                }
+            
+            job_role = stored_role
+
+            course = (profile.get("platform_data") or {}).get("active_courses", [])
 
             if isinstance(course, list) and course:
                 course_name = course[0].lower()
 
                 for role, keywords in JOB_ROLE_KEYWORDS.items():
-                    # keywords sudah berupa list string (tidak ada dict)
                     for kw in keywords:
                         if kw.lower() in course_name:
                             job_role = role
@@ -771,7 +781,7 @@ async def handle_query(
                         "job_role": job_role,
                         "last_updated": int(datetime.utcnow().timestamp() * 1000),
                         "subskills": filtered_subskills,
-                        "skills_status": prev_skill_status
+                        "skills_status": prev_skill_status or skill_status
                     }
                 }
 
@@ -863,14 +873,13 @@ async def handle_query(
                 desired_role = stored_role
 
             # CASE C: user minta rekomendasi tapi punya stored_role → MINTA KONFIRMASI
-            elif stored_role and not confirmed_yes:
+            elif stored_role and not confirmed_yes and not detect_job_role(text):
                 return {
                     "response": (
                         f"Saya melihat learning path kamu sebelumnya adalah {stored_role}. "
-                        "Apakah kamu ingin saya gunakan learning path ini sebagai acuan rekomendasi kelas?"
+                        "Apakah ingin saya gunakan sebagai acuan?"
                     ),
                     "intent": {"mode": "confirm_role"},
-                    "meta": {"stored_role": stored_role},
                     "profile_update": {}
                 }
 

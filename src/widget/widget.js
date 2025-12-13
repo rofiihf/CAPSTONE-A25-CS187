@@ -109,22 +109,19 @@
   // =========================
   function toggle(openWanted) {
     open = typeof openWanted === "boolean" ? openWanted : !open;
+
     const wrapEl = document.getElementById("chatbot-wrapper");
     const btn = document.getElementById("chatbot-launcher");
-    
     if (!wrapEl || !btn) return;
-    
+
     wrapEl.style.display = open ? "block" : "none";
     btn.setAttribute("aria-expanded", String(open));
-    
-    if (open) {
-      try { 
-        iframe.contentWindow.focus(); 
-      } catch (e) {
-        console.warn("Widget: Cannot focus iframe", e);
-      }
+
+    if (!open) {
+      stopAuthPolling(); // ⬅️ PENTING
     }
   }
+
 
   // =========================
   //    EVENT LISTENERS
@@ -177,10 +174,10 @@
 
     switch (type) {
       
-      case "NOT_AUTHENTICATED":
-        console.warn("Widget: user not authenticated");
-        startAuthPolling();
-        break;
+      // case "NOT_AUTHENTICATED":
+      //   console.warn("Widget: user not authenticated");
+      //   startAuthPolling();
+      //   break;
 
       case "REDIRECT_TO_LOGIN":
         console.log("Widget: Redirecting to login");
