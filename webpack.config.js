@@ -1,11 +1,16 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./src/scripts/index.js", // sesuaikan dengan entry project kamu
+  entry: {
+    app: "./src/scripts/index.js",
+    widget: "./src/widget/widget.js",
+  },
+
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "[name].js", // app.js & widget.js
     clean: true,
+    publicPath: "/",
   },
 
   module: {
@@ -23,18 +28,24 @@ module.exports = {
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
-      }
+      },
     ],
   },
 
   devServer: {
-    static: {
-      directory: path.join(__dirname, "src", "public"), // folder HTML kamu
-    },
+    static: [
+      {
+        directory: path.resolve(__dirname, "src/public"),
+        publicPath: "/",
+      },
+      {
+        directory: path.resolve(__dirname, "src/widget"),
+        publicPath: "/widget",
+      },
+    ],
     port: 5500,
     hot: true,
     open: true,
-
     proxy: [
       {
         context: ["/api", "/chat"],
@@ -44,7 +55,6 @@ module.exports = {
       },
     ],
   },
-  mode: "development",
 
-  
+  mode: "development",
 };

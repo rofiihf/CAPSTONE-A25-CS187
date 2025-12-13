@@ -16,6 +16,11 @@ export default class AuthService {
 
     if (fetchResponse.ok) {
       this.authModel.setUser(data.user);
+      window.opener?.postMessage(
+        { type: "USER_LOGGED_IN" },
+        "*"
+      );
+      window.postMessage({ type: "USER_LOGGED_IN" }, "*");
     }
 
     return {

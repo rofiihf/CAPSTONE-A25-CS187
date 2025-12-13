@@ -29,13 +29,305 @@
     "history": []
   },
   "created_at": "2025-12-11T13:48:16.551Z",
-  "updated_at": 1765460896551,
+  "updated_at": "2025-12-13T07:57:03.122Z",
   "progress_history": [],
   "roadmap_progress": {
-    "job_role": null,
-    "created_at": 1765460896551,
-    "last_updated": 1765460896551,
-    "skills_status": {},
-    "subskills": []
+    "job_role": "Data Scientist",
+    "last_updated": 1765583821094,
+    "subskills": [
+      {
+        "id": "python_for_data_ds",
+        "name": "Python for Data Science",
+        "estimated_hours": 60,
+        "priority": 1,
+        "prerequisites": [
+          "python_fundamentals"
+        ],
+        "next_steps": [
+          "eda_ds"
+        ],
+        "keywords": [
+          "pandas",
+          "numpy",
+          "matplotlib"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            32,
+            26
+          ],
+          "intermediate": [
+            26
+          ],
+          "advanced": [
+            31
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "dataframes & plotting",
+            "indicators": [
+              "df ops"
+            ]
+          },
+          "intermediate": {
+            "description": "feature engineering",
+            "indicators": [
+              "groupby"
+            ]
+          },
+          "advanced": {
+            "description": "big data tools",
+            "indicators": [
+              "spark basics"
+            ]
+          }
+        }
+      },
+      {
+        "id": "eda_ds",
+        "name": "Exploratory Data Analysis & Visualization",
+        "estimated_hours": 40,
+        "priority": 1,
+        "prerequisites": [
+          "python_for_data_ds"
+        ],
+        "next_steps": [
+          "stat_inference_ds"
+        ],
+        "keywords": [
+          "eda",
+          "visualization",
+          "plotly"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            27,
+            28
+          ],
+          "intermediate": [
+            26
+          ],
+          "advanced": [
+            31
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "plotting basics",
+            "indicators": [
+              "distributions"
+            ]
+          },
+          "intermediate": {
+            "description": "dashboards",
+            "indicators": [
+              "interactive plots"
+            ]
+          },
+          "advanced": {
+            "description": "visualization perf",
+            "indicators": [
+              "large dashboards"
+            ]
+          }
+        }
+      },
+      {
+        "id": "stat_inference_ds",
+        "name": "Statistical Inference & Experiment Design",
+        "estimated_hours": 50,
+        "priority": 2,
+        "prerequisites": [
+          "eda_ds"
+        ],
+        "next_steps": [
+          "ml_for_ds"
+        ],
+        "keywords": [
+          "hypothesis",
+          "anova",
+          "sampling"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            27
+          ],
+          "intermediate": [
+            30
+          ],
+          "advanced": [
+            31
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "p-value & CI",
+            "indicators": [
+              "t-test basics"
+            ]
+          },
+          "intermediate": {
+            "description": "A/B testing",
+            "indicators": [
+              "sample size"
+            ]
+          },
+          "advanced": {
+            "description": "causal inference",
+            "indicators": [
+              "IV methods"
+            ]
+          }
+        }
+      },
+      {
+        "id": "ml_for_ds",
+        "name": "Machine Learning for Data Science",
+        "estimated_hours": 70,
+        "priority": 2,
+        "prerequisites": [
+          "stat_inference_ds",
+          "python_for_data_ds"
+        ],
+        "next_steps": [
+          "model_interpretability_ds"
+        ],
+        "keywords": [
+          "sklearn",
+          "regression",
+          "classification"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            29
+          ],
+          "intermediate": [
+            26,
+            31
+          ],
+          "advanced": [
+            31
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "ml basics",
+            "indicators": [
+              "regression",
+              "kmeans"
+            ]
+          },
+          "intermediate": {
+            "description": "pipelines & tuning",
+            "indicators": [
+              "cv"
+            ]
+          },
+          "advanced": {
+            "description": "ensembling",
+            "indicators": [
+              "stacking"
+            ]
+          }
+        }
+      },
+      {
+        "id": "model_interpretability_ds",
+        "name": "Model Interpretability & Productionization",
+        "estimated_hours": 45,
+        "priority": 3,
+        "prerequisites": [
+          "ml_for_ds"
+        ],
+        "next_steps": [
+          "big_data_ds"
+        ],
+        "keywords": [
+          "explainability",
+          "serving",
+          "api"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            31
+          ],
+          "intermediate": [
+            26,
+            29
+          ],
+          "advanced": [
+            31
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "feature importance",
+            "indicators": [
+              "pdp"
+            ]
+          },
+          "intermediate": {
+            "description": "serving",
+            "indicators": [
+              "api wrapping"
+            ]
+          },
+          "advanced": {
+            "description": "governance",
+            "indicators": [
+              "compliance"
+            ]
+          }
+        }
+      },
+      {
+        "id": "big_data_ds",
+        "name": "Big Data & Data Engineering Basics",
+        "estimated_hours": 60,
+        "priority": 4,
+        "prerequisites": [
+          "model_interpretability_ds"
+        ],
+        "next_steps": [],
+        "keywords": [
+          "spark",
+          "etl",
+          "airflow"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            31
+          ],
+          "intermediate": [
+            30
+          ],
+          "advanced": [
+            31
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "etl basics",
+            "indicators": [
+              "spark jobs"
+            ]
+          },
+          "intermediate": {
+            "description": "streaming",
+            "indicators": [
+              "partitioning"
+            ]
+          },
+          "advanced": {
+            "description": "lakehouse",
+            "indicators": [
+              "lineage"
+            ]
+          }
+        }
+      }
+    ],
+    "skills_status": {}
   }
 }

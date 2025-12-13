@@ -7,7 +7,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // const presenter = new MessagePresenter
   // const view = new MessageView();
   // view.initialize();
+  const isWidget = window.__IS_WIDGET__ === true;
+  if (isWidget) {
+    document.documentElement.style.height = "100%";
+    document.body.style.height = "100%";
+    document.body.style.margin = "0";
 
+    // pastikan container chatmu full height
+    // kalau class-nya berbeda, ganti sesuai class kamu
+    const container = document.querySelector('.chatbot-container');
+    if (container) {
+      container.style.height = "100vh";
+    }
+  }
   // === THEME TOGGLE (Light / Dark) ===
   const container = document.querySelector('.chatbot-container');
   const themeToggleButton = document.querySelector('.theme-toggle');
@@ -60,6 +72,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   
+    // inside SPA bootstrap or auth service
+  window.addEventListener("message", async (ev) => {
+    const { data } = ev;
+    if (!data || typeof data.type !== "string") return;
+
+    if (data.type === "WIDGET_LOADED") {
+      // optional: the outer script notified iframe that loader is ready
+      // you can request initial data or do nothing
+      return;
+    }
+
+    if (data.type === "CHECK_SESSION") {
+      // call backend profile endpoint using credentials to include session cookie
+      try {
+        const res = await fetch("/api/profile", { credentials: "include" });
+        if (!res.ok) {
+          ev.source.postMessage({ type: "NO_SESSION" }, ev.origin || "*");
+          return;
+        }
+        const json = await res.json();
+        ev.source.postMessage({ type: "SESSION_OK", profile: json.profile ?? json.user ?? null }, ev.origin || "*");
+      } catch (err) {
+        ev.source.postMessage({ type: "NO_SESSION", error: String(err) }, ev.origin || "*");
+      }
+    }
+  });
+
   initApp();
   
 });

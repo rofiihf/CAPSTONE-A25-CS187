@@ -71,316 +71,302 @@
     ]
   },
   "created_at": "2025-12-11T13:48:16.546Z",
-  "updated_at": "2025-12-12T09:56:15.379Z",
+  "updated_at": "2025-12-13T07:59:10.213Z",
   "progress_history": [],
   "roadmap_progress": {
-    "job_role": "Front-End Web Developer",
-    "last_updated": 1765504566297,
-    "created_at": 1765504566297,
+    "job_role": "Android Developer",
+    "last_updated": 1765583948198,
+    "created_at": 1765583948198,
     "subskills": [
       {
-        "id": "html_css_fundamentals_fe",
-        "name": "HTML & CSS Fundamentals",
-        "estimated_hours": 45,
+        "id": "kotlin_basics_android",
+        "name": "Kotlin Fundamentals",
+        "estimated_hours": 50,
         "priority": 1,
         "prerequisites": [],
         "next_steps": [
-          "javascript_basics_fe"
+          "android_sdk_android"
         ],
         "keywords": [
-          "html",
-          "css",
-          "flexbox",
-          "grid"
+          "kotlin",
+          "null-safety",
+          "coroutines"
         ],
         "mapped_courses": {
           "beginner": [
-            39,
-            38
+            11
           ],
           "intermediate": [
-            40
+            7
           ],
           "advanced": [
-            42
+            12
           ]
         },
         "levels": {
           "beginner": {
-            "description": "struktur HTML & CSS dasar",
+            "description": "Syntax Kotlin dasar",
             "indicators": [
-              "tags dasar",
-              "box model"
+              "function/class"
             ]
           },
           "intermediate": {
-            "description": "responsive & layout",
+            "description": "Coroutine & stdlib",
             "indicators": [
-              "flexbox",
-              "grid"
+              "flows"
             ]
           },
           "advanced": {
-            "description": "performance & accessibility",
+            "description": "Pattern & interop",
             "indicators": [
-              "critical css"
+              "delegation"
             ]
           }
         }
       },
       {
-        "id": "javascript_basics_fe",
-        "name": "JavaScript Basics",
+        "id": "android_sdk_android",
+        "name": "Android SDK & Architecture",
+        "estimated_hours": 80,
+        "priority": 2,
+        "prerequisites": [
+          "kotlin_basics_android"
+        ],
+        "next_steps": [
+          "ui_material_android"
+        ],
+        "keywords": [
+          "android",
+          "jetpack",
+          "lifecycle"
+        ],
+        "mapped_courses": {
+          "beginner": [
+            8
+          ],
+          "intermediate": [
+            7
+          ],
+          "advanced": [
+            9
+          ]
+        },
+        "levels": {
+          "beginner": {
+            "description": "Activity & layout basic",
+            "indicators": [
+              "activity lifecycle"
+            ]
+          },
+          "intermediate": {
+            "description": "jetpack components",
+            "indicators": [
+              "viewmodel",
+              "room"
+            ]
+          },
+          "advanced": {
+            "description": "modular apps",
+            "indicators": [
+              "performance tuning"
+            ]
+          }
+        }
+      },
+      {
+        "id": "ui_material_android",
+        "name": "UI & Material Design",
         "estimated_hours": 40,
         "priority": 2,
         "prerequisites": [
-          "html_css_fundamentals_fe"
+          "android_sdk_android"
         ],
         "next_steps": [
-          "framework_foundations_fe",
-          "web_application_fe"
+          "data_storage_android"
         ],
         "keywords": [
-          "javascript",
-          "dom",
-          "es6"
+          "material",
+          "compose",
+          "ui"
         ],
         "mapped_courses": {
           "beginner": [
-            38,
-            39
+            8
           ],
           "intermediate": [
-            40
+            7
           ],
           "advanced": [
-            42
+            9
           ]
         },
         "levels": {
           "beginner": {
-            "description": "js dasar",
+            "description": "Material basics",
             "indicators": [
-              "variables",
-              "loops"
+              "components"
             ]
           },
           "intermediate": {
-            "description": "es6 & dom",
+            "description": "Compose & animation",
             "indicators": [
-              "fetch",
-              "promise"
+              "theming"
             ]
           },
           "advanced": {
-            "description": "advanced js",
+            "description": "custom components",
             "indicators": [
-              "closure",
-              "memory"
+              "complex animations"
             ]
           }
         }
       },
       {
-        "id": "framework_foundations_fe",
-        "name": "Front-End Framework Foundations",
-        "estimated_hours": 80,
+        "id": "data_storage_android",
+        "name": "Data Storage & Networking",
+        "estimated_hours": 50,
         "priority": 3,
         "prerequisites": [
-          "javascript_basics_fe"
+          "android_sdk_android"
         ],
         "next_steps": [
-          "web_application_fe"
+          "testing_android"
         ],
         "keywords": [
-          "react",
-          "vue",
-          "components",
-          "hooks"
+          "room",
+          "retrofit",
+          "okhttp"
         ],
         "mapped_courses": {
           "beginner": [
-            41,
-            40
+            8
           ],
           "intermediate": [
-            42
+            9
           ],
           "advanced": [
-            42
+            7
           ]
         },
         "levels": {
           "beginner": {
-            "description": "komponen & state",
+            "description": "SharedPrefs & retrofit",
             "indicators": [
-              "props",
-              "state"
+              "simple REST"
             ]
           },
           "intermediate": {
-            "description": "lifecycle & hooks",
+            "description": "Room & caching",
             "indicators": [
-              "useEffect"
+              "offline sync"
             ]
           },
           "advanced": {
-            "description": "architecture & ssr",
+            "description": "realtime & migrations",
             "indicators": [
-              "ssr",
-              "code splitting"
+              "data migration"
             ]
           }
         }
       },
       {
-        "id": "version_control_fe",
-        "name": "Git Basics Version Control",
-        "estimated_hours": 30,
-        "priority": 1,
-        "prerequisites": [],
-        "next_steps": [
-          "javascript_basics_fe"
-        ],
-        "keywords": [
-          "git",
-          "github",
-          "branch"
-        ],
-        "mapped_courses": {
-          "beginner": [
-            39
-          ],
-          "intermediate": [
-            41
-          ],
-          "advanced": [
-            42
-          ]
-        },
-        "levels": {
-          "beginner": {
-            "description": "git basic",
-            "indicators": [
-              "commit",
-              "push"
-            ]
-          },
-          "intermediate": {
-            "description": "branching",
-            "indicators": [
-              "merge conflict"
-            ]
-          },
-          "advanced": {
-            "description": "workflow",
-            "indicators": [
-              "gitflow"
-            ]
-          }
-        }
-      },
-      {
-        "id": "ui_ux_principles_fe",
-        "name": "Basic of UI/UX Web",
-        "estimated_hours": 40,
-        "priority": 2,
+        "id": "testing_android",
+        "name": "Testing & CI for Android",
+        "estimated_hours": 35,
+        "priority": 3,
         "prerequisites": [
-          "html_css_fundamentals_fe"
+          "android_sdk_android"
         ],
         "next_steps": [
-          "framework_foundations_fe"
+          "deployment_playstore_android"
         ],
         "keywords": [
-          "ui",
-          "ux",
-          "accessibility"
+          "espresso",
+          "ci",
+          "unit test"
         ],
         "mapped_courses": {
           "beginner": [
-            40
+            8
           ],
           "intermediate": [
-            41
+            10
           ],
           "advanced": [
-            42
+            12
           ]
         },
         "levels": {
           "beginner": {
-            "description": "prinsip UI dasar",
+            "description": "unit test basics",
             "indicators": [
-              "layout"
+              "viewmodel tests"
             ]
           },
           "intermediate": {
-            "description": "usability testing",
+            "description": "ci pipelines",
             "indicators": [
-              "wireframe"
+              "github actions"
             ]
           },
           "advanced": {
-            "description": "a/b testing",
+            "description": "performance testing",
             "indicators": [
-              "analytics"
+              "profiling"
             ]
           }
         }
       },
       {
-        "id": "web_application_fe",
-        "name": "Web Application Engineering",
-        "estimated_hours": 46,
+        "id": "deployment_playstore_android",
+        "name": "Deployment & Release Management",
+        "estimated_hours": 25,
         "priority": 4,
         "prerequisites": [
-          "javascript_basics_fe"
+          "testing_android"
         ],
         "next_steps": [],
         "keywords": [
-          "performance",
-          "webpack",
-          "testing"
+          "playstore",
+          "signing",
+          "release"
         ],
         "mapped_courses": {
           "beginner": [
-            38
+            8
           ],
           "intermediate": [
-            40,
-            42
+            12
           ],
           "advanced": [
-            42
+            7
           ]
         },
         "levels": {
           "beginner": {
-            "description": "api & debugging",
+            "description": "release basics",
             "indicators": [
-              "fetch api"
+              "signing"
             ]
           },
           "intermediate": {
-            "description": "build tools",
+            "description": "staged rollout",
             "indicators": [
-              "webpack",
-              "vite"
+              "A/B testing"
             ]
           },
           "advanced": {
-            "description": "security & perf",
+            "description": "enterprise release",
             "indicators": [
-              "csp",
-              "bundle optimization"
+              "multi-store"
             ]
           }
         }
       }
     ],
     "skills_status": {
-      "html_css_fundamentals_fe": {
-        "name": "HTML & CSS Fundamentals",
+      "kotlin_basics_android": {
+        "name": "Kotlin Fundamentals",
         "level": "not_started",
         "overall_percent": 0,
         "per_level_percent": {
@@ -389,14 +375,13 @@
           "advanced": null
         },
         "source_course_ids": [
-          38,
-          39,
-          40,
-          42
+          7,
+          11,
+          12
         ]
       },
-      "javascript_basics_fe": {
-        "name": "JavaScript Basics",
+      "android_sdk_android": {
+        "name": "Android SDK & Architecture",
         "level": "not_started",
         "overall_percent": 0,
         "per_level_percent": {
@@ -405,14 +390,13 @@
           "advanced": null
         },
         "source_course_ids": [
-          38,
-          39,
-          40,
-          42
+          7,
+          8,
+          9
         ]
       },
-      "framework_foundations_fe": {
-        "name": "Front-End Framework Foundations",
+      "ui_material_android": {
+        "name": "UI & Material Design",
         "level": "not_started",
         "overall_percent": 0,
         "per_level_percent": {
@@ -421,13 +405,13 @@
           "advanced": null
         },
         "source_course_ids": [
-          40,
-          41,
-          42
+          7,
+          8,
+          9
         ]
       },
-      "version_control_fe": {
-        "name": "Git Basics Version Control",
+      "data_storage_android": {
+        "name": "Data Storage & Networking",
         "level": "not_started",
         "overall_percent": 0,
         "per_level_percent": {
@@ -436,13 +420,13 @@
           "advanced": null
         },
         "source_course_ids": [
-          39,
-          41,
-          42
+          7,
+          8,
+          9
         ]
       },
-      "ui_ux_principles_fe": {
-        "name": "Basic of UI/UX Web",
+      "testing_android": {
+        "name": "Testing & CI for Android",
         "level": "not_started",
         "overall_percent": 0,
         "per_level_percent": {
@@ -451,13 +435,13 @@
           "advanced": null
         },
         "source_course_ids": [
-          40,
-          41,
-          42
+          8,
+          10,
+          12
         ]
       },
-      "web_application_fe": {
-        "name": "Web Application Engineering",
+      "deployment_playstore_android": {
+        "name": "Deployment & Release Management",
         "level": "not_started",
         "overall_percent": 0,
         "per_level_percent": {
@@ -466,9 +450,9 @@
           "advanced": null
         },
         "source_course_ids": [
-          38,
-          40,
-          42
+          7,
+          8,
+          12
         ]
       }
     }
