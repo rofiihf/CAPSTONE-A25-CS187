@@ -1,8 +1,4 @@
 # CAPSTONE-A25-CS187
-
-Siap. Berikut **full isi `README.md` versi final** yang sudah rapi, konsisten, dan siap **langsung kamu copas** tanpa perlu edit lagi.
-Bahasanya diposisikan dari sudut pandang **coder/pengembang aplikasi Dicobuddy (Learning Buddy)**, cocok untuk **capstone / showcase**.
-
 ---
 
 ```md
