@@ -14,11 +14,13 @@ export default class MessagePresenter {
   #authService;
   #quickActions;
   #quizState;
+  #courseMap;
 
-  constructor({ model, authModel = null, authService = null } = {}) {
+  constructor({ model, authModel = null, authService = null, courseMap= [] } = {}) {
     this.#model = model;
     this.#authModel = authModel;
     this.#authService = authService;
+    this.#courseMap = courseMap;
     this.#quickActions = [
       {
         id: "ask-courses",
@@ -67,32 +69,30 @@ export default class MessagePresenter {
     try {
       this.#view.clearChat();
 
-      const messages = this.#model.getAllMessages();
-      messages.forEach((msg) => this.#view.renderMessage(msg));
-      await this.preloadCourseMap();
-      if (this.shouldRenderRoadmapOnStart) {
-          this.renderRoadmapFromProfile();
+      // === LOAD COURSE MAP ONCE (PRODUCTION SAFE) ===
+      if (!Array.isArray(this.#courseMap) || this.#courseMap.length === 0) {
+        const result = await loadCourseMap();
+
+        if (result.ok && Array.isArray(result.courses)) {
+          this.#courseMap = result.courses;
+        } else {
+          console.warn("Course map failed to load, using empty list");
+          this.#courseMap = [];
+        }
       }
 
+      const messages = this.#model.getAllMessages();
+      messages.forEach((msg) => this.#view.renderMessage(msg));
 
-      // tampilkan quick actions setelah pesan awal
+      if (this.shouldRenderRoadmapOnStart) {
+        this.renderRoadmapFromProfile();
+      }
+
       this.#view.renderQuickActions(this.#quickActions);
     } catch (error) {
       console.error("Error rendering initial messages:", error);
     }
   }
-
-  async preloadCourseMap() {
-    try {
-      const resp = await loadCourseMap();
-      if (resp?.ok) {
-        window.COURSE_MAP = resp.courses;
-      }
-    } catch (e) {
-      console.warn("Could not load course map:", e);
-    }
-  }
-
   // ====== CLEAR CHAT ======
   async handleClearChat() {
     this.#model.resetMessages();
@@ -112,7 +112,8 @@ export default class MessagePresenter {
       "bot",
       {
         type: "roadmap",
-        roadmap: rp
+        roadmap: rp,
+        courseMap: this.#courseMap
       }
     );
 
@@ -136,11 +137,18 @@ export default class MessagePresenter {
     // kirim pesan template ke backend
     this.handleUserSubmit(action.message);
   }
+
   getRecommendedCourses(profile) {
-    // const list = Object.values(window.COURSE_MAP);
-    // return list.filter(c => c.level.toLowerCase().includes("beginner")).slice(0, 5);
-    return [];
-    
+    if (!Array.isArray(this.#courseMap) || this.#courseMap.length === 0) {
+      console.warn("Course map kosong");
+      return [];
+    }
+
+    const level = profile?.level?.toLowerCase?.() ?? "beginner";
+
+    return this.#courseMap
+      .filter(c => c.level?.toLowerCase().includes(level))
+      .slice(0, 5);
   }
 
 
@@ -549,7 +557,10 @@ export default class MessagePresenter {
       if (response.meta) extraOptions.meta = response.meta;
       if (response.sources) extraOptions.sources = response.sources;
 
-      const metaType = response.meta?.type;
+      const metaType =
+        response.meta?.type ||
+        response.intent?.mode ||
+        null;
 
       if (metaType) {
           extraOptions.type = metaType;
@@ -557,23 +568,63 @@ export default class MessagePresenter {
           // =============================================
           // 1) COURSE RECOMMENDATION
           // =============================================
-          if (metaType === "course-recommendation") {
+          if (metaType === "course-recommendation" || metaType === "course_recommendation") {
             console.log("🎓 COURSE RECOMMENDATION DETECTED");
-            console.log("META TYPE FROM BACKEND:", response.meta?.type);
-            console.log("📚 Courses:", response.meta.courses);
-            console.log("📦 bubbleCourseRecommendation available?", typeof bubbleCourseRecommendation);
-            
-              const courses = response.meta.courses || [];
 
-              const botCard = this.#model.addMessage(
-                  "Berikut rekomendasi kelas untukmu:",
-                  "bot",
-                  { type: "course-recommendation", courses }
-              );
-
-              this.#view.renderMessage(botCard);
+            if (!Array.isArray(response.meta?.courses)) {
+              console.warn("Invalid courses payload:", response.meta?.courses);
               return;
+            }
+
+            const courseMapById = Object.fromEntries(
+              this.#courseMap.map(c => [String(c.id), c])
+            );
+
+            const courses = response.meta.courses
+              .map(c => {
+                const full = courseMapById[String(c.id)];
+                if (!full) return null;
+
+                return {
+                  id: full.id,
+                  title: full.title || full.course_name || "Untitled Course",
+                  level: full.level || "Beginner",
+
+                  // ⬇️ WAJIB sesuai UI
+                  path:
+                    full.path ||
+                    full.learning_path ||
+                    (full.learning_path_id ? `Learning Path ${full.learning_path_id}` : ""),
+
+                  description:
+                    full.description ||
+                    full.desc ||
+                    (full.hours
+                      ? `Durasi ${full.hours} jam`
+                      : "Deskripsi kelas belum tersedia")
+                };
+              })
+              .filter(Boolean);
+
+            if (courses.length === 0) {
+              const msg = this.#model.addMessage(
+                "Maaf, detail kelas tidak dapat dimuat.",
+                "bot"
+              );
+              this.#view.renderMessage(msg);
+              return;
+            }
+
+            const botCard = this.#model.addMessage(
+              "Berikut rekomendasi kelas untukmu:",
+              "bot",
+              { type: "course-recommendation", courses }
+            );
+
+            this.#view.renderMessage(botCard);
+            return;
           }
+
 
           // =============================================
           // 2) ROADMAP HANDLING
@@ -607,7 +658,8 @@ export default class MessagePresenter {
                   "bot",
                   { 
                       type: "roadmap", 
-                      roadmap: roadmap 
+                      roadmap: roadmap,
+                      courseMap: this.#courseMap
                   }
               );
 
@@ -657,7 +709,7 @@ export default class MessagePresenter {
   }
 
   handleCourseClick({ courseRef }) {
-    const course = window.COURSE_MAP?.[courseRef];
+    const course = this.#courseMap.find(c => String(c.id) === String(courseRef));
 
     if (!course) {
       const msg = this.#model.addMessage(
@@ -668,13 +720,13 @@ export default class MessagePresenter {
       return;
     }
 
-    // const msg = this.#model.addMessage(
-    //   `Detail course: ${course.title}`,
-    //   "bot",
-    //   { type: "course-detail", course }
-    // );
+    const msg = this.#model.addMessage(
+      `Detail course: ${course.title} (${course.level}, ${course.hours} jam)`,
+      "bot"
+    );
 
     this.#view.renderMessage(msg);
   }
+
 
 }

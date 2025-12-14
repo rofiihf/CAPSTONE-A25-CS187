@@ -48,8 +48,22 @@ class ChatReq(BaseModel):
 
 @app.get("/health")
 async def health():
-    return {"status": "ok", "message": "ML backend running (MVP mode)"}
+    """Lightweight health check - always returns ok"""
+    return {"status": "ok", "message": "ML backend running"}
 
+
+@app.get("/ready")
+async def ready():
+    """Readiness check - returns 503 until models are loaded"""
+    if _is_ready:
+        return {"status": "ready", "models_loaded": True}
+    else:
+        from fastapi import Response
+        return Response(
+            content='{"status":"warming_up","models_loaded":false}',
+            status_code=503,
+            media_type="application/json"
+        )
 
 # ============================
 # CHAT ROUTE
@@ -108,3 +122,20 @@ async def chat(req: ChatReq):
         print("=== outer handler crash ===")
         traceback.print_exc()
         return {"ok": False, "error": "server_crash", "detail": str(e)}
+
+# ============================
+# ENTRYPOINT (Railway-safe)
+# ============================
+
+if __name__ == "__main__":
+    import uvicorn
+
+    port = int(os.environ.get("PORT", 8000))
+    print(f"Starting server on port {port}")
+
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=port,
+        log_level="info",
+    )

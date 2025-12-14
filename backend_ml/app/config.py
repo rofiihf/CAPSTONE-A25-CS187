@@ -3,7 +3,7 @@ import os
 
 BASE = Path(__file__).resolve().parent
 ARTIFACTS_DIR = os.getenv("ARTIFACTS_DIR", str(BASE / "artifacts"))
-GROQ_API_KEY = "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"
+GROQ_API_KEY = os.getenv("GROQ_API")
 SBERT_MODEL_PATH = os.getenv("SBERT_MODEL_PATH", "sentence-transformers/all-MiniLM-L6-v2")
 INTENT_PIPE_PATH = os.getenv("INTENT_PIPE_PATH", str(BASE / "artifacts" / "intent_pipe.joblib"))
 KB_PARQUET = os.getenv("KB_PARQUET", str(BASE / "artifacts" / "kb.parquet"))
@@ -17,4 +17,4 @@ DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localho
 # Server settings
 DEFAULT_TOPK = int(os.getenv("DEFAULT_TOPK", "5"))
 SECRET= "secret-profile"
-BACKEND_URL= "http://localhost:5000/api/profile/apply-patch"
+BACKEND_URL= "/api/profile/apply-patch"

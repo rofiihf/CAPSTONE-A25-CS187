@@ -1,7 +1,9 @@
+import { API_BASE_URL } from "../config.js";
+
 export default class AuthService {
   constructor(authModel) {
     this.authModel = authModel;
-    this.URL = "/api/auth";
+    this.URL = `${API_BASE_URL}/api/auth`;
   }
 
   async login(email, password) {

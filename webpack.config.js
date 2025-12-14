@@ -1,16 +1,18 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
   entry: {
-    app: "./src/scripts/index.js",
-    widget: "./src/widget/widget.js",
+    app: "./src/scripts/index.js"
   },
 
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].js", // app.js & widget.js
-    clean: true,
+    filename: "app.js",
     publicPath: "/",
+    clean: true
   },
 
   module: {
@@ -18,43 +20,37 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
-          },
-        },
+        use: "babel-loader"
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-      },
-    ],
+        use: ["style-loader", "css-loader"]
+      }
+    ]
   },
 
-  devServer: {
-    static: [
-      {
-        directory: path.resolve(__dirname, "src/public"),
-        publicPath: "/",
-      },
-      {
-        directory: path.resolve(__dirname, "src/widget"),
-        publicPath: "/widget",
-      },
-    ],
-    port: 5500,
-    hot: true,
-    open: true,
-    proxy: [
-      {
-        context: ["/api", "/chat"],
-        target: "http://localhost:5000",
-        changeOrigin: true,
-        secure: false,
-      },
-    ],
-  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/public/index.html"
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: "src/public",
+          to: ".",
+          globOptions: {
+            ignore: ["**/index.html"]
+          }
+        }
+      ]
+    }),
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify({
+        API_BASE_URL: process.env.API_BASE_URL,
+        NODE_ENV: "production"
+      })
+    })
+  ],
 
-  mode: "development",
+  mode: "production"
 };

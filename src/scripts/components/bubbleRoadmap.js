@@ -3,8 +3,21 @@
 
 export default function bubbleRoadmap(message = {}) {
   const data = message.roadmap || message.meta?.roadmap || message.meta || null;
-  console.log("🗺️ COURSE_MAP available?", !!window.COURSE_MAP);
-  console.log("🗺️ Total courses in map:", window.COURSE_MAP ? Object.keys(window.COURSE_MAP).length : 0);
+  
+  // ===== COURSE MAP (PRODUCTION SAFE) =====
+  const courseMapArray =
+    Array.isArray(message.courseMap)
+      ? message.courseMap
+      : Array.isArray(message.meta?.courseMap)
+      ? message.meta.courseMap
+      : [];
+
+  const courseIndex = Object.create(null);
+  for (const c of courseMapArray) {
+    if (c && c.id != null) {
+      courseIndex[String(c.id)] = c;
+    }
+  }
 
   const wrapper = document.createElement("div");
   wrapper.classList.add(
@@ -238,13 +251,15 @@ export default function bubbleRoadmap(message = {}) {
         } else if (course && course.id) {
           courseId = String(course.id);
         }
-        console.log(`📚 Looking for course ID: ${courseId}`);
-        console.log(`📚 Found in COURSE_MAP?`, !!window.COURSE_MAP?.[courseId]);
-        console.log(`📚 Course data:`, window.COURSE_MAP?.[courseId]);
+        
         // Coba ambil dari COURSE_MAP
-        if (courseId && window.COURSE_MAP && window.COURSE_MAP[courseId]) {
-          const courseData = window.COURSE_MAP[courseId];
-          courseName = courseData.name || courseData.title || courseData.course_name || courseName;
+        if (courseId && courseIndex[courseId]) {
+          const courseData = courseIndex[courseId];
+          courseName =
+            courseData.title ||
+            courseData.name ||
+            courseData.course_name ||
+            courseName;
         } else if (course && course.name) {
           courseName = course.name;
         } else if (course && course.title) {

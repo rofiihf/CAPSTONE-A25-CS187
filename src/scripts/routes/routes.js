@@ -58,25 +58,20 @@ export async function router() {
   // CHAT PAGE
   if (pageType === "chat") {
     const model = new MessageModel();
-    const presenter = new MessagePresenter({ model, authModel, authService });
-    const view = new MessageView({ presenter });
-    // ===== LOAD COURSE MAP DARI BACKEND =====
-    try {
-      const resp = await loadCourseMap();
-      if (resp?.ok) {
-        window.COURSE_MAP = resp.courses;
-        console.log("COURSE MAP LOADED:", window.COURSE_MAP);
-      } else {
-        console.warn("Course map not ok:", resp);
-      }
-    } catch (err) {
-      console.error("Failed to load course map:", err);
-    }
-    const profile = authModel.getUser();
 
-    // 2. Simpan dulu ke presenter
-    presenter.setProfile(profile);
-    // ===== Inisialisasi chat setelah course map siap =====
+    const courseMapResp = await loadCourseMap();
+    const courseMap = courseMapResp.ok ? courseMapResp.courses : [];
+
+    const presenter = new MessagePresenter({
+      model,
+      authModel,
+      authService,
+      courseMap, 
+    });
+
+    const view = new MessageView({ presenter });
+
+    presenter.setProfile(authModel.getUser());
     presenter.setView(view);
     view.render();
     return;
