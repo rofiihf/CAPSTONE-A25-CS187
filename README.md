@@ -1,10 +1,8 @@
-# Capstone Project: AI-Powered Learning Roadmap Assistant (A25-CS187)
+# DicoBuddy: AI-Powered Learning Roadmap Assistant (A25-CS187)
 
-Selamat datang di repositori resmi untuk Capstone Project A25-CS187. Proyek ini adalah asisten belajar berbasis chatbot cerdas yang dirancang untuk membuat peta jalan (roadmap) pembelajaran yang dipersonalisasi, merekomendasikan kursus, dan melacak progres pengguna menggunakan kecerdasan buatan (AI) dan pembelajaran adaptif.
+## 👥 Anggota Kelompok
 
-## 👥 Anggota Kelompok (Cohort A25-CS187)
-
-Berikut adalah tim pengembang di balik proyek ini:
+Anggota Kelompok:
 
 | No | ID Dicoding | Nama Anggota | Role |
 |----|-------------|--------------|------|
@@ -13,39 +11,6 @@ Berikut adalah tim pengembang di balik proyek ini:
 | 3  | F269D5Y1759 | Rofi Hanif Fauzan | Front-End Web & Back-End with AI |
 | 4  | F269D5Y1208 | Muhammad Alfian Adien | Front-End Web & Back-End with AI |
 | 5  | F269D5Y1248 | Muhammad Faisal Ramdhani | Front-End Web & Back-End with AI |
-
-## 🌟 Fitur Utama
-
-* **Adaptive Roadmap Generation:** Membuat alur belajar yang disesuaikan dengan profil, minat, dan tingkat kemampuan pengguna menggunakan *Machine Learning*.
-* **Interactive Chatbot Widget:** Antarmuka percakapan yang ramah pengguna untuk berinteraksi dengan sistem, menanyakan materi, atau meminta rekomendasi.
-* **Skill Assessment & Quizzes:** Fitur kuis untuk menilai pemahaman pengguna sebelum atau sesudah menyelesaikan modul pembelajaran.
-* **Course Recommendation System:** Merekomendasikan materi pembelajaran spesifik berdasarkan roadmap yang telah dibuat.
-* **User Profile Management:** Melacak progres belajar, histori chat, dan pencapaian pengguna.
-* **Micro-Frontend/Widget Architecture:** Frontend dirancang agar dapat diintegrasikan sebagai widget pada platform lain.
-
-## 🛠️ Teknologi yang Digunakan
-
-Proyek ini menggunakan arsitektur *monorepo* yang terdiri dari tiga komponen utama:
-
-### 1. Frontend (`/src` & `/dist`)
-* **Bahasa:** HTML5, CSS3, JavaScript (ES6+)
-* **Build Tool:** Webpack
-* **Fitur:** Progressive Web App (PWA) dengan Service Worker (`sw.js`), Custom Web Components.
-
-### 2. Backend API (`/backend`)
-* **Runtime:** Node.js
-* **Framework:** Express.js
-* **Autentikasi:** Custom Middleware / Token-based auth
-* **Data Handling:** JSON storage (untuk prototipe/skala kecil)
-
-### 3. Machine Learning Engine (`/backend_ml`)
-* **Bahasa:** Python 3.12+
-* **Framework:** (Kemungkinan FastAPI/Flask berdasarkan struktur `app/`)
-* **Library Utama:**
-    * `scikit-learn`: Untuk model klasifikasi intent.
-    * `faiss`: Untuk pencarian vektor (vector search) dan knowledge base.
-    * `pandas` & `numpy`: Pemrosesan data.
-    * `joblib`: Serialisasi model.
 
 ## 📋 Prasyarat Instalasi
 
@@ -56,8 +21,6 @@ Sebelum memulai, pastikan perangkat Anda telah terinstal:
 * [npm](https://www.npmjs.com/) (Biasanya terinstal bersama Node.js)
 
 ## 🚀 Cara Instalasi dan Menjalankan
-
-Karena proyek ini terdiri dari beberapa layanan, Anda perlu menjalankannya di terminal yang berbeda.
 
 ### Langkah 1: Clone Repository
 
@@ -94,18 +57,11 @@ Karena proyek ini terdiri dari beberapa layanan, Anda perlu menjalankannya di te
     ```bash
     cd backend_ml
     ```
-2.  (Opsional tapi disarankan) Buat virtual environment:
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # Untuk Linux/Mac
-    # atau
-    venv\Scripts\activate     # Untuk Windows
-    ```
-3.  Instal dependensi Python:
+2.  Instal dependensi Python:
     ```bash
     pip install -r requirements.txt
     ```
-4.  Jalankan layanan ML:
+3.  Jalankan layanan ML:
     ```bash
     -m uvicorn main:app --reload
     ```
@@ -121,11 +77,13 @@ Karena proyek ini terdiri dari beberapa layanan, Anda perlu menjalankannya di te
     ```bash
     npm install
     ```
+    ```bash
+    npm install --save-dev webpack webpack-cli webpack-dev-server webpack-merge css-loader style-loader babel-loader @babel/preset-env html-webpack-plugin
+    ```
 2.  Build asset frontend menggunakan Webpack:
     ```bash
     npm run build
     ```
-3.  Buka file `dist/index.html` atau `src/public/index.html` di browser Anda, atau gunakan Live Server untuk pengalaman pengembangan yang lebih baik.
 
 ## 📂 Susunan Project
 
