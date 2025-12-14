@@ -1,257 +1,108 @@
-# CAPSTONE-A25-CS187
----
-
-```md
-# Dicobuddy — Learning Buddy  
-**Capstone Project A25-CS187**
-
-Dicobuddy adalah aplikasi **Learning Buddy berbasis web** yang dirancang untuk membantu pengguna mendapatkan **arah belajar yang lebih tepat, personal, dan terstruktur**. Aplikasi ini menggabungkan **chat berbasis AI**, **asesmen kemampuan melalui quiz**, serta **roadmap belajar adaptif** yang disesuaikan dengan tujuan dan minat pengguna.
-
-Dicobuddy dikembangkan sebagai solusi atas permasalahan umum dalam proses belajar mandiri, di mana banyak pengguna kesulitan menentukan materi awal, jalur pembelajaran, dan rekomendasi kursus yang sesuai dengan kemampuan mereka yang sebenarnya.
-
----
-
-## ✨ Fitur Utama
-
-### 🔐 Autentikasi & Session
-- Login menggunakan **email dan password**
-- Session berbasis cookie menggunakan `express-session`
-- Menjaga konteks pengguna selama penggunaan aplikasi
-
-### 💬 Chat Learning Buddy
-- Chat interaktif berbasis AI
-- Memberikan:
-  - Jawaban pembelajaran
-  - Rekomendasi materi dan kursus
-  - Insight sesuai konteks pengguna
-- Mendukung klasifikasi intent dan penyajian sumber belajar
-
-### 📝 Quiz & Skill Leveling
-- Quiz untuk mengukur kemampuan pengguna
-- Hasil quiz menentukan level:
-  - Beginner
-  - Intermediate
-  - Advanced
-- Data skill disimpan dalam **learning profile** pengguna
-
-### 🧭 Roadmap Belajar (Job Role Mode)
-- Mode chat khusus untuk tujuan karier
-- Contoh: *Frontend Developer, Data Analyst, Mobile Developer*
-- Menghasilkan roadmap belajar yang terstruktur dan bertahap
-
-### 🌗 Tema & Preferensi
-- Toggle **Light / Dark Mode**
-- Preferensi disimpan di `localStorage`
-
----
-
-## Tech Stack
-
-### Frontend
-- Vanilla JavaScript
-- Webpack + Babel
-- CSS (custom)
-- SPA dengan hash routing
-
-### Backend API
-- Node.js
-- Express.js
-- express-session
-- bcrypt
-- CORS
-- Penyimpanan data berbasis file JSON
-
-### ML Backend
-- FastAPI
-- scikit-learn (intent classification)
-- Sentence-Transformers
-- FAISS (knowledge retrieval)
-- Uvicorn
-
----
-
-## Arsitektur Sistem
-
-```
-
-[ Client Browser ]
-|
-|  (Webpack Dev Server :5500)
-v
-[ Frontend SPA ]
-|
-|  API & Chat Request
-v
-[ Backend Node.js :5000 ]
-|
-|  Forward Request
-v
-[ ML Backend FastAPI :8000 ]
-
-```
-
----
-
-## 📁 Struktur Folder
-
-```
-
-CAPSTONE-A25-CS187-main/
-├── src/                      # Frontend
-│   ├── public/
-│   ├── scripts/
-│   └── styles/
-├── backend/                  # Backend API (Node.js)
-│   ├── app.js
-│   ├── routes/
-│   ├── controllers/
-│   └── data/
-│       ├── users_hashed.json
-│       ├── quiz.json
-│       ├── course.json
-│       └── user_profile/
-├── backend_ml/               # ML Backend (FastAPI)
-│   ├── main.py
-│   ├── app/
-│   └── requirements.txt
-├── webpack.config.js
-└── package.json
-
-````
-
----
-
-## Prasyarat
-
-- Node.js (LTS disarankan)
-- Python 3.10 atau lebih baru
-- pip / virtual environment (opsional tapi disarankan)
-
----
-
-## Konfigurasi Environment
-
-### Backend Node (`backend/.env`)
-```env
-PORT=5000
-SESSION_SECRET=your-session-secret
-BOT_API_URL=http://localhost:8000/chat
-````
-
-### ML Backend (Opsional)
-
-```env
-DEFAULT_TOPK=5
-MODEL_API_ALLOWED_ORIGINS=*
-```
-
-> ⚠️ Catatan Keamanan
-> API key dan credential sebaiknya disimpan dalam environment variable dan **tidak di-commit** ke repository publik.
-
----
-
-## Cara Menjalankan Aplikasi (Development)
-
-### 1️⃣ Jalankan ML Backend (FastAPI)
-
-```bash
-cd backend_ml
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8000
-```
-
-Cek:
-
-```
-http://localhost:8000/health
-```
-
----
-
-### 2️⃣ Jalankan Backend API (Node.js)
-
-```bash
-cd backend
-npm install
-node app.js
-```
-
-Cek:
-
-```
-http://localhost:5000/
-```
-
----
-
-### 3️⃣ Jalankan Frontend (Webpack Dev Server)
-
-```bash
-npm install
-npm run dev
-```
-
-Buka di browser:
-
-```
-http://localhost:5500/#/login
-```
-
----
-
-## Login (Development)
-
-Data user disimpan di:
-
-```
-backend/data/users_hashed.json
-```
-
-Password menggunakan hash bcrypt.
-Untuk membuat hash baru:
-
-```js
-const bcrypt = require("bcrypt");
-bcrypt.hash("password123", 10).then(console.log);
-```
-
-Salin hasil hash ke field `password` pada user JSON.
-
----
-
-## Endpoint API (Ringkas)
-
-### Auth
-
-* `POST /api/auth/login`
-* `POST /api/auth/logout`
-* `GET /api/auth/me`
-
-### Chat
-
-* `POST /chat`
-* `POST /chat/job`
-
-### Quiz
-
-* `GET /api/quiz/topics`
-* `GET /api/quiz/questions`
-* `POST /api/quiz/score`
-
-### Course
-
-* `GET /api/courses-map`
-
----
-
-## Build Frontend
-
-```bash
-npm run build
-```
-
-Output build akan tersedia di folder `dist/`.
-
-
-tinggal bilang, nanti aku sesuaikan ✨
-```
+# DicoBuddy: AI-Powered Learning Roadmap Assistant (A25-CS187)
+
+## 👥 Anggota Kelompok
+
+Anggota Kelompok:
+
+| No | ID Dicoding | Nama Anggota | Role |
+|----|-------------|--------------|------|
+| 1  | M269D5Y1338 | Muhammad Pidha Iqbal Fadillah | Machine Learning |
+| 2  | M891D5X1834 | Shafira Maulidina | Machine Learning |
+| 3  | F269D5Y1759 | Rofi Hanif Fauzan | Front-End Web & Back-End with AI |
+| 4  | F269D5Y1208 | Muhammad Alfian Adien | Front-End Web & Back-End with AI |
+| 5  | F269D5Y1248 | Muhammad Faisal Ramdhani | Front-End Web & Back-End with AI |
+
+## 📋 Prasyarat Instalasi
+
+Sebelum memulai, pastikan perangkat Anda telah terinstal:
+
+* [Node.js](https://nodejs.org/) (Versi 16 atau lebih baru direkomendasikan)
+* [Python](https://www.python.org/) (Versi 3.9 atau lebih baru)
+* [npm](https://www.npmjs.com/) (Biasanya terinstal bersama Node.js)
+
+## 🚀 Cara Instalasi dan Menjalankan
+
+### Langkah 1: Clone Repository
+
+1.  Copy dibawah ini:
+    ```bash
+    git clone https://github.com/username/capstone-a25-cs187.git
+    ```
+2.  Pindah folder:
+    ```bash
+    cd capstone-a25-cs187
+    ```
+
+### Langkah 2: Setup Backend (Node.js)
+
+1.  Buka terminal dan masuk ke folder backend:
+    ```bash
+    cd backend
+    ```
+2.  Instal dependensi:
+    ```bash
+    npm install
+    ```
+3.  Jalankan server:
+    ```bash
+    npm start
+    # atau
+    node app.js
+    ```
+    *Server backend biasanya berjalan di port 3000 atau sesuai konfigurasi `.env`.*
+
+### Langkah 3: Setup Machine Learning Engine (Python)
+
+1.  Buka terminal baru dan masuk ke folder ML:
+    ```bash
+    cd backend_ml
+    ```
+2.  Instal dependensi Python:
+    ```bash
+    pip install -r requirements.txt
+    ```
+3.  Jalankan layanan ML:
+    ```bash
+    -m uvicorn main:app --reload
+    ```
+    atau
+    
+    ```bash
+    python -m uvicorn main:app --reload
+    ```
+
+### Langkah 4: Setup Frontend
+
+1.  Buka terminal baru dan kembali ke root folder proyek:
+    ```bash
+    npm install
+    ```
+    ```bash
+    npm install --save-dev webpack webpack-cli webpack-dev-server webpack-merge css-loader style-loader babel-loader @babel/preset-env html-webpack-plugin
+    ```
+2.  Build asset frontend menggunakan Webpack:
+    ```bash
+    npm run build
+    ```
+
+## 📂 Susunan Project
+
+```text
+capstone-a25-cs187/
+├── backend/                # Layanan Backend API (Node.js)
+│   ├── controllers/        # Logika kontroler (Auth, Chat, Quiz, Roadmap)
+│   ├── data/               # Penyimpanan data JSON (Profiles, Courses, Quiz)
+│   ├── routes/             # Definisi endpoint API
+│   └── app.js              # Entry point backend
+├── backend_ml/             # Layanan AI/ML (Python)
+│   ├── app/                # Logika inti ML (Intent, Roadmap Engine)
+│   ├── data/               # Data latih dan knowledge base
+│   └── main.py             # Entry point service ML
+├── src/                    # Source code Frontend
+│   ├── public/             # Aset statis (Images, HTML)
+│   ├── scripts/            # Logika JS (Components, Pages, Services)
+│   ├── styles/             # File CSS
+│   └── widget/             # Kode khusus untuk Widget Iframe
+├── dist/                   # Hasil build frontend (Webpack output)
+├── package.json            # Manajemen dependensi root/frontend
+└── webpack.config.js       # Konfigurasi build tool
