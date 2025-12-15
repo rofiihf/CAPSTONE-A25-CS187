@@ -85,6 +85,11 @@ Sebelum memulai, pastikan perangkat Anda telah terinstal:
     npm run build
     ```
 
+## 💻 Website
+```bash
+https://dicobuddy.netlify.app/
+```
+
 ## 📂 Susunan Project
 
 ```text
