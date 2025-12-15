@@ -1,0 +1,47 @@
+# ===============================
+# PyTorch CPU ONLY (WAJIB PALING ATAS)
+# ===============================
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.5.1+cpu
+
+# ===============================
+# Web API
+# ===============================
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.5
+
+# ===============================
+# Database - FIX: Ganti ke psycopg2-binary
+# ===============================
+sqlalchemy==2.0.36
+psycopg2-binary==2.9.10
+
+# ===============================
+# HTTP & Scheduler
+# ===============================
+requests==2.32.3
+apscheduler==3.10.4
+
+# ===============================
+# ML / Vector - FIX: Pin NumPy ke 1.x untuk compatibility
+# ===============================
+numpy<2.0.0
+pandas==2.2.3
+scikit-learn==1.6.1
+joblib==1.4.2
+sentence-transformers==3.3.1
+faiss-cpu==1.9.0.post1
+regex==2024.11.6
+
+# ===============================
+# Data IO
+# ===============================
+openpyxl==3.1.5
+pyarrow==18.1.0
+fastparquet==2024.11.0
+
+# ===============================
+# LLM API
+# ===============================
+groq==0.13.0
