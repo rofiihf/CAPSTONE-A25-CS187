@@ -106,3 +106,9 @@ capstone-a25-cs187/
 ├── dist/                   # Hasil build frontend (Webpack output)
 ├── package.json            # Manajemen dependensi root/frontend
 └── webpack.config.js       # Konfigurasi build tool
+```
+
+## 🤖 AI Model Artifacts
+```bash
+https://drive.google.com/drive/folders/1XG3ClspW5g6SiWBmFXj_UsGWLo_jPsVy?usp=drive_link
+```
