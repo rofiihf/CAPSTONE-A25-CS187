@@ -7,41 +7,41 @@ torch==2.5.1+cpu
 # ===============================
 # Web API
 # ===============================
-fastapi
-uvicorn[standard]
-pydantic
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.5
 
 # ===============================
-# Database
+# Database - FIX: Ganti ke psycopg2-binary
 # ===============================
-sqlalchemy
-psycopg[binary]
+sqlalchemy==2.0.36
+psycopg2-binary==2.9.10
 
 # ===============================
 # HTTP & Scheduler
 # ===============================
-requests
-apscheduler
+requests==2.32.3
+apscheduler==3.10.4
 
 # ===============================
-# ML / Vector
+# ML / Vector - FIX: Pin NumPy ke 1.x untuk compatibility
 # ===============================
-numpy
-pandas
-scikit-learn
-joblib
-sentence-transformers
-faiss-cpu
-regex
+numpy<2.0.0
+pandas==2.2.3
+scikit-learn==1.6.1
+joblib==1.4.2
+sentence-transformers==3.3.1
+faiss-cpu==1.9.0.post1
+regex==2024.11.6
 
 # ===============================
-# Data IO (HEAVY)
+# Data IO
 # ===============================
-openpyxl
-pyarrow
-fastparquet
+openpyxl==3.1.5
+pyarrow==18.1.0
+fastparquet==2024.11.0
 
 # ===============================
 # LLM API
 # ===============================
-groq
+groq==0.13.0
